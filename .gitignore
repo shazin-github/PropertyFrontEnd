@@ -1,0 +1,17 @@
+
+/vendor
+/node_modules
+Homestead.yaml
+Homestead.json
+.env
+*.zip
+TestController.php
+composer.lock
+config/database.php
+composer.json
+composer.json
+composer.lock
+config/app.php
+config/database.php
+composer.lock
+composer.json
