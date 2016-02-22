@@ -1,55 +1,298 @@
 @extends('layouts.default')
-		
-	@section('content-wrapper')
+
+@section('content-wrapper')
 		<!-- Properties Map Section -->
 		<section class="properties-map">
 			<div class="row row-fit">
-			<div class="col-md-15 col-lg-14">
-		
-				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d54447.26463684356!2d74.34649627986188!3d31.470450441588902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1454961823511" frameborder="0" style="border:0" allowfullscreen class="mapClass"></iframe>
-				
-				</div>
-				<div class="col-md-9 col-lg-10">
-					<div class="map-filter-box">
-					<div class="search-gap">
-						<div class="box-caption">
-							<h4>Search</h4>
-							<p>Where are you looking?</p>
-						</div>
-						<div class="search-class">
-						<div class="select-box wd-80 pull-left">
-							<input class="filter-box-input js-input no-select drop-wd" type="text" readonly value="" placeholder="Buy" />
-							<ul>
-								<li>Buy</li>
-								<li>Rent</li>
-								<li>Sold</li>
-							</ul>
-						</div>
-							<input class="filter-box-input js-input no-select search-wd" type="text" value="" placeholder="Search..." />
-						<div class="select-box wd-110 pull-left">
-							<input class="filter-box-input js-input no-select drop-wd" type="text" readonly value="" placeholder="Bedrooms" />
-							<ul>
-								<li>Bedrooms</li>
-								<li>1</li>
-								<li>2</li>
-								<li>3</li>
-							</ul>
-						</div>
-						<div class="select-box wd-80 pull-left">
-							<input class="filter-box-input js-input no-select drop-wd" type="text" readonly value="" placeholder="Baths" />
-							<ul>
-								<li>Baths</li>
-								<li>1</li>
-								<li>2</li>
-								<li>3</li>
-							</ul>
-						</div>
-						<a href="index.html#" class="button theme-button-1 update-properties">Search</a>
-						</div>
-						</div>
-					</div>
+				<div class="col-md-15 col-lg-14">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d54447.26463684356!2d74.34649627986188!3d31.470450441588902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1454961823511" frameborder="0" style="border:0" allowfullscreen class="mapClass"></iframe>
 				</div>
 				
+        <div class="col-md-9 col-lg-10">
+            <div class="home-list-ht">
+
+
+              <div class="listing-style">
+                <div class="list-property">
+                  <div class="cover list-img">
+                    <a href="single-full-width.html">
+                      <img alt="list property cover" src="img/my-properties-6.jpg">
+                    </a>
+                  </div>
+                  <div class="list-content">
+                    <div class="property-header">
+                      <p class="price">$250 <span class="type">for rent</span></p>
+                      <h2><a href="single-full-width.html">Grand hotel room</a></h2>
+                      <p class="address">LA 325</p>
+                    </div>
+
+                    <div class="property-body">
+                      <p>Duis vel eros mi. Nunc eu sem dolor. Nulla venenatis, augue at rhoncus tincidunt, nisi dolor fringilla nibh, sed tristique quam</p>
+
+                      <ul class="post-meta">
+                        <li class="area">
+                          <span class="tool-tip"></span>
+                          <span class="nr">100</span>
+                        </li>
+                        <li class="bedrooms">
+                          <span class="tool-tip"></span>
+                          <span class="nr">1</span>
+                        </li>
+                        <li class="bathrooms">
+                          <span class="tool-tip"></span>
+                          <span class="nr">1</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="listing-style">
+                <div class="list-property">
+                  <div class="cover list-img">
+                    <a href="single-full-width.html">
+                      <img alt="list property cover" src="img/my-properties-6.jpg">
+                    </a>
+                  </div>
+                  <div class="list-content">
+                    <div class="property-header">
+                      <p class="price">$250 <span class="type">for rent</span></p>
+                      <h2><a href="single-full-width.html">Grand hotel room</a></h2>
+                      <p class="address">LA 325</p>
+                    </div>
+
+                    <div class="property-body">
+                      <p>Duis vel eros mi. Nunc eu sem dolor. Nulla venenatis, augue at rhoncus tincidunt, nisi dolor fringilla nibh, sed tristique quam</p>
+
+                      <ul class="post-meta">
+                        <li class="area">
+                          <span class="tool-tip"></span>
+                          <span class="nr">100</span>
+                        </li>
+                        <li class="bedrooms">
+                          <span class="tool-tip"></span>
+                          <span class="nr">1</span>
+                        </li>
+                        <li class="bathrooms">
+                          <span class="tool-tip"></span>
+                          <span class="nr">1</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="listing-style">
+                <div class="list-property">
+                  <div class="cover list-img">
+                    <a href="single-full-width.html">
+                      <img alt="list property cover" src="img/my-properties-6.jpg">
+                    </a>
+                  </div>
+                  <div class="list-content">
+                    <div class="property-header">
+                      <p class="price">$250 <span class="type">for rent</span></p>
+                      <h2><a href="single-full-width.html">Grand hotel room</a></h2>
+                      <p class="address">LA 325</p>
+                    </div>
+
+                    <div class="property-body">
+                      <p>Duis vel eros mi. Nunc eu sem dolor. Nulla venenatis, augue at rhoncus tincidunt, nisi dolor fringilla nibh, sed tristique quam</p>
+
+                      <ul class="post-meta">
+                        <li class="area">
+                          <span class="tool-tip"></span>
+                          <span class="nr">100</span>
+                        </li>
+                        <li class="bedrooms">
+                          <span class="tool-tip"></span>
+                          <span class="nr">1</span>
+                        </li>
+                        <li class="bathrooms">
+                          <span class="tool-tip"></span>
+                          <span class="nr">1</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="listing-style">
+                <div class="list-property">
+                  <div class="cover list-img">
+                    <a href="single-full-width.html">
+                      <img alt="list property cover" src="img/my-properties-6.jpg">
+                    </a>
+                  </div>
+                  <div class="list-content">
+                    <div class="property-header">
+                      <p class="price">$250 <span class="type">for rent</span></p>
+                      <h2><a href="single-full-width.html">Grand hotel room</a></h2>
+                      <p class="address">LA 325</p>
+                    </div>
+
+                    <div class="property-body">
+                      <p>Duis vel eros mi. Nunc eu sem dolor. Nulla venenatis, augue at rhoncus tincidunt, nisi dolor fringilla nibh, sed tristique quam</p>
+
+                      <ul class="post-meta">
+                        <li class="area">
+                          <span class="tool-tip"></span>
+                          <span class="nr">100</span>
+                        </li>
+                        <li class="bedrooms">
+                          <span class="tool-tip"></span>
+                          <span class="nr">1</span>
+                        </li>
+                        <li class="bathrooms">
+                          <span class="tool-tip"></span>
+                          <span class="nr">1</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="listing-style">
+                <div class="list-property">
+                  <div class="cover list-img">
+                    <a href="single-full-width.html">
+                      <img alt="list property cover" src="img/my-properties-6.jpg">
+                    </a>
+                  </div>
+                  <div class="list-content">
+                    <div class="property-header">
+                      <p class="price">$250 <span class="type">for rent</span></p>
+                      <h2><a href="single-full-width.html">Grand hotel room</a></h2>
+                      <p class="address">LA 325</p>
+                    </div>
+
+                    <div class="property-body">
+                      <p>Duis vel eros mi. Nunc eu sem dolor. Nulla venenatis, augue at rhoncus tincidunt, nisi dolor fringilla nibh, sed tristique quam</p>
+
+                      <ul class="post-meta">
+                        <li class="area">
+                          <span class="tool-tip"></span>
+                          <span class="nr">100</span>
+                        </li>
+                        <li class="bedrooms">
+                          <span class="tool-tip"></span>
+                          <span class="nr">1</span>
+                        </li>
+                        <li class="bathrooms">
+                          <span class="tool-tip"></span>
+                          <span class="nr">1</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="listing-style">
+                <div class="list-property">
+                  <div class="cover list-img">
+                    <a href="single-full-width.html">
+                      <img alt="list property cover" src="img/my-properties-6.jpg">
+                    </a>
+                  </div>
+                  <div class="list-content">
+                    <div class="property-header">
+                      <p class="price">$250 <span class="type">for rent</span></p>
+                      <h2><a href="single-full-width.html">Grand hotel room</a></h2>
+                      <p class="address">LA 325</p>
+                    </div>
+
+                    <div class="property-body">
+                      <p>Duis vel eros mi. Nunc eu sem dolor. Nulla venenatis, augue at rhoncus tincidunt, nisi dolor fringilla nibh, sed tristique quam</p>
+
+                      <ul class="post-meta">
+                        <li class="area">
+                          <span class="tool-tip"></span>
+                          <span class="nr">100</span>
+                        </li>
+                        <li class="bedrooms">
+                          <span class="tool-tip"></span>
+                          <span class="nr">1</span>
+                        </li>
+                        <li class="bathrooms">
+                          <span class="tool-tip"></span>
+                          <span class="nr">1</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="listing-style">
+                <div class="list-property">
+                  <div class="cover list-img">
+                    <a href="single-full-width.html">
+                      <img alt="list property cover" src="img/my-properties-6.jpg">
+                    </a>
+                  </div>
+                  <div class="list-content">
+                    <div class="property-header">
+                      <p class="price">$250 <span class="type">for rent</span></p>
+                      <h2><a href="single-full-width.html">Grand hotel room</a></h2>
+                      <p class="address">LA 325</p>
+                    </div>
+
+                    <div class="property-body">
+                      <p>Duis vel eros mi. Nunc eu sem dolor. Nulla venenatis, augue at rhoncus tincidunt, nisi dolor fringilla nibh, sed tristique quam</p>
+
+                      <ul class="post-meta">
+                        <li class="area">
+                          <span class="tool-tip"></span>
+                          <span class="nr">100</span>
+                        </li>
+                        <li class="bedrooms">
+                          <span class="tool-tip"></span>
+                          <span class="nr">1</span>
+                        </li>
+                        <li class="bathrooms">
+                          <span class="tool-tip"></span>
+                          <span class="nr">1</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="listing-style">
+                <div class="list-property">
+                  <div class="cover list-img">
+                    <a href="single-full-width.html">
+                      <img alt="list property cover" src="img/my-properties-6.jpg">
+                    </a>
+                  </div>
+                  <div class="list-content">
+                    <div class="property-header">
+                      <p class="price">$250 <span class="type">for rent</span></p>
+                      <h2><a href="single-full-width.html">Grand hotel room</a></h2>
+                      <p class="address">LA 325</p>
+                    </div>
+
+                    <div class="property-body">
+                      <p>Duis vel eros mi. Nunc eu sem dolor. Nulla venenatis, augue at rhoncus tincidunt, nisi dolor fringilla nibh, sed tristique quam</p>
+
+                      <ul class="post-meta">
+                        <li class="area">
+                          <span class="tool-tip"></span>
+                          <span class="nr">100</span>
+                        </li>
+                        <li class="bedrooms">
+                          <span class="tool-tip"></span>
+                          <span class="nr">1</span>
+                        </li>
+                        <li class="bathrooms">
+                          <span class="tool-tip"></span>
+                          <span class="nr">1</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 				</div>
 			</div>
 		</section>
@@ -523,7 +766,7 @@
 										<ul class="social-block">
 											<li><a href="index.html#"><i class="fa fa-facebook"></i></a></li>
 											<li><a href="index.html#"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="index.html#"><i class="fa fa-linkedin-square"></i></a></li>
+											<li><a href="index.html#"><i class="fa fa-github-alt"></i></a></li>
 										</ul>
 
 										<p>Duis vel eros mi. Nunc eu sem dolor. Nulla venenatis, augue at rhoncus tincidunt, nisi dolor fringilla nibh, sed tristique quam leo vel arcu. Sed ultricies, odio vel aliquet ultricies.</p>
@@ -542,7 +785,7 @@
 										<ul class="social-block">
 											<li><a href="index.html#"><i class="fa fa-facebook"></i></a></li>
 											<li><a href="index.html#"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="index.html#"><i class="fa fa-linkedin-square"></i></a></li>
+											<li><a href="index.html#"><i class="fa fa-github-alt"></i></a></li>
 										</ul>
 
 										<p>Duis vel eros mi. Nunc eu sem dolor. Nulla venenatis, augue at rhoncus tincidunt, nisi dolor fringilla nibh, sed tristique quam leo vel arcu. Sed ultricies, odio vel aliquet ultricies.</p>
@@ -563,7 +806,7 @@
 										<ul class="social-block">
 											<li><a href="index.html#"><i class="fa fa-facebook"></i></a></li>
 											<li><a href="index.html#"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="index.html#"><i class="fa fa-linkedin-square"></i></a></li>
+											<li><a href="index.html#"><i class="fa fa-github-alt"></i></a></li>
 										</ul>
 
 										<p>Duis vel eros mi. Nunc eu sem dolor. Nulla venenatis, augue at rhoncus tincidunt, nisi dolor fringilla nibh, sed tristique quam leo vel arcu. Sed ultricies, odio vel aliquet ultricies.</p>
@@ -582,7 +825,7 @@
 										<ul class="social-block">
 											<li><a href="index.html#"><i class="fa fa-facebook"></i></a></li>
 											<li><a href="index.html#"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="index.html#"><i class="fa fa-linkedin-square"></i></a></li>
+											<li><a href="index.html#"><i class="fa fa-github-alt"></i></a></li>
 										</ul>
 
 										<p>Duis vel eros mi. Nunc eu sem dolor. Nulla venenatis, augue at rhoncus tincidunt, nisi dolor fringilla nibh, sed tristique quam leo vel arcu. Sed ultricies, odio vel aliquet ultricies.</p>
@@ -607,7 +850,7 @@
 									<ul class="social-block">
 										<li><a href="index.html#"><i class="fa fa-facebook"></i></a></li>
 										<li><a href="index.html#"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="index.html#"><i class="fa fa-linkedin-square"></i></a></li>
+										<li><a href="index.html#"><i class="fa fa-github-alt"></i></a></li>
 									</ul>
 								</div>
 
@@ -791,4 +1034,4 @@
 				</div>
 			</div>
 		</section>
-	@endsection
+@endsection

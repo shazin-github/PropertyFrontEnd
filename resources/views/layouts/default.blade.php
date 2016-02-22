@@ -1,98 +1,78 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Brokergenius Admin Panel</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.5 -->
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-  <!-- Font Awesome 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  -->
-  <link rel="stylesheet" href="dist/css/font-awesome.min.css">
-  <!-- Ionicons 
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  -->
-  <link rel="stylesheet" href="dist/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <!-- Skin-blue-->
-  <link rel="stylesheet" href="dist/css/skins/skin-red.min.css">
-  <!-- dataTables -->
-  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
-  <!-- application -->
-  <link rel="stylesheet" href="dist/css/application.css">
+	<meta charset="utf-8" />
+    <title>Realtor</title>
+    <meta name="description" content="Here goes description" />
+    <meta name="author" content="author name" />
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/owl-carousel.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/lightbox.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="css/bxslider.css" />
+    <link rel="stylesheet" href="css/nouislider.css" />
+    <link rel="stylesheet" href="css/icomoon.css" />
+    <link rel="stylesheet" href="css/screen.css" />
+	<link rel="stylesheet" href="css/custom.css" />
 </head>
-@if( Session::has('email') )
-<body class="skin-red sidebar-mini">
-  <div id="overlay">
-    <table width="100%" height="100%">
-      <tr><td valign="middle"><img src="dist/img/squares_1.gif" width="80px" height="80px"/><p>Processing</p></td></tr>
-    </table>
-  </div>
-  
-  <div class="wrapper">
-    <div id="left_nav">
-      @include('includes.left_nav')
+</head>
+<body data-smooth-scroll="on"> <!-- id="front-page" -->
+    <!-- Site Preloader -->
+    <div class="site-preloader">
+        <div class="preloader-content">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                <g>
+                    <polygon fill-rule="evenodd" clip-rule="evenodd" fill="#036AB0" points="52.346,69.705 24.321,69.531 67.362,98.879 
+                        91.266,98.879   "/>
+                    <rect x="9.856" y="44.682" fill-rule="evenodd" clip-rule="evenodd" fill="#036AB0" width="14.465" height="54.362"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#036AB0" d="M47.868,1.947c21.055,0,38.123,17.068,38.123,38.123
+                        c0,21.055-17.068,38.123-38.123,38.123c-21.055,0-38.123-17.068-38.123-38.123C9.745,19.015,26.813,1.947,47.868,1.947
+                        L47.868,1.947z M47.868,16.58c-12.973,0-23.49,10.517-23.49,23.49c0,12.973,10.517,23.49,23.49,23.49
+                        c12.973,0,23.49-10.517,23.49-23.49C71.357,27.097,60.841,16.58,47.868,16.58z"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#036AB0" d="M47.535,1.166c21.055,0,38.123,17.068,38.123,38.123
+                        c0,21.055-17.068,38.123-38.123,38.123c-21.055,0-38.123-17.068-38.123-38.123C9.412,18.234,26.48,1.166,47.535,1.166L47.535,1.166
+                        z M47.535,15.799c-12.973,0-23.49,10.517-23.49,23.49c0,12.973,10.517,23.49,23.49,23.49c12.973,0,23.49-10.517,23.49-23.49
+                        C71.025,26.316,60.508,15.799,47.535,15.799z"/>
+                </g>
+            </svg>
+        </div>
     </div>
-@else
-<body class="layout-top-nav skin-red sidebar-mini">
-  <div id="overlay">
-    <table width="100%" height="100%">
-      <tr><td valign="middle"><img src="dist/img/squares_1.gif" width="80px" height="80px"/><p>Processing</p></td></tr>
-    </table>
-  </div>
 
-  <div class="wrapper">
-    <div id="left_nav"  style="display: none">
-    @include('includes.left_nav')
-    </div>
-@endif
-        <!-- Right side column. Contains the navbar and content of the page -->
+    <!-- Page Wrapper -->
+    <div id="page">
+        <!-- Header -->
+        @include('header')
+
+        <!-- Main Content -->
         <div class="content-wrapper">
+            @include('login')
+            @yield('content-wrapper')     
+        </div>
 
-        <!-- Main content -->
-        <section class="content" style="padding: 5px">
-          @yield('content')
-        </section><!-- /.content -->
-        </div><!-- /.content-wrapper -->
-
-        <!--<footer class="main-footer"></footer>-->
-    </div><!-- ./wrapper -->
-
-<!-- REQUIRED JS SCRIPTS -->
-
-<!-- jQuery 2.1.4 -->
-<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
-<!-- Bootstrap 3.3.5 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
-<!-- dataTables -->
-<script src="plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
-<script src="plugins\datatables\extensions\Scroller\js\dataTables.scroller.min.js"></script>
-<!-- notifyMe -->
-<script src="plugins/notifyMe/jquery.notifyme.min.js"></script>
-<!-- Main application -->
-<script src="dist/js/application.js"></script>
-
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+        @include('footer')
+    </div>
+    <!-- Scripts -->
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script src="js/infobox.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/bxslider.js"></script>
+    <script src="js/marquee.js"></script>
+    <script src="js/nouislider.js"></script>
+    <script src="js/modernizr.js"></script>
+    <script src="js/imagesloaded.js"></script>
+    <script src="js/smooth-scroll.js"></script>
+    <script src="js/owl-carousel.js"></script>
+    <script src="js/isotope.js"></script>
+    <script src="js/theia.js"></script>
+    <script src="js/lightbox.js"></script>
+    <script src="js/options.js"></script>
 </body>
 </html>
