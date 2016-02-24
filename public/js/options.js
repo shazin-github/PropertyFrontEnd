@@ -751,8 +751,7 @@ var teslaThemes = {
 
 			property_marker = new google.maps.Marker({
 				position: latlng,
-				map: map,
-				icon: 'img/pin-house.png'
+				map: map
 			});
 
 			var adr_options = {
@@ -773,6 +772,7 @@ var teslaThemes = {
 				}
 
 				property_marker.setPosition(place.geometry.location);
+				property_marker.title = address;
 				map.setCenter(place.geometry.location);
 				map.setZoom(17);
 			});
