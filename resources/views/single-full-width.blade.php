@@ -594,3 +594,14 @@
 		</div>
 	</section>
 @endsection
+
+@section('custom-scripts')
+<script type="text/javascript">
+	alert();
+	jQuery(document).ready(function(){
+		jQuery("#gallery").unitegallery({
+			theme_navigation_type:"arrows"
+		});
+	});
+</script>
+@endsection
