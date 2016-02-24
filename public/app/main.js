@@ -9,7 +9,7 @@ require.config({
 
     shim: {
         'angular': {
-            deps: ['domReady', 'jquery']
+            deps: ['domReady']
         },
 
         'angular-route': {
