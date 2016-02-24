@@ -755,27 +755,6 @@ var teslaThemes = {
 				icon: 'img/pin-house.png'
 			});
 
-			var city = document.getElementById('city');
-			var city_options = {
-				types: ['(cities)'],
-				componentRestrictions: {country: 'pk'}
-			};
-			var autocomplete_city = new google.maps.places.Autocomplete(city, city_options);
-
-			autocomplete_city.addListener('place_changed', function() {
-
-				var place = autocomplete_city.getPlace();
-				if (!place.geometry) {
-					return;
-				}
-
-				property_marker.setPosition(place.geometry.location);
-				map.setCenter(place.geometry.location);
-				map.setZoom(12);
-				$("#address").val("");
-
-			});
-
 			var adr_options = {
 				types: ['geocode'],
 				componentRestrictions: {country: 'pk'}
