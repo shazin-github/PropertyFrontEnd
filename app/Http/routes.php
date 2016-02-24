@@ -19,3 +19,8 @@
 	Route::get('single-full-width', function () {
 	    return view('single-full-width');
 	});
+
+	Route::post('login', function () {
+	    // return Response::json(['success'=> true, 'msg'=>'You have done it!']);
+	    return Response::json(['success'=>false, 'error'=>'You have done it!']);
+	});

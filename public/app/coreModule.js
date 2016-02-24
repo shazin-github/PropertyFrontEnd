@@ -6,5 +6,4 @@ define(function() {
             angular.bootstrap(document, ['coreModule']);
         });
     });
-
 });

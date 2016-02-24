@@ -3,5 +3,6 @@ define(function() {
         'controllers/mainController',
         'controllers/homeController',
         'controllers/addPropertyController',
+        'controllers/userController'
     ];
 });
