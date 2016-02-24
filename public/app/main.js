@@ -3,7 +3,6 @@ require.config({
         'domReady': 'lib/domReady/domReady',
         'angular': 'lib/angular/angular',
         'angular-route': 'lib/angular-route/angular-route',
-        'app': 'app',
         'coreModule': 'coreModule'
     },
 
@@ -16,15 +15,10 @@ require.config({
             deps: ['angular']
         },
 
-
-        'app': {
-            deps: ['angular-route', 'coreModule']
-        },
-
         'coreModule': {
             deps: ['angular-route']
         }
     }
 });
 
-require(['app']);
+require(['coreModule']);

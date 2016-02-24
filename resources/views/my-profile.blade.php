@@ -99,14 +99,14 @@
 						</form>
 					</div>
 
-					<div id="submit">
+					<div id="submit" ng-controller="addPropertyController">
 						<form class="submit-form">
 							<div class="row">
 								<div class="col-md-11">
-									<input type="text" class="js-input" placeholder="Tittle" />
+									<input type="text" class="js-input" placeholder="Tittle" ng-model="title"/>
 									<textarea class="js-input" placeholder="Description"></textarea>
 
-									<div class="coutry-select select-box type-2">
+									<!-- <div class="coutry-select select-box type-2">
 										<input class="js-input no-select" type="text" readonly value="" placeholder="All countries" />
 										<ul>
 											<li>All countries</li>
@@ -137,9 +137,13 @@
 											<li>LA</li>
 											<li>Chisinau</li>
 										</ul>
-									</div>
+									</div> -->
 
-									<input type="text" class="js-input" placeholder="Address (street/ house/ ap.)" />
+									<input type="text" class="js-input" placeholder="Country" id="country" disable="true" value="Pakistan"/>
+
+									<input type="text" class="js-input" placeholder="City"  id="city" />
+
+									<input type="text" class="js-input" placeholder="Address (street/ house/ ap.)" id="address"/>
 
 									<div class="row row-fit-10">
 										<div class="col-sm-12">

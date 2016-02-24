@@ -59,7 +59,7 @@
         @include('footer')
     </div>
 <!-- Scripts -->
-<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
 <script src="js/infobox.js"></script>
 <script src="js/jquery.js"></script>
 <script src="js/jquery-ui.js"></script> -->
