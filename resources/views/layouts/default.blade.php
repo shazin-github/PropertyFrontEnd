@@ -61,10 +61,9 @@
     <!-- Scripts -->
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script src="js/infobox.js"></script>
-<script type="text/javascript" src="app/lib/requirejs/require.js" data-main="app/main.js"></script>
-<!-- <script src="js/jquery.js"></script>
+<script src="js/jquery.js"></script>
 <script src="js/jquery-ui.js"></script> -->
-<!--<script src="js/bxslider.js"></script>
+<script src="js/bxslider.js"></script>
 <script src="js/marquee.js"></script>
 <script src="js/nouislider.js"></script>
 <script src="js/modernizr.js"></script>
@@ -74,6 +73,8 @@
 <script src="js/isotope.js"></script>
 <script src="js/theia.js"></script>
 <script src="js/lightbox.js"></script>
-<script src="js/options.js"></script>-->
+<script src="js/options.js"></script>
+<script type="text/javascript" src="app/lib/requirejs/require.js" data-main="app/main.js"></script>
+
 </body>
 </html>
