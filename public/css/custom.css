@@ -1,3 +1,7 @@
+.alert{
+  display: none;
+}
+/* ---------------------------------------------------------------- */
 .mapClass{height:797px;width: 100%}
 .wd-80{width:80px;}
 .wd-110{width:110px;}

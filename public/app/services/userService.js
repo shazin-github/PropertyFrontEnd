@@ -11,7 +11,7 @@ define(function() {
       //   }
 
       	this.login = function(data){
-        	return $http.post("login");
+        	return $http.post("user/login", data);
         }
 
         this.register = function(data){

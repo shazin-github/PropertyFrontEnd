@@ -1,5 +1,6 @@
 <?php
 
+Route::group(['middleware'=>['web']], function(){
 	Route::get('/', function () {
 	    return view('index');
 	});
@@ -20,7 +21,9 @@
 	    return view('single-full-width');
 	});
 
-	Route::post('login', function () {
-	    // return Response::json(['success'=> true, 'msg'=>'You have done it!']);
-	    return Response::json(['success'=>false, 'error'=>'You have done it!']);
+	Route::controller('user', 'userController');
+});
+
+	Route::get('test', function () {
+	    return Response::json(['success'=>true, 'msg'=>'Login Failed']);
 	});

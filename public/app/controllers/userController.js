@@ -2,18 +2,17 @@ define(['services/userService'], function() {
     var coreModule = angular.module('coreModule');
     coreModule.controller('userController', ['$scope', 'userService', function($scope, userService) {
         $scope.user = {};
-        $scope.user.showLoginError = false;
         
         $scope.login = function(){
 	        userService.login($scope.user).then(function(resp){
 	        	if(resp.data.success){
-	        		$scope.user.showLoginError = false;
+	        		$('.alert-danger').hide();
 	        		location.reload();
 	        	}
 	        	else{
 	        		console.log('Response from service=', resp);
-	        		$scope.user.loginErrors = resp.data.error;
-	        		$scope.user.showLoginError = true;
+	        		$scope.user.loginErrors = resp.data.msg;
+	        		$('.alert-danger').show();
 	        	}
 	        });
         }

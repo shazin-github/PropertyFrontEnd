@@ -6,7 +6,7 @@
 					</div>
 
 					<form id="login-form" ng-app="app" ng-controller="userController" ng-submit="login()">
-						<div ng-show="user.showLoginError" class="alert alert-danger" role="alert">{{ user.loginErrors }}</div>
+						<div class="alert alert-danger" role="alert">{{ user.loginErrors }}</div>
 						<input class="js-input" type="text" placeholder="Login" ng-model="user.login"/>
 						<input class="js-input" type="password" placeholder="Password" ng-model="user.password" />
 						<input type="submit" value="Login" class="submit-button"/>
