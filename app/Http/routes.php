@@ -17,6 +17,10 @@ Route::group(['middleware'=>['web']], function(){
 	    return view('listing');
 	});
 
+	Route::get('agents', function () {
+	    return view('agents');
+	});
+
 	Route::get('single-full-width', function () {
 	    return view('single-full-width');
 	});

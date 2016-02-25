@@ -20,7 +20,7 @@ define(['services/userService'], function() {
         $scope.logout = function(){
         	userService.logout().then(function(resp){
 	        	if(resp.data.success){
-	        		location.reload();
+	        		location.href = '/';
 	        	}
 	        });	
         }
@@ -28,7 +28,17 @@ define(['services/userService'], function() {
         $scope.userReg = {};
         $scope.register = function(){
         	//alert($scope.user+' has password'+$scope.password);
-        	userService.register($scope.userReg);
+        	userService.register($scope.userReg).then(function(resp){
+	        	if(resp.data.success){
+	        		$('.alert-danger').hide();
+	        		location.href= 'my-profile';
+	        	}
+	        	else{
+	        		$scope.userReg.registerErrors = resp.data.msg;
+	        		echoErrors('register-form', resp.data.msg);
+	        		//$('.alert-danger').show();
+	        	}
+	        });
         }
     }]);
 });
