@@ -19,7 +19,7 @@ define(function() {
         }
 
         this.register = function(data){
-        	console.log('Scope from service=', data);
+        	return $http.post("user/register", data);
         }
     });
 });

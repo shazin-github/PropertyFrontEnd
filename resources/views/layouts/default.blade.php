@@ -74,6 +74,7 @@
 <script src="js/theia.js"></script>
 <script src="js/lightbox.js"></script>
 <script src="js/options.js"></script>
+<script src="js/custom.js"></script>
 <script type='text/javascript' src='js/unitegallery.min.js'></script>   
 <script type='text/javascript' src='js/ug-theme-tilesgrid.js'></script>
 <script type="text/javascript" src="app/lib/requirejs/require.js" data-main="app/main.js"></script>

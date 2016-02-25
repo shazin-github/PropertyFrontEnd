@@ -45,4 +45,28 @@ class userController extends Controller{
     	$this->request->session()->flush();
     	return Response::json(['success'=>true, 'msg'=>'Logout successful']);
     }
+
+    public function postRegister() {
+        $data = $this->request->all();
+        $validator = Validator::make($data,[
+        	'firstName' => 'required',
+            'login' => 'required',
+            'password' => 'required|min:6',
+            'confirmPassword' => 'required|same:password',
+        ]);
+
+        if ($validator->fails()) {
+        	$msg = $validator->messages()->toJson();
+            return Response::json(['success'=>false, 'msg'=>array($msg)]);
+        }
+        
+        $resp = $this->guzzle->get($this->apiUrl.'test');
+       	$result = json_decode($resp->getBody());
+        if($result->success){
+        	session(['username' => 'username from $result']);
+            return Response::json(['success'=>true, 'msg'=>'Registration successful']);
+        } else {
+            return Response::json(['success'=>false, 'msg'=>'Registration failed']);
+        }
+    }
 }

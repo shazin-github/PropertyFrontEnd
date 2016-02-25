@@ -6,18 +6,16 @@
 			<!-- Navigation -->
 			<nav>
 				<ul>
-					<li class="home current-menu-item"><a href="my-profile.html">My Profile</a></li>
+					<li class="home current-menu-item"><a href="my-profile">My Profile</a></li>
 					<li class="listing menu-item-has-children">
-						<a href="my-profile.html#">Listing</a>
-						<ul class="sub-menu">
-							<li><a href="properties-grid.html">Grid</a></li>
-							<li><a href="properties-list.html">List</a></li>
-						</ul>
+						<a href="listing">Listing</a>
+						<!-- <ul class="sub-menu">
+							<li><a href="properties-grid">Grid</a></li>
+							<li><a href="properties-list">List</a></li>
+						</ul> -->
 					</li>
-					<li class="property"><a href="single-full-width.html">Property</a></li>
-					<li class="agents"><a href="agents.html">Agents</a></li>
-					<li class="blog"><a href="blog.html">Blog</a></li>
-					<li class="error"><a href="404.html">404 Page</a></li>
+					<li class="property"><a href="single-full-width">Property</a></li>
+					<li class="agents"><a href="agents">Agents</a></li>
 				</ul>
 			</nav>
 
@@ -31,9 +29,9 @@
 					</div>
 
 					<ul class="list">
-						<li><a class="profile" href="my-profile#profile">My profile</a></li>
-						<li><a class="submit-new" href="my-profile#submit">Submit new property</a></li>
-						<li><a class="properties" href="my-profile#properties">My properties</a></li>
+						<li><a class="profile" href="my-profile">My profile</a></li>
+						<li><a class="submit-new" href="my-profile">Submit new property</a></li>
+						<li><a class="properties" href="my-profile">My properties</a></li>
 						<li ng-app="app" ng-controller="userController"><a class="exit" href="#" ng-click="logout()">Logout</a></li>
 					</ul>
 				</div>
