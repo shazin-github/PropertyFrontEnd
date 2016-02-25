@@ -23,7 +23,7 @@
 	<link rel="stylesheet" href="css/custom.css" />
     <link rel='stylesheet' href='css/unite-gallery.css' type='text/css' />
 </head>
-<body data-smooth-scroll="on" ng-controller="homeController"> <!-- id="front-page" -->
+<body data-smooth-scroll="on"> <!-- id="front-page" -->
     <!-- Site Preloader -->
     <div class="site-preloader">
         <div class="preloader-content">

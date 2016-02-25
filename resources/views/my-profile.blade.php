@@ -100,11 +100,12 @@
 					</div>
 
 					<div id="submit" ng-controller="addPropertyController">
-						<form class="submit-form">
+						<form class="submit-form" method="POST" name="propertyForm" ng-submit="addProperty()" novalidate>
+							<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 							<div class="row">
 								<div class="col-md-11">
-									<input type="text" class="js-input" placeholder="Tittle" ng-model="title"/>
-									<textarea class="js-input" placeholder="Description" ng-model="description"></textarea>
+									<input type="text" class="js-input" placeholder="Title"  required name="title" ng-model="title"/>
+									<textarea class="js-input" placeholder="Description" required ng-model="description"></textarea>
 
 									<!-- <div class="coutry-select select-box type-2">
 										<input class="js-input no-select" type="text" readonly value="" placeholder="All countries" />
@@ -119,10 +120,10 @@
 											<li>Moldova</li>
 										</ul>
 									</div> -->
-									<input type="text" class="js-input" placeholder="Country" id="country" disable="true" value="Pakistan" ng-model="country"/>
+									<input type="text" class="js-input" placeholder="Country" id="country" disabled="true" ng-model="country"/>
 
 									<div class="select-box type-2">
-										<input class="js-input no-select" type="text" readonly value="" placeholder="State" ng-model="state" />
+										<input class="js-input no-select" type="text" required placeholder="State" ng-model="state" ng-readonly="true" />
 										<ul>
 											<li>Select State</li>
 											<li>Azad Jammu & Kashmir</li>
@@ -137,7 +138,8 @@
 									</div>
 
 									<div class="select-box type-2">
-										<input class="js-input no-select" type="text" readonly value="" placeholder="City" ng-model="city"/>
+										<input type="hidden" ng-value="city" />
+										<input class="js-input no-select" type="text" required readonly value="" placeholder="City" />
 										<ul>
 											<li>Select City</li>
 									<li>Abbottabad</li>
@@ -269,14 +271,16 @@
 											</ul>
 									</div>
 
-									<input type="text" class="js-input" placeholder="Address (street/ house/ ap.)" id="address" ng-model="address"/>
+									<input type="text" class="js-input" required placeholder="ZipCode" id="zip" ng-model="zip"/>
+
+									<input type="text" class="js-input" required placeholder="Address (street/ house/ ap.)" id="address" ng-model="address"/>
 
 									<div class="row row-fit-10">
 										<div class="col-sm-12">
-											<input type="text" class="js-input nr-only" placeholder="Price $" />
+											<input type="text" class="js-input nr-only" required placeholder="Price $" ng-model="price"/>
 										</div>
 										<div class="col-sm-12">
-											<input type="text" class="js-input nr-only" placeholder="Area (sq ft)" />
+											<input type="text" class="js-input nr-only" required placeholder="Area (sq ft)" ng-model="area"/>
 										</div>
 									</div>
 								</div>
@@ -294,37 +298,85 @@
 
 									<div class="location-on-map">
 										<div class="map-canvas" id="location-map"></div>
+										<input type="hidden" id="latitude" ng-model="latitude" />
+										<input type="hidden" id="longitude" ng-model="longitude" />
 									</div>
 								</div>
 							</div>
 
 							<div class="row comodities">
-								<div class="col-md-11">
+								<div class="col-md-12">
 									<div class="row">
 										<div class="filters">
-											<div class="col-sm-12">
+											<div class="col-sm-6">
 												<div class="select-filter">
 													<label>
-														<input type="radio" name="type-select" />
+														<input type="radio" name="purpose-select" required id="purpose-select" ng-model="purpose" />
 														<span>For rent</span>
 													</label>
 												</div>
 
 												<div class="select-filter">
 													<label>
-														<input type="radio" name="type-select" />
+														<input type="radio" name="purpose-select" required id="purpose-select" ng-model="purpose" />
 														<span>For Sale</span>
 													</label>
 												</div>	
 											</div>
 
-											<div class="col-sm-12">
+											<div class="col-sm-6">
+												<div class="select-filter">
+													<label>
+														<input type="radio" name="type-select" required id="type-select" ng-model="type" />
+														<span>Home</span>
+													</label>
+												</div>
+
+												<div class="select-filter">
+													<label>
+														<input type="radio" name="type-select" required id="type-select" ng-model="type" />
+														<span>Plot</span>
+													</label>
+												</div>
+
+												<div class="select-filter">
+													<label>
+														<input type="radio" name="type-select" required id="type-select" ng-model="type" />
+														<span>Commercial</span>
+													</label>
+												</div>
+											</div>
+											<div class="col-sm-6">
+												<div class="select-filter">
+													<label>
+														<input type="radio" name="category-select" required id="category-select" ng-model="category" />
+														<span>Single Person</span>
+													</label>
+												</div>
+
+												<div class="select-filter">
+													<label>
+														<input type="radio" name="category-select" required id="category-select" ng-model="category"/>
+														<span>Family</span>
+													</label>
+												</div>
+
+												<div class="select-filter">
+													<label>
+														<input type="radio" name="category-select" required id="category-select" ng-model="category"/>
+														<span>Events</span>
+													</label>
+												</div>
+											</div>
+
+											<div class="col-sm-6">
 												<div class="nr-filter">
 													<p class="caption">Baths</p>
 													<div class="block">
 														<span class="action substract">-</span>
-														<input type="text" class="nr-only" value="1" />
+														<input type="text" class="nr-only" required value="1"/>
 														<span class="action add">+</span>
+														<input type="hidden" name="bath" id="bathmodel" ng-model="bath" />
 													</div>
 												</div>
 
@@ -332,8 +384,9 @@
 													<p class="caption">Beds</p>
 													<div class="block">
 														<span class="action substract">-</span>
-														<input type="text" class="nr-only" value="1" />
+														<input type="text" class="nr-only" required value="1" id="bed"/>
 														<span class="action add">+</span>
+														<input type="hidden" name="bed" id="bedmodel" ng-model="bed" />
 													</div>
 												</div>
 											</div>
@@ -341,50 +394,50 @@
 									</div>
 								</div>
 
-								<div class="col-md-13">
+								<div class="col-md-12">
 									<div class="check-option">
 										<label>
-											<input type="checkbox" name="parking" />
+											<input type="checkbox" name="parking" ng-model="park"/>
 											<span>Parking</span>
 										</label>
 									</div>
 
 									<div class="check-option">
 										<label>
-											<input type="checkbox" name="air-conditioning" />
+											<input type="checkbox" name="air-conditioning" ng-model="ac"/>
 											<span>Air conditioning</span>
 										</label>
 									</div>
 
 									<div class="check-option">
 										<label>
-											<input type="checkbox" name="swimming-pool" />
+											<input type="checkbox" name="swimming-pool" ng-model="swim"/>
 											<span>Swimming pool</span>
 										</label>
 									</div>
 
-									<div class="check-option">
+									<!-- <div class="check-option">
 										<label>
 											<input type="checkbox" name="close-to-school" />
 											<span>Close to school</span>
 										</label>
-									</div>
+									</div> -->
 
 									<div class="check-option">
 										<label>
-											<input type="checkbox" name="balcony" />
+											<input type="checkbox" name="balcony" ng-model="balcony"/>
 											<span>Balcony</span>
 										</label>
 									</div>
 
-									<div class="check-option">
+									<!-- <div class="check-option">
 										<label>
 											<input type="checkbox" name="solar-heat" />
 											<span>Solar heat</span>
 										</label>
-									</div>
+									</div> -->
 
-									<div class="check-option">
+									<!-- <div class="check-option">
 										<label>
 											<input type="checkbox" name="wine-cellar" />
 											<span>Wine cellar</span>
@@ -396,7 +449,7 @@
 											<input type="checkbox" name="night-bar" />
 											<span>Night Bar</span>
 										</label>
-									</div>
+									</div> -->
 								</div>
 							</div>
 

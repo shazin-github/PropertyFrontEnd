@@ -13,6 +13,11 @@ Route::group(['middleware'=>['web']], function(){
 	    return view('my-profile');
 	});
 
+	Route::post('my-profile', function () {
+		return view('my-profile');
+	});
+
+
 	Route::get('listing', function () {
 	    return view('listing');
 	});

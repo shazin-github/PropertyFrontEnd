@@ -393,11 +393,24 @@ var teslaThemes = {
 				add = jQuery(this).find('.add');
 
 			add.on('click', function () {
-				input.val(Math.max(1, parseInt(input.val()) + 1));
+				var val = (parseInt(input.val()) + 1);
+				input.val(Math.max(1, val));
+				if(input[0].id == 'bed') {
+					$("#bedmodel").val(val);
+				} else if(input[0].id == 'bath') {
+					$("#bathmodel").val(val);
+				}
+
 			});
 
 			substract.on('click', function () {
-				input.val(Math.max(1, parseInt(input.val()) - 1));
+				var val = (parseInt(input.val()) - 1);
+				input.val(Math.max(1, val));
+				if(input[0].id == 'bed') {
+					$("#bedmodel").val(val);
+				} else if(input[0].id == 'bath') {
+					$("#bathmodel").val(val);
+				}
 			});
 		});
 	},
@@ -775,6 +788,8 @@ var teslaThemes = {
 				property_marker.title = address;
 				map.setCenter(place.geometry.location);
 				map.setZoom(17);
+				$("#latitude").val(place.geometry.location.lat());
+				$("#longitude").val(place.geometry.location.lng());
 			});
 
 
