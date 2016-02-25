@@ -15,6 +15,7 @@ class userController extends Controller{
 
     public function __construct(Request $request, Guzzle $guzzle){
     	$this->guzzle = $guzzle;
+    	$this->guzzle->setDefaultOption('verify', false);
         $this->request = $request;
         $this->apiUrl = env('API_URL');
     }
@@ -29,7 +30,7 @@ class userController extends Controller{
         if ($validator->fails()) {
             return Response::json(['success'=>false, 'msg'=>'Username & password are required']);
         }
-        $this->guzzle->setDefaultOption('verify', false);
+        
         $resp = $this->guzzle->get($this->apiUrl.'test');
        	$result = json_decode($resp->getBody());
         if($result->success){
@@ -40,4 +41,8 @@ class userController extends Controller{
         }
     }
 
+    public function getLogout() {
+    	$this->request->session()->flush();
+    	return Response::json(['success'=>true, 'msg'=>'Logout successful']);
+    }
 }

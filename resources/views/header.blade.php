@@ -1,4 +1,7 @@
-	@if(Session::has('username'))
+	<?php
+		if(Session::has('username')){
+	?>
+	
 	<header>
 			<!-- Navigation -->
 			<nav>
@@ -28,10 +31,10 @@
 					</div>
 
 					<ul class="list">
-						<li><a class="profile" href="my-profile.html#profile">My profile</a></li>
-						<li><a class="submit-new" href="my-profile.html#submit">Submit new property</a></li>
-						<li><a class="properties" href="my-profile.html#properties">My properties</a></li>
-						<li><a class="exit" href="index.html">Exit</a></li>
+						<li><a class="profile" href="my-profile#profile">My profile</a></li>
+						<li><a class="submit-new" href="my-profile#submit">Submit new property</a></li>
+						<li><a class="properties" href="my-profile#properties">My properties</a></li>
+						<li ng-app="app" ng-controller="userController"><a class="exit" href="#" ng-click="logout()">Logout</a></li>
 					</ul>
 				</div>
 				
@@ -53,7 +56,9 @@
 				<img src="img/logo.png" alt="logo" />
 			</a>
 		</header>
-	@else
+	<?php
+	} else {
+	?>
 	<!-- Header -->
 	<header>
 		<!-- Navigation -->
@@ -88,4 +93,6 @@
 			<img src="img/logo.png" alt="logo" />
 		</a>
 	</header>
-	@endif
+	<?php
+	}
+	?>

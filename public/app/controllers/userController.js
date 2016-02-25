@@ -17,6 +17,14 @@ define(['services/userService'], function() {
 	        });
         }
 
+        $scope.logout = function(){
+        	userService.logout().then(function(resp){
+	        	if(resp.data.success){
+	        		location.reload();
+	        	}
+	        });	
+        }
+
         $scope.userReg = {};
         $scope.register = function(){
         	//alert($scope.user+' has password'+$scope.password);

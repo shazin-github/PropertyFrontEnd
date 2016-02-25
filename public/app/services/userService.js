@@ -14,6 +14,10 @@ define(function() {
         	return $http.post("user/login", data);
         }
 
+        this.logout = function(){
+        	return $http.get("user/logout");
+        }
+
         this.register = function(data){
         	console.log('Scope from service=', data);
         }
