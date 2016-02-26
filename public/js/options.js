@@ -395,22 +395,12 @@ var teslaThemes = {
 			add.on('click', function () {
 				var val = (parseInt(input.val()) + 1);
 				input.val(Math.max(1, val));
-				if(input[0].id == 'bed') {
-					$("#bedmodel").val(val);
-				} else if(input[0].id == 'bath') {
-					$("#bathmodel").val(val);
-				}
 
 			});
 
 			substract.on('click', function () {
 				var val = (parseInt(input.val()) - 1);
 				input.val(Math.max(1, val));
-				if(input[0].id == 'bed') {
-					$("#bedmodel").val(val);
-				} else if(input[0].id == 'bath') {
-					$("#bathmodel").val(val);
-				}
 			});
 		});
 	},

@@ -1,6 +1,6 @@
 define(function() {
     var coreModule = angular.module('coreModule');
-    coreModule.service('locationService', function($rootScope) {
+    coreModule.service('locationService', function() {
         this.getLocation = function(country, state, city, address, zip, lat, lng) {
             return {
                 country: country,

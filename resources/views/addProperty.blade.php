@@ -1,5 +1,5 @@
 <div id="submit" ng-controller="addPropertyController">
-	<form class="submit-form" method="POST" name="propertyForm" ng-submit="addProperty()" novalidate>
+	<form class="submit-form" method="POST" name="propertyForm" ng-submit="addProperty()">
 		<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 		<div class="row">
 			<div class="col-md-11">
@@ -22,7 +22,7 @@
 				<input type="text" class="js-input" placeholder="Country" id="country" disabled="true" ng-model="country"/>
 
 				<div class="select-box type-2">
-					<input class="js-input no-select" type="text" required placeholder="State" ng-model="state" ng-readonly="true" />
+					<input class="js-input no-select" type="text" required placeholder="State" id="state" ng-model="state" ng-readonly="true" />
 					<ul>
 						<li>Select State</li>
 						<li>Azad Jammu & Kashmir</li>
@@ -38,7 +38,7 @@
 
 				<div class="select-box type-2">
 					<input type="hidden" ng-value="city" />
-					<input class="js-input no-select" type="text" required readonly value="" placeholder="City" />
+					<input class="js-input no-select" type="text" required readonly value="" id="city" placeholder="City" />
 					<ul>
 						<li>Select City</li>
 						<li>Abbottabad</li>
@@ -210,14 +210,14 @@
 						<div class="col-sm-6">
 							<div class="select-filter">
 								<label>
-									<input type="radio" name="purpose-select" required id="purpose-select" ng-model="purpose" />
+									<input type="radio" name="purpose-select" value="rent" required id="purpose-select" ng-model="purpose" />
 									<span>For rent</span>
 								</label>
 							</div>
 
 							<div class="select-filter">
 								<label>
-									<input type="radio" name="purpose-select" required id="purpose-select" ng-model="purpose" />
+									<input type="radio" name="purpose-select" value="sale" required id="purpose-select" ng-model="purpose" />
 									<span>For Sale</span>
 								</label>
 							</div>
@@ -226,21 +226,21 @@
 						<div class="col-sm-6">
 							<div class="select-filter">
 								<label>
-									<input type="radio" name="type-select" required id="type-select" ng-model="type" />
+									<input type="radio" name="type-select" value="home" required id="type-select" ng-model="type" />
 									<span>Home</span>
 								</label>
 							</div>
 
 							<div class="select-filter">
 								<label>
-									<input type="radio" name="type-select" required id="type-select" ng-model="type" />
+									<input type="radio" name="type-select" value="plot" required id="type-select" ng-model="type" />
 									<span>Plot</span>
 								</label>
 							</div>
 
 							<div class="select-filter">
 								<label>
-									<input type="radio" name="type-select" required id="type-select" ng-model="type" />
+									<input type="radio" name="type-select" value="commercial" required id="type-select" ng-model="type" />
 									<span>Commercial</span>
 								</label>
 							</div>
@@ -248,21 +248,21 @@
 						<div class="col-sm-6">
 							<div class="select-filter">
 								<label>
-									<input type="radio" name="category-select" required id="category-select" ng-model="category" />
+									<input type="radio" name="category-select" value="single" required id="category-select" ng-model="category" />
 									<span>Single Person</span>
 								</label>
 							</div>
 
 							<div class="select-filter">
 								<label>
-									<input type="radio" name="category-select" required id="category-select" ng-model="category"/>
+									<input type="radio" name="category-select" value="family" required id="category-select" ng-model="category"/>
 									<span>Family</span>
 								</label>
 							</div>
 
 							<div class="select-filter">
 								<label>
-									<input type="radio" name="category-select" required id="category-select" ng-model="category"/>
+									<input type="radio" name="category-select" value="event" required id="category-select" ng-model="category"/>
 									<span>Events</span>
 								</label>
 							</div>
@@ -273,9 +273,8 @@
 								<p class="caption">Baths</p>
 								<div class="block">
 									<span class="action substract">-</span>
-									<input type="text" class="nr-only" required value="1"/>
+									<input type="text" class="nr-only" required value="1" id="bath"/>
 									<span class="action add">+</span>
-									<input type="hidden" name="bath" id="bathmodel" ng-model="bath" />
 								</div>
 							</div>
 
@@ -285,7 +284,6 @@
 									<span class="action substract">-</span>
 									<input type="text" class="nr-only" required value="1" id="bed"/>
 									<span class="action add">+</span>
-									<input type="hidden" name="bed" id="bedmodel" ng-model="bed" />
 								</div>
 							</div>
 						</div>
@@ -296,21 +294,21 @@
 			<div class="col-md-12">
 				<div class="check-option">
 					<label>
-						<input type="checkbox" name="parking" ng-model="park"/>
+						<input type="checkbox" value="false" name="parking" ng-model="park"/>
 						<span>Parking</span>
 					</label>
 				</div>
 
 				<div class="check-option">
 					<label>
-						<input type="checkbox" name="air-conditioning" ng-model="ac"/>
+						<input type="checkbox" value="false" name="air-conditioning" ng-model="ac"/>
 						<span>Air conditioning</span>
 					</label>
 				</div>
 
 				<div class="check-option">
 					<label>
-						<input type="checkbox" name="swimming-pool" ng-model="swim"/>
+						<input type="checkbox" value="false" name="swimming-pool" ng-model="swim"/>
 						<span>Swimming pool</span>
 					</label>
 				</div>
@@ -324,7 +322,7 @@
 
 				<div class="check-option">
 					<label>
-						<input type="checkbox" name="balcony" ng-model="balcony"/>
+						<input type="checkbox" value="false" name="balcony" ng-model="balcony"/>
 						<span>Balcony</span>
 					</label>
 				</div>
