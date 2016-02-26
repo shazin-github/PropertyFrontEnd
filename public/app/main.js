@@ -16,7 +16,7 @@ require.config({
         },
 
         'coreModule': {
-            deps: ['angular-route']
+            deps: ['angular']
         }
     }
 });
