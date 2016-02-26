@@ -1,4 +1,4 @@
-function echo_error(form_name, errors, error_div){
+function echoErrors(form_name, errors, error_div){
 	var default_error_div = 'alerts_';
     if (typeof error_div === 'undefined') {
         error_div = default_error_div;
