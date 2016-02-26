@@ -4,13 +4,13 @@ define(['services/userService'], function() {
         $scope.user = {};
         
         $scope.login = function(){
+        	$('#overlay').show();
 	        userService.login($scope.user).then(function(resp){
+	        	$('#overlay').hide();
 	        	if(resp.data.success){
 	        		$('.alert-danger').hide();
 	        		location.reload();
-	        	}
-	        	else{
-	        		console.log('Response from service=', resp);
+	        	} else{
 	        		$scope.user.loginErrors = resp.data.msg;
 	        		$('.alert-danger').show();
 	        	}
@@ -18,25 +18,28 @@ define(['services/userService'], function() {
         }
 
         $scope.logout = function(){
+        	$('#overlay').show();
         	userService.logout().then(function(resp){
+        		$('#overlay').hide();
 	        	if(resp.data.success){
 	        		location.href = '/';
-	        	}
+	        	} 
 	        });	
         }
 
         $scope.userReg = {};
         $scope.register = function(){
         	//alert($scope.user+' has password'+$scope.password);
+        	$('#overlay').show();
         	userService.register($scope.userReg).then(function(resp){
+        		$('#overlay').hide();
 	        	if(resp.data.success){
 	        		$('.alert-danger').hide();
 	        		location.href= 'my-profile';
 	        	}
 	        	else{
-	        		$scope.userReg.registerErrors = resp.data.msg;
+	        		$scope.registerErrors = resp.data.msg;
 	        		echoErrors('register-form', resp.data.msg);
-	        		//$('.alert-danger').show();
 	        	}
 	        });
         }

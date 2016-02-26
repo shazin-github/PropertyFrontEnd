@@ -24,6 +24,12 @@
     <link rel='stylesheet' href='css/unite-gallery.css' type='text/css' />
 </head>
 <body data-smooth-scroll="on"> <!-- id="front-page" -->
+  <div id="overlay">
+    <table width="100%" height="100%">
+      <tr><td valign="middle"><img src="img/rolling.svg" width="80px" height="80px"/><p>Loading</p></td></tr>
+    </table>
+  </div>
+
     <!-- Site Preloader -->
     <div class="site-preloader">
         <div class="preloader-content">
