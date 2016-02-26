@@ -35,13 +35,11 @@
 							</div>
 						</div>
 					</div>
-
 					@include('profile')
 
-					@include('addProperty')					
+					@include('addProperty')
 
-					@include('myProperty')					
-
+					@include('myProperty')
 
 				</div>
 			</div>
