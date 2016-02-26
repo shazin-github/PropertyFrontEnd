@@ -21,6 +21,18 @@ Route::group(['middleware'=>['web']], function(){
 	    return view('agents');
 	});
 
+	Route::get('profile', function () {
+	    return view('profile');
+	});
+
+	Route::get('addProperty', function () {
+	    return view('addProperty');
+	});
+
+	Route::get('myProperty', function () {
+	    return view('myProperty');
+	});
+
 	Route::get('single-full-width', function () {
 	    return view('single-full-width');
 	});
@@ -28,6 +40,6 @@ Route::group(['middleware'=>['web']], function(){
 	Route::controller('user', 'userController');
 });
 
-	Route::get('test', function () {
-	    return Response::json(['success'=>true, 'msg'=>'Login Failed']);
+	Route::post('test', function(){
+	    return 'OK';
 	});

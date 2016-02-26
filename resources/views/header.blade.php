@@ -15,7 +15,7 @@
 						</ul> -->
 					</li>
 					<li class="property"><a href="single-full-width">Property</a></li>
-					<li class="agents"><a href="agents">Agents</a></li>
+					<!-- <li class="agents"><a href="agents">Agents</a></li> -->
 				</ul>
 			</nav>
 

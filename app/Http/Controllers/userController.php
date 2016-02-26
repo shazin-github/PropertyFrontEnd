@@ -31,8 +31,16 @@ class userController extends Controller{
             return Response::json(['success'=>false, 'msg'=>'Username & password are required']);
         }
         
-        $resp = $this->guzzle->get($this->apiUrl.'test');
-       	$result = json_decode($resp->getBody());
+        $resp = null;
+        try{
+        	$resp = $this->guzzle->request('POST', $this->apiUrl.'v1/user/userAuthenticate',['body'=>$data]);
+        } catch (\Exception $e) {
+    		echo 'Uh oh! ' . $e->getMessage();
+    		var_dump($resp);
+		}
+
+       	//$result = json_decode($resp->getBody());
+        //var_dump($result);
         if($result->success){
         	session(['username' => 'username from $result']);
             return Response::json(['success'=>true, 'msg'=>'Login successful']);
