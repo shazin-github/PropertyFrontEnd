@@ -8,8 +8,9 @@ define(function() {
                 city: city,
                 address: address,
                 zip: zip,
-                lat: lat,
-                lng: lng
+                latitude: lat,
+                longitude: lng,
+                status: 1
             };
         };
     });

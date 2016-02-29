@@ -186,7 +186,8 @@
 
 			<div class="col-md-13 col-lg-offset-1 col-lg-12">
 				<div class="photo-upload">
-					<input class="upload-link" name="filesToUpload[]" id="filesToUpload" type="file" multiple="" accept="image/*" value="Add Photos"/>
+					<label class="control-label">Add Photos</label>
+					<input class="upload-link" name="filesToUpload[]" id="filesToUpload" type="file" multiple="" accept="image/*"/>
 				</div>
 
 				<div class="location-on-map">
@@ -345,5 +346,6 @@
 		</div>
 		<input type="hidden" id="user_id" value="1" />
 		<input class="button theme-button-2" type="submit" value="Submit your property" />
+		<div ng-class="$status ? 'success' : 'danger'"><% msg %></div>
 	</form>
 </div>

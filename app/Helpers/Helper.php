@@ -2,12 +2,15 @@
 
 namespace App\Helpers;
 
+use GuzzleHttp\Client as Guzzle;
+
 class Helper{
 
     private $apiUrl;
 
-    public function __construct() {
-        $this->apiUrl =env('API_URL');
+    public function __construct(Guzzle $guzzle) {
+        $this->apiUrl = 'http://localhost:8002/v1/';
+        $this->guzzle = $guzzle;
     }
 
     public function curlPost($endpoint, $data){
@@ -25,6 +28,11 @@ class Helper{
             var_dump($e);
         }
         return $response;
+    }
+
+    public function guzzlePost($method, $endpoint, $data) {
+        $response = $this->guzzle->request($method, $this->apiUrl.$endpoint, $data);
+        return ($response->getBody());
     }
 
 }

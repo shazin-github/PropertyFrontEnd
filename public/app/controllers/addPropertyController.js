@@ -27,8 +27,15 @@ define([
                 $scope.swim, $scope.balcony);
 
             $scope.seller = $("#user_id").val();
-            $scope.add = addPropertyService.addProperty($scope.location, $scope.property, $scope.feature,
-                $scope.seller);
+            addPropertyService.addProperty($scope.location, $scope.property, $scope.feature,
+                $scope.seller).then(function(response) {
+                $scope.status = response.data.success;
+                $scope.msg = response.data.msg;
+                console.log(response.data);
+            }, function(response) {
+                $scope.status = response.data.success;
+                $scope.msg = response.data.msg;
+            });
         };
     }]);
 });

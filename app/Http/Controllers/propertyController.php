@@ -8,7 +8,6 @@ use \Validator;
 use \Cache;
 use \Response;
 use \RequestException;
-use GuzzleHttp\Client as Guzzle;
 use App\Helpers\Helper;
 
 class propertyController extends Controller {
@@ -17,12 +16,11 @@ class propertyController extends Controller {
     protected $apiUrl;
     protected $helper;
 
-    public function __construct(Request $request, Guzzle $guzzle, Helper $helper) {
-        $this->guzzle = $guzzle;
+    public function __construct(Request $request,  Helper $helper) {
         //$this->guzzle->setDefaultOption(env('API_URL'));
         // $this->guzzle->setConfig('defaults/verify', true);
         $this->request = $request;
-        $this->apiUrl = env('API_URL');
+        $this->apiUrl = 'http://localhost:8002/v1/';
         $this->helper = $helper;
     }
 
@@ -41,8 +39,7 @@ class propertyController extends Controller {
 
         $resp = $this->helper->curlPost('property', $data);
         $result = json_decode($resp);
-        dd($result);
-        if($result->status_code == 200 && $result->success[0] == true){
+        if($result->status_code == 200){
             return Response::json(['success'=>true, 'msg'=>'Property Added Successfully']);
         } else {
             return Response::json(['success'=>false, 'msg'=>'Internal Server Error']);

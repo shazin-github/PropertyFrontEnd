@@ -8,7 +8,8 @@ define(function() {
                 description: description,
                 purpose: purpose,
                 type: type,
-                category: category
+                category: category,
+                status: 1
             };
         };
     });
