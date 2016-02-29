@@ -343,7 +343,7 @@
                 </div> -->
 			</div>
 		</div>
-
+		<input type="hidden" id="user_id" value="1" />
 		<input class="button theme-button-2" type="submit" value="Submit your property" />
 	</form>
 </div>

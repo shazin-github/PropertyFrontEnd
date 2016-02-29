@@ -6,10 +6,9 @@ define(function() {
                 location: location,
                 property: property,
                 feature: feature,
-                seller: seller,
-                callback: 'JSON_CALLBACK'
+                seller: seller
             };
-            $http.post('http://localhost:8091/v1/property', data).then(function successCallback(response) {
+            $http.post('property', data).then(function successCallback(response) {
                 console.log(response);
             }, function errorCallback(response) {
                 console.log(response);
