@@ -9,7 +9,7 @@ define(function() {
                 seller: seller,
                 callback: 'JSON_CALLBACK'
             };
-            $http.post('property', data).then(function successCallback(response) {
+            $http.post('http://localhost:8091/v1/property', data).then(function successCallback(response) {
                 console.log(response);
             }, function errorCallback(response) {
                 console.log(response);
