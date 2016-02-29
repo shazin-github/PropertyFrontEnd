@@ -186,13 +186,7 @@
 
 			<div class="col-md-13 col-lg-offset-1 col-lg-12">
 				<div class="photo-upload">
-					<a href="my-profile.html#" class="upload-btn">
-						<i class="icon icon-folder4"></i>
-					</a>
-					<img src="img/profile-avatar.jpg" alt="user photo" />
-
-					<br />
-					<a class="upload-link" href="my-profile.html#">Add your photo</a>
+					<input class="upload-link" name="filesToUpload[]" id="filesToUpload" type="file" multiple="" accept="image/*" value="Add Photos"/>
 				</div>
 
 				<div class="location-on-map">
@@ -273,7 +267,7 @@
 								<p class="caption">Baths</p>
 								<div class="block">
 									<span class="action substract">-</span>
-									<input type="text" class="nr-only" required value="1" id="bath"/>
+									<input type="text" class="nr-only" required value="0" id="bath"/>
 									<span class="action add">+</span>
 								</div>
 							</div>
@@ -282,7 +276,7 @@
 								<p class="caption">Beds</p>
 								<div class="block">
 									<span class="action substract">-</span>
-									<input type="text" class="nr-only" required value="1" id="bed"/>
+									<input type="text" class="nr-only" required value="0" id="bed"/>
 									<span class="action add">+</span>
 								</div>
 							</div>
