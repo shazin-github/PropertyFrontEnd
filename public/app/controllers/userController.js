@@ -43,5 +43,15 @@ define(['services/userService'], function() {
 	        	}
 	        });
         }
+
+        $scope.initProfile = function(){
+        	$('#overlay').show();
+        	userService.getProfile().then(function(resp){
+        		$('#overlay').hide();
+        		$scope.user = resp.data.msg;
+        		console.log('resp', resp.data.msg);
+        	});
+        }
+
     }]);
 });

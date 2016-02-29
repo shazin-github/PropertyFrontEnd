@@ -21,5 +21,9 @@ define(function() {
         this.register = function(data){
         	return $http.post("user/register", data);
         }
+
+        this.getProfile = function(){
+        	return $http.get("user/profile");
+        }
     });
 });

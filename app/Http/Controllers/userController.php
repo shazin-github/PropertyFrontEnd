@@ -36,8 +36,9 @@ class userController extends Controller{
         $resp = $this->curlPost('user/userAuthenticate', $data);
         $result = json_decode($resp);
         // var_dump($result);
-        if($result->status_code == 200 && $result->success[0] == true){
+        if($result->status_code == 200 && $result->success == true){
         	session(['username' => $data['email']]);
+        	session(['user_id' => $result->data->user_id]);
             return Response::json(['success'=>true, 'msg'=>'Login successful']);
         } else {
             return Response::json(['success'=>false, 'msg'=>'Email or Password is invalid']);
@@ -64,12 +65,24 @@ class userController extends Controller{
 
         if($result->status_code == 200){
         	session(['username' => $data['email']]);
+        	session(['user_id' => $result->data->user_id]);
             return Response::json(['success'=>true, 'msg'=>'Registration successful']);
         } else {
         	if($result->status_code == 400)
             	return Response::json(['success'=>false, 'msg'=>$this->makeError('Email alreay exists') ]);
             else
             	return Response::json(['success'=>false, 'msg'=>$this->makeError('Registration failed') ]);
+        }
+    }
+
+    public function getProfile() {
+        $resp = $this->curlGet('user?id='.session('user_id'));
+       	$result = json_decode($resp);
+       	//var_dump($result);
+        if($result->status_code == 200){
+            return Response::json(['success'=>true, 'msg'=>$result->data[0]]);
+        } else {
+        	return Response::json(['success'=>false, 'msg'=>$this->makeError('User not found')]);
         }
     }
 
@@ -83,6 +96,21 @@ class userController extends Controller{
 	    	$ch = curl_init($this->apiUrl.$endpoint);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+			// curl_setopt($ch, CURLOPT_POST, true);
+			$response = curl_exec($ch);
+			curl_close($ch);
+			return $response;
+		} catch(Exception $e) {
+			var_dump($e);
+		}
+		return $response;
+    }
+
+    public function curlGet($endpoint){
+    	try{
+	    	$ch = curl_init($this->apiUrl.$endpoint);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_HTTPGET, true);
 			$response = curl_exec($ch);
 			curl_close($ch);
 			return $response;

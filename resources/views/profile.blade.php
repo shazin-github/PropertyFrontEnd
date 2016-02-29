@@ -1,21 +1,21 @@
-<div id="profile">
-	<form class="update-form">
+<div id="profile" ng-app="app" ng-controller="userController" ng-init="initProfile()">
+	<form class="update-form" ng-submit="updateUser()">
 		<div class="row">
 			<div class="col-md-11">
-				<input type="text" class="js-input" placeholder="Enter your First Name" />
-				<input type="text" class="js-input" placeholder="Enter your Last Name" />
-				<input type="text" class="js-input" placeholder="Enter your Username" />
-				<input type="text" class="js-input" placeholder="Enter your Email" />
+				<input type="text" class="js-input" placeholder="Enter your First Name" ng-mode="user.firstname" />
+				<input type="text" class="js-input" placeholder="Enter your Last Name" ng-mode="user.lastname" />
+				<input type="text" class="js-input" placeholder="Enter your Email" ng-mode="user.email" />
 
 				<div class="row row-fit-10">
 					<div class="col-sm-12">
-						<input type="text" class="js-input" placeholder="Password" />
+						<input type="text" class="js-input" placeholder="Password" ng-mode="user.password"/>
 					</div>
 					<div class="col-sm-12">
-						<input type="text" class="js-input" placeholder="Repeat the password" />
+						<input type="text" class="js-input" placeholder="Repeat the password" ng-mode="user.password"/>
 					</div>
 				</div>
 			</div>
+			
 			<div class="col-md-10 col-md-offset-1">
 				<div class="photo-upload">
 					<a href="my-profile.html#" class="upload-btn">
@@ -35,18 +35,18 @@
 				<div class="row row-fit-10">
 					<div class="col-sm-12">
 						<div class="social-input phone">
-							<input type="text" class="js-input" placeholder="Phone" />
+							<input type="text" class="js-input" placeholder="Phone" ng-mode="user.phone"/>
 						</div>
 						<div class="social-input facebook">
-							<input type="text" class="js-input social facebook" placeholder="Facebook" />
+							<input type="text" class="js-input social facebook" placeholder="Facebook" ng-mode="user.facebook"/>
 						</div>
 					</div>
 					<div class="col-sm-12">
 						<div class="social-input skype">
-							<input type="text" class="js-input" placeholder="Skype" />
+							<input type="text" class="js-input" placeholder="Skype" ng-mode="user.skype"/>
 						</div>
 						<div class="social-input twitter">
-							<input type="text" class="js-input" placeholder="Twitter" />
+							<input type="text" class="js-input" placeholder="Twitter" ng-mode="user.twitter"/>
 						</div>
 					</div>
 				</div>
