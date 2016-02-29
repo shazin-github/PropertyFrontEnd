@@ -35,7 +35,6 @@ class userController extends Controller{
 
         $resp = $this->curlPost('user/userAuthenticate', $data);
         $result = json_decode($resp);
-        // var_dump($result);
         if($result->status_code == 200 && $result->success[0] == true){
         	session(['username' => $data['email']]);
             return Response::json(['success'=>true, 'msg'=>'Login successful']);
