@@ -394,13 +394,13 @@ var teslaThemes = {
 
 			add.on('click', function () {
 				var val = (parseInt(input.val()) + 1);
-				input.val(Math.max(0, val));
+				input.val(Math.max(1, val));
 
 			});
 
 			substract.on('click', function () {
 				var val = (parseInt(input.val()) - 1);
-				input.val(Math.max(0, val));
+				input.val(Math.max(1, val));
 			});
 		});
 	},
