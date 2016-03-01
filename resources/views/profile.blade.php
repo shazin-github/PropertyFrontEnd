@@ -21,13 +21,14 @@
 			
 			<div class="col-md-10 col-md-offset-1">
 				<div class="photo-upload">
-					<a href="my-profile.html#" class="upload-btn">
+					<a href="#" class="upload-btn" onclick="$('#profilePic').trigger('click');">
 						<i class="icon icon-folder4"></i>
 					</a>
-					<img src="img/profile-avatar.jpg" alt="user photo" />
-
-					<br />
-					<a class="upload-link" href="my-profile.html#">Add your photo</a>
+					<img src="img/profile-avatar.jpg" alt="user photo" id="profilePicImage" onclick="$('#profilePic').trigger('click');"/><br />
+					<a class="upload-link" href="#" onclick="$('#profilePic').trigger('click');">
+						Add your photo
+					</a>
+					<input type="file" id="profilePic" style="display: none" />
 				</div>
 			</div>
 		</div>

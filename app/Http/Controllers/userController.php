@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Input;
 use \Validator;
 use \Cache;
 use \Response;
+use \Storage;
 use \RequestException;
 use GuzzleHttp\Client as Guzzle;
 
@@ -119,6 +120,33 @@ class userController extends Controller{
     	$this->request->session()->flush();
     	return Response::json(['success'=>true, 'msg'=>'Logout successful']);
     }
+
+    public function postProfilePic() {
+		if(Input::hasFile('profilePic') ) {
+			$fileSizeLimit = 60 * 1024 * 1024;
+			$f = Input::file('profilePic');
+
+			if ( $f->getSize() > $fileSizeLimit ) {
+				return Response::json(['success'=>false, 'msg'=>'Maximum allowed size is '.($fileSizeLimit/1024)]);
+			}
+
+			if ( !($f->getMimeType() =='image/jpeg' || $f->getMimeType() =='image/jpg' 
+				|| $f->getMimeType() =='image/gif')) {
+				return Response::json(['success'=>false, 'msg'=>'Allowed types are jpeg, jpg and gif']);		
+			}
+			$type = explode('/', $f->getMimeType())[1];
+			$dr = DIRECTORY_SEPARATOR;
+			$path = storage_path('images'.$dr.'profileImages'.$dr.'User_'.session('user_id').'.'.$type);
+			
+			$file = file_get_contents($f->getRealPath());
+			$mkfile = file_put_contents($path, $file);
+			
+			if($mkfile)
+				return Response::json(['success'=>true, 'msg'=>'Picture uploaded succcessfully']);
+		}
+
+		return Response::json(['success'=>false, 'error'=>'Picture not found']);
+	}
 
     public static function makeError($msg){
 		$error = [

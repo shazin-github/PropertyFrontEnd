@@ -1,12 +1,13 @@
 			<!-- Login Form -->
 			<div class="login-form-popup">
+				<div id="success_alert" class="alert alert-success" role="alert"></div>
 				<div class="login-form" id="login-popup">
 					<div class="brand-wrapper">
 						<img src="img/brand.png" alt="login brand" />
 					</div>
 
 					<form id="login-form" ng-app="app" ng-controller="userController" ng-submit="login()">
-						<div id="alerts_" class="alert alert-danger" role="alert"><% user.loginErrors %></div>
+						<div class="alert alert-danger" role="alert"><% user.loginErrors %></div>
 						<div id="success_alert" class="alert alert-success" role="alert"></div>
 						<input class="js-input" type="text" placeholder="Email" ng-model="user.email"/>
 						<input class="js-input" type="password" placeholder="Password" ng-model="user.password" />
@@ -23,7 +24,6 @@
 
 					<form id="register-form" ng-controller="userController" ng-submit="register()">
 						<div id="alerts_" class="alert alert-danger" role="alert"><% registerErrors %></div>
-						<div id="success_alert" class="alert alert-success" role="alert"></div>
 						<input class="js-input" type="text" placeholder="First Name" ng-model="userReg.firstname" />
 						<input class="js-input" type="text" placeholder="Last Name" ng-model="userReg.lastname" />
 						<input class="js-input" type="text" placeholder="Email" ng-model="userReg.email" />

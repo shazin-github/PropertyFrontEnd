@@ -49,6 +49,8 @@
 		</div>
 	</section>
 @else
-	<h3>Please Login again</h3>
+	<h3 style="font-family: calibri; font-size: 20px; margin-left: 10px; margin-top: 90px; margin-bottom: 600px;">
+		Please Login again
+	</h3>
 @endif
 @endsection

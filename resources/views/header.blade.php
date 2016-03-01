@@ -62,9 +62,8 @@
 		<!-- Navigation -->
 		<nav>
 			<ul>
+				<li class="home"><a href="/">Home</a></li>
 				<li class="listing"><a href="listing">Listing</a></li>
-				<li class="property"><a href="single-full-width">Property</a></li>
-				<li class="error"><a href="404">404 Page</a></li>
 			</ul>
 		</nav>
 

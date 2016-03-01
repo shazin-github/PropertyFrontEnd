@@ -48,10 +48,22 @@ function echoSuccess(form_name, msg, success_div){
     elist = '<strong>Success</strong><br>'+msg;
     $("#"+success_div).html(elist);
     $("#"+error_div).hide();
+    $(".alert-danger").hide();
     $("#"+success_div).fadeIn(1000, "linear");
     $("#"+success_div).show();
     $('html, body').animate({'scrollTop': $("#"+success_div).offset().top-100}, 500);
     setTimeout(function() {
         $("#"+success_div).fadeOut(5000, "linear");
     }, 3000);
+}
+
+function readURL(input) {
+    if(input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#profilePicImage').attr('src', e.target.result);
+            $('#profilePicImage').show();
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
 }
