@@ -8,7 +8,43 @@
     </div>
    <section class="double-gap-bottom">
       <div class="row row-fit">
-
+            <div class="box-caption">
+              <h4>Search</h4>
+              <p>Where are you looking?</p>
+            </div>
+        <div class="map-filter-box" ng-controller="listingController">
+            <div class="search-class">
+              <form class="submit-form" method="GET" name="searchForm" ng-submit="searchProperty()">
+                <div class="select-box wd-80 pull-left">
+                  <input class="filter-box-input js-input no-select drop-wd" type="text" id="purpose" readonly value="" placeholder="Buy" />
+                  <ul>
+                    <li>Rent</li>
+                    <li>Sale</li>
+                  </ul>
+                </div>
+                <input class="filter-box-input js-input no-select search-wd" id="search" type="text" value="" placeholder="Search..." />
+                <div class="select-box wd-110 pull-left">
+                  <input class="filter-box-input js-input no-select drop-wd" type="text" id="bedroom" readonly value="" placeholder="Bedrooms" />
+                  <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                  </ul>
+                </div>
+                <div class="select-box wd-80 pull-left">
+                  <input class="filter-box-input js-input no-select drop-wd" type="text" id="bathroom" readonly value="" placeholder="Baths" />
+                  <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                  </ul>
+                </div>
+                <input type="hidden" id="search_lat" /> <input type="hidden" id="search_lng" />
+                <input type="submit" class="button theme-button-1 update-properties" value="Search" />
+              </form>
+          </div>
+          </div>
+     <div class="search-gap"></div>
         <div class="col-md-24">
           <div class="listing-div">
 

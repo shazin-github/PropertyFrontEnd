@@ -17,7 +17,7 @@
   text-align: center;
 }
 /* ---------------------------------------------------------------- */
-.mapClass{height:797px;width: 100%}
+.mapClass{height:797px;width: 100%;position:fixed}
 .wd-80{width:80px;}
 .wd-110{width:110px;}
 .pull-left{float:left;}

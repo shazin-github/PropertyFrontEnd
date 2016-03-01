@@ -26,7 +26,7 @@ define([
             $scope.feature = featureService.getFeature($scope.bed, $scope.bath, $scope.park, $scope.ac,
                 $scope.swim, $scope.balcony);
 
-            $scope.seller = $("#user_id").val();
+            $scope.seller = 0;
             addPropertyService.addProperty($scope.location, $scope.property, $scope.feature,
                 $scope.seller).then(function(response) {
                 $scope.status = response.data.success;
