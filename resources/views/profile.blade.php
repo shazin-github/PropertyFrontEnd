@@ -4,6 +4,7 @@
 		<div class="row">
 			<div class="col-md-11">
 				<div id="alerts_" class="alert alert-danger" role="alert"><% user.profileErrors %></div>
+				<div id="success_alert" class="alert alert-success" role="alert"></div>
 				<input type="text" class="js-input" placeholder="Enter your First Name" required ng-model="user.firstname" />
 				<input type="text" class="js-input" placeholder="Enter your Last Name" ng-model="user.lastname" />
 				<input type="text" class="js-input" placeholder="Enter your Email" ng-model="user.email" />

@@ -93,11 +93,11 @@ class userController extends Controller{
 		$data['id'] = session('user_id');
 
        	$resp  = $this->guzzle->request('PUT', env('API_URL').'user', ['form_params'=>$data]);
-        echo $resp->getBody();
+        
         $result = json_decode($resp->getBody());
                 
         if($resp->getStatusCode() == 200){
-            return Response::json(['success'=>true, 'msg'=>$this->makeError('Profile updated successfully')]);
+            return Response::json(['success'=>true, 'msg'=>'Profile updated successfully']);
         } else {
             return Response::json(['success'=>false, 'msg'=>$this->makeError('Update failed')]);
         }

@@ -1,6 +1,10 @@
 .alert{
   display: none;
 }
+.has-error{
+  border-color: rgb(237, 28, 36);
+}
+
 #overlay {
   position: fixed;
   z-index: 1000;

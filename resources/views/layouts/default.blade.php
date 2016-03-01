@@ -58,8 +58,12 @@
 
         <!-- Main Content -->
         <div class="content-wrapper">
-            @include('login')
-            @yield('content-wrapper')
+            @if(session('user_id'))
+                @yield('content-wrapper')
+            @else
+                @include('login')
+                @yield('content-wrapper')
+            @endif
         </div>
 
         @include('footer')

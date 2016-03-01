@@ -9,8 +9,8 @@ define(['services/userService'], function() {
 	        	$('#overlay').hide();
                 console.log('response', resp);
 	        	if(resp.data.success){
-	        		$('.alert-danger').hide();
-	        		location.reload();
+                    echoSuccess('login-form', 'Login Successful');
+	        		//location.reload();
 	        	} else{
 	        		$scope.user.loginErrors = resp.data.msg;
 	        		$('.alert-danger').show();
@@ -35,7 +35,7 @@ define(['services/userService'], function() {
         	userService.register($scope.userReg).then(function(resp){
         		$('#overlay').hide();
 	        	if(resp.data.success){
-	        		$('.alert-danger').hide();
+	        		echoSuccess('register-form', resp.data.msg);
 	        		location.href= 'my-profile';
 	        	}
 	        	else{
@@ -60,7 +60,7 @@ define(['services/userService'], function() {
         	userService.updateProfile($scope.user).then(function(resp){
         		$('#overlay').hide();
 	        	if(resp.data.success){
-	        		$('.alert-danger').hide();
+	        		echoSuccess('profileForm', resp.data.msg);
 	        	}
 	        	else{
 	        		$scope.profileErrors = resp.data.msg;

@@ -1,5 +1,6 @@
 function echoErrors(form_name, errors, error_div){
-	var default_error_div = 'alerts_';
+	var success_div = 'success_alert';
+    var default_error_div = 'alerts_';
     if (typeof error_div === 'undefined') {
         error_div = default_error_div;
     }
@@ -24,9 +25,33 @@ function echoErrors(form_name, errors, error_div){
     });
 
     elist +='</ul2>';
-
-    $("#"+error_div).html(elist);    
+    
+    $("#"+error_div).html(elist);
+    $("#"+success_div).hide();
     $("#"+error_div).fadeIn(4000, "linear");
     $("#"+error_div).show();
-   	$('html, body').animate({'scrollTop': $("#"+error_div).offset().top-70}, 500);    
+   	$('html, body').animate({'scrollTop': $("#"+error_div).offset().top-100}, 500);    
+}
+
+
+function echoSuccess(form_name, msg, success_div){
+    var default_success_div = 'success_alert';
+    var error_div = 'alerts_';
+    if (typeof success_div === 'undefined') {
+        success_div = default_success_div;
+    }
+
+    $("#"+form_name+" :input").each(function(){
+        $(this).removeClass('has-error');
+    });
+        
+    elist = '<strong>Success</strong><br>'+msg;
+    $("#"+success_div).html(elist);
+    $("#"+error_div).hide();
+    $("#"+success_div).fadeIn(1000, "linear");
+    $("#"+success_div).show();
+    $('html, body').animate({'scrollTop': $("#"+success_div).offset().top-100}, 500);
+    setTimeout(function() {
+        $("#"+success_div).fadeOut(5000, "linear");
+    }, 3000);
 }

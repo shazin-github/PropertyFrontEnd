@@ -6,7 +6,8 @@
 					</div>
 
 					<form id="login-form" ng-app="app" ng-controller="userController" ng-submit="login()">
-						<div class="alert alert-danger" role="alert"><% user.loginErrors %></div>
+						<div id="alerts_" class="alert alert-danger" role="alert"><% user.loginErrors %></div>
+						<div id="success_alert" class="alert alert-success" role="alert"></div>
 						<input class="js-input" type="text" placeholder="Email" ng-model="user.email"/>
 						<input class="js-input" type="password" placeholder="Password" ng-model="user.password" />
 						<input type="submit" value="Login" class="submit-button"/>
@@ -22,6 +23,7 @@
 
 					<form id="register-form" ng-controller="userController" ng-submit="register()">
 						<div id="alerts_" class="alert alert-danger" role="alert"><% registerErrors %></div>
+						<div id="success_alert" class="alert alert-success" role="alert"></div>
 						<input class="js-input" type="text" placeholder="First Name" ng-model="userReg.firstname" />
 						<input class="js-input" type="text" placeholder="Last Name" ng-model="userReg.lastname" />
 						<input class="js-input" type="text" placeholder="Email" ng-model="userReg.email" />
