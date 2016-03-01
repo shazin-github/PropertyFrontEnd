@@ -10,7 +10,7 @@ define(['services/userService'], function() {
                 console.log('response', resp);
 	        	if(resp.data.success){
                     echoSuccess('login-form', 'Login Successful');
-	        		//location.reload();
+	        		location.reload();
 	        	} else{
 	        		$scope.user.loginErrors = resp.data.msg;
 	        		$('.alert-danger').show();

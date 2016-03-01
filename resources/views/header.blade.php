@@ -62,7 +62,6 @@
 		<!-- Navigation -->
 		<nav>
 			<ul>
-				<li class="home current-menu-item"><a href="my-profile">My Profile</a></li>
 				<li class="listing"><a href="listing">Listing</a></li>
 				<li class="property"><a href="single-full-width">Property</a></li>
 				<li class="error"><a href="404">404 Page</a></li>
