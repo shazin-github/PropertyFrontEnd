@@ -40,6 +40,11 @@ class userController extends Controller{
         if($resp->getStatusCode() == 200 && $result->success == true){
         	session(['username' => $data['email']]);
         	session(['user_id' => $result->data->user_id]);
+
+        	$data = ['id' => session('user_id')];
+	       	$resp  = $this->guzzle->request('GET', env('API_URL').'user', ['query'=>$data]);
+	        $result = json_decode($resp->getBody());
+	        session(['firstname' => $result->data[0]->firstname]);
             return Response::json(['success'=>true, 'msg'=>'Login successful']);
         } else {
             return Response::json(['success'=>false, 'msg'=>'Email or Password is invalid']);
@@ -66,6 +71,7 @@ class userController extends Controller{
 
         if($resp->getStatusCode() == 200){
         	session(['username' => $data['email']]);
+        	session(['firstname' => $data['firstname']]);
         	session(['user_id' => $result->data]);
             return Response::json(['success'=>true, 'msg'=>'Registration successful']);
         } else {
