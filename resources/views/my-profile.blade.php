@@ -1,5 +1,7 @@
 @extends('layouts.default')
-	@section('content-wrapper')
+
+@section('content-wrapper')
+@if(session('user_id'))
 	<!-- User Account Section -->
 	<section class="user-account-section">
 		<div class="container">
@@ -46,4 +48,7 @@
 			</div>
 		</div>
 	</section>
+@else
+	<h3>Please Login again</h3>
+@endif
 @endsection

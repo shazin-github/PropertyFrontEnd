@@ -42,10 +42,9 @@ Route::group(['middleware'=>['web']], function(){
 	});
 
 	Route::controller('user', 'userController');
+	Route::post('property', 'propertyController@postProperty');
+
 });
-
-Route::post('property', 'propertyController@postProperty');
-
 
 Route::post('test', function(){
 	return 'OK';
