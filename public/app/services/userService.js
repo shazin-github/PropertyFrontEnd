@@ -25,5 +25,9 @@ define(function() {
         this.getProfile = function(){
         	return $http.get("user/profile");
         }
+
+        this.updateProfile = function(data){
+        	return $http.post("user/profile", data);
+        }
     });
 });

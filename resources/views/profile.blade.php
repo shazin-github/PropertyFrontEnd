@@ -1,17 +1,19 @@
 <div id="profile" ng-app="app" ng-controller="userController" ng-init="initProfile()">
-	<form class="update-form" ng-submit="updateUser()">
+	<form class="update-form" id="profileForm" ng-submit="updateProfile()">
+		<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 		<div class="row">
 			<div class="col-md-11">
-				<input type="text" class="js-input" placeholder="Enter your First Name" ng-mode="user.firstname" />
-				<input type="text" class="js-input" placeholder="Enter your Last Name" ng-mode="user.lastname" />
-				<input type="text" class="js-input" placeholder="Enter your Email" ng-mode="user.email" />
+				<div id="alerts_" class="alert alert-danger" role="alert"><% user.profileErrors %></div>
+				<input type="text" class="js-input" placeholder="Enter your First Name" required ng-model="user.firstname" />
+				<input type="text" class="js-input" placeholder="Enter your Last Name" ng-model="user.lastname" />
+				<input type="text" class="js-input" placeholder="Enter your Email" ng-model="user.email" />
 
 				<div class="row row-fit-10">
 					<div class="col-sm-12">
-						<input type="text" class="js-input" placeholder="Password" ng-mode="user.password"/>
+						<input type="text" class="js-input" placeholder="Password" ng-model="user.password"/>
 					</div>
 					<div class="col-sm-12">
-						<input type="text" class="js-input" placeholder="Repeat the password" ng-mode="user.password"/>
+						<input type="text" class="js-input" placeholder="Repeat the password" ng-model="user.confirmPassword"/>
 					</div>
 				</div>
 			</div>
@@ -35,18 +37,18 @@
 				<div class="row row-fit-10">
 					<div class="col-sm-12">
 						<div class="social-input phone">
-							<input type="text" class="js-input" placeholder="Phone" ng-mode="user.phone"/>
+							<input type="text" class="js-input" placeholder="Phone" ng-model="user.phone"/>
 						</div>
 						<div class="social-input facebook">
-							<input type="text" class="js-input social facebook" placeholder="Facebook" ng-mode="user.facebook"/>
+							<input type="text" class="js-input social facebook" placeholder="Facebook" ng-model="user.facebook"/>
 						</div>
 					</div>
 					<div class="col-sm-12">
 						<div class="social-input skype">
-							<input type="text" class="js-input" placeholder="Skype" ng-mode="user.skype"/>
+							<input type="text" class="js-input" placeholder="Skype" ng-model="user.skype"/>
 						</div>
 						<div class="social-input twitter">
-							<input type="text" class="js-input" placeholder="Twitter" ng-mode="user.twitter"/>
+							<input type="text" class="js-input" placeholder="Twitter" ng-model="user.twitter"/>
 						</div>
 					</div>
 				</div>

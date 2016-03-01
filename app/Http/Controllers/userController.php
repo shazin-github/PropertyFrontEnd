@@ -33,14 +33,10 @@ class userController extends Controller{
             return Response::json(['success'=>false, 'msg'=>'Email & password are required' ]);
         }
 
-        $resp = $this->curlPost('user/userAuthenticate', $data);
-        $result = json_decode($resp);
-<<<<<<< HEAD
-        // var_dump($result);
-        if($result->status_code == 200 && $result->success == true){
-=======
-        if($result->status_code == 200 && $result->success[0] == true){
->>>>>>> origin/master
+        $resp  = $this->guzzle->request('POST', env('API_URL').'user/userAuthenticate', ['form_params'=>$data]);
+        $result = json_decode($resp->getBody());
+        
+        if($resp->getStatusCode() == 200 && $result->success == true){
         	session(['username' => $data['email']]);
         	session(['user_id' => $result->data->user_id]);
             return Response::json(['success'=>true, 'msg'=>'Login successful']);
@@ -64,12 +60,12 @@ class userController extends Controller{
         }
 		
 		unset($data['confirmPassword']);
-        $resp = $this->curlPost('user', $data);
-       	$result = json_decode($resp);
+        $resp  = $this->guzzle->request('POST', env('API_URL').'user', ['form_params'=>$data]);
+        $result = json_decode($resp->getBody());
 
-        if($result->status_code == 200){
+        if($resp->getStatusCode() == 200){
         	session(['username' => $data['email']]);
-        	session(['user_id' => $result->data->user_id]);
+        	session(['user_id' => $result->data]);
             return Response::json(['success'=>true, 'msg'=>'Registration successful']);
         } else {
         	if($result->status_code == 400)
@@ -79,11 +75,40 @@ class userController extends Controller{
         }
     }
 
+    public function postProfile() {
+        $data = $this->request->all();
+        $validator = Validator::make($data,[
+        	'firstname' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+            'confirmPassword' => 'required|same:password',
+        ]);
+
+        if ($validator->fails()) {
+        	$msg = $validator->messages()->toJson();
+            return Response::json(['success'=>false, 'msg'=>array($msg)]);
+        }
+		
+		unset($data['confirmPassword']);
+		$data['id'] = session('user_id');
+
+       	$resp  = $this->guzzle->request('PUT', env('API_URL').'user', ['form_params'=>$data]);
+        echo $resp->getBody();
+        $result = json_decode($resp->getBody());
+                
+        if($resp->getStatusCode() == 200){
+            return Response::json(['success'=>true, 'msg'=>$this->makeError('Profile updated successfully')]);
+        } else {
+            return Response::json(['success'=>false, 'msg'=>$this->makeError('Update failed')]);
+        }
+    }
+
     public function getProfile() {
-        $resp = $this->curlGet('user?id='.session('user_id'));
-       	$result = json_decode($resp);
-       	//var_dump($result);
-        if($result->status_code == 200){
+       	$data = ['id' => session('user_id')];
+       	$resp  = $this->guzzle->request('GET', env('API_URL').'user', ['query'=>$data]);
+        $result = json_decode($resp->getBody());
+                
+        if($resp->getStatusCode() == 200){
             return Response::json(['success'=>true, 'msg'=>$result->data[0]]);
         } else {
         	return Response::json(['success'=>false, 'msg'=>$this->makeError('User not found')]);
@@ -95,40 +120,11 @@ class userController extends Controller{
     	return Response::json(['success'=>true, 'msg'=>'Logout successful']);
     }
 
-    public function curlPost($endpoint, $data){
-    	try{
-	    	$ch = curl_init($this->apiUrl.$endpoint);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-			// curl_setopt($ch, CURLOPT_POST, true);
-			$response = curl_exec($ch);
-			curl_close($ch);
-			return $response;
-		} catch(Exception $e) {
-			var_dump($e);
-		}
-		return $response;
-    }
-
-    public function curlGet($endpoint){
-    	try{
-	    	$ch = curl_init($this->apiUrl.$endpoint);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_HTTPGET, true);
-			$response = curl_exec($ch);
-			curl_close($ch);
-			return $response;
-		} catch(Exception $e) {
-			var_dump($e);
-		}
-		return $response;
-    }
-
     public static function makeError($msg){
 		$error = [
 					'field_name'=>[$msg] 
 				];
-		$error = json_encode($error);		
+		// $error = json_encode($error);		
 		return array($error);
 	}
 }
