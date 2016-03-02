@@ -24,7 +24,7 @@
 					<a href="#" class="upload-btn" onclick="$('#profilePic').trigger('click');">
 						<i class="icon icon-folder4"></i>
 					</a>
-					<img src="img/profile-avatar.jpg" alt="user photo" id="profilePicImage" onclick="$('#profilePic').trigger('click');"/><br />
+					<img ng-attr-src="<%user.image_url%>" ng-show="user.showProfileImage" alt="user photo" id="profilePicImage" onclick="$('#profilePic').trigger('click');"/><br />
 					<a class="upload-link" href="#" onclick="$('#profilePic').trigger('click');">
 						Add your photo
 					</a>

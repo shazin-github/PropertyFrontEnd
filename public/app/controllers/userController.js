@@ -46,10 +46,15 @@ define(['services/userService'], function() {
         }
 
         $scope.initProfile = function(){
+            $scope.user.image_url = "img/profile-avatar.jpg";
         	$('#overlay').show();
         	userService.getProfile().then(function(resp){
         		$('#overlay').hide();
         		$scope.user = resp.data.msg;
+                if($scope.user.image_url != ''){
+                    $scope.user.showProfileImage = true;
+                    $('#profilePicImage').show();
+                }
         		$scope.user.confirmPassword = resp.data.msg.password;
         	});
 
@@ -73,18 +78,26 @@ define(['services/userService'], function() {
             form_data= new FormData();
             file_data = $("#profilePic").prop("files")[0];
             form_data.append("profilePic", file_data);
+            $('#overlay').show();
 
-        	$('#overlay').show();
-        	userService.updateProfile($scope.user, form_data).then(function(resp){
-        		$('#overlay').hide();
-	        	if(resp.data.success){
-	        		echoSuccess('profileForm', resp.data.msg);
-	        	}
-	        	else{
-	        		$scope.profileErrors = resp.data.msg;
-	        		echoErrors('profileForm', resp.data.msg);
-	        	}
-	        });
-        }
+            userService.updateProfilePic(form_data).then(function(image_resp){
+                if(image_resp.data.success){
+                    console.log('inside if', image_resp);
+                    $scope.user.image_url = image_resp.data.image_url;           
+                }
+
+                userService.updateProfile($scope.user).then(function(profile_resp){
+                    console.log('RESO', profile_resp);
+                    $('#overlay').hide();
+                    if(profile_resp.data.success){
+                        echoSuccess('profileForm', profile_resp.data.msg);
+                    }
+                    else{
+                        $scope.profileErrors = profile_resp.data.msg;
+                        echoErrors('profileForm', profile_resp.data.msg);
+                    }
+                });
+            });            
+        }//$scope.updateProfile
     }]);
 });

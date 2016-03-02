@@ -46,8 +46,17 @@ Route::group(['middleware'=>['web']], function(){
 
 	Route::post('search', 'propertyController@searchProperty');
 
+
 });
 
-Route::post('test', function(){
-	return 'OK';
-});
+	Route::get('images/profileImages/{image}', function($image = null) {
+		$dr = DIRECTORY_SEPARATOR;
+	    $path = storage_path().$dr.'images'.$dr.'profileImages'.$dr.$image;
+	    if (file_exists($path)) { 
+	        return Response::download($path);
+	    }
+	});
+
+	Route::post('test', function(){
+		return 'OK';
+	});

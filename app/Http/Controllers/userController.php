@@ -142,13 +142,14 @@ class userController extends Controller{
 			}
 			$type = explode('/', $f->getMimeType())[1];
 			$dr = DIRECTORY_SEPARATOR;
-			$path = storage_path('images'.$dr.'profileImages'.$dr.'User_'.session('user_id').'.'.$type);
+			$path = 'images'.$dr.'profileImages'.$dr.'User_'.session('user_id').'.'.$type;
 			
 			$file = file_get_contents($f->getRealPath());
-			$mkfile = file_put_contents($path, $file);
+			$mkfile = file_put_contents(storage_path($path), $file);
 			
 			if($mkfile)
-				return Response::json(['success'=>true, 'msg'=>'Picture uploaded succcessfully']);
+				return Response::json(['success'=>true, 'msg'=>'Picture uploaded succcessfully', 
+					'image_url'=>$path]);
 		}
 
 		return Response::json(['success'=>false, 'error'=>'Picture not found']);
