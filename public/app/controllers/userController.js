@@ -92,6 +92,7 @@ define(['services/userService'], function() {
                         echoSuccess('profileForm', profile_resp.data.msg);
                     }
                     else{
+                        console.log('error', profile_resp.data.msg);
                         $scope.profileErrors = profile_resp.data.msg;
                         echoErrors('profileForm', profile_resp.data.msg);
                     }
