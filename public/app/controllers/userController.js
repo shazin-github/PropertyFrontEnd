@@ -68,12 +68,12 @@ define(['services/userService'], function() {
                 } else if(! (ftype == 'image/jpeg' || ftype == 'image/jpg' || ftype == 'image/gif') ) {
                     alert('Allowed file types are jpeg, jpg and gif');
                 } else {
-                    readURL(this);
+                    readURL(this, 'profilePicImage');
                 }
             });
         }
 
-        $scope.updateProfile = function(){
+        $scope.updateProfile = function() {
         	//alert($scope.user+' has password'+$scope.password);
             form_data= new FormData();
             file_data = $("#profilePic").prop("files")[0];

@@ -11,6 +11,7 @@ use \RequestException;
 use App\Helpers\Helper;
 use GuzzleHttp\Client as Guzzle;
 use GuzzleHttp\Exception\RequestException as guzzleException;
+use \Storage;
 
 class propertyController extends Controller {
     protected $request;
@@ -85,5 +86,40 @@ class propertyController extends Controller {
         } else {
             return Response::json(['success'=>false, 'msg'=>'Not Found']);
         }
+    }
+
+    public function postPropertyPic() {
+        if(Input::hasFile('propImages') ) {
+            $fileSizeLimit = 60 * 1024 * 1024;
+            $f = Input::file('propImages');
+
+            if ( $f->getSize() > $fileSizeLimit ) {
+                return Response::json(['success'=>false, 'msg'=>'Maximum allowed size is '.($fileSizeLimit/1024)]);
+            }
+
+            if ( !($f->getMimeType() =='image/jpeg' || $f->getMimeType() =='image/jpg'
+                || $f->getMimeType() =='image/gif')) {
+                return Response::json(['success'=>false, 'msg'=>'Allowed types are jpeg, jpg and gif']);
+            }
+            $type = explode('/', $f->getMimeType())[1];
+            $dr = DIRECTORY_SEPARATOR;
+            $path = 'images'.$dr.'propertyImages'.$dr.'User_'.session('user_id').'_'.random_int(1, 9999999).'.'.$type;
+
+            $file = file_get_contents($f->getRealPath());
+            $mkfile = file_put_contents(storage_path($path), $file);
+
+            if($mkfile)
+                return Response::json(['success'=>true, 'msg'=>'Picture uploaded succcessfully',
+                    'image_url'=>$path]);
+        }
+
+        return Response::json(['success'=>false, 'error'=>'Picture not found']);
+    }
+
+    public function getPropertyPic($id) {
+        $dr = DIRECTORY_SEPARATOR;
+        $path = 'images'.$dr.'propertyImages'.$dr.$id;
+            $file = file_get_contents(storage_path($path));
+            return response($file, 200)->header('Content-Type', 'image/jpeg');
     }
 }

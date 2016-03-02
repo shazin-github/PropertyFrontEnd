@@ -45,9 +45,13 @@ Route::group(['middleware'=>['web']], function(){
 
 	Route::post('property/add', 'propertyController@postProperty');
 
+	Route::post('property/image', 'propertyController@postPropertyPic');
+
 	Route::get('property/search', 'propertyController@searchProperty');
 
 	Route::get('property/all', 'propertyController@allProperty');
+
+	Route::get('images/propertyImages/{id}', 'propertyController@getPropertyPic');
 
 
 });

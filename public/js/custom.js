@@ -57,12 +57,12 @@ function echoSuccess(form_name, msg, success_div){
     }, 3000);
 }
 
-function readURL(input) {
+function readURL(input, imageField) {
     if(input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            $('#profilePicImage').attr('src', e.target.result);
-            $('#profilePicImage').show();
+            $('#'+imageField).attr('src', e.target.result);
+            $('#'+imageField).show();
         }
         reader.readAsDataURL(input.files[0]);
     }

@@ -190,11 +190,11 @@
 					<a href="#" class="upload-btn" onclick="$('#propImages').trigger('click');">
 						<i class="icon icon-folder4"></i>
 					</a>
-					<img src="img/profile-avatar.jpg" alt="user photo" id="profilePicImage" onclick="$('#propImages').trigger('click');"/><br />
+					<img ng-attr-src="<%user.image_url%>" ng-show="showProfileImage" alt="user photo" id="propertyImage" onclick="$('#propImages').trigger('click');"/><br />
 					<a class="upload-link" href="#" onclick="$('#propImages').trigger('click');">
 						Add Photos
 					</a>
-					<input type="file" id="propImages" name="propImages[]" accept="image/*" style="display: none" />
+					<input type="file" id="propImages" accept="image/*" style="display: none" />
 				</div>
 
 				<div class="location-on-map">
