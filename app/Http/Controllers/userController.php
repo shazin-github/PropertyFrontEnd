@@ -103,7 +103,8 @@ class userController extends Controller{
         
         $result = json_decode($resp->getBody());
                 
-        if($resp->getStatusCode() == 200){
+        if($resp->getStatusCode() == 200 && $result->success == true){
+        	session(['firstname' => $data['firstname']]);
             return Response::json(['success'=>true, 'msg'=>'Profile updated successfully']);
         } else {
             return Response::json(['success'=>false, 'msg'=>$this->makeError('Update failed')]);

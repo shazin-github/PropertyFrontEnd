@@ -52,7 +52,7 @@ define(['services/userService'], function() {
         		$('#overlay').hide();
         		$scope.user = resp.data.msg;
                 if($scope.user.image_url != ''){
-                    $scope.user.showProfileImage = true;
+                    $scope.showProfileImage = true;
                     $('#profilePicImage').show();
                 }
         		$scope.user.confirmPassword = resp.data.msg.password;
@@ -82,7 +82,6 @@ define(['services/userService'], function() {
 
             userService.updateProfilePic(form_data).then(function(image_resp){
                 if(image_resp.data.success){
-                    console.log('inside if', image_resp);
                     $scope.user.image_url = image_resp.data.image_url;           
                 }
 
