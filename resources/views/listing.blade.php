@@ -22,7 +22,7 @@
                     <li>Sale</li>
                   </ul>
                 </div>
-                <input class="filter-box-input js-input no-select search-wd" id="search" type="text" value="" placeholder="Search..." />
+                <input class="filter-box-input js-input no-select search-wd" id="search" type="text" value="" placeholder="Search Location..." />
                 <div class="select-box wd-110 pull-left">
                   <input class="filter-box-input js-input no-select drop-wd" type="text" id="bedroom" readonly value="" placeholder="Bedrooms" />
                   <ul>

@@ -5,7 +5,7 @@
   border-color: rgb(237, 28, 36);
 }
 
-#profilePic{
+#profilePicImage{
   width: 145px;
   height: 145px;
   border-style: solid;
@@ -14,7 +14,7 @@
   border-color: #ddd;
 }
 
-img#profilePic:hover{
+img#profilePicImage:hover{
   border-color: #aaa;
   border-width: 5px;
 }

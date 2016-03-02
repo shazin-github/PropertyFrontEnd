@@ -9,6 +9,7 @@ use \Response;
 use \Storage;
 use \RequestException;
 use GuzzleHttp\Client as Guzzle;
+use GuzzleHttp\ClientException;
 
 class userController extends Controller{
 	protected $request;
@@ -33,13 +34,28 @@ class userController extends Controller{
         if ($validator->fails()) {
             return Response::json(['success'=>false, 'msg'=>'Email & password are required' ]);
         }
+        $resp = null;
+        try{
+        	$resp  = $this->guzzle->request('POST', env('API_URL').'user/userAuthenticate', ['form_params'=>$data]);
+        } catch(\Exception $e){
+       		return Response::json(['success'=>false, 'msg'=>$this->makeError("Can't send request")]);
+       	}
 
-        $resp  = $this->guzzle->request('POST', env('API_URL').'user/userAuthenticate', ['form_params'=>$data]);
         $result = json_decode($resp->getBody());
         
         if($resp->getStatusCode() == 200 && $result->success == true){
         	session(['username' => $data['email']]);
         	session(['user_id' => $result->data->user_id]);
+
+        	$data = ['id' => session('user_id')];
+	       	$resp = null;
+	       	try{
+	       		$resp  = $this->guzzle->request('GET', env('API_URL').'user', ['query'=>$data]);
+	       	} catch(\Exception $e){
+       			return Response::json(['success'=>false, 'msg'=>$this->makeError("Can't send request")]);
+       		}
+	        $result = json_decode($resp->getBody());
+	        session(['firstname' => $result->data[0]->firstname]);
             return Response::json(['success'=>true, 'msg'=>'Login successful']);
         } else {
             return Response::json(['success'=>false, 'msg'=>'Email or Password is invalid']);
@@ -61,11 +77,17 @@ class userController extends Controller{
         }
 		
 		unset($data['confirmPassword']);
-        $resp  = $this->guzzle->request('POST', env('API_URL').'user', ['form_params'=>$data]);
+		$resp = null;
+		try{
+        	$resp  = $this->guzzle->request('POST', env('API_URL').'user', ['form_params'=>$data]);
+        } catch(\Exception $e){
+       		return Response::json(['success'=>false, 'msg'=>$this->makeError("Can't send request")]);
+       	}
         $result = json_decode($resp->getBody());
 
         if($resp->getStatusCode() == 200){
         	session(['username' => $data['email']]);
+        	session(['firstname' => $data['firstname']]);
         	session(['user_id' => $result->data]);
             return Response::json(['success'=>true, 'msg'=>'Registration successful']);
         } else {
@@ -92,12 +114,17 @@ class userController extends Controller{
 		
 		unset($data['confirmPassword']);
 		$data['id'] = session('user_id');
-
-       	$resp  = $this->guzzle->request('PUT', env('API_URL').'user', ['form_params'=>$data]);
+		$resp = null;
+		try{
+       		$resp  = $this->guzzle->request('PUT', env('API_URL').'user', ['form_params'=>$data]);
+       	} catch(\Exception $e){
+       		return Response::json(['success'=>false, 'msg'=>$this->makeError('Update failed')]);
+       	}
         
         $result = json_decode($resp->getBody());
                 
-        if($resp->getStatusCode() == 200){
+        if($resp->getStatusCode() == 200 && $result->success == true){
+        	session(['firstname' => $data['firstname']]);
             return Response::json(['success'=>true, 'msg'=>'Profile updated successfully']);
         } else {
             return Response::json(['success'=>false, 'msg'=>$this->makeError('Update failed')]);
@@ -106,7 +133,12 @@ class userController extends Controller{
 
     public function getProfile() {
        	$data = ['id' => session('user_id')];
-       	$resp  = $this->guzzle->request('GET', env('API_URL').'user', ['query'=>$data]);
+       	$resp = null;
+       	try{
+       		$resp  = $this->guzzle->request('GET', env('API_URL').'user', ['query'=>$data]);
+       	} catch(\Exception $e){
+       		return Response::json(['success'=>false, 'msg'=>$this->makeError("Can't send request")]);
+       	}
         $result = json_decode($resp->getBody());
                 
         if($resp->getStatusCode() == 200){
@@ -136,13 +168,14 @@ class userController extends Controller{
 			}
 			$type = explode('/', $f->getMimeType())[1];
 			$dr = DIRECTORY_SEPARATOR;
-			$path = storage_path('images'.$dr.'profileImages'.$dr.'User_'.session('user_id').'.'.$type);
+			$path = 'images'.$dr.'profileImages'.$dr.'User_'.session('user_id').'.'.$type;
 			
 			$file = file_get_contents($f->getRealPath());
-			$mkfile = file_put_contents($path, $file);
+			$mkfile = file_put_contents(storage_path($path), $file);
 			
 			if($mkfile)
-				return Response::json(['success'=>true, 'msg'=>'Picture uploaded succcessfully']);
+				return Response::json(['success'=>true, 'msg'=>'Picture uploaded succcessfully', 
+					'image_url'=>$path]);
 		}
 
 		return Response::json(['success'=>false, 'error'=>'Picture not found']);
@@ -152,7 +185,7 @@ class userController extends Controller{
 		$error = [
 					'field_name'=>[$msg] 
 				];
-		// $error = json_encode($error);		
+		$error = json_encode($error);		
 		return array($error);
 	}
 }

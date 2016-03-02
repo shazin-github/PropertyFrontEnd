@@ -25,7 +25,7 @@
 					<div class="main-info">
 						<img src="img/profile-avatar.jpg" alt="profile avatar" />
 
-						<span class="username">John Doe</span>
+						<span class="username">{{ session('firstname') }}</span>
 					</div>
 
 					<ul class="list">
