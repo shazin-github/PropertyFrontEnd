@@ -1,7 +1,8 @@
 define(['services/searchService', 'services/markerService'], function() {
     var coreModule = angular.module('coreModule');
     coreModule.service('geolocatorService',['searchService', 'markerService', '$timeout', function(searchService, markerService, $timeout) {
-        this.geoLocate = function(map) {
+        this.geoLocate = function(map, $rootScope) {
+            //$('#overlay').show();
             var map_center = "";
             if(navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition);
@@ -27,6 +28,7 @@ define(['services/searchService', 'services/markerService'], function() {
                     searchService.getSearch().then(function(response) {
                         if(response.data.success) {
                             var prop_data = response.data.data;
+                            $rootScope.listings = prop_data;
                             markerService.getMarker(prop_data, map);
                         }
                     }, function(response) {
@@ -47,6 +49,8 @@ define(['services/searchService', 'services/markerService'], function() {
                 searchService.getSearch().then(function(response) {
                     if(response.data.success) {
                         var prop_data = response.data.data;
+                        $rootScope.listings = prop_data;
+                        console.log($rootScope.listings);
                         markerService.getMarker(prop_data, map);
                     }
                 }, function(response) {

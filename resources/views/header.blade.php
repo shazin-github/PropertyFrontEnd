@@ -50,7 +50,7 @@
 			</span>
 
 			<!-- Identity image -->
-			<a href="index.html" class="brand">
+			<a href="/" class="brand">
 				<img src="img/logo.png" alt="logo" />
 			</a>
 		</header>
@@ -85,7 +85,7 @@
 		</span>
 
 		<!-- Identity image -->
-		<a href="index" class="brand">
+		<a href="/" class="brand">
 			<img src="img/logo.png" alt="logo" />
 		</a>
 	</header>

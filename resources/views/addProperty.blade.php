@@ -3,6 +3,7 @@
 		<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 		<div class="row">
 			<div class="col-md-11">
+				<div ng-class="status ? 'alert-success' : 'alert-danger'" id="resultDiv"><% msg %></div>
 				<input type="text" class="js-input" placeholder="Title"  required name="title" ng-model="title"/>
 				<textarea class="js-input" placeholder="Description" required ng-model="description"></textarea>
 
@@ -186,8 +187,14 @@
 
 			<div class="col-md-13 col-lg-offset-1 col-lg-12">
 				<div class="photo-upload">
-					<label class="control-label">Add Photos</label>
-					<input class="upload-link" name="filesToUpload[]" id="filesToUpload" type="file" multiple="" accept="image/*"/>
+					<a href="#" class="upload-btn" onclick="$('#propImages').trigger('click');">
+						<i class="icon icon-folder4"></i>
+					</a>
+					<img src="img/profile-avatar.jpg" alt="user photo" id="profilePicImage" onclick="$('#propImages').trigger('click');"/><br />
+					<a class="upload-link" href="#" onclick="$('#propImages').trigger('click');">
+						Add Photos
+					</a>
+					<input type="file" id="propImages" name="propImages[]" accept="image/*" style="display: none" />
 				</div>
 
 				<div class="location-on-map">
@@ -345,6 +352,5 @@
 			</div>
 		</div>
 		<input class="button theme-button-2" type="submit" value="Submit your property" />
-		<div ng-class="$status ? 'success' : 'danger'"><% msg %></div>
 	</form>
 </div>

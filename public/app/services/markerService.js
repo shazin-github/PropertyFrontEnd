@@ -28,7 +28,7 @@ define(function() {
                 }
             }
             map.fitBounds(bounds);
-
+            $('#overlay').hide();
             function clearOverlays() {
                 for(i in markers) {
                     if(markers[i].getMap()) {

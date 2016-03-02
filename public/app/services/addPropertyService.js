@@ -9,7 +9,7 @@ define(function() {
                 feature: feature,
                 seller: seller
             };
-            return $http.post('property', data).then(function successCallback(response) {
+            return $http.post('property/add', data).then(function successCallback(response) {
                 console.log(response);
                 deffered.resolve(response);
                 return deffered.promise;
@@ -19,7 +19,6 @@ define(function() {
                 deffered.reject(response);
                 return deffered.promise;
             });
-
         };
     }]);
 });

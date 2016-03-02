@@ -10,6 +10,7 @@ define([
         $scope.country = "Pakistan";
 
         $scope.addProperty = function() {
+            $('#overlay').show();
             $scope.address = $("#address").val();
             $scope.latitude = $("#latitude").val();
             $scope.longitude = $("#longitude").val();
@@ -31,10 +32,15 @@ define([
                 $scope.seller).then(function(response) {
                 $scope.status = response.data.success;
                 $scope.msg = response.data.msg;
-                console.log(response.data);
+                console.log($scope.status);
+                $('#overlay').hide();
+                $('html, body').animate({'scrollTop': $("#resultDiv").offset().top-100}, 500);
             }, function(response) {
                 $scope.status = response.data.success;
                 $scope.msg = response.data.msg;
+                console.log($scope.status);
+                $('#overlay').hide();
+                $('html, body').animate({'scrollTop': $("#resultDiv").offset().top-100}, 500);
             });
         };
     }]);

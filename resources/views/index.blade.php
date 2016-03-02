@@ -8,7 +8,7 @@
 		
 				<div id="home_map" class="mapClass"></div>
 				</div>
-				<div class="col-md-9 col-lg-10">
+				<!--<div class="col-md-9 col-lg-10">
 					<div class="map-filter-box">
 					<div class="search-gap">
 						<div class="box-caption">
@@ -47,9 +47,50 @@
 						</div>
 						</div>
 					</div>
+				</div>-->
+				<input type="hidden" id="search_lat" /> <input type="hidden" id="search_lng" />
+				<div class="col-md-9 col-lg-10">
+					<div class="home-list-ht">
+
+
+						<div class="listing-style" ng-repeat="list in listings">
+							<div class="list-property">
+								<div class="cover list-img">
+									<a href="single-full-width">
+										<img alt="list property cover" src="<% list.image_url %>">
+									</a>
+								</div>
+								<div class="list-content">
+									<div class="property-header">
+										<p class="price">$250 <span class="type"><% list.purpose %></span></p>
+										<h2><a href="single-full-width"><% list.title %></a></h2>
+										<p class="address"><% list.address  %></p>
+									</div>
+
+									<div class="property-body">
+										<p><% list.description %></p>
+
+										<ul class="post-meta">
+											<li class="area">
+												<span class="tool-tip"></span>
+												<span class="nr"><% list.area  %></span>
+											</li>
+											<li class="bedrooms">
+												<span class="tool-tip"></span>
+												<span class="nr"><% list.bedrooms  %></span>
+											</li>
+											<li class="bathrooms">
+												<span class="tool-tip"></span>
+												<span class="nr"><% list.bathrooms  %></span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
 				</div>
-				
-				</div>
+			</div>
 			</div>
 		</section>
 

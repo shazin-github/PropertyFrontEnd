@@ -42,9 +42,12 @@ Route::group(['middleware'=>['web']], function(){
 	});
 
 	Route::controller('user', 'userController');
-	Route::post('property', 'propertyController@postProperty');
 
-	Route::post('search', 'propertyController@searchProperty');
+	Route::post('property/add', 'propertyController@postProperty');
+
+	Route::get('property/search', 'propertyController@searchProperty');
+
+	Route::get('property/all', 'propertyController@allProperty');
 
 });
 

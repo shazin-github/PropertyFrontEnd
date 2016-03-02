@@ -10,6 +10,7 @@ use \Response;
 use \RequestException;
 use App\Helpers\Helper;
 use GuzzleHttp\Client as Guzzle;
+use GuzzleHttp\Exception\RequestException as guzzleException;
 
 class propertyController extends Controller {
     protected $request;
@@ -21,7 +22,7 @@ class propertyController extends Controller {
         //$this->guzzle->setDefaultOption(env('API_URL'));
         // $this->guzzle->setConfig('defaults/verify', true);
         $this->request = $request;
-        $this->apiUrl = 'http://localhost:8002/v1/';
+        $this->apiUrl = 'http://localhost:8001/v1/'; //env('API_URL')
         $this->helper = $helper;
         $this->guzzle = $guzzle;
     }
@@ -39,9 +40,8 @@ class propertyController extends Controller {
             return Response::json(['success'=>false, 'msg'=>'Property Details are Invalid' ]);
         }
         $data['seller'] = session('user_id');
-        $resp  = $this->guzzle->request('POST', env('API_URL').'property', ['form_params' => $data]);
+        $resp  = $this->guzzle->request('POST', $this->apiUrl.'property', ['form_params' => $data]);
         $result = json_decode($resp->getBody());
-
         if($resp->getStatusCode() == 200 && $result->success == true){
             return Response::json(['success'=>true, 'msg'=>'Property Added Successfully']);
         } else {
@@ -52,12 +52,38 @@ class propertyController extends Controller {
     public function searchProperty() {
         $data = $this->request->all();
         $queryString = "?purpose=".$data['purpose']."&bedroom=".$data['bedroom']."&bathroom=".$data['bathroom']."&latitude=".$data['latitude']."&longitude=".$data['longitude'];
-        $resp  = $this->guzzle->request('GET', $this->apiUrl.'property/livesearch'.$queryString);
-        $result = json_decode($resp->getBody());
-        if($resp->getStatusCode() == 200 && $result->success == true){
+
+        $resp = false;
+        try {
+            $resp  = $this->guzzle->request('GET', $this->apiUrl.'property/livesearch'.$queryString);
+            $result = json_decode($resp->getBody());
+        } catch (guzzleException $e) {
+            if ($e->hasResponse()) {
+                $result =  $e->getResponse();
+            }
+        }
+        if($resp && $resp->getStatusCode() == 200 && $result->success == true){
             return Response::json(['success'=>true, 'data'=> $result->data]);
         } else {
-            return Response::json(['success'=>false, 'msg'=>'Internal Server Error']);
+            return Response::json(['success'=>false, 'msg'=>'Not Found']);
+        }
+    }
+
+    public function allProperty() {
+        $data = $this->request->all();
+        $resp = false;
+        try {
+            $resp  = $this->guzzle->request('GET', $this->apiUrl.'property');
+            $result = json_decode($resp->getBody());
+        } catch (guzzleException $e) {
+            if ($e->hasResponse()) {
+                $result =  $e->getResponse();
+            }
+        }
+        if($resp && $resp->getStatusCode() == 200 && $result->success == true){
+            return Response::json(['success'=>true, 'data'=> $result->data]);
+        } else {
+            return Response::json(['success'=>false, 'msg'=>'Not Found']);
         }
     }
 }
