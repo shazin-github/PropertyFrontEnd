@@ -1,6 +1,6 @@
 define(function() {
     var coreModule = angular.module('coreModule');
-    coreModule.service('propertyService', ['$http', function($http) {
+    coreModule.service('propertyService', ['$http', '$q', function($http, $q) {
         this.getProperty = function(title, price, area, description, purpose, type, category, image_url) {
             return {
                 title: title,
@@ -25,5 +25,17 @@ define(function() {
         this.getUserProperty = function(){
             return $http.get("property/userProperty");
         }
+
+        this.getPropertyDetail = function(id) {
+            var deffered = $q.defer();
+            return $http.get('detail/' + id).then(function successCallback(response) {
+                deffered.resolve(response);
+                return deffered.promise;
+
+            }, function errorCallback(response) {
+                deffered.reject(response);
+                return deffered.promise;
+            });
+        };
     }]);
 });

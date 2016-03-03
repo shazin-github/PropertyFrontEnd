@@ -9,7 +9,7 @@
 		</div>
 		<div class="col-md-16 col-lg-16 no-pad">
 		<div class="event-rht">
-		<div id="gallery" style="display:none;">
+		<!-- <div id="gallery" style="display:none;">
 
 			<a href="#">
 			<img alt=""
@@ -111,7 +111,7 @@
 				 style="display:none">
 			</a>
 
-		</div>
+		</div> -->
 		</div>
 		
 	</div>
