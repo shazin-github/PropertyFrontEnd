@@ -23,7 +23,7 @@ class propertyController extends Controller {
         //$this->guzzle->setDefaultOption(env('API_URL'));
         // $this->guzzle->setConfig('defaults/verify', true);
         $this->request = $request;
-        $this->apiUrl = 'http://localhost:8001/v1/'; //env('API_URL')
+        $this->apiUrl = env('API_URL');
         $this->helper = $helper;
         $this->guzzle = $guzzle;
     }
@@ -75,7 +75,9 @@ class propertyController extends Controller {
         try {
             $resp  = $this->guzzle->request('GET', $this->apiUrl.'property');
             $result = json_decode($resp->getBody());
+            //echo $resp->getBody();
         } catch (guzzleException $e) {
+            // var_dump($e);
             if ($e->hasResponse()) {
                 $result =  $e->getResponse();
             }
@@ -84,6 +86,25 @@ class propertyController extends Controller {
             return Response::json(['success'=>true, 'data'=> $result->data]);
         } else {
             return Response::json(['success'=>false, 'msg'=>'Not Found']);
+        }
+    }
+
+    public function userProperty() {
+        $resp = false;
+        try {
+            $resp  = $this->guzzle->request('GET', $this->apiUrl.'property/SearchWithUser?user_id='.session('user_id') );
+            $result = json_decode($resp->getBody());
+            //echo $resp->getBody();
+        } catch (guzzleException $e) {
+            echo $e;
+            if ($e->hasResponse()) {
+                $result =  $e->getResponse();
+            }
+        }
+        if($resp && $resp->getStatusCode() == 200 && $result->success == true){
+            return Response::json(['success'=>true, 'msg'=> $result->data]);
+        } else {
+            return Response::json(['success'=>false, 'msg'=>'Data Not Found']);
         }
     }
 

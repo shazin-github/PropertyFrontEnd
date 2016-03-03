@@ -21,5 +21,9 @@ define(function() {
                 headers: {'Content-Type': undefined}
             });
         }
+
+        this.getUserProperty = function(){
+            return $http.get("property/userProperty");
+        }
     }]);
 });
