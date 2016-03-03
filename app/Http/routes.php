@@ -45,6 +45,8 @@ Route::group(['middleware'=>['web']], function(){
 
 	Route::get('property/all', 'propertyController@allProperty');
 
+	Route::get('property/userProperty', 'propertyController@userProperty');
+
 	Route::get('property/detail/{id}', 'propertyController@getPropertyDetail');
 
 	Route::get('property/{id}', function ($id) {
@@ -54,8 +56,6 @@ Route::group(['middleware'=>['web']], function(){
 	Route::controller('user', 'userController');
 
 	Route::get('images/propertyImages/{id}', 'propertyController@getPropertyPic');
-
-	Route::get('property/userProperty', 'propertyController@userProperty');
 
 
 });

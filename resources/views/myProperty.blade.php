@@ -6,11 +6,11 @@
 					<div class="cover">
 						<p><% p.description %></p>
 
-						<a href="single.html">
+						<a href="property/<% p.property_id %>">
 							<i class="icon"></i>
 						</a>
 					</div>
-					<img src="img/my-properties-1.jpg" alt="item cover" />
+					<img src="<% p.image_url %>" alt="item cover" />
 				</div>
 
 				<div class="item-body">
@@ -26,7 +26,7 @@
 					<div class="block location-info">
 						<div class="location">
 							<h3>
-								<a href="single-full-width.html"><% p.address %></a>
+								<a href="property/<% p.property_id %>"><% p.address %></a>
 							</h3>
 							<p><% p.city %></p>
 						</div>
