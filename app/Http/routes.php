@@ -53,6 +53,8 @@ Route::group(['middleware'=>['web']], function(){
 
 	Route::get('images/propertyImages/{id}', 'propertyController@getPropertyPic');
 
+	Route::get('property/userProperty', 'propertyController@userProperty');
+
 
 });
 

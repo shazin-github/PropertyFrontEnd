@@ -5,6 +5,7 @@ define(function() {
         'controllers/addPropertyController',
         'controllers/userController',
         'controllers/searchController',
-        'controllers/listingController'
+        'controllers/listingController',
+        'controllers/myPropertyController'
     ];
 });
