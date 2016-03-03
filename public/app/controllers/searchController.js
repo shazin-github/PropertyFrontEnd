@@ -21,7 +21,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                 $("#overlay").hide();
             }, function(response) {
             });
-        searchAutoService.getAuto();
+        //searchAutoService.getAuto();
 
         $scope.searchProperty = function() {
             //$('#overlay').show();
