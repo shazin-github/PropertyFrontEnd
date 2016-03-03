@@ -5,6 +5,14 @@
   border-color: rgb(237, 28, 36);
 }
 
+.feature-util-hide {
+    display: none;
+}
+
+.feature-util-show {
+    display: block;
+}
+
 #profilePicImage{
   width: 145px;
   height: 145px;

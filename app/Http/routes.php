@@ -37,12 +37,6 @@ Route::group(['middleware'=>['web']], function(){
 		return view('myProperty');
 	});
 
-	Route::get('single-full-width', function () {
-		return view('single-full-width');
-	});
-
-	Route::controller('user', 'userController');
-
 	Route::post('property/add', 'propertyController@postProperty');
 
 	Route::post('property/image', 'propertyController@postPropertyPic');
@@ -50,6 +44,14 @@ Route::group(['middleware'=>['web']], function(){
 	Route::get('property/search', 'propertyController@searchProperty');
 
 	Route::get('property/all', 'propertyController@allProperty');
+
+	Route::get('property/detail/{id}', 'propertyController@getPropertyDetail');
+
+	Route::get('property/{id}', function ($id) {
+		return view('single-full-width')->with('id', $id);
+	});
+
+	Route::controller('user', 'userController');
 
 	Route::get('images/propertyImages/{id}', 'propertyController@getPropertyPic');
 

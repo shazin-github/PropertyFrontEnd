@@ -5,28 +5,28 @@
     <title>Realtor</title>
     <meta name="description" content="Here goes description" />
     <meta name="author" content="author name" />
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{URL::to('img/favicon.png')}}" type="image/x-icon" />
 
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/owl-carousel.css" />
-    <link rel="stylesheet" href="css/bootstrap.css" />
-    <link rel="stylesheet" href="css/lightbox.css" />
-    <link rel="stylesheet" href="css/animate.css" />
-    <link rel="stylesheet" href="css/bxslider.css" />
-    <link rel="stylesheet" href="css/nouislider.css" />
-    <link rel="stylesheet" href="css/icomoon.css" />
-    <link rel="stylesheet" href="css/screen.css" />
-	<link rel="stylesheet" href="css/custom.css" />
-    <link rel='stylesheet' href='css/unite-gallery.css' type='text/css' />
+    <link rel="stylesheet" href="{{URL::to('css/owl-carousel.css')}}" />
+    <link rel="stylesheet" href="{{URL::to('css/bootstrap.css')}}" />
+    <link rel="stylesheet" href="{{URL::to('css/lightbox.css')}}" />
+    <link rel="stylesheet" href="{{URL::to('css/animate.css')}}" />
+    <link rel="stylesheet" href="{{URL::to('css/bxslider.css')}}" />
+    <link rel="stylesheet" href="{{URL::to('css/nouislider.css')}}" />
+    <link rel="stylesheet" href="{{URL::to('css/icomoon.css')}}" />
+    <link rel="stylesheet" href="{{URL::to('css/screen.css')}}" />
+	<link rel="stylesheet" href="{{URL::to('css/custom.css')}}" />
+    <link rel='stylesheet' href='{{URL::to('css/unite-gallery.css')}}' type='text/css' />
 </head>
 <body data-smooth-scroll="on"> <!-- id="front-page" -->
   <div id="overlay">
     <table width="100%" height="100%">
-      <tr><td valign="middle"><img src="img/rolling.svg" width="80px" height="80px"/><p>Loading</p></td></tr>
+      <tr><td valign="middle"><img src="{{URL::to('img/rolling.svg')}}" width="80px" height="80px"/><p>Loading</p></td></tr>
     </table>
   </div>
 
@@ -70,24 +70,24 @@
     </div>
 <!-- Scripts -->
 <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
-<script src="js/infobox.js"></script>
-<script src="js/jquery.js"></script>
-<script src="js/jquery-ui.js"></script> -->
-<script src="js/bxslider.js"></script>
-<script src="js/marquee.js"></script>
-<script src="js/nouislider.js"></script>
-<script src="js/modernizr.js"></script>
-<script src="js/imagesloaded.js"></script>
-<script src="js/smooth-scroll.js"></script>
-<script src="js/owl-carousel.js"></script>
-<script src="js/isotope.js"></script>
-<script src="js/theia.js"></script>
-<script src="js/lightbox.js"></script>
-<script src="js/options.js"></script>
-<script src="js/custom.js"></script>
-<script type='text/javascript' src='js/unitegallery.min.js'></script>   
-<script type='text/javascript' src='js/ug-theme-tilesgrid.js'></script>
-<script type="text/javascript" src="app/lib/requirejs/require.js" data-main="app/main.js"></script>
+<script src="{{URL::to('js/infobox.js')}}"></script>
+<script src="{{URL::to('js/jquery.js')}}"></script>
+<script src="{{URL::to('js/jquery-ui.js')}}"></script>
+<script src="{{URL::to('js/bxslider.js')}}"></script>
+<script src="{{URL::to('js/marquee.js')}}"></script>
+<script src="{{URL::to('js/nouislider.js')}}"></script>
+<script src="{{URL::to('js/modernizr.js')}}"></script>
+<script src="{{URL::to('js/imagesloaded.js')}}"></script>
+<script src="{{URL::to('js/smooth-scroll.js')}}"></script>
+<script src="{{URL::to('js/owl-carousel.js')}}"></script>
+<script src="{{URL::to('js/isotope.js')}}"></script>
+<script src="{{URL::to('js/theia.js')}}"></script>
+<script src="{{URL::to('js/lightbox.js')}}"></script>
+<script src="{{URL::to('js/options.js')}}"></script>
+<script src="{{URL::to('js/custom.js')}}"></script>
+<script type='text/javascript' src='{{URL::to('js/unitegallery.min.js')}}'></script>
+<script type='text/javascript' src='{{URL::to('js/ug-theme-tilesgrid.js')}}'></script>
+<script type="text/javascript" src="{{URL::to('app/lib/requirejs/require.js')}}" data-main="{{URL::to('app/main.js')}}"></script>
     @yield('custom-scripts')
 </body>
 </html>

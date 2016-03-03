@@ -71,7 +71,6 @@ class propertyController extends Controller {
     }
 
     public function allProperty() {
-        $data = $this->request->all();
         $resp = false;
         try {
             $resp  = $this->guzzle->request('GET', $this->apiUrl.'property');
@@ -116,6 +115,23 @@ class propertyController extends Controller {
         return Response::json(['success'=>false, 'error'=>'Picture not found']);
     }
 
+    public function getPropertyDetail($id) {
+        $resp = false;
+        $queryString = "?id=".$id;
+        try {
+            $resp  = $this->guzzle->request('GET', $this->apiUrl.'property/SearchById'.$queryString);
+            $result = json_decode($resp->getBody());
+        } catch (guzzleException $e) {
+            if ($e->hasResponse()) {
+                $result =  $e->getResponse();
+            }
+        }
+        if($resp && $resp->getStatusCode() == 200 && $result->success == true){
+            return Response::json(['success'=>true, 'data'=> $result->data]);
+        } else {
+            return Response::json(['success'=>false, 'msg'=>'Not Found']);
+        }
+    }
     public function getPropertyPic($id) {
         $dr = DIRECTORY_SEPARATOR;
         $path = 'images'.$dr.'propertyImages'.$dr.$id;

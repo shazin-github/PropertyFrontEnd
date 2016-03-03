@@ -3,6 +3,7 @@ define(function() {
         'controllers/mainController',
         'controllers/homeController',
         'controllers/addPropertyController',
+        'controllers/propertyDetailController',
         'controllers/userController',
         'controllers/searchController',
         'controllers/listingController'

@@ -56,14 +56,14 @@
 						<div class="listing-style" ng-repeat="list in listings">
 							<div class="list-property">
 								<div class="cover list-img">
-									<a href="single-full-width">
+									<a href="property/<% list.property_id %>">
 										<img alt="list property cover" src="<% list.image_url %>">
 									</a>
 								</div>
 								<div class="list-content">
 									<div class="property-header">
 										<p class="price">$250 <span class="type"><% list.purpose %></span></p>
-										<h2><a href="single-full-width"><% list.title %></a></h2>
+										<h2><a href="property/<% list.property_id %>"><% list.title %></a></h2>
 										<p class="address"><% list.address  %></p>
 									</div>
 

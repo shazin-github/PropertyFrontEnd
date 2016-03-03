@@ -23,7 +23,7 @@
 			<div class="right-block">
 				<div class="account-options">
 					<div class="main-info">
-						<img src="img/profile-avatar.jpg" alt="profile avatar" />
+						<img src="{{URL::to('img/profile-avatar.jpg')}}" alt="profile avatar" />
 
 						<span class="username">{{ session('firstname') }}</span>
 					</div>
@@ -51,7 +51,7 @@
 
 			<!-- Identity image -->
 			<a href="/" class="brand">
-				<img src="img/logo.png" alt="logo" />
+				<img src="{{URL::to('img/logo.png')}}" alt="logo" />
 			</a>
 		</header>
 	<?php
@@ -86,7 +86,7 @@
 
 		<!-- Identity image -->
 		<a href="/" class="brand">
-			<img src="img/logo.png" alt="logo" />
+			<img src="{{URL::to('img/logo.png')}}" alt="logo" />
 		</a>
 	</header>
 	<?php
