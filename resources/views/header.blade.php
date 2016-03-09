@@ -7,14 +7,14 @@
 			<nav>
 				<ul>
 					<li class="home current-menu-item"><a href="my-profile">My Profile</a></li>
-					<li class="listing menu-item-has-children">
+					<!--<li class="listing menu-item-has-children">
 						<a href="listing">Listing</a>
 						<!-- <ul class="sub-menu">
 							<li><a href="properties-grid">Grid</a></li>
 							<li><a href="properties-list">List</a></li>
 						</ul> -->
-					</li>
-					<li class="property"><a href="single-full-width">Property</a></li>
+					<!--</li>
+					<!-- <li class="property"><a href="single-full-width">Property</a></li> -->
 					<!-- <li class="agents"><a href="agents">Agents</a></li> -->
 				</ul>
 			</nav>
@@ -23,8 +23,7 @@
 			<div class="right-block">
 				<div class="account-options">
 					<div class="main-info">
-						<img src="{{URL::to('img/profile-avatar.jpg')}}" alt="profile avatar" />
-
+						<img src="{{ session('image') }}" alt="User Image" />
 						<span class="username">{{ session('firstname') }}</span>
 					</div>
 
@@ -63,7 +62,7 @@
 		<nav>
 			<ul>
 				<li class="home"><a href="/">Home</a></li>
-				<li class="listing"><a href="listing">Listing</a></li>
+				<!--<li class="listing"><a href="listing">Listing</a></li> -->
 			</ul>
 		</nav>
 

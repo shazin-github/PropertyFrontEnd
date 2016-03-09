@@ -36,7 +36,7 @@ class userController extends Controller{
         }
         $resp = null;
         try{
-        	$resp  = $this->guzzle->request('POST', env('API_URL').'user/userAuthenticate', ['form_params'=>$data]);
+        	$resp  = $this->guzzle->request('POST', $this->apiUrl.'user/userAuthenticate', ['form_params'=>$data]);
         } catch(\Exception $e){
        		return Response::json(['success'=>false, 'msg'=>"Can't send request"]);
        	}
@@ -50,12 +50,13 @@ class userController extends Controller{
         	$data = ['id' => session('user_id')];
 	       	$resp = null;
 	       	try{
-	       		$resp  = $this->guzzle->request('GET', env('API_URL').'user', ['query'=>$data]);
+	       		$resp  = $this->guzzle->request('GET', $this->apiUrl.'user', ['query'=>$data]);
 	       	} catch(\Exception $e){
        			return Response::json(['success'=>false, 'msg'=>$this->makeError("Can't send request")]);
        		}
 	        $result = json_decode($resp->getBody());
 	        session(['firstname' => $result->data[0]->firstname]);
+			session(['image' => $result->data[0]->image_url]);
             return Response::json(['success'=>true, 'msg'=>'Login successful']);
         } else {
             return Response::json(['success'=>false, 'msg'=>'Email or Password is invalid']);
@@ -79,7 +80,7 @@ class userController extends Controller{
 		unset($data['confirmPassword']);
 		$resp = null;
 		try{
-        	$resp  = $this->guzzle->request('POST', env('API_URL').'user', ['form_params'=>$data]);
+        	$resp  = $this->guzzle->request('POST', $this->apiUrl.'user', ['form_params'=>$data]);
         } catch(\Exception $e){
        		return Response::json(['success'=>false, 'msg'=>$this->makeError("Can't send request")]);
        	}
@@ -116,7 +117,7 @@ class userController extends Controller{
 		$data['id'] = session('user_id');
 		$resp = null;
 		try{
-       		$resp  = $this->guzzle->request('PUT', env('API_URL').'user', ['form_params'=>$data]);
+       		$resp  = $this->guzzle->request('PUT', $this->apiUrl.'user', ['form_params'=>$data]);
        	} catch(\Exception $e){
        		return Response::json(['success'=>false, 'msg'=>$this->makeError('Update failed')]);
        	}
@@ -135,7 +136,7 @@ class userController extends Controller{
        	$data = ['id' => session('user_id')];
        	$resp = null;
        	try{
-       		$resp  = $this->guzzle->request('GET', env('API_URL').'user', ['query'=>$data]);
+       		$resp  = $this->guzzle->request('GET', $this->apiUrl.'user', ['query'=>$data]);
        	} catch(\Exception $e){
        		return Response::json(['success'=>false, 'msg'=>$this->makeError("Can't send request")]);
        	}
