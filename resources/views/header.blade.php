@@ -6,7 +6,7 @@
 			<!-- Navigation -->
 			<nav>
 				<ul>
-					<li class="home current-menu-item"><a href="my-profile">My Profile</a></li>
+					<li class="home current-menu-item"><a href="{{ URL::to('my-profile') }}">My Profile</a></li>
 					<!--<li class="listing menu-item-has-children">
 						<a href="listing">Listing</a>
 						<!-- <ul class="sub-menu">
@@ -23,14 +23,14 @@
 			<div class="right-block">
 				<div class="account-options">
 					<div class="main-info">
-						<img src="{{ session('image') }}" alt="User Image" />
+						<img src="{{ URL::to(session('image')) }}" alt="User Image" />
 						<span class="username">{{ session('firstname') }}</span>
 					</div>
 
 					<ul class="list">
-						<li><a class="profile" href="my-profile">My profile</a></li>
-						<li><a class="submit-new" href="my-profile">Submit new property</a></li>
-						<li><a class="properties" href="my-profile">My properties</a></li>
+						<li><a class="profile" href="{{ URL::to('my-profile') }}">My profile</a></li>
+						<li><a class="submit-new" href="{{ URL::to('my-profile#submit') }}">Submit new property</a></li>
+						<li><a class="properties" href="{{ URL::to('my-profile#properties') }}">My properties</a></li>
 						<li ng-app="app" ng-controller="userController"><a class="exit" href="#" ng-click="logout()">Logout</a></li>
 					</ul>
 				</div>
