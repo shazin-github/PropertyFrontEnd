@@ -10,7 +10,7 @@ define(function() {
                 latitude: $("#search_lat").val(),
                 longitude: $("#search_lng").val()
             };
-            return $http.get('property/search', data).then(function successCallback(response) {
+            return $http.post('property/search', data).then(function successCallback(response) {
                 deffered.resolve(response);
                 return deffered.promise;
 
@@ -20,6 +20,32 @@ define(function() {
             });
         };
 
+        this.getSearchMini = function() {
+            var deffered = $q.defer();
+            var data =  {
+                purpose: $("#purpose-mini").val() || "",
+                bedroom: $("#bedroom-mini").val() || "",
+                bathroom: $("#bathroom-mini").val() || "",
+                latitude: $("#search_lat-mini").val(),
+                longitude: $("#search_lng-mini").val()
+            };
+            return $http.post('property/search', data).then(function successCallback(response) {
+                deffered.resolve(response);
+                return deffered.promise;
+
+            }, function errorCallback(response) {
+                deffered.reject(response);
+                return deffered.promise;
+            });
+        };
+
+        this.setMini = function() {
+            $("#purpose-mini").val($("#purpose").val());
+            $("#bedroom-mini").val($("#bedroom").val());
+            $("#bathroom-mini").val($("#bathroom").val());
+            $("#search_lat").val($("#search_lat-mini").val());
+            $("#search_lng").val($("#search_lng-mini").val());
+        };
         this.getSearchAll = function() {
             var deffered = $q.defer();
             return $http.get('property/all').then(function successCallback(response) {

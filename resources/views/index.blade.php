@@ -4,29 +4,18 @@
 		<!-- Properties Map Section -->
 		<section class="properties-map" ng-controller="searchController">
 			<div class="row row-fit">
-			<div class="col-md-15 col-lg-14">
-		
-				<div id="home_map" class="mapClass"></div>
-				</div>
-				<!--<div class="col-md-9 col-lg-10">
-					<div class="map-filter-box">
-					<div class="search-gap">
-						<div class="box-caption">
-							<h4>Search</h4>
-							<p>Where are you looking?</p>
-						</div>
-						<div class="search-class">
-						<form class="submit-form" method="GET" name="searchForm" ng-submit="searchProperty()">
+				<div class="search-class" ng-class="{ 'hide' : !search }">
+					<form class="submit-form" name="searchMiniForm">
 						<div class="select-box wd-80 pull-left">
-							<input class="filter-box-input js-input no-select drop-wd" type="text" id="purpose" readonly value="" placeholder="Buy" />
+							<input class="filter-box-input js-input no-select drop-wd" type="text" id="purpose-mini" readonly value="" placeholder="Buy" />
 							<ul>
 								<li>Rent</li>
 								<li>Sale</li>
 							</ul>
 						</div>
-							<input class="filter-box-input js-input no-select search-wd" id="search" type="text" value="" placeholder="Search..." />
+						<input class="filter-box-input js-input no-select search-wd" id="search-mini" type="text" value="" placeholder="Search..." />
 						<div class="select-box wd-110 pull-left">
-							<input class="filter-box-input js-input no-select drop-wd" type="text" id="bedroom" readonly value="" placeholder="Bedrooms" />
+							<input class="filter-box-input js-input no-select drop-wd" type="text" id="bedroom-mini" readonly value="" placeholder="Bedrooms" />
 							<ul>
 								<li>1</li>
 								<li>2</li>
@@ -34,25 +23,64 @@
 							</ul>
 						</div>
 						<div class="select-box wd-80 pull-left">
-							<input class="filter-box-input js-input no-select drop-wd" type="text" id="bathroom" readonly value="" placeholder="Baths" />
+							<input class="filter-box-input js-input no-select drop-wd" type="text" id="bathroom-mini" readonly value="" placeholder="Baths" />
 							<ul>
 								<li>1</li>
 								<li>2</li>
 								<li>3</li>
 							</ul>
 						</div>
-							<input type="hidden" id="search_lat" /> <input type="hidden" id="search_lng" />
-						<input type="submit" class="button theme-button-1 update-properties" value="Search" />
-						</form>
+						<input type="hidden" id="search_lat-mini" /> <input type="hidden" id="search_lng-mini" />
+						<input type="button" class="button theme-button-1 update-properties" value="Search" ng-click="searchPropertyMini()" />
+					</form>
+				</div>
+				</div>
+			<div class="row row-fit">
+			<div class="col-md-15 col-lg-14">
+
+				<div id="home_map" class="mapClass"></div>
+				</div>
+				<div class="col-md-9 col-lg-10">
+					<div class="map-filter-box" ng-class="{ 'hide' : search }">
+					<div class="search-gap">
+						<div class="box-caption">
+							<h4>Search</h4>
+							<p>Where are you looking?</p>
 						</div>
+						</div>
+						<div class="search-class" ng-class="{ 'hide' : search }">
+							<form class="submit-form" name="searchForm">
+								<div class="select-box wd-80 pull-left">
+									<input class="filter-box-input js-input no-select drop-wd" type="text" id="purpose" readonly value="" placeholder="Buy" />
+									<ul>
+										<li>Rent</li>
+										<li>Sale</li>
+									</ul>
+								</div>
+								<input class="filter-box-input js-input no-select search-wd" id="search" type="text" value="" placeholder="Search..." />
+								<div class="select-box wd-110 pull-left">
+									<input class="filter-box-input js-input no-select drop-wd" type="text" id="bedroom" readonly value="" placeholder="Bedrooms" />
+									<ul>
+										<li>1</li>
+										<li>2</li>
+										<li>3</li>
+									</ul>
+								</div>
+								<div class="select-box wd-80 pull-left">
+									<input class="filter-box-input js-input no-select drop-wd" type="text" id="bathroom" readonly value="" placeholder="Baths" />
+									<ul>
+										<li>1</li>
+										<li>2</li>
+										<li>3</li>
+									</ul>
+								</div>
+								<input type="hidden" id="search_lat" /> <input type="hidden" id="search_lng" />
+								<input type="button" class="button theme-button-1 update-properties" value="Search" ng-click="searchProperty()" />
+							</form>
 						</div>
 					</div>
-				</div>-->
-				<input type="hidden" id="search_lat" /> <input type="hidden" id="search_lng" />
-				<div class="col-md-9 col-lg-10">
-					<div class="home-list-ht">
 
-
+					<div class="home-list-ht" ng-class="{ 'hide' : !search }">
 						<div class="listing-style" ng-repeat="list in listings">
 							<div class="list-property">
 								<div class="cover list-img">
@@ -89,8 +117,9 @@
 							</div>
 						</div>
 
+					</div>
 				</div>
-			</div>
+				<input type="hidden" id="search_lat" /> <input type="hidden" id="search_lng" />
 			</div>
 		</section>
 

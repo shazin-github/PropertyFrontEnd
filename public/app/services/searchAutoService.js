@@ -23,5 +23,28 @@ define(function() {
                 $("#search_lng").val(place.geometry.location.lng());
             });
         };
+
+        this.getAutoMini = function() {
+
+            var adr_options = {
+                types: ['geocode'],
+                componentRestrictions: {country: 'pk'}
+            };
+
+            var address = document.getElementById('search-mini');
+
+            var autocomplete_adr = new google.maps.places.Autocomplete(address, adr_options);
+
+            autocomplete_adr.addListener('place_changed', function() {
+
+                var place = autocomplete_adr.getPlace();
+                if (!place.geometry) {
+                    $("#search-mini").val("");
+                    return;
+                }
+                $("#search_lat-mini").val(place.geometry.location.lat());
+                $("#search_lng-mini").val(place.geometry.location.lng());
+            });
+        };
     });
 });

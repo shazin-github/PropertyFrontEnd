@@ -37,11 +37,19 @@ Route::group(['middleware'=>['web']], function(){
 		return view('myProperty');
 	});
 
+	Route::get('/search', function () {
+		return view('search');
+	});
+
+	Route::get('/listing', function () {
+		return view('search-listing');
+	});
+
 	Route::post('property/add', 'propertyController@postProperty');
 
 	Route::post('property/image', 'propertyController@postPropertyPic');
 
-	Route::get('property/search', 'propertyController@searchProperty');
+	Route::post('property/search', 'propertyController@searchProperty');
 
 	Route::get('property/all', 'propertyController@allProperty');
 
