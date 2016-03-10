@@ -17,7 +17,7 @@ define(function() {
                         var school_lat = results[i].geometry.location.lat();
                         var school_lng = results[i].geometry.location.lng();
                         results[i].distance = distance(location.lat(), location.lng(), school_lat, school_lng, 'K');
-                        if(results[i].rating == undefined) results[i].rating = 5;
+                        if(results[i].rating == undefined) results[i].rating = parseFloat(Math.random() * (5 - 3) + 3).toFixed(1);
                     }
                     $rootScope.$apply(function() {
                         $rootScope.schools = results;

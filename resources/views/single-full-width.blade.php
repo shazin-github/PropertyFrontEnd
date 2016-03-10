@@ -192,7 +192,7 @@
 						  <div class="table-outer" ng-repeat="school in schools">
 							<div class="table-box ">
 							  <span class="round-number"><% school.rating %></span>
-							  <p class="align-left no-gap">out of 10</p>
+							  <p class="align-left no-gap">out of 5</p>
 							</div>
 							<div class="table-box align-left"><p class="no-gap"><% school.name %></p></div>
 							<div class="table-box"><p class="no-gap"><% school.vicinity %></p></div>
