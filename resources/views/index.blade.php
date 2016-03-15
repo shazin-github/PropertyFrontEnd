@@ -1,8 +1,9 @@
 @extends('layouts.default')
 		
 	@section('content-wrapper')
+		<div ng-controller="searchController">
 		<!-- Properties Map Section -->
-		<section class="properties-map" ng-controller="searchController">
+		<section class="properties-map">
 			<div class="row row-fit">
 				<div class="search-class" ng-class="{ 'hide' : !search }">
 					<form class="submit-form" name="searchMiniForm">
@@ -149,167 +150,50 @@
 			<div class="container">
 				<div class="section-header">
 					<h1>Recent Listed</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec viverra erat. Aenean elit tellus mattis quis maximus et malesuada congue velit</p>
 				</div>
 			</div>
 
 			<div class="listing-items">
 				<div class="row">
-					<div class="col-xs-12 col-md-8 col-lg-6">
+					<div class="col-xs-12 col-md-8 col-lg-6" ng-repeat="property in recent">
 						<div class="listing-item">
 							<div class="item-cover type-1">
 								<div class="cover">
-									<p>Nulla posuere, egestas neque quis, suscipit eros. Vestibulum ut eros neque. Nam viverra maximus neque id convallis.</p>
+									<p><% property.description %></p>
 
-									<a href="single-full-width.html">
+									<a href="property/<% property.id %>">
 										<i class="icon"></i>
 									</a>
 								</div>
-								<img src="img/listing-1.jpg" alt="item cover" />
+								<img src="<% property.image_url %>" alt="item cover" />
 							</div>
 
 							<div class="item-body">
 								<div class="block services">
 									<p class="caption">Services</p>
 									<ul>
-										<li class="bathrooms">Bathrooms: <span>1</span></li>
-										<li class="bedrooms">Bedrooms: <span>2</span></li>
-										<li class="area">Area: <span>100</span></li>
+										<li class="bathrooms">Bathrooms: <span><% property.bathrooms %></span></li>
+										<li class="bedrooms">Bedrooms: <span><% property.bedrooms %></span></li>
+										<li class="area">Area: <span><% property.area %></span></li>
 									</ul>
 								</div>
 
 								<div class="block location-info">
 									<div class="location">
 										<h3>
-											<a href="single-full-width.html">Grand hotel room</a>
+											<a href="single-full-width.html"><% property.title %></a>
 										</h3>
-										<p>LA 325</p>
+										<p><% property.address %></p>
 									</div>
 
 									<div class="price">
-										<p>$450 000 <span>For sale</span></p>
+										<p><% property.price %> <span>For <% property.purpose %></span></p>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 
-					<div class="col-xs-12 col-md-8 col-lg-6">
-						<div class="listing-item">
-							<div class="item-cover type-2">
-								<div class="cover">
-									<p>Nulla posuere, egestas neque quis, suscipit eros. Vestibulum ut eros neque. Nam viverra maximus neque id convallis.</p>
-
-									<a href="single-full-width.html">
-										<i class="icon"></i>
-									</a>
-								</div>
-								<img src="img/listing-2.jpg" alt="item cover" />
-							</div>
-
-							<div class="item-body">
-								<div class="block services">
-									<p class="caption">Services</p>
-									<ul>
-										<li class="bathrooms">Bathrooms: <span>1</span></li>
-										<li class="bedrooms">Bedrooms: <span>2</span></li>
-										<li class="area">Area: <span>100</span></li>
-									</ul>
-								</div>
-
-								<div class="block location-info">
-									<div class="location">
-										<h3>
-											<a href="single-full-width.html">Grand hotel room</a>
-										</h3>
-										<p>LA 325</p>
-									</div>
-
-									<div class="price">
-										<p>$450 000 <span>For sale</span></p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xs-12 col-md-8 col-lg-6">
-						<div class="listing-item">
-							<div class="item-cover type-2">
-								<div class="cover">
-									<p>Nulla posuere, egestas neque quis, suscipit eros. Vestibulum ut eros neque. Nam viverra maximus neque id convallis.</p>
-
-									<a href="single-full-width.html">
-										<i class="icon"></i>
-									</a>
-								</div>
-								<img src="img/listing-3.jpg" alt="item cover" />
-							</div>
-
-							<div class="item-body">
-								<div class="block services">
-									<p class="caption">Services</p>
-									<ul>
-										<li class="bathrooms">Bathrooms: <span>1</span></li>
-										<li class="bedrooms">Bedrooms: <span>2</span></li>
-										<li class="area">Area: <span>100</span></li>
-									</ul>
-								</div>
-
-								<div class="block location-info">
-									<div class="location">
-										<h3>
-											<a href="single-full-width.html">Grand hotel room</a>
-										</h3>
-										<p>LA 325</p>
-									</div>
-
-									<div class="price">
-										<p>$450 000 <span>For sale</span></p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xs-12 col-md-8 col-lg-6">
-						<div class="listing-item">
-							<div class="item-cover type-2">
-								<div class="cover">
-									<p>Nulla posuere, egestas neque quis, suscipit eros. Vestibulum ut eros neque. Nam viverra maximus neque id convallis.</p>
-
-									<a href="single-full-width.html">
-										<i class="icon"></i>
-									</a>
-								</div>
-								<img src="img/listing-4.jpg" alt="item cover" />
-							</div>
-
-							<div class="item-body">
-								<div class="block services">
-									<p class="caption">Services</p>
-									<ul>
-										<li class="bathrooms">Bathrooms: <span>1</span></li>
-										<li class="bedrooms">Bedrooms: <span>2</span></li>
-										<li class="area">Area: <span>100</span></li>
-									</ul>
-								</div>
-
-								<div class="block location-info">
-									<div class="location">
-										<h3>
-											<a href="single-full-width.html">Grand hotel room</a>
-										</h3>
-										<p>LA 325</p>
-									</div>
-
-									<div class="price">
-										<p>$450 000 <span>For sale</span></p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</section>
@@ -319,251 +203,52 @@
 			<div class="container">
 				<div class="section-header">
 					<h1>Most viewed</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec viverra erat. Aenean elit tellus mattis quis maximus et malesuada congue velit</p>
 				</div>
-
-				<ul class="most-viewed-carousel most-viewed-items">
-					<li class="item">
-						<div class="most-viewed-item">
-							<div class="item-cover">
-								<div class="cover">
-									<div class="text">
-										<a href="single-full-width.html">Info</a>
-										<p>Nulla posuere, egestas neque quis, suscipit eros. Vestibulum ut eros neque. Nam viverra maximus neque id convallis. In auctor eu quam sit amet</p>
-									</div>
-								</div>
-								<img src="img/most-viewed-1.jpg" alt="item cover" />
-							</div>
-
-							<div class="item-body">
-								<ul class="services">
-									<li><p class="bathrooms">Bathrooms: <span>1</span></p></li>
-									<li><p class="bedrooms">Bedrooms: <span>2</span></p></li>
-									<li><p class="area">Area: <span>100</span></p></li>
-								</ul>
-
-								<div class="location">
-									<h3>
-										<a href="single-full-width.html">Grand hotel room</a>
-									</h3>
-									<p>LA 325</p>
-
-									<span class="price">$450 000</span>
-								</div>
-							</div>
-						</div>
-
-						<div class="most-viewed-item">
-							<div class="item-cover">
-								<div class="cover">
-									<div class="text">
-										<a href="single-full-width.html">Info</a>
-										<p>Nulla posuere, egestas neque quis, suscipit eros. Vestibulum ut eros neque. Nam viverra maximus neque id convallis. In auctor eu quam sit amet</p>
-									</div>
-								</div>
-								<img src="img/most-viewed-4.jpg" alt="item cover" />
-							</div>
-
-							<div class="item-body">
-								<ul class="services">
-									<li><p class="bathrooms">Bathrooms: <span>1</span></p></li>
-									<li><p class="bedrooms">Bedrooms: <span>2</span></p></li>
-									<li><p class="area">Area: <span>100</span></p></li>
-								</ul>
-
-								<div class="location">
-									<h3>
-										<a href="single-full-width.html">Grand hotel room</a>
-									</h3>
-									<p>LA 325</p>
-
-									<span class="price">$450 000</span>
-								</div>
-							</div>
-						</div>
-					</li>
-
-					<li class="item">
-						<div class="most-viewed-item">
-							<div class="item-cover">
-								<div class="cover">
-									<div class="text">
-										<a href="single-full-width.html">Info</a>
-										<p>Nulla posuere, egestas neque quis, suscipit eros. Vestibulum ut eros neque. Nam viverra maximus neque id convallis. In auctor eu quam sit amet</p>
-									</div>
-								</div>
-								<img src="img/most-viewed-2.jpg" alt="item cover" />
-							</div>
-
-							<div class="item-body">
-								<ul class="services">
-									<li><p class="bathrooms">Bathrooms: <span>1</span></p></li>
-									<li><p class="bedrooms">Bedrooms: <span>2</span></p></li>
-									<li><p class="area">Area: <span>100</span></p></li>
-								</ul>
-
-								<div class="location">
-									<h3>
-										<a href="single-full-width.html">Grand hotel room</a>
-									</h3>
-									<p>LA 325</p>
-
-									<span class="price">$450 000</span>
-								</div>
-							</div>
-						</div>
-
-						<div class="most-viewed-item">
-							<div class="item-cover">
-								<div class="cover">
-									<div class="text">
-										<a href="single-full-width.html">Info</a>
-										<p>Nulla posuere, egestas neque quis, suscipit eros. Vestibulum ut eros neque. Nam viverra maximus neque id convallis. In auctor eu quam sit amet</p>
-									</div>
-								</div>
-								<img src="img/most-viewed-5.jpg" alt="item cover" />
-							</div>
-
-							<div class="item-body">
-								<ul class="services">
-									<li><p class="bathrooms">Bathrooms: <span>1</span></p></li>
-									<li><p class="bedrooms">Bedrooms: <span>2</span></p></li>
-									<li><p class="area">Area: <span>100</span></p></li>
-								</ul>
-
-								<div class="location">
-									<h3>
-										<a href="single-full-width.html">Grand hotel room</a>
-									</h3>
-									<p>LA 325</p>
-
-									<span class="price">$450 000</span>
-								</div>
-							</div>
-						</div>
-					</li>
-
-					<li class="item">
-						<div class="most-viewed-item">
-							<div class="item-cover">
-								<div class="cover">
-									<div class="text">
-										<a href="single-full-width.html">Info</a>
-										<p>Nulla posuere, egestas neque quis, suscipit eros. Vestibulum ut eros neque. Nam viverra maximus neque id convallis. In auctor eu quam sit amet</p>
-									</div>
-								</div>
-								<img src="img/most-viewed-3.jpg" alt="item cover" />
-							</div>
-
-							<div class="item-body">
-								<ul class="services">
-									<li><p class="bathrooms">Bathrooms: <span>1</span></p></li>
-									<li><p class="bedrooms">Bedrooms: <span>2</span></p></li>
-									<li><p class="area">Area: <span>100</span></p></li>
-								</ul>
-
-								<div class="location">
-									<h3>
-										<a href="single-full-width.html">Grand hotel room</a>
-									</h3>
-									<p>LA 325</p>
-
-									<span class="price">$450 000</span>
-								</div>
-							</div>
-						</div>
-
-						<div class="most-viewed-item">
-							<div class="item-cover">
-								<div class="cover">
-									<div class="text">
-										<a href="single-full-width.html">Info</a>
-										<p>Nulla posuere, egestas neque quis, suscipit eros. Vestibulum ut eros neque. Nam viverra maximus neque id convallis. In auctor eu quam sit amet</p>
-									</div>
-								</div>
-								<img src="img/most-viewed-6.jpg" alt="item cover" />
-							</div>
-
-							<div class="item-body">
-								<ul class="services">
-									<li><p class="bathrooms">Bathrooms: <span>1</span></p></li>
-									<li><p class="bedrooms">Bedrooms: <span>2</span></p></li>
-									<li><p class="area">Area: <span>100</span></p></li>
-								</ul>
-
-								<div class="location">
-									<h3>
-										<a href="single-full-width.html">Grand hotel room</a>
-									</h3>
-									<p>LA 325</p>
-
-									<span class="price">$450 000</span>
-								</div>
-							</div>
-						</div>
-					</li>
-
-					<li class="item">
-						<div class="most-viewed-item">
-							<div class="item-cover">
-								<div class="cover">
-									<div class="text">
-										<a href="single-full-width.html">Info</a>
-										<p>Nulla posuere, egestas neque quis, suscipit eros. Vestibulum ut eros neque. Nam viverra maximus neque id convallis. In auctor eu quam sit amet</p>
-									</div>
-								</div>
-								<img src="img/most-viewed-1.jpg" alt="item cover" />
-							</div>
-
-							<div class="item-body">
-								<ul class="services">
-									<li><p class="bathrooms">Bathrooms: <span>1</span></p></li>
-									<li><p class="bedrooms">Bedrooms: <span>2</span></p></li>
-									<li><p class="area">Area: <span>100</span></p></li>
-								</ul>
-
-								<div class="location">
-									<h3>
-										<a href="single-full-width.html">Grand hotel room</a>
-									</h3>
-									<p>LA 325</p>
-
-									<span class="price">$450 000</span>
-								</div>
-							</div>
-						</div>
-
-						<div class="most-viewed-item">
-							<div class="item-cover">
-								<div class="cover">
-									<div class="text">
-										<a href="single-full-width.html">Info</a>
-										<p>Nulla posuere, egestas neque quis, suscipit eros. Vestibulum ut eros neque. Nam viverra maximus neque id convallis. In auctor eu quam sit amet</p>
-									</div>
-								</div>
-								<img src="img/most-viewed-4.jpg" alt="item cover" />
-							</div>
-
-							<div class="item-body">
-								<ul class="services">
-									<li><p class="bathrooms">Bathrooms: <span>1</span></p></li>
-									<li><p class="bedrooms">Bedrooms: <span>2</span></p></li>
-									<li><p class="area">Area: <span>100</span></p></li>
-								</ul>
-
-								<div class="location">
-									<h3>
-										<a href="single-full-width.html">Grand hotel room</a>
-									</h3>
-									<p>LA 325</p>
-
-									<span class="price">$450 000</span>
-								</div>
-							</div>
-						</div>
-					</li>
-				</ul>
 			</div>
+
+				<div class="listing-items">
+					<div class="row">
+						<div class="col-xs-12 col-md-8 col-lg-6" ng-repeat="property in mostview">
+							<div class="listing-item">
+								<div class="item-cover type-1">
+									<div class="cover">
+										<p><% property.description %></p>
+
+										<a href="property/<% property.id %>">
+											<i class="icon"></i>
+										</a>
+									</div>
+									<img src="<% property.image_url %>" alt="item cover" />
+								</div>
+
+								<div class="item-body">
+									<div class="block services">
+										<p class="caption">Services</p>
+										<ul>
+											<li class="bathrooms">Bathrooms: <span><% property.bathrooms %></span></li>
+											<li class="bedrooms">Bedrooms: <span><% property.bedrooms %></span></li>
+											<li class="area">Area: <span><% property.area %></span></li>
+										</ul>
+									</div>
+
+									<div class="block location-info">
+										<div class="location">
+											<h3>
+												<a href="single-full-width.html"><% property.title %></a>
+											</h3>
+											<p><% property.address %></p>
+										</div>
+
+										<div class="price">
+											<p><% property.price %> <span>For <% property.purpose %></span></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
 		</section>
 
 		<!-- Agents Section -->
@@ -860,4 +545,5 @@
 				</div>
 			</div>
 		</section>
+		</div>
 	@endsection

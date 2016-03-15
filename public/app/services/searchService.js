@@ -57,5 +57,29 @@ define(function() {
                 return deffered.promise;
             });
         };
+
+        this.getRecent = function() {
+            var deffered = $q.defer();
+            return $http.get('property/recent').then(function successCallback(response) {
+                deffered.resolve(response);
+                return deffered.promise;
+
+            }, function errorCallback(response) {
+                deffered.reject(response);
+                return deffered.promise;
+            });
+        };
+
+        this.mostView = function() {
+            var deffered = $q.defer();
+            return $http.get('property/mostview').then(function successCallback(response) {
+                deffered.resolve(response);
+                return deffered.promise;
+
+            }, function errorCallback(response) {
+                deffered.reject(response);
+                return deffered.promise;
+            });
+        };
     }]);
 });

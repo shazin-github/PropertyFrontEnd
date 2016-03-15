@@ -53,6 +53,10 @@ Route::group(['middleware'=>['web']], function(){
 
 	Route::get('property/all', 'propertyController@allProperty');
 
+	Route::get('property/recent', 'propertyController@recentProperty');
+
+	Route::get('property/mostview', 'propertyController@mostviewProperty');
+
 	Route::get('property/userProperty', 'propertyController@userProperty');
 
 	Route::get('property/detail/{id}', 'propertyController@getPropertyDetail');
