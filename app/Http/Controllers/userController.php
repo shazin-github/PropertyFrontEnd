@@ -82,7 +82,21 @@ class userController extends Controller{
 		try{
         	$resp  = $this->guzzle->request('POST', $this->apiUrl.'user', ['form_params'=>$data]);
         } catch(\Exception $e){
+            $response = $e->getResponse();
+
+            $responseBodyAsString = $response->getBody()->getContents();
+
+            $result = json_decode($responseBodyAsString);
+
+            if($result->status_code == 400){
+
+                return Response::json(['success' => false, 'msg' => $this->makeError("Email Already Exist")]);
+
+            }else{
                 return Response::json(['success' => false, 'msg' => $this->makeError("Can't send request")]);
+            }
+
+
        	}
         $result = json_decode($resp->getBody());
 
