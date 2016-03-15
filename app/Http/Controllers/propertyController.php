@@ -126,6 +126,24 @@ class propertyController extends Controller {
         }
     }
 
+    public function addPropertyView($id) {
+        $resp = false;
+        $queryString = "?id=".$id;
+        try {
+            $resp  = $this->guzzle->request('PUT', $this->apiUrl.'property/updateviews'.$queryString);
+            $result = json_decode($resp->getBody());
+        } catch (guzzleException $e) {
+            if ($e->hasResponse()) {
+                $result =  $e->getResponse();
+            }
+        }
+        if($resp && $resp->getStatusCode() == 200 && $result->success == true){
+            return Response::json(['success'=>true, 'data'=> $result->data]);
+        } else {
+            return Response::json(['success'=>false, 'msg'=>'Not Found']);
+        }
+    }
+
     public function userProperty() {
         $resp = false;
         try {

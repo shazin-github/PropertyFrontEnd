@@ -37,5 +37,17 @@ define(function() {
                 return deffered.promise;
             });
         };
+
+        this.addView = function(id) {
+            var deffered = $q.defer();
+            return $http.get('view/' + id).then(function successCallback(response) {
+                deffered.resolve(response);
+                return deffered.promise;
+
+            }, function errorCallback(response) {
+                deffered.reject(response);
+                return deffered.promise;
+            });
+        };
     }]);
 });

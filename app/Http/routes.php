@@ -61,6 +61,8 @@ Route::group(['middleware'=>['web']], function(){
 
 	Route::get('property/detail/{id}', 'propertyController@getPropertyDetail');
 
+	Route::get('property/view/{id}', 'propertyController@addPropertyView');
+
 	Route::get('property/{id}', function ($id) {
 		return view('single-full-width')->with('id', $id);
 	});

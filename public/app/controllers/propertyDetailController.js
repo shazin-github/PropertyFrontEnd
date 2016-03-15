@@ -42,5 +42,6 @@ define(['services/propertyService' ,'services/schoolService'], function() {
             $("#overlay").hide();
         });
         $scope.getProperty;
+        propertyService.addView($scope.id);
     }]);
 });
