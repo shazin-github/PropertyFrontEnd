@@ -53,7 +53,6 @@ class propertyController extends Controller {
     public function searchProperty() {
         $data = $this->request->all();
         $queryString = "?purpose=".$data['purpose']."&bedroom=".$data['bedroom']."&bathroom=".$data['bathroom']."&latitude=".$data['latitude']."&longitude=".$data['longitude'];
-
         $resp = false;
         try {
             $resp  = $this->guzzle->request('GET', $this->apiUrl.'property/livesearch'.$queryString);
@@ -74,6 +73,44 @@ class propertyController extends Controller {
         $resp = false;
         try {
             $resp  = $this->guzzle->request('GET', $this->apiUrl.'property');
+            $result = json_decode($resp->getBody());
+            //echo $resp->getBody();
+        } catch (guzzleException $e) {
+            // var_dump($e);
+            if ($e->hasResponse()) {
+                $result =  $e->getResponse();
+            }
+        }
+        if($resp && $resp->getStatusCode() == 200 && $result->success == true){
+            return Response::json(['success'=>true, 'data'=> $result->data]);
+        } else {
+            return Response::json(['success'=>false, 'msg'=>'Not Found']);
+        }
+    }
+
+    public function recentProperty() {
+        $resp = false;
+        try {
+            $resp  = $this->guzzle->request('GET', $this->apiUrl.'property/recentproperty');
+            $result = json_decode($resp->getBody());
+            //echo $resp->getBody();
+        } catch (guzzleException $e) {
+            // var_dump($e);
+            if ($e->hasResponse()) {
+                $result =  $e->getResponse();
+            }
+        }
+        if($resp && $resp->getStatusCode() == 200 && $result->success == true){
+            return Response::json(['success'=>true, 'data'=> $result->data]);
+        } else {
+            return Response::json(['success'=>false, 'msg'=>'Not Found']);
+        }
+    }
+
+    public function mostviewProperty() {
+        $resp = false;
+        try {
+            $resp  = $this->guzzle->request('GET', $this->apiUrl.'property/ShowWithMostViews');
             $result = json_decode($resp->getBody());
             //echo $resp->getBody();
         } catch (guzzleException $e) {
