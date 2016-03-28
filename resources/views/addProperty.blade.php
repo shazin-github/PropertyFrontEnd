@@ -22,153 +22,18 @@
                 </div> -->
 				<input type="text" class="js-input" placeholder="Country" id="country" disabled="true" ng-model="country"/>
 
-				<div class="select-box type-2">
+				<div class="select-box type-2" id="stateSelectBox">
 					<input class="js-input no-select" type="text" required placeholder="State" id="state" ng-model="state" ng-readonly="true" />
-					<ul>
-						<li>Select State</li>
-						<li>Azad Jammu & Kashmir</li>
-						<li>Balochistan</li>
-						<li>Federally Administered Tribal Areas</li>
-						<li>Gilgit-Baltistan</li>
-						<li>Islamabad Capital Territory</li>
-						<li>Khyber Pakhtunkhwa</li>
-						<li>Punjab</li>
-						<li>Sindh</li>
-					</ul>
+					<state-list state="statelist" on-click="setstate(statename)" ></state-list>
+
+
 				</div>
 
-				<div class="select-box type-2">
+				<div class="select-box type-2" id="citySelectBox">
 					<input type="hidden" ng-value="city" />
-					<input class="js-input no-select" type="text" required readonly value="" id="city" placeholder="City" />
-					<ul>
-						<li>Select City</li>
-						<li>Abbottabad</li>
-						<li>Arifwala</li>
-						<li>Astore</li>
-						<li>Attock</li>
-						<li>Awaran</li>
-						<li>Badin</li>
-						<li>Bagh</li>
-						<li>Bahawalnagar</li>
-						<li>Bahawalpur</li>
-						<li>Bannu</li>
-						<li>Bhakkar</li>
-						<li>Bhimber</li>
-						<li>Burewala</li>
-						<li>Chaghi</li>
-						<li>Chakwal</li>
-						<li>Chichawatni</li>
-						<li>Chiniot</li>
-						<li>Chitral</li>
-						<li>Chunian</li>
-						<li>Dadu</li>
-						<li>Daska</li>
-						<li>Depalpur</li>
-						<li>Dera Ghazi Khan</li>
-						<li>Dera Ismail Khan</li>
-						<li>Duniya Pur</li>
-						<li>FATA</li>
-						<li>Faisalabad</li>
-						<li>Fateh Jang</li>
-						<li>Galyat</li>
-						<li>Ghotki</li>
-						<li>Gilgit</li>
-						<li>Gujar Khan</li>
-						<li>Gujranwala</li>
-						<li>Gujrat</li>
-						<li>Gwadar</li>
-						<li>Hafizabad</li>
-						<li>Haripur</li>
-						<li>Haroonabad</li>
-						<li>Hasan Abdal</li>
-						<li>Hub (Hub Chowki)</li>
-						<li>Hunza</li>
-						<li>Hyderabad</li>
-						<li>Islamabad</li>
-						<li>Jacobabad</li>
-						<li>Jauharabad</li>
-						<li>Jhang</li>
-						<li>Jhelum</li>
-						<li>Kaghan</li>
-						<li>Kalat</li>
-						<li>Karachi</li>
-						<li>Karak</li>
-						<li>Kasur</li>
-						<li>Khairpur</li>
-						<li>Khanewal</li>
-						<li>Kharian</li>
-						<li>Khushab</li>
-						<li>Khuzdar</li>
-						<li>Kohat</li>
-						<li>Kot Addu</li>
-						<li>Kotli</li>
-						<li>Lahore</li>
-						<li>Lalamusa</li>
-						<li>Larkana</li>
-						<li>Lasbela</li>
-						<li>Layyah</li>
-						<li>Lodhran</li>
-						<li>Loralai</li>
-						<li>Mailsi</li>
-						<li>Makran</li>
-						<li>Malakand</li>
-						<li>Mandi Bahauddin</li>
-						<li>Mansehra</li>
-						<li>Mardan</li>
-						<li>Matiari</li>
-						<li>Mian Channu</li>
-						<li>Mianwali</li>
-						<li>Mingora</li>
-						<li>Mirpur</li>
-						<li>Mirpur Khas</li>
-						<li>Multan</li>
-						<li>Murree</li>
-						<li>Muzaffarabad</li>
-						<li>Muzaffargarh</li>
-						<li>Nankana Sahib </li>
-						<li>Naran</li>
-						<li>Narowal</li>
-						<li>Nasirabad</li>
-						<li>Naushahro Feroze</li>
-						<li>Nawabshah</li>
-						<li>Neelum</li>
-						<li>Nowshera</li>
-						<li>Okara</li>
-						<li>Pakpattan</li>
-						<li>Peshawar</li>
-						<li>Pir Mahal</li>
-						<li>Quetta</li>
-						<li>Rahim Yar Khan</li>
-						<li>Rajanpur</li>
-						<li>Ratwal</li>
-						<li>Rawalakot</li>
-						<li>Rawalpindi</li>
-						<li>Rohri</li>
-						<li>Sadiqabad</li>
-						<li>Sahiwal</li>
-						<li>Sanghar</li>
-						<li>Sargodha</li>
-						<li>Sehwan</li>
-						<li>Shahdadpur</li>
-						<li>Sheikhupura</li>
-						<li>Shikarpur</li>
-						<li>Sialkot</li>
-						<li>Sibi</li>
-						<li>Skardu</li>
-						<li>Sudhnoti</li>
-						<li>Sukkur</li>
-						<li>Swabi</li>
-						<li>Swat</li>
-						<li>Tando Adam</li>
-						<li>Taxila</li>
-						<li>Thatta</li>
-						<li>Toba Tek Singh</li>
-						<li>Vehari</li>
-						<li>Wah</li>
-						<li>Wazirabad</li>
-						<li>Waziristan</li>
-						<li>Zhob</li>
-					</ul>
+					<input class="js-input no-select" type="text" required id="city" value="" placeholder="City" ng-model="city" ng-readonly="true"/>
+					<city-list  city="citylist" on-click="setCity(cityName)" start="start" current="current"></city-list>
+
 				</div>
 
 				<input type="text" class="js-input" required placeholder="ZipCode" id="zip" ng-model="zip"/>

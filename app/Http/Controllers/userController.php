@@ -10,7 +10,7 @@ use \Storage;
 use \RequestException;
 use GuzzleHttp\Client as Guzzle;
 use GuzzleHttp\ClientException;
-
+use Mail;
 class userController extends Controller{
 	protected $request;
 	protected $guzzle;
@@ -38,6 +38,26 @@ class userController extends Controller{
         try{
         	$resp  = $this->guzzle->request('POST', $this->apiUrl.'user/userAuthenticate', ['form_params'=>$data]);
         } catch(\Exception $e){
+
+			$response = $e->getResponse();
+
+			$responseBodyAsString = $response->getBody()->getContents();
+
+			$result = json_decode($responseBodyAsString);
+
+
+
+			if($result->status_code == 401){
+
+				return Response::json(['success'=>false, 'msg'=>"Email Verification Is Requried ! Please Check Your Email."]);
+
+			}else{
+				if($result->status_code == 404){
+					return Response::json(['success'=>false, 'msg'=>"Invalid Email & Password"]);
+				}
+			}
+
+
        		return Response::json(['success'=>false, 'msg'=>"Can't send request"]);
        	}
 
@@ -63,7 +83,7 @@ class userController extends Controller{
         }
     }
 
-    public function postRegister() {
+    public function postRegister(Mail $mailer) {
         $data = $this->request->all();
         $validator = Validator::make($data,[
         	'firstname' => 'required',
@@ -71,13 +91,16 @@ class userController extends Controller{
             'password' => 'required|min:6',
             'confirmPassword' => 'required|same:password',
         ]);
-
+		//dd($mail);
         if ($validator->fails()) {
         	$msg = $validator->messages()->toJson();
             return Response::json(['success'=>false, 'msg'=>array($msg)]);
         }
 		
 		unset($data['confirmPassword']);
+		$data['confirmation_code'] = str_random(8);
+
+		$data['image_url'] = 'images/profileImages/default_avatar_large.jpeg'; // set a default profile image
 		$resp = null;
 		try{
         	$resp  = $this->guzzle->request('POST', $this->apiUrl.'user', ['form_params'=>$data]);
@@ -101,9 +124,13 @@ class userController extends Controller{
         $result = json_decode($resp->getBody());
 
         if($resp->getStatusCode() == 200){
-        	session(['username' => $data['email']]);
-        	session(['firstname' => $data['firstname']]);
-        	session(['user_id' => $result->data]);
+
+			$mailer::send('confirm' , ['confirmation_code'=> $data['confirmation_code'],'id'=>$result->data] , function($message ) use ($data){
+					$message->from('broker.test043@gmail.com' , 'Broker Test')
+						->to($data['email'])
+						->subject('Test Email');
+			} );
+
             return Response::json(['success'=>true, 'msg'=>'Registration successful']);
         } else {
         	if($result->status_code == 400)
@@ -133,6 +160,13 @@ class userController extends Controller{
 		try{
        		$resp  = $this->guzzle->request('PUT', $this->apiUrl.'user', ['form_params'=>$data]);
        	} catch(\Exception $e){
+//			$response = $e->getResponse();
+//
+//			$responseBodyAsString = $response->getBody()->getContents();
+//
+//			$result = json_decode($responseBodyAsString);
+
+
        		return Response::json(['success'=>false, 'msg'=>$this->makeError('Update failed')]);
        	}
         
@@ -142,6 +176,7 @@ class userController extends Controller{
         	session(['firstname' => $data['firstname']]);
             return Response::json(['success'=>true, 'msg'=>'Profile updated successfully']);
         } else {
+
             return Response::json(['success'=>false, 'msg'=>$this->makeError('Update failed')]);
         }
     }
@@ -157,6 +192,8 @@ class userController extends Controller{
         $result = json_decode($resp->getBody());
                 
         if($resp->getStatusCode() == 200){
+
+			session(['image' => $result->data[0]->image_url]);
             return Response::json(['success'=>true, 'msg'=>$result->data[0]]);
         } else {
         	return Response::json(['success'=>false, 'msg'=>$this->makeError('User not found')]);
@@ -183,7 +220,7 @@ class userController extends Controller{
 			}
 			$type = explode('/', $f->getMimeType())[1];
 			$dr = DIRECTORY_SEPARATOR;
-			$path = 'images'.$dr.'profileImages'.$dr.'User_'.session('user_id').'.'.$type;
+			$path = 'images'.$dr.'profileImages'.$dr.'User_'.time().'_'.session('user_id').'.'.$type;
 			
 			$file = file_get_contents($f->getRealPath());
 			$mkfile = file_put_contents(storage_path($path), $file);
@@ -196,6 +233,43 @@ class userController extends Controller{
 		return Response::json(['success'=>false, 'error'=>'Picture not found']);
 	}
 
+	public function confirmUser($confirmCode, $user_id){
+
+		$data['confirmation_code'] = $confirmCode ;
+		$data['id'] = $user_id;
+
+		try{
+			$resp  = $this->guzzle->request('GET', $this->apiUrl.'user/confirmCode?confirmation_code='.$confirmCode.'&id='.$user_id);
+		} catch(\Exception $e){
+			$response = $e->getResponse();
+
+			$responseBodyAsString = $response->getBody()->getContents();
+
+			$result = json_decode($responseBodyAsString);
+
+			if($result->status_code == 404){
+
+				return redirect('404');
+
+			}
+
+		}
+		$result = json_decode($resp->getBody());
+
+		if($resp->getStatusCode() == 200){
+
+			session(['image' => $result->data[0]->image_url]);
+       	session(['username' => $result->data[0]->email]);
+	       	session(['firstname' => $result->data[0]->firstname]);
+			session(['user_id' => $result->data[0]->id]);
+			return redirect('/my-profile');
+		} else {
+			return redirect('404');
+		}
+
+
+	}
+
     public static function makeError($msg){
 		$error = [
 					'field_name'=>[$msg] 
@@ -203,4 +277,5 @@ class userController extends Controller{
 		$error = json_encode($error);		
 		return array($error);
 	}
+
 }

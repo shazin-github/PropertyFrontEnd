@@ -12,6 +12,8 @@ use App\Helpers\Helper;
 use GuzzleHttp\Client as Guzzle;
 use GuzzleHttp\Exception\RequestException as guzzleException;
 use \Storage;
+use App\http\utilities\city;
+use App\http\utilities\states;
 
 class propertyController extends Controller {
     protected $request;
@@ -213,5 +215,26 @@ class propertyController extends Controller {
         $path = 'images'.$dr.'propertyImages'.$dr.$id;
             $file = file_get_contents(storage_path($path));
             return response($file, 200)->header('Content-Type', 'image/jpeg');
+    }
+    public function getCity(){
+        $city_List = city::all();
+        return Response::json(['success'=>true, 'data'=> $city_List]);
+    }
+    public function cityTemplate(){
+        return view('directive/citytemplate');
+    }
+
+    public function stateTemplate(){
+        return view('directive/statetemplate');
+    }
+
+    public function getstate(){
+        $state_List = states::all();
+        return Response::json(['success'=>true, 'data'=> $state_List]);
+    }
+
+    public function addresstemplate(){
+        //dd('there');
+        return view('directive/addresstemplate');
     }
 }

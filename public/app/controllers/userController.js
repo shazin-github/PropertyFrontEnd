@@ -36,7 +36,7 @@ define(['services/userService'], function() {
         		$('#overlay').hide();
 	        	if(resp.data.success){
 	        		echoSuccess('register-form', resp.data.msg);
-	        		location.href= 'my-profile';
+	        		location.href= '/verification';
 	        	}
 	        	else{
 	        		$scope.registerErrors = resp.data.msg;
@@ -52,6 +52,7 @@ define(['services/userService'], function() {
         		$('#overlay').hide();
         		$scope.user = resp.data.msg;
                 if($scope.user.image_url != ''){
+
                     $scope.showProfileImage = true;
                     $('#profilePicImage').show();
                 }
@@ -69,6 +70,7 @@ define(['services/userService'], function() {
                     alert('Allowed file types are jpeg, jpg and gif');
                 } else {
                     readURL(this, 'profilePicImage');
+
                 }
             });
         }
@@ -82,7 +84,10 @@ define(['services/userService'], function() {
 
             userService.updateProfilePic(form_data).then(function(image_resp){
                 if(image_resp.data.success){
-                    $scope.user.image_url = image_resp.data.image_url;           
+                    $scope.user.image_url = image_resp.data.image_url;
+
+
+
                 }
 
                 userService.updateProfile($scope.user).then(function(profile_resp){

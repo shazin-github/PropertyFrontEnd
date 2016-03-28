@@ -1,7 +1,15 @@
 @extends('layouts.default')
-		
+
+
 	@section('content-wrapper')
-		<div ng-controller="searchController">
+		@if(session()->has('message'))
+			<section class="alert-info" >
+				<div class="alert alert-info">{{session('message')}}</div>
+			</section>
+
+
+		@endif
+		<div ng-app="app" ng-controller="searchController">
 		<!-- Properties Map Section -->
 		<section class="properties-map">
 			<div class="row row-fit">
@@ -51,7 +59,7 @@
 						</div>
 						<div class="search-class" ng-class="{ 'hide' : search }">
 							<form class="submit-form" name="searchForm">
-								<div class="select-box wd-80 pull-left">
+								<div class=" select-box  wd-80 pull-left">
 									<input class="filter-box-input js-input no-select drop-wd" type="text" id="purpose" readonly value="" placeholder="Buy" />
 									<ul>
 										<li>Rent</li>

@@ -14,6 +14,46 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
             $scope.mostview = "";
 
             $scope.search = false;
+
+            $scope.initiate = function() {
+                console.log('test');
+                jQuery('.select-box').each(function (index) {
+                    var selectBox = jQuery(this),
+                        current = index;
+
+
+                    selectBox.find('input').on('click', function () {
+                        selectBox.find('ul').slideToggle(150);
+                        selectBox.toggleClass('open');
+
+                        jQuery('.select-box').each(function (index) {
+                            if (index != current) {
+                                jQuery(this).find('ul').slideUp(150);
+                                jQuery(this).removeClass('open');
+                            }
+                        });
+                    });
+
+                    selectBox.find('ul li').on('click', function () {
+                        selectBox.find('input').attr('value', jQuery(this).text());
+                        selectBox.find('ul').slideToggle(150);
+                        selectBox.toggleClass('open');
+                        selectBox.find('input').addClass('has-value');
+                    });
+
+                    jQuery(document).on('click', function () {
+                        selectBox.removeClass('open');
+                        selectBox.find('ul').slideUp(150);
+                    });
+
+                    selectBox.on('click', function (e) {
+                        e.stopPropagation();
+                    });
+                });
+
+            }
+
+            $scope.initiate();
         //map_center = geolocatorService.geoLocate(map, $scope);
             /*$("#overlay").show();
             searchService.getSearchAll().then(function(response) {
@@ -84,5 +124,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                 }
             }, function(response) {
             });
+
+
     }]);
 });

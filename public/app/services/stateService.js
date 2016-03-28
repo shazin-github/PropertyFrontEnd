@@ -1,9 +1,9 @@
 define(function() {
     var coreModule = angular.module('coreModule');
-    coreModule.service('cityService', function($http, $q) {
-        this.getcity = function(){
+    coreModule.service('stateService', function($http, $q) {
+        this.getstate = function(){
             var deferred = $q.defer();
-            $http.get("property/getCity").then(function(res){
+            $http.get("property/getstate").then(function(res){
                 deferred.resolve(res);
             },function(error){
                 deferred.reject(error);

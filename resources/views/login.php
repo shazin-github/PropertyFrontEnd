@@ -3,7 +3,7 @@
 				<div id="success_alert" class="alert alert-success" role="alert"></div>
 				<div class="login-form" id="login-popup">
 					<div class="brand-wrapper">
-						<img src="img/brand.png" alt="login brand" />
+						<img src="/img/brand.png" alt="login brand" />
 					</div>
 
 					<form id="login-form" ng-app="app" ng-controller="userController" ng-submit="login()">

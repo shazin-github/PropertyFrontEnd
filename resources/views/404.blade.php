@@ -6,7 +6,7 @@
 			<div class="container">
 				<div class="heading">
 					<span class="heading-404">404</span>
-					<img class="image-404" src="img/404.png" alt="404 image" />
+					<img class="image-404" src="{{ url('img/404.png') }}" alt="404 image" />
 					<p class="sub-title">Page not found</p>
 				</div>
 

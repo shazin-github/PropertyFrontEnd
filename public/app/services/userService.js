@@ -11,15 +11,15 @@ define(function() {
       //   }
 
       	this.login = function(data){
-        	return $http.post("user/login", data);
+        	return $http.post("/user/login", data);
         }
 
         this.logout = function(){
-        	return $http.get("user/logout");
+        	return $http.get("/user/logout");
         }
 
         this.register = function(data){
-        	return $http.post("user/register", data);
+        	return $http.post("/user/register", data);
         }
 
         this.getProfile = function(){

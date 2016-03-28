@@ -9,7 +9,6 @@ var teslaThemes = {
 		this.priceSlider();
 		this.inputHasValue();
 		this.numbersOnly();
-		this.selectBox();
 		this.googleMaps();
 		this.owlInit();
 		this.marqueeInit();
@@ -124,40 +123,7 @@ var teslaThemes = {
 		});
 	},
 
-	selectBox: function () {
-		jQuery('.select-box').each(function (index) {
-			var selectBox = jQuery(this),
-				current = index;
 
-			selectBox.find('input').on('click', function () {
-				selectBox.find('ul').slideToggle(150);
-				selectBox.toggleClass('open');
-
-				jQuery('.select-box').each(function (index) {
-					if (index != current) {
-						jQuery(this).find('ul').slideUp(150);
-						jQuery(this).removeClass('open');
-					}
-				});
-			});
-
-			selectBox.find('ul li').on('click', function () {
-				selectBox.find('input').attr('value', jQuery(this).text());
-				selectBox.find('ul').slideToggle(150);
-				selectBox.toggleClass('open');
-				selectBox.find('input').addClass('has-value');
-			});
-
-			jQuery(document).on('click', function () {
-				selectBox.removeClass('open');
-				selectBox.find('ul').slideUp(150);
-			});
-
-			selectBox.on('click', function (e) {
-				e.stopPropagation();
-			});
-		});
-	},
 
 	googleMaps: function () {
 		if (jQuery('#map-canvas').length) {

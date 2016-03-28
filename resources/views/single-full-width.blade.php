@@ -5,7 +5,7 @@
 	<div class="row no-gap">
 		<input type="hidden" name="property_id" id="property_id" value="{!! $id !!}" />
 		<div class="col-md-8 col-lg-8 no-pad">
-			<div class="imgdiv"><img src="<% image_url %>" ></div>
+			<div class="imgdiv"><img src="{{ url('<% image_url %>') }}" ></div>
 		</div>
 		<div class="col-md-16 col-lg-16 no-pad">
 		<div class="event-rht">

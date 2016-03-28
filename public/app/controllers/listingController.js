@@ -8,5 +8,8 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
         $scope.searchProperty = function() {
             searchService.getSearch()
         }
+
+
+
     }]);
 });

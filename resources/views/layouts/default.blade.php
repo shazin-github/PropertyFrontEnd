@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     <!-- Style CSS -->
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="{{URL::to('css/owl-carousel.css')}}" />
     <link rel="stylesheet" href="{{URL::to('css/bootstrap.css')}}" />
@@ -22,6 +23,26 @@
     <link rel="stylesheet" href="{{URL::to('css/screen.css')}}" />
 	<link rel="stylesheet" href="{{URL::to('css/custom.css')}}" />
     <link rel='stylesheet' href='{{URL::to('css/unite-gallery.css')}}' type='text/css' />
+    <style>
+        .verification-heading {
+            display: block;
+            color: #086fb5;
+            max-width: 363px;
+            font-size: 31px;
+            line-height: 1em;
+            font-weight: 500;
+            padding-bottom: 7px;
+            margin: 0 0 10px;
+            border-bottom: 3px solid #086fb5;
+        }
+        .verification-body {
+            margin: 0 0 45px;
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.5em;
+        }
+    </style>
 </head>
 <body data-smooth-scroll="on"> <!-- id="front-page" -->
   <div id="overlay">
@@ -62,6 +83,7 @@
                 @yield('content-wrapper')
             @else
                 @include('login')
+
                 @yield('content-wrapper')
             @endif
         </div>
@@ -69,6 +91,7 @@
         @include('footer')
     </div>
 <!-- Scripts -->
+
 <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
 <script src="{{URL::to('js/infobox.js')}}"></script>
 <script src="{{URL::to('js/jquery.js')}}"></script>

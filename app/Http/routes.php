@@ -36,7 +36,18 @@ Route::group(['middleware'=>['web']], function(){
 	Route::get('myProperty', function () {
 		return view('myProperty');
 	});
+	Route::get('confirm' , function(){
+		return view('confirm');
+	});
+	Route::get('confirm/{confirmCode}/{user_id}' , 'userController@confirmUser');
+	Route::get('verification' , function(){
 
+		if(session('user_id')){
+			return redirect('/');
+		}
+
+		return view('verification');
+	});
 	Route::get('/search', function () {
 		return view('search');
 	});
@@ -62,6 +73,16 @@ Route::group(['middleware'=>['web']], function(){
 	Route::get('property/detail/{id}', 'propertyController@getPropertyDetail');
 
 	Route::get('property/view/{id}', 'propertyController@addPropertyView');
+
+	Route::get('property/getCity' , 'propertyController@getCity');
+
+	Route::get('property/citytemplate','propertyController@cityTemplate');
+
+	Route::get('property/getstate','propertyController@getstate');
+
+	Route::get('property/statetemplate','propertyController@stateTemplate');
+
+	Route::get('property/addresstemplate' , 'propertyController@addresstemplate');
 
 	Route::get('property/{id}', function ($id) {
 		return view('single-full-width')->with('id', $id);
