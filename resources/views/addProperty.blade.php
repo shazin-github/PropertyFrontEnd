@@ -34,11 +34,13 @@
 					<input class="js-input no-select" type="text" required id="city" value="" placeholder="City" ng-model="city" ng-readonly="true"/>
 					<city-list  city="citylist" on-click="setCity(cityName)" start="start" current="current"></city-list>
 
+
+
 				</div>
 
-				<input type="text" class="js-input" required placeholder="ZipCode" id="zip" ng-model="zip"/>
+				{{--<input type="text" class="js-input" required placeholder="Address (street/ house/ ap.)" ng-init="addNewLocation()" id="address" ng-model="address"/>--}}
 
-				<input type="text" class="js-input" required placeholder="Address (street/ house/ ap.)" id="address" ng-model="address"/>
+				<input type="text" class="js-input" id="addresss" placeholder="Address (street/ house/ ap.)"  ng-autocomplete ng-model="result1" />
 
 				<div class="row row-fit-10">
 					<div class="col-sm-12">

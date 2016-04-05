@@ -2,13 +2,13 @@
 
 
 	@section('content-wrapper')
-		@if(session()->has('message'))
-			<section class="alert-info" >
-				<div class="alert alert-info">{{session('message')}}</div>
-			</section>
+		{{--@if(session()->has('message'))--}}
+			{{--<section class="alert-info" >--}}
+				{{--<div class="alert alert-info">{{session('message')}}</div>--}}
+			{{--</section>--}}
 
 
-		@endif
+		{{--@endif--}}
 		<div ng-app="app" ng-controller="searchController">
 		<!-- Properties Map Section -->
 		<section class="properties-map">
@@ -91,13 +91,13 @@
 
 					<div class="home-list-ht" ng-class="{ 'hide' : !search }">
 						<div class="listing-style" ng-repeat="list in listings">
-							<div class="list-property">
+							<div class="list-property" >
 								<div class="cover list-img">
 									<a href="property/<% list.property_id %>">
-										<img alt="list property cover" src="<% list.image_url %>">
+										<img alt="list property cover" src="<% list.image_url %>" >
 									</a>
 								</div>
-								<div class="list-content">
+								<div class="list-content" ng-mouseover="changemarkertest(list)" ng-mouseleave="resetmarkertest()" >
 									<div class="property-header">
 										<p class="price">$250 <span class="type"><% list.purpose %></span></p>
 										<h2><a href="property/<% list.property_id %>"><% list.title %></a></h2>

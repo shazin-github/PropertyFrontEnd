@@ -6,7 +6,9 @@
 }
 
 .feature-util-hide {
-    display: none;
+    display: none !important;
+    hidden:true !important;
+
 }
 
 .feature-util-show {

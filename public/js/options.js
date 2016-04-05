@@ -24,7 +24,7 @@ var teslaThemes = {
 		this.bxSliderInit();
 		this.featuredVideo();
 		this.lightBox();
-		this.addNewLocation();
+		//this.addNewLocation();
 		this.stickySidebar();
 	},
 
@@ -730,10 +730,13 @@ var teslaThemes = {
 
 			var address = document.getElementById('address');
 
+
+
 			var autocomplete_adr = new google.maps.places.Autocomplete(address, adr_options);
 
 			autocomplete_adr.addListener('place_changed', function() {
 
+			console.log(autocomplete_adr);
 				var place = autocomplete_adr.getPlace();
 				if (!place.geometry) {
 					$("#address").val("");
@@ -746,6 +749,8 @@ var teslaThemes = {
 				map.setZoom(17);
 				$("#latitude").val(place.geometry.location.lat());
 				$("#longitude").val(place.geometry.location.lng());
+
+				console.log($("#latitude").val());
 			});
 
 

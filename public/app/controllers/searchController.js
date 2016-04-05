@@ -71,12 +71,16 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
         $scope.searchProperty = function() {
             $('#overlay').show();
             searchService.getSearch().then(function(response) {
+
+
                 if(response.data.success) {
                     var prop_data = response.data.data;
                         $scope.listings = prop_data;
                         $scope.search = true;
 
                     markerService.getMarker(prop_data, map);
+
+
 
                 } else {
                     $('#overlay').hide();
@@ -86,6 +90,28 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
             }, function(response) {
             });
         }
+
+            $scope.changemarkertest = function(data){
+
+                var d_m = {
+                    'id':data.id,
+                    'latitude':data.latitude,
+                    'longitude':data.longitude
+                };
+
+                var prop_data = $scope.listings;
+
+                var u_map = map;
+
+                markerService.updateMarker(prop_data, u_map , d_m);
+            }
+
+            $scope.resetmarkertest = function(){
+
+                var prop_data = $scope.listings;
+                markerService.getMarker(prop_data, map);
+
+            }
 
             $scope.searchPropertyMini = function() {
                 $('#overlay').show();

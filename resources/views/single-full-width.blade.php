@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content-wrapper')
+
 	<!-- Single Property Container -->
 	<section class="single-property-container" ng-controller="propertyDetailController">
 	<div class="row no-gap">
@@ -171,10 +172,10 @@
 							<li>Price: <% price %></li>
 							<li><% bedroom %> Bedroom</li>
 							<li><% bathroom %> Bathroom</li>
-							<li ng-class="park ? '' : 'feature-util-hide'">Parking</li>
-							<li ng-class="ac ? '' : 'feature-util-hide'">Air Condition</li>
-							<li ng-class="swim ? '' : 'feature-util-hide'">Swimming Pool</li>
-							<li ng-class="balcony ? '' : 'feature-util-hide'">Balcony</li>
+							<li ng-class="park!=0 ? ' ' : 'feature-util-hide'">Parking</li>
+							<li ng-class="ac!=0 ? ' ' : 'feature-util-hide'">Air Condition</li>
+							<li ng-class="swim!=0 ? ' ' : 'feature-util-hide'">Swimming Pool</li>
+							<li ng-class="balcony!=0 ? ' ' : 'feature-util-hide'">Balcony</li>
 						  </ul>
 						</div>
 					  </div>

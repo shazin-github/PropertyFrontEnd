@@ -53,6 +53,7 @@
 							<input type="text" class="js-input" placeholder="Twitter" ng-model="user.twitter"/>
 						</div>
 					</div>
+
 				</div>
 			</div>
 

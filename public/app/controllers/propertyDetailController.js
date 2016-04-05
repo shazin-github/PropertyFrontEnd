@@ -13,6 +13,8 @@ define(['services/propertyService' ,'services/schoolService'], function() {
 
         $scope.getProperty = propertyService.getPropertyDetail($scope.id).then(function(response) {
             var prop_data = response.data.data[0];
+
+            console.log(prop_data);
             $scope.image_url = prop_data.image_url;
             $scope.title = prop_data.title;
             $scope.address = prop_data.address;

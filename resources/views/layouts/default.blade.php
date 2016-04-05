@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{URL::to('css/icomoon.css')}}" />
     <link rel="stylesheet" href="{{URL::to('css/screen.css')}}" />
 	<link rel="stylesheet" href="{{URL::to('css/custom.css')}}" />
+    {{--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">--}}
     <link rel='stylesheet' href='{{URL::to('css/unite-gallery.css')}}' type='text/css' />
     <style>
         .verification-heading {
@@ -42,6 +43,8 @@
             font-weight: 500;
             line-height: 1.5em;
         }
+
+
     </style>
 </head>
 <body data-smooth-scroll="on"> <!-- id="front-page" -->
@@ -90,7 +93,6 @@
 
         @include('footer')
     </div>
-<!-- Scripts -->
 
 <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
 <script src="{{URL::to('js/infobox.js')}}"></script>
