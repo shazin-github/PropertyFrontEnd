@@ -33,14 +33,14 @@ define(function() {
         };
         this.updateMarker = function( prop_data , map , d_m  ){
 
-            console.log(this.markers);
+
             var bounds = new google.maps.LatLngBounds();
             for (i in prop_data) {
 
                 if (prop_data[i].latitude != "" && prop_data[i].longitude != "") {
 
                     if ( prop_data[i].id == d_m['id'] ) {
-                        console.log('test markeg');
+
 
                         var latlng = new google.maps.LatLng(prop_data[i].latitude, prop_data[i].longitude);
                         bounds.extend(latlng)
@@ -59,7 +59,7 @@ define(function() {
 
                     this.mark_count++;
                 }else{
-                        console.log('out');
+
                         this.mark_count++;
                     }
             }

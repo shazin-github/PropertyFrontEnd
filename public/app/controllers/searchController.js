@@ -16,7 +16,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
             $scope.search = false;
 
             $scope.initiate = function() {
-                console.log('test');
+
                 jQuery('.select-box').each(function (index) {
                     var selectBox = jQuery(this),
                         current = index;
@@ -75,7 +75,17 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
 
                 if(response.data.success) {
                     var prop_data = response.data.data;
-                        $scope.listings = prop_data;
+                    $scope.data2 = [];
+
+                    angular.forEach(prop_data, function (value, key) {
+
+                        var obj = value;
+                        var update_p = obj.image_url.split("|");;
+                        obj.image_url = update_p[0];
+                        $scope.data2.push(obj);
+                    });
+                    $scope.listings = $scope.data2;
+                        //$scope.listings = prop_data;
                         $scope.search = true;
 
                     markerService.getMarker(prop_data, map);
@@ -118,7 +128,17 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                 searchService.getSearchMini().then(function(response) {
                     if(response.data.success) {
                         var prop_data = response.data.data;
-                        $scope.listings = prop_data;
+
+                        $scope.data2 = [];
+
+                        angular.forEach(prop_data, function (value, key) {
+
+                            var obj = value;
+                            var update_p = obj.image_url.split("|");;
+                            obj.image_url = update_p[0];
+                            $scope.data2.push(obj);
+                        });
+                        $scope.listings = $scope.data2;
                         searchService.setMini();
                         markerService.getMarker(prop_data, map);
 
@@ -134,7 +154,17 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
             searchService.getRecent().then(function(response) {
                 if(response.data.success) {
                     var prop_data = response.data.data;
-                    $scope.recent = prop_data;
+                    $scope.data2 = [];
+                    console.log(prop_data);
+                    angular.forEach(prop_data, function (value, key) {
+                        var obj = value;
+                        var update_p = obj.image_url.split("|");
+                        obj.image_url = update_p[0];
+                        $scope.data2.push(obj);
+                    });
+                   // var pho_json = angular.fromJson(prop_data.image_url);
+
+                    $scope.recent = $scope.data2;
 
                 } else {
                 }
@@ -144,7 +174,17 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
             searchService.mostView().then(function(response) {
                 if(response.data.success) {
                     var prop_data = response.data.data;
-                    $scope.mostview = prop_data;
+                    $scope.data2 = [];
+
+                    angular.forEach(prop_data, function (value, key) {
+
+                        var obj = value;
+                        var update_p = obj.image_url.split("|");;
+                        obj.image_url = update_p[0];
+                        $scope.data2.push(obj);
+                    });
+
+                    $scope.mostview =  $scope.data2;
 
                 } else {
                 }

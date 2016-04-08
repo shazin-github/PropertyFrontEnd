@@ -239,16 +239,189 @@ define([
             }
         };
     });
-    coreModule.controller('addPropertyController', ['$scope', 'locationService' ,'featureService', 'propertyService',  'addPropertyService','cityService','stateService', function($scope, locationService, featureService, propertyService, addPropertyService ,cityService ,stateService) {
+
+coreModule.directive('image', function($q) {
+    'use strict'
+
+    var URL = window.URL || window.webkitURL;
+
+    var getResizeArea = function () {
+        var resizeAreaId = 'fileupload-resize-area';
+
+        var resizeArea = document.getElementById(resizeAreaId);
+
+        if (!resizeArea) {
+            resizeArea = document.createElement('canvas');
+            resizeArea.id = resizeAreaId;
+            resizeArea.style.visibility = 'hidden';
+            document.body.appendChild(resizeArea);
+        }
+
+        return resizeArea;
+    }
+
+    var resizeImage = function (origImage, options) {
+        var maxHeight = options.resizeMaxHeight || 300;
+        var maxWidth = options.resizeMaxWidth || 250;
+        var quality = options.resizeQuality || 0.7;
+        var type = options.resizeType || 'image/jpg';
+
+        var canvas = getResizeArea();
+
+        var height = origImage.height;
+        var width = origImage.width;
+
+        // calculate the width and height, constraining the proportions
+        if (width > height) {
+            if (width > maxWidth) {
+                height = Math.round(height *= maxWidth / width);
+                width = maxWidth;
+            }
+        } else {
+            if (height > maxHeight) {
+                width = Math.round(width *= maxHeight / height);
+                height = maxHeight;
+            }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        //draw image on canvas
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(origImage, 0, 0, width, height);
+
+        // get the data from canvas as 70% jpg (or specified type).
+        return canvas.toDataURL(type, quality);
+    };
+
+    var createImage = function(url, callback) {
+        var image = new Image();
+        image.onload = function() {
+            callback(image);
+        };
+        image.src = url;
+    };
+
+    var fileToDataURL = function (file) {
+        var deferred = $q.defer();
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            deferred.resolve(e.target.result);
+        };
+        reader.readAsDataURL(file);
+        return deferred.promise;
+    };
+
+
+    return {
+        restrict: 'A',
+        scope: {
+            image: '=',
+            resizeMaxHeight: '@?',
+            resizeMaxWidth: '@?',
+            resizeQuality: '@?',
+            resizeType: '@?',
+        },
+        link: function postLink(scope, element, attrs, ctrl) {
+
+            var doResizing = function(imageResult, callback) {
+                createImage(imageResult.url, function(image) {
+                    var dataURL = resizeImage(image, scope);
+                    imageResult.resized = {
+                        dataURL: dataURL,
+                        type: dataURL.match(/:(.+\/.+);/)[1],
+                    };
+                    callback(imageResult);
+                });
+            };
+
+            var applyScope = function(imageResult) {
+                scope.$apply(function() {
+                    //console.log(imageResult);
+                    if(attrs.multiple)
+                        scope.image.push(imageResult);
+                    else
+                        scope.image = imageResult;
+                });
+            };
+
+
+            element.bind('change', function (evt) {
+                //when multiple always return an array of images
+                if (attrs.multiple)
+                    scope.image = [];
+
+                var files = evt.target.files;
+                for (var i = 0; i < files.length; i++) {
+                    //create a result object for each file in files
+                    var fsize = files[i].size; //get file size
+                    var ftype = files[i].type; // get file type
+                    var file_size_limit = 60 * 1024 * 1024;
+                    if (fsize > file_size_limit) {
+                        alert('Maximum allowed size is 60 MB');
+                    } else if (!(ftype == 'image/jpeg' || ftype == 'image/jpg' ||  ftype == 'image/gif')) {
+                        alert('Allowed file types are jpeg, jpg and gif');
+                    } else {
+                    var imageResult = {
+                        file: files[i],
+                        url: URL.createObjectURL(files[i])
+                    };
+
+                    fileToDataURL(files[i]).then(function (dataURL) {
+                        imageResult.dataURL = dataURL;
+                    });
+
+                    if (scope.resizeMaxHeight || scope.resizeMaxWidth) { //resize image
+                        doResizing(imageResult, function (imageResult) {
+                            applyScope(imageResult);
+                        });
+                    }
+                    else { //no resizing
+                        applyScope(imageResult);
+                    }
+                }
+            }
+            });
+        }
+    };
+});
+
+
+    coreModule.controller('addPropertyController', ['$scope', 'locationService' ,'featureService', 'propertyService',  'addPropertyService','cityService','stateService', '$q' , function($scope, locationService, featureService, propertyService, addPropertyService ,cityService ,stateService,$q) {
         $scope.country = "Pakistan";
         $scope.citylist = {};
         $scope.statelist = {};
         $scope.start = 0;
         $scope.current = 0;
         $scope.result1 = '';
-
+        $scope.imgURL = [];
         $scope.property_data = {};
 
+
+
+
+        $scope.readURL = function(input, imageField) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#' + imageField).attr('src', e.target.result);
+                    $('#' + imageField).show();
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $scope.fileToDataURL = function (file) {
+
+            var deferred = $q.defer();
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                deferred.resolve(e.target.result);
+            };
+            reader.readAsDataURL(file);
+            return deferred.promise;
+        };
 
         cityService.getcity().then(function(res){
 
@@ -261,34 +434,30 @@ define([
             //console.log($scope.statelist);
         })
 
-        $("#propImages").change(function() {
-            fsize = this.files[0].size; //get file size
-            ftype = $('#propImages')[0].files[0].type; // get file type
-            file_size_limit = 60 * 1024 * 1024;
-            console.log("123");
-            if (fsize > file_size_limit) {
-                alert('Maximum allowed size is 60 MB');
-            } else if(! (ftype == 'image/jpeg' || ftype == 'image/jpg' || ftype == 'image/gif') ) {
-                alert('Allowed file types are jpeg, jpg and gif');
-            } else {
-                readURL(this, 'propertyImage');
-            }
-        });
 
         $scope.addProperty = function() {
 
-            console.log($scope.property_data);
+
             $('#overlay').show();
             form_data= new FormData();
-            file_data = $("#propImages").prop("files")[0];
-            form_data.append("propImages", file_data);
+            file_data = $("#propImages").prop("files");
 
-            propertyService.addImage(form_data).then(function(image_resp){
-                if(image_resp.data.success){
+            console.log(file_data);
+            angular.forEach(file_data, function (value, key) {
+                form_data.append(key, value);
+            });
+
+            console.log(form_data);
+
+            //return;
+
+
+            propertyService.addMImage(form_data).then(function(image_resp){
+                if(image_resp.data.success) {
                     $scope.image_url = image_resp.data.image_url;
                 }
 
-            $scope.address = $("#address").val();
+            $scope.address = $scope.result1;
             $scope.latitude = $("#latitude").val();
             $scope.longitude = $("#longitude").val();
             $scope.city = $("#city").val();

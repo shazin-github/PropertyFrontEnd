@@ -12,6 +12,7 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/dropzone.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="{{URL::to('css/owl-carousel.css')}}" />
     <link rel="stylesheet" href="{{URL::to('css/bootstrap.css')}}" />
@@ -22,6 +23,7 @@
     <link rel="stylesheet" href="{{URL::to('css/icomoon.css')}}" />
     <link rel="stylesheet" href="{{URL::to('css/screen.css')}}" />
 	<link rel="stylesheet" href="{{URL::to('css/custom.css')}}" />
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/flexslider/2.2.2/flexslider.css">
     {{--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">--}}
     <link rel='stylesheet' href='{{URL::to('css/unite-gallery.css')}}' type='text/css' />
     <style>
@@ -43,8 +45,37 @@
             font-weight: 500;
             line-height: 1.5em;
         }
+        .my-table{
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+        }
 
-
+        .photo-gallery{
+            width: 100px;
+            display: inline-block;
+            white-space: nowrap;
+            border: 1px solid black;
+        }
+        .item-cover{
+            min-height: 290px !important;
+        }
+        /*.flexslider{*/
+            /*height: 400px !important;*/
+            /*width: 1000px !important;*/
+            /*float: none !important;*/
+            /*margin: 10px 287px 60px !important;*/
+            /*margin-top: 10px;*/
+            /*margin-right: 287px;*/
+            /*margin-bottom: 60px;*/
+            /*margin-left: 287px;*/
+        /*}*/
+        /*.flex-viewport{*/
+            /*max-height: 400px;*/
+        /*}*/
+        .flex-direction-nav a{
+            height: 50px;
+        }
     </style>
 </head>
 <body data-smooth-scroll="on"> <!-- id="front-page" -->
@@ -110,9 +141,28 @@
 <script src="{{URL::to('js/lightbox.js')}}"></script>
 <script src="{{URL::to('js/options.js')}}"></script>
 <script src="{{URL::to('js/custom.js')}}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/flexslider/2.2.2/jquery.flexslider.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.3/TweenMax.min.js"></script>
 <script type='text/javascript' src='{{URL::to('js/unitegallery.min.js')}}'></script>
 <script type='text/javascript' src='{{URL::to('js/ug-theme-tilesgrid.js')}}'></script>
 <script type="text/javascript" src="{{URL::to('app/lib/requirejs/require.js')}}" data-main="{{URL::to('app/main.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/dropzone.js" type="text/javascript"></script>
+
+<script>
+
+    Dropzone.options.addphotoform = {
+
+        paramName: '',
+
+        dictDefaultMessage: 'Drop photo here to upload',
+
+        maxFilesize: 3,
+
+        acceptedFiles: '.jpg , .jpeg , .png , .bmp ',
+
+    };
+
+</script>
     @yield('custom-scripts')
 </body>
 </html>

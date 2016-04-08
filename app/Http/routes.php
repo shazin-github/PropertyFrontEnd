@@ -60,6 +60,8 @@ Route::group(['middleware'=>['web']], function(){
 
 	Route::post('property/image', 'propertyController@postPropertyPic');
 
+	Route::post('property/M_image', 'propertyController@postM_PropertyPic');
+
 	Route::post('property/search', 'propertyController@searchProperty');
 
 	Route::get('property/all', 'propertyController@allProperty');

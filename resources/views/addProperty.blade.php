@@ -54,16 +54,29 @@
 
 			<div class="col-md-13 col-lg-offset-1 col-lg-12">
 				<div class="photo-upload">
-					<a href="#" class="upload-btn" onclick="$('#propImages').trigger('click');">
-						<i class="icon icon-folder4"></i>
-					</a>
-					<img ng-attr-src="<%user.image_url%>" ng-show="showProfileImage" alt="user photo" id="propertyImage" onclick="$('#propImages').trigger('click');"/><br />
+					{{--<a href="#" class="upload-btn" onclick="$('#propImages').trigger('click');">--}}
+						{{--<i class="icon icon-folder4"></i>--}}
+					{{--</a>--}}
+
+					{{--<img ng-attr-src="<%user.image_url%>" ng-show="showProfileImage" alt="user photo" id="propertyImage" onclick="$('#propImages').trigger('click');"/><br />--}}
+
 					<a class="upload-link" href="#" onclick="$('#propImages').trigger('click');">
 						Add Photos
 					</a>
-					<input type="file" id="propImages" accept="image/*" style="display: none" />
-				</div>
+					<input id="propImages"
+						   type="file"
+						   accept="image/*"
+						   multiple
+						   image="images4"
+						   resize-max-height="100"
+						   resize-max-width="100"
+						   style="display: none"
+						   resize-quality="0.9" />
+					</br>
 
+				</div><br>
+
+				<img ng-repeat="img in images4"  ng-attr-src="<% img.resized.dataURL %>" type="<% img.file.type %>"/>
 				<div class="location-on-map">
 					<div class="map-canvas" id="location-map"></div>
 					<input type="hidden" id="latitude" ng-model="latitude" />
@@ -221,3 +234,9 @@
 		<input class="button theme-button-2" type="submit" value="Submit your property" />
 	</form>
 </div>
+
+@section('custom-scripts')
+
+
+
+@stop

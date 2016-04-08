@@ -22,6 +22,13 @@ define(function() {
             });
         }
 
+        this.addMImage = function(form_data ){
+            return $http.post('property/M_image', form_data, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            });
+        }
+
         this.getUserProperty = function(){
             return $http.get("property/userProperty");
         }

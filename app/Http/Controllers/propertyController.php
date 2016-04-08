@@ -165,6 +165,30 @@ class propertyController extends Controller {
         }
     }
 
+    public function postM_PropertyPic(){
+        $f_photo = $this->request->all();
+        $photo_array = [];
+        foreach ($f_photo as $photo) {
+            $type = explode('/', $photo->getMimeType())[1];
+            $dr = DIRECTORY_SEPARATOR;
+            $path = 'images'.$dr.'propertyImages'.$dr.'User_'.session('user_id').'_'.random_int(1, 9999999).'.'.$type;
+
+            $file = file_get_contents($photo->getRealPath());
+            $mkfile = file_put_contents(storage_path($path), $file);
+            if($mkfile){
+                $photo_array[] = $path;
+            }
+        }
+        if($photo_array){
+            $p_url = implode("|", $photo_array);
+            return Response::json(['success'=>true, 'msg'=>'Picture uploaded succcessfully',
+                'image_url'=>$p_url]);
+        }
+        return Response::json(['success'=>false, 'error'=>'Picture not found']);
+
+
+    }
+
     public function postPropertyPic() {
         if(Input::hasFile('propImages') ) {
             $fileSizeLimit = 60 * 1024 * 1024;
