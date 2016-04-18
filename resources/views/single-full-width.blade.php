@@ -17,8 +17,8 @@
 			</div>
 
 		</div>
-		<div class="col-md-16 col-lg-16 no-pad "  >
-		<div id="thumbWrapper" class=" div no-pad" >
+		<div class="col-md-16 col-lg-16  "  >
+		<div id="thumbWrapper" class="force-overflow scrollbar style-4"  >
 			<ul id="thumbList" >
 				<li ng-repeat="image in images_array" ng-click="setCurrentImage(image)">
 					<img ng-src="{{url('<% image.thumb %>')}}" alt="Test">
