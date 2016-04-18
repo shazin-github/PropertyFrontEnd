@@ -7,122 +7,139 @@
 		<input type="hidden" name="property_id" id="property_id" value="{!! $id !!}" />
 		<div class="col-md-8 col-lg-8 no-pad">
 			<div class="imgdiv">
-				<flex-slider slide="img in image_url" animation="slide" >
-				<li>
-				<img ng-attr-src="{{ url('<% img %>') }}" >
-				</li>
-				</flex-slider>
+
+				<img ng-attr-src="{{ url('<% currentimage.img %>') }}" >
+				{{--<flex-slider slide="img in image_url" animation="slide" >--}}
+					{{--<li>--}}
+						{{--<img ng-attr-src="{{ url('<% img %>') }}" >--}}
+					{{--</li>--}}
+				{{--</flex-slider>--}}
 			</div>
 
 		</div>
-		<div class="col-md-16 col-lg-16 no-pad">
-		<div class="event-rht">
-		<!-- <div id="gallery" style="display:none;">
+		<div class="col-md-16 col-lg-16 no-pad "  >
+		<div id="thumbWrapper" class=" div no-pad" >
+			<ul id="thumbList" >
+				<li ng-repeat="image in images_array" ng-click="setCurrentImage(image)">
+					<img ng-src="{{url('<% image.thumb %>')}}" alt="Test">
 
-			<a href="#">
-			<img alt=""
-				 src="img/most-viewed-1.jpg"
-				 data-image="img/most-viewed-1.jpg"
-				 data-description=""
-				 style="display:none">
-			</a>
+				</li>
+			</ul>
 
-			<a href="#">
-			<img alt=""
-				 src="img/most-viewed-2.jpg"
-				 data-image="img/most-viewed-2.jpg"
-				 data-description=""
-				 style="display:none">
-			</a>
-			<a href="#">
-			<img alt=""
-				 src="img/most-viewed-3.jpg"
-				 data-image="img/most-viewed-3.jpg"
-				 data-description=""
-				 style="display:none">
-			</a>
-			<a href="#">
-			<img alt=""
-				 src="img/most-viewed-4.jpg"
-				 data-image="img/most-viewed-4.jpg"
-				 data-description=""
-				 style="display:none">
-			</a>
-			<a href="#">
-			<img alt=""
-				 src="img/most-viewed-5.jpg"
-				 data-image="img/most-viewed-5.jpg"
-				 data-description=""
-				 style="display:none">
-			</a>
-			<a href="#">
-			<img alt=""
-				 src="img/most-viewed-6.jpg"
-				 data-image="img/most-viewed-6.jpg"
-				 data-description=""
-				 style="display:none">
-			</a>
-			<a href="#">
-			<img alt=""
-				 src="img/most-viewed-1.jpg"
-				 data-image="img/most-viewed-1.jpg"
-				 data-description=""
-				 style="display:none">
-			</a>
-			<a href="#">
-			<img alt=""
-				 src="img/most-viewed-2.jpg"
-				 data-image="img/most-viewed-2.jpg"
-				 data-description=""
-				 style="display:none">
-			</a>
-			<a href="#">
-			<img alt=""
-				 src="img/most-viewed-3.jpg"
-				 data-image="img/most-viewed-3.jpg"
-				 data-description=""
-				 style="display:none">
-			</a>
-			<a href="#">
-			<img alt=""
-				 src="img/most-viewed-4.jpg"
-				 data-image="img/most-viewed-4.jpg"
-				 data-description=""
-				 style="display:none">
-			</a>
-			<a href="#">
-			<img alt=""
-				 src="img/most-viewed-5.jpg"
-				 data-image="img/most-viewed-5.jpg"
-				 data-description=""
-				 style="display:none">
-			</a>
-			<a href="#">
-			<img alt=""
-				 src="img/most-viewed-5.jpg"
-				 data-image="img/most-viewed-5.jpg"
-				 data-description=""
-				 style="display:none">
-			</a>
-			<a href="#">
-			<img alt=""
-				 src="img/most-viewed-5.jpg"
-				 data-image="img/most-viewed-5.jpg"
-				 data-description=""
-				 style="display:none">
-			</a>
-			<a href="#">
-			<img alt=""
-				 src="img/most-viewed-5.jpg"
-				 data-image="img/most-viewed-5.jpg"
-				 data-description=""
-				 style="display:none">
-			</a>
 
-		</div> -->
 		</div>
-		
-	</div>
+		</div>
+		{{--<div class="col-md-4 col-lg-4 no-pad" ng-repeat="img in image_url">--}}
+			{{--//<img ng-attr-src="{{ url('<% img %>') }}" >--}}
+
+	{{--</div>--}}
+		{{--<div class="col-md-16 col-lg-16 no-pad">--}}
+			{{--<div class="event-rht">--}}
+				 {{--<div id="gallery" style="display:none;">--}}
+
+                    {{--<a href="#">--}}
+                    {{--<img alt=""--}}
+                         {{--src="{{url('img/most-viewed-1.jpg')}}"--}}
+                         {{--data-image="{{url('img/most-viewed-1.jpg')}}"--}}
+                         {{--data-description=""--}}
+                         {{--style="display:none">--}}
+                    {{--</a>--}}
+
+                    {{--<a href="#">--}}
+                    {{--<img alt=""--}}
+                         {{--src="{{url('img/most-viewed-2.jpg')}}"--}}
+                         {{--data-image="{{url('img/most-viewed-2.jpg')}}"--}}
+                         {{--data-description=""--}}
+                         {{--style="display:none">--}}
+                    {{--</a>--}}
+                    {{--<a href="#">--}}
+                    {{--<img alt=""--}}
+                         {{--src="{{url('img/most-viewed-3.jpg')}}"--}}
+                         {{--data-image="{{url('img/most-viewed-3.jpg')}}"--}}
+                         {{--data-description=""--}}
+                         {{--style="display:none">--}}
+                    {{--</a>--}}
+                    {{--<a href="#">--}}
+                    {{--<img alt=""--}}
+                         {{--src="{{url('img/most-viewed-4.jpg')}}"--}}
+                         {{--data-image="{{url('img/most-viewed-4.jpg')}}"--}}
+                         {{--data-description=""--}}
+                         {{--style="display:none">--}}
+                    {{--</a>--}}
+                    {{--<a href="#">--}}
+                    {{--<img alt=""--}}
+                         {{--src="{{url('img/most-viewed-5.jpg')}}"--}}
+                         {{--data-image="{{url('img/most-viewed-5.jpg')}}"--}}
+                         {{--data-description=""--}}
+                         {{--style="display:none">--}}
+                    {{--</a>--}}
+                    {{--<a href="#">--}}
+                    {{--<img alt=""--}}
+                         {{--src="{{url('img/most-viewed-6.jpg')}}"--}}
+                         {{--data-image="{{url('img/most-viewed-6.jpg')}}"--}}
+                         {{--data-description=""--}}
+                         {{--style="display:none">--}}
+                    {{--</a>--}}
+                    {{--<a href="#">--}}
+                    {{--<img alt=""--}}
+                         {{--src="{{url('img/most-viewed-1.jpg')}}"--}}
+                         {{--data-image="{{url('img/most-viewed-1.jpg')}}"--}}
+                         {{--data-description=""--}}
+                         {{--style="display:none">--}}
+                    {{--</a>--}}
+                    {{--<a href="#">--}}
+                    {{--<img alt=""--}}
+                         {{--src="{{url('img/most-viewed-2.jpg')}}"--}}
+                         {{--data-image="{{url('img/most-viewed-2.jpg')}}"--}}
+                         {{--data-description=""--}}
+                         {{--style="display:none">--}}
+                    {{--</a>--}}
+                    {{--<a href="#">--}}
+                    {{--<img alt=""--}}
+                         {{--src="{{url('img/most-viewed-3.jpg')}}"--}}
+                         {{--data-image="{{url('img/most-viewed-3.jpg')}}"--}}
+                         {{--data-description=""--}}
+                         {{--style="display:none">--}}
+                    {{--</a>--}}
+                    {{--<a href="#">--}}
+                    {{--<img alt=""--}}
+                         {{--src="{{url('img/most-viewed-4.jpg')}}"--}}
+                         {{--data-image="{{url('img/most-viewed-4.jpg')}}"--}}
+                         {{--data-description=""--}}
+                         {{--style="display:none">--}}
+                    {{--</a>--}}
+                    {{--<a href="#">--}}
+                    {{--<img alt=""--}}
+                         {{--src="{{url('img/most-viewed-5.jpg')}}"--}}
+                         {{--data-image="{{url('img/most-viewed-5.jpg')}}"--}}
+                         {{--data-description=""--}}
+                         {{--style="display:none">--}}
+                    {{--</a>--}}
+					 {{--<a href="#">--}}
+						 {{--<img alt=""--}}
+							  {{--src="{{url('img/most-viewed-5.jpg')}}"--}}
+							  {{--data-image="{{url('img/most-viewed-5.jpg')}}"--}}
+							  {{--data-description=""--}}
+							  {{--style="display:none">--}}
+					 {{--</a>--}}
+					 {{--<a href="#">--}}
+						 {{--<img alt=""--}}
+							  {{--src="{{url('img/most-viewed-5.jpg')}}"--}}
+							  {{--data-image="{{url('img/most-viewed-5.jpg')}}"--}}
+							  {{--data-description=""--}}
+							  {{--style="display:none">--}}
+					 {{--</a>--}}
+					 {{--<a href="#">--}}
+						 {{--<img alt=""--}}
+							  {{--src="{{url('img/most-viewed-5.jpg')}}"--}}
+							  {{--data-image="{{url('img/most-viewed-5.jpg')}}"--}}
+							  {{--data-description=""--}}
+							  {{--style="display:none">--}}
+					 {{--</a>--}}
+                {{--</div>--}}
+			{{--</div>--}}
+
+		{{--</div>--}}
 	</div>
 	<div class="container">
 			<div class="section-header no-icon hide">

@@ -1,6 +1,17 @@
 define(['services/propertyService' ,'services/schoolService'], function() {
     var coreModule = angular.module('coreModule');
 
+    coreModule.filter('range', function() {
+        return function(input, total) {
+            total = parseInt(total);
+            for (var i=0; i<total; i++)
+                input.push(i);
+            return input;
+        };
+    });
+
+
+
     coreModule.directive('flexSlider', [
         '$parse', '$timeout', function($parse, $timeout) {
             return {
@@ -193,12 +204,25 @@ define(['services/propertyService' ,'services/schoolService'], function() {
             styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-40},{"lightness":10}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":10}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":20}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]}]
         }
         var map = new google.maps.Map(document.getElementById('property_map'), mapOptions);
-
+        $scope.setCurrentImage = function(image){
+            $scope.currentimage = image;
+        };
         $scope.getProperty = propertyService.getPropertyDetail($scope.id).then(function(response) {
+            console.log(response);
             var prop_data = response.data.data[0];
 
-            console.log(prop_data);
-            var update_p = prop_data.image_url.split("|");;
+            $scope.images_array = [];
+
+            //console.log(prop_data);
+            var update_p = prop_data.image_url.split("|");
+            angular.forEach(update_p, function(value, key){
+                var imge = {
+                    thumb : value,
+                    img : value
+                }
+                $scope.images_array.push(imge);
+            });
+            $scope.currentimage = _.first($scope.images_array)
             $scope.image_url = update_p;
             $scope.title = prop_data.title;
             $scope.address = prop_data.address;
@@ -218,7 +242,10 @@ define(['services/propertyService' ,'services/schoolService'], function() {
             var marker = new google.maps.Marker({
                 position: new_center,
                 map: map,
-                title: prop_data.address
+                title: prop_data.address,
+                animation: google.maps.Animation.BOUNCE,
+                //icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+
             });
             $scope.schools= "";
             schoolService.getSchools(map, new_center, $scope);

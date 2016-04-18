@@ -10,12 +10,12 @@ define(function() {
                 seller: seller
             };
             return $http.post('property/add', data).then(function successCallback(response) {
-                console.log(response);
+                //console.log(response);
                 deffered.resolve(response);
                 return deffered.promise;
 
             }, function errorCallback(response) {
-                console.log(response);
+                //console.log(response);
                 deffered.reject(response);
                 return deffered.promise;
             });

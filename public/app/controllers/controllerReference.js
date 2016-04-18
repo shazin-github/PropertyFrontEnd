@@ -7,6 +7,8 @@ define(function() {
         'controllers/userController',
         'controllers/searchController',
         'controllers/listingController',
-        'controllers/myPropertyController'
+        'controllers/myPropertyController',
+        'controllers/agentsController',
+        'ngGallery'
     ];
 });

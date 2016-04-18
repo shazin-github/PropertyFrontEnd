@@ -124,7 +124,7 @@ define([
 
                     scope.gPlace = new google.maps.places.Autocomplete(element[0], adr_options);
 
-                    console.log(scope.gPlace);
+                    //console.log(scope.gPlace);
 
 
                 }
@@ -494,7 +494,7 @@ coreModule.directive('image', function($q) {
 
         $scope.initiate = function() {
 
-            console.log('select-box test');
+            //console.log('select-box test');
 
             jQuery('.select-box').each(function (index) {
                 var selectBox = jQuery(this),

@@ -71,7 +71,9 @@
 						   resize-max-height="100"
 						   resize-max-width="100"
 						   style="display: none"
-						   resize-quality="0.9" />
+						   resize-quality="0.9"
+						   ng-model="prop_images"
+					/>
 					</br>
 
 				</div><br>

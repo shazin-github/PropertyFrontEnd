@@ -69,10 +69,21 @@ define(['services/userService'], function() {
                 } else if(! (ftype == 'image/jpeg' || ftype == 'image/jpg' || ftype == 'image/gif') ) {
                     alert('Allowed file types are jpeg, jpg and gif');
                 } else {
-                    readURL(this, 'profilePicImage');
+                    $scope.readURL(this, 'profilePicImage');
 
                 }
             });
+        }
+
+        $scope.readURL = function(input, imageField) {
+            if(input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#'+imageField).attr('src', e.target.result);
+                    $('#'+imageField).show();
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
         }
 
         $scope.updateProfile = function() {

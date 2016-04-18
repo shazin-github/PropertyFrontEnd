@@ -22,7 +22,8 @@
     <link rel="stylesheet" href="{{URL::to('css/nouislider.css')}}" />
     <link rel="stylesheet" href="{{URL::to('css/icomoon.css')}}" />
     <link rel="stylesheet" href="{{URL::to('css/screen.css')}}" />
-	<link rel="stylesheet" href="{{URL::to('css/custom.css')}}" />
+    <link rel="stylesheet" href="{{URL::to('css/custom.css')}}" />
+    <link rel="stylesheet" href="{{URL::to('css/album.css')}}" />
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/flexslider/2.2.2/flexslider.css">
     {{--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">--}}
     <link rel='stylesheet' href='{{URL::to('css/unite-gallery.css')}}' type='text/css' />
@@ -124,7 +125,7 @@
 
         @include('footer')
     </div>
-
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
 <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
 <script src="{{URL::to('js/infobox.js')}}"></script>
 <script src="{{URL::to('js/jquery.js')}}"></script>

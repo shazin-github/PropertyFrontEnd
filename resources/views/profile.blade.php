@@ -25,10 +25,22 @@
 						<i class="icon icon-folder4"></i>
 					</a>
 					<img ng-attr-src="<%user.image_url%>" ng-show="showProfileImage" alt="user photo" id="profilePicImage" onclick="$('#profilePic').trigger('click');"/><br />
+
 					<a class="upload-link" href="#" onclick="$('#profilePic').trigger('click');">
 						Add your photo
 					</a>
-					<input type="file" id="profilePic" style="display: none" />
+
+
+					<input id="profilePic"
+						   type="file"
+						   accept="image/*"
+						   image="image2"
+						   resize-max-height="300"
+						   resize-max-width="250"
+						   resize-quality="0.7"
+						   style="display: none"
+					/>
+
 				</div>
 			</div>
 		</div>

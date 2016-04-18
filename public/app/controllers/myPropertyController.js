@@ -9,7 +9,7 @@ define(['services/propertyService'], function() {
 
                 var prop_data = resp.data.msg;
                 $scope.data2 = [];
-                console.log(prop_data);
+
                 angular.forEach(prop_data, function (value, key) {
                     var obj = value;
                     var update_p = obj.image_url.split("|");;

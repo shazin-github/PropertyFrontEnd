@@ -66,7 +66,8 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
             }, function(response) {
             });*/
         searchAutoService.getAuto();
-            searchAutoService.getAutoMini();
+
+        searchAutoService.getAutoMini();
 
         $scope.searchProperty = function() {
             $('#overlay').show();
@@ -113,7 +114,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
 
                 var u_map = map;
 
-                markerService.updateMarker(prop_data, u_map , d_m);
+                markerService.updateMarker(prop_data, map , d_m);
             }
 
             $scope.resetmarkertest = function(){
@@ -155,7 +156,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                 if(response.data.success) {
                     var prop_data = response.data.data;
                     $scope.data2 = [];
-                    console.log(prop_data);
+                    //console.log(prop_data);
                     angular.forEach(prop_data, function (value, key) {
                         var obj = value;
                         var update_p = obj.image_url.split("|");

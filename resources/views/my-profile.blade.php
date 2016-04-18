@@ -11,6 +11,7 @@
 					<li><a class="profile" href="#profile"><span>My Profile</span></a></li>
 					<li><a class="submit" ng-controller="addPropertyController" ng-click="map_init()"  href="#submit" ><span>Submit new property</span></a></li>
 					<li><a class="properties" href="#properties"><span>My Properties</span></a></li>
+
 				</ul>
 
 				<!-- Body -->
@@ -35,6 +36,7 @@
 								<div class="circle3"></div>
 								<div class="circle4"></div>
 							</div>
+
 						</div>
 					</div>
 
@@ -43,6 +45,8 @@
 					@include('addProperty')
 
 					@include('myProperty')
+
+
 
 				</div>
 			</div>

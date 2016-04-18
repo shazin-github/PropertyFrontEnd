@@ -639,6 +639,7 @@ var teslaThemes = {
 
 			jQuery('.user-account-tabs').tabs({active: 2});
 		});
+
 	},
 
 	bxSliderInit: function () {
