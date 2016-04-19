@@ -29,8 +29,11 @@
 
 		</div>
 		</div>
-		{{--<div class="col-md-4 col-lg-4 no-pad" ng-repeat="img in image_url">--}}
-			{{--//<img ng-attr-src="{{ url('<% img %>') }}" >--}}
+
+
+		{{--<div class="col-md-16 col-lg-16 no-pad" style="float: left;">--}}
+			{{--<ng-gallery images="images_array">--}}
+			{{--</ng-gallery>--}}
 
 	{{--</div>--}}
 		{{--<div class="col-md-16 col-lg-16 no-pad">--}}

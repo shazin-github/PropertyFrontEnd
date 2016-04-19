@@ -9,6 +9,6 @@ define(function() {
         'controllers/listingController',
         'controllers/myPropertyController',
         'controllers/agentsController',
-        'ngGallery'
+
     ];
 });

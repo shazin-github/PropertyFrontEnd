@@ -94,9 +94,18 @@ Route::group(['middleware'=>['web']], function(){
 
 	Route::get('images/propertyImages/{id}', 'propertyController@getPropertyPic');
 
+	Route::get('thumbnail/images/propertyImages/{id}', 'propertyController@getPropertythumPic');
+
 
 });
 
+	Route::get('thumbnail/images/profileImages/{image}', function($image = null) {
+		$dr = DIRECTORY_SEPARATOR;
+		$path = storage_path().$dr.'thumbnail'.$dr.'images'.$dr.'profileImages'.$dr.$image;
+		if (file_exists($path)) {
+			return Response::download($path);
+		}
+	});
 	Route::get('images/profileImages/{image}', function($image = null) {
 		$dr = DIRECTORY_SEPARATOR;
 	    $path = storage_path().$dr.'images'.$dr.'profileImages'.$dr.$image;

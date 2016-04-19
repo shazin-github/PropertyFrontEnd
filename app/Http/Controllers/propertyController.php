@@ -14,6 +14,7 @@ use GuzzleHttp\Exception\RequestException as guzzleException;
 use \Storage;
 use App\http\utilities\city;
 use App\http\utilities\states;
+use Image;
 
 class propertyController extends Controller {
     protected $request;
@@ -171,9 +172,15 @@ class propertyController extends Controller {
         foreach ($f_photo as $photo) {
             $type = explode('/', $photo->getMimeType())[1];
             $dr = DIRECTORY_SEPARATOR;
-            $path = 'images'.$dr.'propertyImages'.$dr.'User_'.session('user_id').'_'.random_int(1, 9999999).'.'.$type;
+            $ran = random_int(1, 9999999);
+            $path = 'images'.$dr.'propertyImages'.$dr.'User_'.session('user_id').'_'.$ran.'.'.$type;
+            $thumb_path = 'thumbnail'.$dr.'images'.$dr.'propertyImages'.$dr.'User_'.session('user_id').'_'.$ran.'.'.$type;
 
             $file = file_get_contents($photo->getRealPath());
+            Image::make($photo->getRealPath())
+                ->fit(200)
+                ->save(storage_path($thumb_path));
+
             $mkfile = file_put_contents(storage_path($path), $file);
             if($mkfile){
                 $photo_array[] = $path;
@@ -204,9 +211,14 @@ class propertyController extends Controller {
             }
             $type = explode('/', $f->getMimeType())[1];
             $dr = DIRECTORY_SEPARATOR;
-            $path = 'images'.$dr.'propertyImages'.$dr.'User_'.session('user_id').'_'.random_int(1, 9999999).'.'.$type;
+            $ran = random_int(1, 9999999);
+            $path = 'images'.$dr.'propertyImages'.$dr.'User_'.session('user_id').'_'.$ran.'.'.$type;
+            $thumb_path = 'thumbnail'.$dr.'images'.$dr.'propertyImages'.$dr.'User_'.session('user_id').'_'.$ran.'.'.$type;
 
             $file = file_get_contents($f->getRealPath());
+            $img = \Image::make($file)
+                ->fit(200);
+            $mkfile_th = file_put_contents(storage_path($thumb_path), $img);
             $mkfile = file_put_contents(storage_path($path), $file);
 
             if($mkfile)
@@ -234,11 +246,18 @@ class propertyController extends Controller {
             return Response::json(['success'=>false, 'msg'=>'Not Found']);
         }
     }
+
     public function getPropertyPic($id) {
         $dr = DIRECTORY_SEPARATOR;
         $path = 'images'.$dr.'propertyImages'.$dr.$id;
             $file = file_get_contents(storage_path($path));
             return response($file, 200)->header('Content-Type', 'image/jpeg');
+    }
+    public function getPropertythumPic($id) {
+        $dr = DIRECTORY_SEPARATOR;
+        $path = 'thumbnail'.$dr.'images'.$dr.'propertyImages'.$dr.$id;
+        $file = file_get_contents(storage_path($path));
+        return response($file, 200)->header('Content-Type', 'image/jpeg');
     }
     public function getCity(){
         $city_List = city::all();

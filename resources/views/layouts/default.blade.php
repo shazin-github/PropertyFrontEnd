@@ -12,6 +12,7 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/dropzone.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="{{URL::to('css/owl-carousel.css')}}" />
