@@ -424,7 +424,9 @@ define(['services/propertyService' ,'services/schoolService'], function() {
         }
         var map = new google.maps.Map(document.getElementById('property_map'), mapOptions);
         $scope.setCurrentImage = function(image){
+            $('#loading').show();
             $scope.currentimage = image;
+            $('#loading').hide();
         };
         $scope.getProperty = propertyService.getPropertyDetail($scope.id).then(function(response) {
             console.log(response);

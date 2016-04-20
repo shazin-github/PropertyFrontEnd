@@ -80,7 +80,7 @@
         }
     </style>
 </head>
-<body data-smooth-scroll="on"> <!-- id="front-page" -->
+<body  data-smooth-scroll="on"> <!-- id="front-page" -->
   <div id="overlay">
     <table width="100%" height="100%">
       <tr><td valign="middle"><img src="{{URL::to('img/rolling.svg')}}" width="80px" height="80px"/><p>Loading</p></td></tr>

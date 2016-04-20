@@ -40,6 +40,17 @@ img#profilePicImage:hover{
   height: 100%;
   text-align: center;
 }
+#loading {
+    position: fixed;
+    z-index: 1000;
+    background-color: #f8f8f8;
+    display: none;
+    opacity: .5;
+    filter: alpha(opacity=75);
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
 /* ---------------------------------------------------------------- */
 .mapClass{height:797px;width: 100%;position:fixed}
 .wd-80{width:80px;}

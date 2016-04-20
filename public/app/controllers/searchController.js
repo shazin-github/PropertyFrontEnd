@@ -15,6 +15,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
 
             $scope.search = false;
 
+
             $scope.initiate = function() {
 
                 jQuery('.select-box').each(function (index) {
@@ -35,25 +36,33 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                     });
 
                     selectBox.find('ul li').on('click', function () {
-                        selectBox.find('input').attr('value', jQuery(this).text());
+                        //console.log(jQuery(this).text());
+
+                        var val = jQuery(this).text();
+                        selectBox.find('input').attr('value' , val);
+
+                        console.log(selectBox.find('input').val());
                         selectBox.find('ul').slideToggle(150);
                         selectBox.toggleClass('open');
                         selectBox.find('input').addClass('has-value');
                     });
 
+
                     jQuery(document).on('click', function () {
                         selectBox.removeClass('open');
+
                         selectBox.find('ul').slideUp(150);
                     });
 
                     selectBox.on('click', function (e) {
+
                         e.stopPropagation();
                     });
                 });
 
             }
 
-            $scope.initiate();
+           // $scope.initiate();
         //map_center = geolocatorService.geoLocate(map, $scope);
             /*$("#overlay").show();
             searchService.getSearchAll().then(function(response) {

@@ -6,7 +6,7 @@
 						<img src="/img/brand.png" alt="login brand" />
 					</div>
 
-					<form id="login-form" ng-app="app" ng-controller="userController" ng-submit="login()">
+					<form id="login-form"  ng-controller="userController" ng-submit="login()">
 						<div class="alert alert-danger" role="alert"><% user.loginErrors %></div>
 						<div id="success_alert" class="alert alert-success" role="alert"></div>
 						<input class="js-input" type="text" placeholder="Email" ng-model="user.email"/>

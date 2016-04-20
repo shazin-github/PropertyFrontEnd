@@ -1,4 +1,4 @@
-<div id="profile" ng-app="app" ng-controller="userController" ng-init="initProfile()">
+<div id="profile"  ng-controller="userController" ng-init="initProfile()">
 	<form class="update-form" id="profileForm" ng-submit="updateProfile()">
 		<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 		<div class="row">

@@ -6,7 +6,13 @@
 	<div class="row no-gap">
 		<input type="hidden" name="property_id" id="property_id" value="{!! $id !!}" />
 		<div class="col-md-8 col-lg-8 no-pad">
-			<div class="imgdiv">
+
+			<div class="imgdiv" >
+				<div id="loading" >
+
+					<img src="{{URL::to('img/rolling.svg')}}" width="80px" height="80px"/><p>Loading</p>
+
+				</div>
 
 				<img ng-attr-src="{{ url('<% currentimage.img %>') }}" >
 				{{--<flex-slider slide="img in image_url" animation="slide" >--}}

@@ -9,7 +9,7 @@
 
 
 		{{--@endif--}}
-		<div ng-app="app" ng-controller="searchController">
+		<div  ng-controller="searchController" ng-init="initiate()" ng-cloak>
 		<!-- Properties Map Section -->
 		<section class="properties-map">
 			<div class="row row-fit">

@@ -1,4 +1,4 @@
-<div id="properties" ng-app="app" ng-controller="myPropertyController" ng-init="initMyProperty()">
+<div id="properties"  ng-controller="myPropertyController" ng-init="initMyProperty()">
 	<div class="row row-fit-10">
 		<div class="col-lg-6 col-md-8 col-sm-12" ng-repeat="p in propertyList">
 			<div class="listing-item">

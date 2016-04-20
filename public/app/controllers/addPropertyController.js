@@ -7,7 +7,7 @@ define([
     'services/stateService',
     ],
     function() {
-    var coreModule = angular.module('coreModule' );
+    var coreModule = angular.module('coreModule');
 
 
 
