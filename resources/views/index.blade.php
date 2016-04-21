@@ -9,7 +9,7 @@
 
 
 		{{--@endif--}}
-		<div  ng-controller="searchController" ng-init="initiate()" >
+		<div  ng-controller="searchController">
 		<!-- Properties Map Section -->
 		<section class="properties-map">
 			<div class="row row-fit">
@@ -155,13 +155,13 @@
 
 		<!-- Listing Section -->
 		<section class="listing-section">
-			<div class="container">
+			<div class="container " ng-cloak="">
 				<div class="section-header">
 					<h1>Recent Listed</h1>
 				</div>
 			</div>
 
-			<div class="listing-items">
+			<div  class="listing-items " ng-cloak="">
 				<div class="row">
 					<div class="col-xs-12 col-md-8 col-lg-6" ng-repeat="property in recent">
 						<div class="listing-item">
@@ -208,13 +208,13 @@
 
 		<!-- Most viewed Section -->
 		<section class="most-viewed-section">
-			<div class="container">
+			<div class="container " ng-cloak="">
 				<div class="section-header">
 					<h1>Most viewed</h1>
 				</div>
 			</div>
 
-				<div class="listing-items">
+				<div class="listing-items " ng-cloak="">
 					<div class="row">
 						<div class="col-xs-12 col-md-8 col-lg-6" ng-repeat="property in mostview">
 							<div class="listing-item">
