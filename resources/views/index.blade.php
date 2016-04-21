@@ -11,7 +11,7 @@
 		<div  ng-controller="searchController" ng-init="initiate()">
 		<!-- Properties Map Section -->
 		<section class="properties-map" ng-cloak="">
-			<div class="row row-fit">
+			<div class="row row-fit"  >
 				<div class="search-class" ng-class="{ 'hide' : !search }"  >
 					<form class="submit-form" name="searchMiniForm" >
 						<div class="select-box wd-80 pull-left" >
@@ -31,7 +31,7 @@
 							</ul>
 						</div>
 						<div class="select-box wd-80 pull-left" >
-							<input class="filter-box-input js-input no-select drop-wd" type="text" id="bathroom-mini" readonly value="" placeholder="Baths" ng-cloak/>
+							<input class="filter-box-input js-input no-select drop-wd" type="text" id="bathroom-mini" readonly value="" placeholder="Baths" />
 							<ul>
 								<li >1</li>
 								<li >2</li>

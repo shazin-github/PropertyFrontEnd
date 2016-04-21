@@ -153,7 +153,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                             $scope.data2.push(obj);
                         });
                         $scope.listings = $scope.data2;
-                        searchService.setMini();
+                        //searchService.setMini();
                         markerService.getMarker(prop_data, map);
 
                     } else {
