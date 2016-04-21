@@ -14,6 +14,19 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
             $scope.mostview = "";
 
             $scope.search = false;
+            $scope.isListingsLoaded = false;
+
+
+            $scope.$on('$viewContentLoaded', function(){
+                //Here your view content is fully loaded
+                console.log('Test');
+                $('#overlay').hide();
+            });
+
+            angular.element(document).ready(function () {
+                console.log('page loading completed');
+            });
+
 
 
             $scope.initiate = function() {
@@ -39,9 +52,9 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                         //console.log(jQuery(this).text());
 
                         var val = jQuery(this).text();
-                        selectBox.find('input').attr('value' , val);
+                        selectBox.find('input').attr('value' ,jQuery(this).text());
 
-                        console.log(selectBox.find('input').val());
+
                         selectBox.find('ul').slideToggle(150);
                         selectBox.toggleClass('open');
                         selectBox.find('input').addClass('has-value');
@@ -62,7 +75,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
 
             }
 
-           // $scope.initiate();
+            $scope.initiate();
         //map_center = geolocatorService.geoLocate(map, $scope);
             /*$("#overlay").show();
             searchService.getSearchAll().then(function(response) {
@@ -96,7 +109,9 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                     });
                     $scope.listings = $scope.data2;
                         //$scope.listings = prop_data;
-                        $scope.search = true;
+                    $scope.search = true;
+
+                    $scope.isListingsLoaded = true;
 
                     markerService.getMarker(prop_data, map);
 

@@ -28,7 +28,13 @@
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/flexslider/2.2.2/flexslider.css">
     {{--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">--}}
     <link rel='stylesheet' href='{{URL::to('css/unite-gallery.css')}}' type='text/css' />
+
     <style>
+
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+
         .verification-heading {
             display: block;
             color: #086fb5;
@@ -81,7 +87,7 @@
     </style>
 </head>
 <body  data-smooth-scroll="on"   > <!-- id="front-page" -->
-  <div id="overlay">
+  <div id="overlay" >
     <table width="100%" height="100%">
       <tr><td valign="middle"><img src="{{URL::to('img/rolling.svg')}}" width="80px" height="80px"/><p>Loading</p></td></tr>
     </table>
@@ -109,12 +115,12 @@
     </div>
 
     <!-- Page Wrapper -->
-    <div id="page" ng-cloak class="ng-cloak">
+    <div id="page "    >
         <!-- Header -->
         @include('header')
 
         <!-- Main Content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper" >
             @if(session('user_id'))
                 @yield('content-wrapper')
             @else

@@ -1,6 +1,5 @@
 @extends('layouts.default')
 
-
 	@section('content-wrapper')
 		{{--@if(session()->has('message'))--}}
 			{{--<section class="alert-info" >--}}
@@ -9,116 +8,116 @@
 
 
 		{{--@endif--}}
-		<div  ng-controller="searchController" ng-init="initiate()">
+		<div  ng-controller="searchController" >
 		<!-- Properties Map Section -->
-		<section class="properties-map"ng-cloak>
-			<div class="row row-fit"ng-cloak>
-				<div class="search-class" ng-class="{ 'hide' : !search }" ng-cloak>
-					<form class="submit-form" name="searchMiniForm" ng-cloak>
-						<div class="select-box wd-80 pull-left" ng-cloak>
-							<input class="filter-box-input js-input no-select drop-wd" type="text" id="purpose-mini" readonly value="" placeholder="Buy" ng-cloak/>
+		<section class="properties-map" ng-cloak="">
+			<div class="row row-fit">
+				<div class="search-class" ng-class="{ 'hide' : !search }" ng-if="isListingsLoaded" >
+					<form class="submit-form" name="searchMiniForm" >
+						<div class="select-box wd-80 pull-left" >
+							<input class="filter-box-input js-input no-select drop-wd" type="text" id="purpose-mini" readonly value="" placeholder="Buy" />
 							<ul>
-								<li ng-cloak>Rent</li>
-								<li ng-cloak>Sale</li>
+								<li >Rent</li>
+								<li >Sale</li>
 							</ul>
 						</div>
-						<input class="filter-box-input js-input no-select search-wd" id="search-mini" type="text" value="" placeholder="Search..." ng-cloak/>
-						<div class="select-box wd-110 pull-left" ng-cloak>
-							<input class="filter-box-input js-input no-select drop-wd" type="text" id="bedroom-mini" readonly value="" placeholder="Bedrooms" ng-cloak/>
+						<input class="filter-box-input js-input no-select search-wd" id="search-mini" type="text" value="" placeholder="Search..." />
+						<div class="select-box wd-110 pull-left">
+							<input class="filter-box-input js-input no-select drop-wd" type="text" id="bedroom-mini" readonly value="" placeholder="Bedrooms" />
 							<ul>
-								<li ng-cloak>1</li>
-								<li ng-cloak>2</li>
-								<li ng-cloak>3</li>
+								<li >1</li>
+								<li >2</li>
+								<li >3</li>
 							</ul>
 						</div>
-						<div class="select-box wd-80 pull-left" ng-cloak>
+						<div class="select-box wd-80 pull-left" >
 							<input class="filter-box-input js-input no-select drop-wd" type="text" id="bathroom-mini" readonly value="" placeholder="Baths" ng-cloak/>
 							<ul>
-								<li ng-cloak>1</li>
-								<li ng-cloak>2</li>
-								<li ng-cloak>3</li>
+								<li >1</li>
+								<li >2</li>
+								<li >3</li>
 							</ul>
 						</div>
-						<input type="hidden" id="search_lat-mini" /> <input type="hidden" id="search_lng-mini" ng-cloak/>
-						<input type="button" class="button theme-button-1 update-properties" value="Search" ng-click="searchPropertyMini()" ng-cloak/>
+						<input type="hidden" id="search_lat-mini" /> <input type="hidden" id="search_lng-mini" />
+						<input type="button" class="button theme-button-1 update-properties" value="Search" ng-click="searchPropertyMini()" />
 					</form>
 				</div>
 				</div>
-			<div class="row row-fit" ng-cloak>
-			<div class="col-md-15 col-lg-14" ng-cloak>
+			<div class="row row-fit" >
+			<div class="col-md-15 col-lg-14" >
 
-				<div id="home_map" class="mapClass" ng-cloak></div>
+				<div id="home_map" class="mapClass"></div>
 				</div>
-				<div class="col-md-9 col-lg-10" ng-cloak>
-					<div class="map-filter-box" ng-class="{ 'hide' : search }" ng-cloak>
-					<div class="search-gap" ng-cloak>
-						<div class="box-caption" ng-cloak>
-							<h4 ng-cloak>Search</h4>
-							<p ng-cloak>Where are you looking?</p>
+				<div class="col-md-9 col-lg-10">
+					<div class="map-filter-box" ng-class="{ 'hide' : search }">
+					<div class="search-gap">
+						<div class="box-caption">
+							<h4>Search</h4>
+							<p>Where are you looking?</p>
 						</div>
 						</div>
-						<div class="search-class" ng-class="{ 'hide' : search }" ng-cloak>
-							<form class="submit-form" name="searchForm" ng-cloak>
-								<div class=" select-box  wd-80 pull-left" ng-cloak>
-									<input class="filter-box-input js-input no-select drop-wd" type="text" id="purpose" readonly value="" placeholder="Buy" ng-cloak/>
+						<div class="search-class" ng-class="{ 'hide' : search }">
+							<form class="submit-form" name="searchForm">
+								<div class=" select-box  wd-80 pull-left">
+									<input class="filter-box-input js-input no-select drop-wd" type="text" id="purpose" readonly value="" placeholder="Buy" />
 									<ul>
-										<li ng-cloak>Rent</li>
-										<li ng-cloak>Sale</li>
+										<li>Rent</li>
+										<li>Sale</li>
 									</ul>
 								</div>
-								<input class="filter-box-input js-input no-select search-wd" id="search" type="text" value="" placeholder="Search..." ng-cloak/>
-								<div class="select-box wd-110 pull-left" ng-cloak>
-									<input class="filter-box-input js-input no-select drop-wd" type="text" id="bedroom" readonly value="" placeholder="Bedrooms" ng-cloak/>
+								<input class="filter-box-input js-input no-select search-wd" id="search" type="text" value="" placeholder="Search..." />
+								<div class="select-box wd-110 pull-left">
+									<input class="filter-box-input js-input no-select drop-wd" type="text" id="bedroom" readonly value="" placeholder="Bedrooms" />
 									<ul>
-										<li ng-cloak>1</li>
-										<li ng-cloak>2</li>
-										<li ng-cloak>3</li>
+										<li>1</li>
+										<li>2</li>
+										<li>3</li>
 									</ul>
 								</div>
-								<div class="select-box wd-80 pull-left" ng-cloak>
-									<input class="filter-box-input js-input no-select drop-wd" type="text" id="bathroom" readonly value="" placeholder="Baths" ng-cloak/>
+								<div class="select-box wd-80 pull-left">
+									<input class="filter-box-input js-input no-select drop-wd" type="text" id="bathroom" readonly value="" placeholder="Baths" />
 									<ul>
-										<li ng-cloak>1</li>
-										<li ng-cloak>2</li>
-										<li ng-cloak>3</li>
+										<li>1</li>
+										<li>2</li>
+										<li>3</li>
 									</ul>
 								</div>
-								<input type="hidden" id="search_lat" /> <input type="hidden" id="search_lng" ng-cloak/>
-								<input type="button" class="button theme-button-1 update-properties" value="Search" ng-click="searchProperty()" ng-cloak/>
+								<input type="hidden" id="search_lat" /> <input type="hidden" id="search_lng" />
+								<input type="button" class="button theme-button-1 update-properties" value="Search" ng-click="searchProperty()" />
 							</form>
 						</div>
 					</div>
 
-					<div class="home-list-ht" ng-class="{ 'hide' : !search }" ng-cloak>
-						<div class="listing-style" ng-repeat="list in listings"ng-cloak >
-							<div class="list-property" ng-cloak>
-								<div class="cover list-img" ng-cloak>
-									<a href="property/<% list.property_id %>" ng-cloak>
-										<img alt="list property cover" src="<% list.image_url %>" ng-cloak>
+					<div class="home-list-ht" ng-if="listings.length != 0" ng-class="{ 'hide' : !search }" >
+						<div class="listing-style" ng-repeat="list in listings">
+							<div class="list-property" >
+								<div class="cover list-img">
+									<a href="property/<% list.property_id %>">
+										<img alt="list property cover" src="<% list.image_url %>" >
 									</a>
 								</div>
-								<div class="list-content" ng-mouseover="changemarkertest(list)" ng-mouseleave="resetmarkertest()" ng-cloak>
-									<div class="property-header" ng-cloak>
-										<p class="price" ng-cloak>$250 <span class="type" ng-cloak><% list.purpose %></span></p>
-										<h2 ng-cloak><a href="property/<% list.property_id %>" ng-cloak><% list.title %></a></h2>
-										<p class="address" ng-cloak><% list.address  %></p>
+								<div class="list-content" ng-mouseover="changemarkertest(list)" ng-mouseleave="resetmarkertest()" >
+									<div class="property-header">
+										<p class="price">$250 <span class="type"><% list.purpose %></span></p>
+										<h2><a href="property/<% list.property_id %>"><% list.title %></a></h2>
+										<p class="address"><% list.address  %></p>
 									</div>
 
-									<div class="property-body" ng-cloak>
-										<p ng-cloak><% list.description %></p>
+									<div class="property-body">
+										<p><% list.description %></p>
 
 										<ul class="post-meta">
-											<li class="area" ng-cloak>
+											<li class="area">
 												<span class="tool-tip"></span>
-												<span class="nr" ng-cloak><% list.area  %></span>
+												<span class="nr"><% list.area  %></span>
 											</li>
-											<li class="bedrooms" ng-cloak>
+											<li class="bedrooms">
 												<span class="tool-tip"></span>
-												<span class="nr" ng-cloak><% list.bedrooms  %></span>
+												<span class="nr"><% list.bedrooms  %></span>
 											</li>
-											<li class="bathrooms" ng-cloak>
+											<li class="bathrooms">
 												<span class="tool-tip"></span>
-												<span class="nr" ng-cloak><% list.bathrooms  %></span>
+												<span class="nr"><% list.bathrooms  %></span>
 											</li>
 										</ul>
 									</div>
@@ -128,12 +127,12 @@
 
 					</div>
 				</div>
-				<input type="hidden" id="search_lat" ng-cloak/> <input type="hidden" id="search_lng" ng-cloak/>
+				<input type="hidden" id="search_lat" /> <input type="hidden" id="search_lng" />
 			</div>
 		</section>
 
 		<!-- Hot Offer Section -->
-		<section class="hot-offer">
+		<section class="hot-offer" >
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
@@ -154,48 +153,48 @@
 		</section>
 
 		<!-- Listing Section -->
-		<section class="listing-section"ng-cloak>
-			<div class="container " ng-cloak >
-				<div class="section-header" ng-cloak>
-					<h1 ng-cloak>Recent Listed</h1>
+		<section class="listing-section" ng-if="recent.length != 0" ng-cloak="">
+			<div class="container "  >
+				<div class="section-header" >
+					<h1 >Recent Listed</h1>
 				</div>
 			</div>
 
-			<div  class="listing-items " ng-cloak>
-				<div class="row" ng-cloak>
-					<div class="col-xs-12 col-md-8 col-lg-6" ng-repeat="property in recent" ng-cloak>
-						<div class="listing-item" ng-cloak>
-							<div class="item-cover type-1" ng-cloak>
-								<div class="cover" ng-cloak>
-									<p ng-cloak><% property.description %></p>
+			<div  class="listing-items ">
+				<div class="row" >
+					<div class="col-xs-12 col-md-8 col-lg-6" ng-repeat="property in recent" >
+						<div class="listing-item" >
+							<div class="item-cover type-1" >
+								<div class="cover" >
+									<p ><% property.description %></p>
 
-									<a href="property/<% property.id %>" ng-cloak>
-										<i class="icon" ng-cloak></i>
+									<a href="property/<% property.id %>" >
+										<i class="icon" ></i>
 									</a>
 								</div>
-								<img src="<% property.image_url %>" alt="item cover" ng-cloak/>
+								<img src="<% property.image_url %>" alt="item cover" />
 							</div>
 
-							<div class="item-body"ng-cloak>
-								<div class="block services"ng-cloak>
+							<div class="item-body">
+								<div class="block services">
 									<p class="caption">Services</p>
 									<ul>
-										<li class="bathrooms" ng-cloak>Bathrooms: <span><% property.bathrooms %></span></li>
-										<li class="bedrooms" ng-cloak>Bedrooms: <span><% property.bedrooms %></span></li>
-										<li class="area" ng-cloak>Area: <span><% property.area %></span></li>
+										<li class="bathrooms" >Bathrooms: <span><% property.bathrooms %></span></li>
+										<li class="bedrooms" >Bedrooms: <span><% property.bedrooms %></span></li>
+										<li class="area" >Area: <span><% property.area %></span></li>
 									</ul>
 								</div>
 
-								<div class="block location-info" ng-cloak>
-									<div class="location" ng-cloak>
-										<h3 ng-cloak>
-											<a href="single-full-width.html" ng-cloak><% property.title %></a>
+								<div class="block location-info" >
+									<div class="location" >
+										<h3 >
+											<a href="single-full-width.html" ><% property.title %></a>
 										</h3>
-										<p ng-cloak><% property.address %></p>
+										<p ><% property.address %></p>
 									</div>
 
-									<div class="price" ng-cloak>
-										<p ng-cloak><% property.price %> <span>For <% property.purpose %></span></p>
+									<div class="price" >
+										<p ><% property.price %> <span>For <% property.purpose %></span></p>
 									</div>
 								</div>
 							</div>
@@ -207,48 +206,48 @@
 		</section>
 
 		<!-- Most viewed Section -->
-		<section class="most-viewed-section" ng-cloak>
-			<div class="container " ng-cloak>
-				<div class="section-header" ng-cloak>
-					<h1 ng-cloak>Most viewed</h1>
+		<section class="most-viewed-section" ng-if="mostview.length != 0" ng-cloak="" >
+			<div class="container " >
+				<div class="section-header" >
+					<h1>Most viewed</h1>
 				</div>
 			</div>
 
-				<div class="listing-items " ng-cloak>
-					<div class="row" ng-cloak>
-						<div class="col-xs-12 col-md-8 col-lg-6" ng-repeat="property in mostview" ng-cloak>
-							<div class="listing-item" ng-cloak>
-								<div class="item-cover type-1" ng-cloak>
-									<div class="cover" ng-cloak>
-										<p ng-cloak><% property.description %></p>
+				<div class="listing-items "  >
+					<div class="row" >
+						<div class="col-xs-12 col-md-8 col-lg-6" ng-repeat="property in mostview" >
+							<div class="listing-item" >
+								<div class="item-cover type-1" >
+									<div class="cover">
+										<p ><% property.description %></p>
 
-										<a href="property/<% property.id %>" ng-cloak>
+										<a href="property/<% property.id %>" >
 											<i class="icon"></i>
 										</a>
 									</div>
-									<img src="<% property.image_url %>" alt="item cover" ng-cloak/>
+									<img src="<% property.image_url %>" alt="item cover" />
 								</div>
 
-								<div class="item-body" ng-cloak>
-									<div class="block services" ng-cloak>
-										<p class="caption" ng-cloak>Services</p>
+								<div class="item-body" >
+									<div class="block services" >
+										<p class="caption">Services</p>
 										<ul>
-											<li class="bathrooms" ng-cloak>Bathrooms: <span><% property.bathrooms %></span></li>
-											<li class="bedrooms" ng-cloak>Bedrooms: <span><% property.bedrooms %></span></li>
-											<li class="area" ng-cloak>Area: <span><% property.area %></span></li>
+											<li class="bathrooms" >Bathrooms: <span><% property.bathrooms %></span></li>
+											<li class="bedrooms" >Bedrooms: <span><% property.bedrooms %></span></li>
+											<li class="area" >Area: <span><% property.area %></span></li>
 										</ul>
 									</div>
 
-									<div class="block location-info" ng-cloak>
-										<div class="location" ng-cloak>
+									<div class="block location-info" >
+										<div class="location" >
 											<h3>
-												<a href="single-full-width.html" ng-cloak><% property.title %></a>
+												<a href="single-full-width.html" ><% property.title %></a>
 											</h3>
-											<p ng-cloak><% property.address %></p>
+											<p ><% property.address %></p>
 										</div>
 
-										<div class="price" ng-cloak>
-											<p ng-cloak><% property.price %> <span>For <% property.purpose %></span></p>
+										<div class="price" >
+											<p ><% property.price %> <span>For <% property.purpose %></span></p>
 										</div>
 									</div>
 								</div>
