@@ -8,11 +8,11 @@
 
 
 		{{--@endif--}}
-		<div  ng-controller="searchController" >
+		<div  ng-controller="searchController" ng-init="initiate()">
 		<!-- Properties Map Section -->
 		<section class="properties-map" ng-cloak="">
 			<div class="row row-fit">
-				<div class="search-class" ng-class="{ 'hide' : !search }" ng-if="isListingsLoaded" >
+				<div class="search-class" ng-class="{ 'hide' : !search }"  >
 					<form class="submit-form" name="searchMiniForm" >
 						<div class="select-box wd-80 pull-left" >
 							<input class="filter-box-input js-input no-select drop-wd" type="text" id="purpose-mini" readonly value="" placeholder="Buy" />
@@ -132,7 +132,7 @@
 		</section>
 
 		<!-- Hot Offer Section -->
-		<section class="hot-offer" >
+		<section class="hot-offer" ng-if="isRecentLoaded" >
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">

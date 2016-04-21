@@ -15,18 +15,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
 
             $scope.search = false;
             $scope.isListingsLoaded = false;
-
-
-            $scope.$on('$viewContentLoaded', function(){
-                //Here your view content is fully loaded
-                console.log('Test');
-                $('#overlay').hide();
-            });
-
-            angular.element(document).ready(function () {
-                console.log('page loading completed');
-            });
-
+            $scope.isRecentLoaded = false;
 
 
             $scope.initiate = function() {
@@ -75,7 +64,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
 
             }
 
-            $scope.initiate();
+            //$scope.initiate();
         //map_center = geolocatorService.geoLocate(map, $scope);
             /*$("#overlay").show();
             searchService.getSearchAll().then(function(response) {
@@ -177,6 +166,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
             }
 
             searchService.getRecent().then(function(response) {
+                $scope.isRecentLoaded = true;
                 if(response.data.success) {
                     var prop_data = response.data.data;
                     $scope.data2 = [];
@@ -190,6 +180,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                    // var pho_json = angular.fromJson(prop_data.image_url);
 
                     $scope.recent = $scope.data2;
+
 
                 } else {
                 }
