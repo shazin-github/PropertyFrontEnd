@@ -32,6 +32,7 @@ class propertyController extends Controller {
     }
 
     public function postProperty() {
+
         $data = $this->request->all();
         $validator = Validator::make($data,[
             'location' => 'required',
@@ -173,10 +174,17 @@ class propertyController extends Controller {
             $type = explode('/', $photo->getMimeType())[1];
             $dr = DIRECTORY_SEPARATOR;
             $ran = random_int(1, 9999999);
+            $resizepath = 'propertyimage'.$dr.'images'.$dr.'propertyImages'.$dr.'User_'.session('user_id').'_'.$ran.'.'.$type;
+            //dd($resizepath);
             $path = 'images'.$dr.'propertyImages'.$dr.'User_'.session('user_id').'_'.$ran.'.'.$type;
             $thumb_path = 'thumbnail'.$dr.'images'.$dr.'propertyImages'.$dr.'User_'.session('user_id').'_'.$ran.'.'.$type;
 
+            $img = Image::make($photo->getRealPath())
+                ->resize(257, 290);
+            $img->save(storage_path($resizepath));
+
             $file = file_get_contents($photo->getRealPath());
+
             Image::make($photo->getRealPath())
                 ->fit(200)
                 ->save(storage_path($thumb_path));
@@ -256,6 +264,12 @@ class propertyController extends Controller {
     public function getPropertythumPic($id) {
         $dr = DIRECTORY_SEPARATOR;
         $path = 'thumbnail'.$dr.'images'.$dr.'propertyImages'.$dr.$id;
+        $file = file_get_contents(storage_path($path));
+        return response($file, 200)->header('Content-Type', 'image/jpeg');
+    }
+    public function getPropertyResizePic($id) {
+        $dr = DIRECTORY_SEPARATOR;
+        $path = 'propertyimage'.$dr.'images'.$dr.'propertyImages'.$dr.$id;
         $file = file_get_contents(storage_path($path));
         return response($file, 200)->header('Content-Type', 'image/jpeg');
     }

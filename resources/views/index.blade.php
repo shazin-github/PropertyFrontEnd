@@ -12,7 +12,7 @@
 		<!-- Properties Map Section -->
 		<section class="properties-map" ng-cloak="">
 			<div class="row row-fit"  >
-				<div class="search-class" ng-class="{ 'hide' : !search }"  >
+				<div class="search-class" ng-class="{ 'hide' : !search }" ng-show="isRecentLoaded" >
 					<form class="submit-form" name="searchMiniForm" >
 						<div class="select-box wd-80 pull-left" >
 							<input class="filter-box-input js-input no-select drop-wd" type="text" id="purpose-mini" readonly value="" placeholder="Buy" />
@@ -56,7 +56,7 @@
 							<p>Where are you looking?</p>
 						</div>
 						</div>
-						<div class="search-class" ng-class="{ 'hide' : search }">
+						<div class="search-class" ng-class="{ 'hide' : search }" ng-show="isRecentLoaded" >
 							<form class="submit-form" name="searchForm">
 								<div class=" select-box  wd-80 pull-left">
 									<input class="filter-box-input js-input no-select drop-wd" type="text" id="purpose" readonly value="" placeholder="Buy" />
@@ -132,7 +132,7 @@
 		</section>
 
 		<!-- Hot Offer Section -->
-		<section class="hot-offer" ng-if="isRecentLoaded" >
+		<section class="hot-offer" ng-show="isRecentLoaded" >
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
@@ -188,9 +188,11 @@
 								<div class="block location-info" >
 									<div class="location" >
 										<h3 >
+
 											<a href="single-full-width.html" ><% property.title %></a>
 										</h3>
-										<p ><% property.address %></p>
+										<p class="elip tile-wd" title="<% property.address %>"  ><% property.address %></p>
+										{{--<p ><% property.address %></p>--}}
 									</div>
 
 									<div class="price" >
@@ -206,7 +208,7 @@
 		</section>
 
 		<!-- Most viewed Section -->
-		<section class="most-viewed-section" ng-if="mostview.length != 0" ng-cloak="" >
+		<section class="most-viewed-section double-pad-left double-pad-right" ng-if="mostview.length != 0"  ng-cloak="" >
 			<div class="container " >
 				<div class="section-header" >
 					<h1>Most viewed</h1>
@@ -243,7 +245,7 @@
 											<h3>
 												<a href="single-full-width.html" ><% property.title %></a>
 											</h3>
-											<p ><% property.address %></p>
+											<p class="elip tile-wd" title="<% property.address %>"  ><% property.address %></p>
 										</div>
 
 										<div class="price" >

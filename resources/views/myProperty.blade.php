@@ -10,7 +10,7 @@
 							<i class="icon"></i>
 						</a>
 					</div>
-					<img src="<% p.image_url %>" alt="item cover" />
+					<img src="{{url('<% p.image_url %>')}}" alt="item cover" />
 				</div>
 
 				<div class="item-body">

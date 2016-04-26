@@ -12,10 +12,12 @@ define(['services/propertyService'], function() {
 
                 angular.forEach(prop_data, function (value, key) {
                     var obj = value;
-                    var update_p = obj.image_url.split("|");;
-                    obj.image_url = update_p[0];
+                    var update_p = obj.image_url.split("|");
+                    obj.image_url = 'propertyimage/'+update_p[0];
+                    console.log(obj.image_url);
                     $scope.data2.push(obj);
                 });
+                console.log($scope.data2);
         		$scope.propertyList = $scope.data2;
                 
         	});

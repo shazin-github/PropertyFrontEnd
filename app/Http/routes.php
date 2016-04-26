@@ -96,6 +96,8 @@ Route::group(['middleware'=>['web']], function(){
 
 	Route::get('thumbnail/images/propertyImages/{id}', 'propertyController@getPropertythumPic');
 
+	Route::get('propertyimage/images/propertyImages/{id}', 'propertyController@getPropertyResizePic');
+
 
 });
 
