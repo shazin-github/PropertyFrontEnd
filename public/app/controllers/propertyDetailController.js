@@ -410,6 +410,44 @@ define(['services/propertyService' ,'services/schoolService'], function() {
     //        };
     //
     //});
+    coreModule.directive('modal', function () {
+        return {
+            template: '<div class="modal fade">' +
+            '<div class="modal-dialog">' +
+            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
+            '<div class="modal-body" ng-transclude></div>' +
+            '</div>' +
+            '</div>',
+            restrict: 'EA',
+            transclude: true,
+            replace:true,
+            scope:true,
+            link: function postLink(scope, element, attrs) {
+                scope.$watch(attrs.visible, function(value){
+                    if(value == true) {
+                        console.log('inner directive show');
+                        $(element).modal('show');
+                    }
+                    else
+                        $(element).modal('hide');
+                });
+
+                $(element).on('shown.bs.modal', function(){
+                    console.log('inner directive');
+                    scope.$apply(function(){
+                        scope.$parent[attrs.visible] = true;
+                    });
+                });
+
+                $(element).on('hidden.bs.modal', function(){
+                    console.log('inner directive hidden');
+                    scope.$apply(function(){
+                        scope.$parent[attrs.visible] = false;
+                    });
+                });
+            }
+        };
+    });
 
 
 
@@ -423,10 +461,18 @@ define(['services/propertyService' ,'services/schoolService'], function() {
             styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-40},{"lightness":10}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":10}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":20}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]}]
         }
         var map = new google.maps.Map(document.getElementById('property_map'), mapOptions);
-        $scope.setCurrentImage = function(image){
-            $('#loading').show();
-            $scope.currentimage = image;
-            $('#loading').hide();
+        //$scope.setCurrentImage = function(image){
+        //    $('#loading').show();
+        //    $scope.currentimage = image;
+        //    $('#loading').hide();
+        //};
+        $scope.showModal = false;
+        $scope.buttonClicked = "";
+        $scope.toggleModal = function(btnClicked){
+            console.log('Test');
+            $scope.currentimage = btnClicked;
+            $scope.buttonClicked = btnClicked;
+            $scope.showModal = !$scope.showModal;
         };
         $scope.getProperty = propertyService.getPropertyDetail($scope.id).then(function(response) {
             console.log(response);

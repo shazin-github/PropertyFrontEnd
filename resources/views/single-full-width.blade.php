@@ -26,7 +26,7 @@
 		<div class="col-md-16 col-lg-16  "  >
 		<div id="thumbWrapper" class="force-overflow scrollbar style-4"  >
 			<ul id="thumbList" >
-				<li ng-repeat="image in images_array" ng-click="setCurrentImage(image)">
+				<li ng-repeat="image in images_array" ng-click="toggleModal(image)">
 					<img ng-src="{{url('<% image.thumb %>')}}" alt="Test">
 
 				</li>
@@ -35,6 +35,21 @@
 
 		</div>
 		</div>
+
+
+			<modal visible="showModal">
+				<div class="col-md-24 col-lg-24 no-pad"  >
+
+					<div class="imgdiv" >
+
+						<img ng-attr-src="{{ url('<% currentimage.img %>') }}" >
+
+					</div>
+
+				</div>
+			</modal>
+
+
 
 
 		{{--<div class="col-md-16 col-lg-16 no-pad" style="float: left;">--}}

@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/dropzone.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{URL::to('css/owl-carousel.css')}}" />
     <link rel="stylesheet" href="{{URL::to('css/bootstrap.css')}}" />
     <link rel="stylesheet" href="{{URL::to('css/lightbox.css')}}" />
@@ -150,6 +151,7 @@
 <script src="{{URL::to('js/options.js')}}"></script>
 <script src="{{URL::to('js/custom.js')}}"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/flexslider/2.2.2/jquery.flexslider.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.3/TweenMax.min.js"></script>
 <script type='text/javascript' src='{{URL::to('js/unitegallery.min.js')}}'></script>
 <script type='text/javascript' src='{{URL::to('js/ug-theme-tilesgrid.js')}}'></script>
