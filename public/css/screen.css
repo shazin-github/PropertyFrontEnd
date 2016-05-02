@@ -3743,6 +3743,74 @@ footer .copyrigts p a:hover {
   width: 142px;
   float: left;
 }
+
+/*
+*/
+/* -----------------------------------------------
+ * angular-lightbox
+ * -----------------------------------------------
+ */
+
+.angular-lightbox-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5000;
+  background-color: rgba(0, 0, 0, .8);
+  text-align: center;
+}
+span.angular-lightbox-inner {
+  position: relative;
+  display: inline-block;
+  background-color: white;
+  min-width: 35em;
+  min-height: 8em;
+}
+span.angular-lightbox-inner > img {
+  vertical-align: bottom;
+}
+span.angular-lightbox-inner > a {
+  font-family: sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 2em;
+  text-align: center;
+  text-decoration: none;
+  outline: 0;
+  position: absolute;
+  color: #ddd;
+}
+span.angular-lightbox-inner > a:hover {
+  color: white;
+}
+span.angular-lightbox-inner > a.previous,
+span.angular-lightbox-inner > a.next {
+  width: 2em;
+  height: 2em;
+  top: 50%;
+  margin-top: -1em; /* center vertically */
+}
+span.angular-lightbox-inner > a.previous {
+  left: 0;
+  margin-left: -2em;
+  border-radius: 0 2px 2px 0;
+}
+span.angular-lightbox-inner > a.next {
+  right: 0;
+  margin-right: -2em;
+  border-radius: 2px 0 0 2px;
+}
+span.angular-lightbox-inner > a.close {
+  top: -2em;
+  right: 0;
+  border-radius: 0 0 0 2px;
+}
+
+
+/**/
 @media (max-width: 1600px) {
   .listing-item .item-body .block.services {
     padding: 25px 10px 30px 18px;
@@ -3757,6 +3825,14 @@ footer .copyrigts p a:hover {
   }
   .listing-item .item-body .block:first-of-type {
     width: 48%;
+  }
+
+  span.angular-lightbox-inner {
+    position: relative;
+    display: inline-block;
+    background-color: white;
+    min-width: 8em;
+    min-height: 8em;
   }
 }
 @media (max-width: 768px) {
@@ -3773,11 +3849,26 @@ footer .copyrigts p a:hover {
   .listing-item .item-cover.type-2 .cover a i {
     padding-top: 8px;
   }
+  span.angular-lightbox-inner {
+
+    position: relative;
+    display: inline-block;
+    background-color: white;
+    min-width: 30em;
+    min-height: 8em;
+  }
 }
 
 @media (max-width: 600px) {
   .listing-items .row [class*="col-"] {
     width: 100% !important;
+  }
+  span.angular-lightbox-inner {
+    position: relative;
+    display: inline-block;
+    background-color: white;
+    min-width: 15em;
+    min-height: 8em;
   }
 }
 

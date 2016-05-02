@@ -7,7 +7,7 @@
 		<input type="hidden" name="property_id" id="property_id" value="{!! $id !!}" />
 		<div class="col-md-8 col-lg-8 no-pad">
 
-			<div class="imgdiv" >
+			<div class="imgdiv" id="sliding" >
 				<div id="loading" >
 
 					<img src="{{URL::to('img/rolling.svg')}}" width="80px" height="80px"/><p>Loading</p>
@@ -27,7 +27,7 @@
 		<div id="thumbWrapper" class="force-overflow scrollbar style-4"  >
 			<ul id="thumbList" >
 				<li ng-repeat="image in images_array" ng-click="toggleModal(image)">
-					<img ng-src="{{url('<% image.thumb %>')}}" alt="Test">
+					<img ng-src="{{url('<% image.thumb %>')}}"  alt="Test">
 
 				</li>
 			</ul>
@@ -41,11 +41,16 @@
 				<div class="col-md-24 col-lg-24 no-pad"  >
 
 					<div class="imgdiv" >
+						<span class="angular-lightbox-inner">
+              				<a href class="previous" title="Previous" ng-click="showpre(currentimage.ind)">«</a>
+             				 <img ng-attr-src="{{ url('<% currentimage.img %>') }}"  >
+							<a href class="next" title="Next" ng-click="shownext(currentimage.ind)" >»</a>
+              				<a href class="close" title="Close">×</a>
+           				 </span>
 
-						<img ng-attr-src="{{ url('<% currentimage.img %>') }}" >
+
 
 					</div>
-
 				</div>
 			</modal>
 

@@ -414,7 +414,6 @@ define(['services/propertyService' ,'services/schoolService'], function() {
         return {
             template: '<div class="modal fade">' +
             '<div class="modal-dialog">' +
-            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
             '<div class="modal-body" ng-transclude></div>' +
             '</div>' +
             '</div>',
@@ -425,26 +424,39 @@ define(['services/propertyService' ,'services/schoolService'], function() {
             link: function postLink(scope, element, attrs) {
                 scope.$watch(attrs.visible, function(value){
                     if(value == true) {
-                        console.log('inner directive show');
+                        //console.log('inner directive show');
                         $(element).modal('show');
+                        $("#sliding").css("display","none");
                     }
                     else
                         $(element).modal('hide');
+
+
                 });
 
                 $(element).on('shown.bs.modal', function(){
-                    console.log('inner directive');
+                    //console.log('inner directive');
                     scope.$apply(function(){
                         scope.$parent[attrs.visible] = true;
                     });
                 });
 
                 $(element).on('hidden.bs.modal', function(){
-                    console.log('inner directive hidden');
+                    //console.log('inner directive hidden');
                     scope.$apply(function(){
                         scope.$parent[attrs.visible] = false;
+                        $("#sliding").css("display","");
                     });
                 });
+
+                $(element).on('click' ,'a.close' , function(){
+                    //console.log('inner directive hidden');
+                    scope.$apply(function(){
+                        scope.$parent[attrs.visible] = false;
+                        $("#sliding").css("display","");
+                    });
+                });
+
             }
         };
     });
@@ -466,13 +478,37 @@ define(['services/propertyService' ,'services/schoolService'], function() {
         //    $scope.currentimage = image;
         //    $('#loading').hide();
         //};
+
         $scope.showModal = false;
         $scope.buttonClicked = "";
         $scope.toggleModal = function(btnClicked){
-            console.log('Test');
+           // console.log(btnClicked.index);
             $scope.currentimage = btnClicked;
             $scope.buttonClicked = btnClicked;
             $scope.showModal = !$scope.showModal;
+        };
+        $scope.shownext = function(index) {
+            var index = index+1;
+
+            if(index<$scope.images_array.length){
+                $scope.currentimage = $scope.images_array[index];
+            }
+            else{
+                index = 0;
+                $scope.currentimage = $scope.images_array[index];
+            }
+
+        };
+        $scope.showpre = function(index) {
+            var index = index-1;
+
+            if(index>=0){
+                $scope.currentimage = $scope.images_array[index];
+            }else{
+                index =  $scope.images_array.length - 1;
+                $scope.currentimage = $scope.images_array[index];
+            }
+
         };
         $scope.getProperty = propertyService.getPropertyDetail($scope.id).then(function(response) {
             console.log(response);
@@ -489,7 +525,9 @@ define(['services/propertyService' ,'services/schoolService'], function() {
                     thumb : 'thumbnail'+dr+ value,
                     img : value,
                     description: '',
+                    ind:key
                 }
+                console.log(imge);
                 $scope.images_array.push(imge);
             });
             $scope.currentimage = _.first($scope.images_array)
