@@ -518,6 +518,7 @@ define(['services/propertyService' ,'services/schoolService'], function() {
 
             //console.log(prop_data);
             var update_p = prop_data.image_url.split("|");
+           
             angular.forEach(update_p, function(value, key){
                 var dr = '/';
                 var imge = {
