@@ -412,7 +412,7 @@ define(['services/propertyService' ,'services/schoolService'], function() {
     //});
     coreModule.directive('modal', function () {
         return {
-            template: '<div class="modal fade">' +
+            template: '<div class="modal fade" >' +
             '<div class="modal-dialog">' +
             '<div class="modal-body" ng-transclude></div>' +
             '</div>' +
@@ -518,7 +518,7 @@ define(['services/propertyService' ,'services/schoolService'], function() {
 
             //console.log(prop_data);
             var update_p = prop_data.image_url.split("|");
-           
+
             angular.forEach(update_p, function(value, key){
                 var dr = '/';
                 var imge = {

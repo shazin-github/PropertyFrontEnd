@@ -37,8 +37,10 @@
 		</div>
 
 
+
+
 			<modal visible="showModal">
-				<div class="col-md-24 col-lg-24 no-pad"  >
+				<div class="col-md-24 col-lg-24 no-pad margin-top"  >
 
 					<div class="imgdiv" >
 						<span class="angular-lightbox-inner">

@@ -3831,8 +3831,8 @@ span.angular-lightbox-inner > a.close {
     position: relative;
     display: inline-block;
     background-color: white;
-    min-width: 8em;
-    min-height: 8em;
+   max-width:600px;
+    width: 100%;
   }
 }
 @media (max-width: 768px) {
