@@ -1,4 +1,4 @@
-<div id="submit" ng-controller="addPropertyController">
+<div id="submit" ng-controller="addPropertyController" ng-init="initiate()" >
 	<form class="submit-form" method="POST" name="propertyForm" ng-submit="addProperty()">
 		<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 		<div class="row">

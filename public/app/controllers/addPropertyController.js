@@ -47,6 +47,7 @@ define([
             }
         }
     });
+
     coreModule.directive('ngAutocomplete', function() {
         return {
             require: 'ngModel',
@@ -129,7 +130,7 @@ define([
 
                 }
                 scope.gPlace.addListener( 'place_changed', function() {
-                    console.log('listner');
+
                     var result = scope.gPlace.getPlace();
 
                     if (result !== undefined) {
@@ -162,9 +163,6 @@ define([
                                 $("#latitude").val(result.geometry.location.lat());
                                 $("#longitude").val(result.geometry.location.lng());
 
-
-
-                                console.log(element.val());
 
                                 controller.$setViewValue(element.val());
                             });
@@ -240,7 +238,7 @@ define([
         };
     });
 
-coreModule.directive('image', function($q) {
+    coreModule.directive('image', function($q) {
     'use strict'
 
     var URL = window.URL || window.webkitURL;
@@ -388,7 +386,8 @@ coreModule.directive('image', function($q) {
 });
 
 
-    coreModule.controller('addPropertyController', ['$scope', 'locationService' ,'featureService', 'propertyService',  'addPropertyService','cityService','stateService', '$q' , function($scope, locationService, featureService, propertyService, addPropertyService ,cityService ,stateService,$q) {
+    coreModule.controller('addPropertyController', ['$rootScope','$scope', 'locationService' ,'featureService', 'propertyService',  'addPropertyService','cityService','stateService', '$q' , function($rootScope,$scope, locationService, featureService, propertyService, addPropertyService ,cityService ,stateService,$q) {
+
         $scope.country = "Pakistan";
         $scope.citylist = {};
         $scope.statelist = {};
@@ -398,7 +397,29 @@ coreModule.directive('image', function($q) {
         $scope.imgURL = [];
         $scope.property_data = {};
 
+        init_map = function(){
 
+            console.log("Test");
+            var latlng = new google.maps.LatLng(31.55460609999999, 74.35715810000001);
+
+            console.log(latlng);
+            var mapOptions = {
+                zoom: 10,
+                center: latlng,
+                styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-40},{"lightness":10}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":10}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":20}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]}]
+            };
+
+            console.log(mapOptions);
+            map = new google.maps.Map(document.getElementById('#location-map'), mapOptions);
+
+            property_marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                title: 'Pakistan',
+                icon: 'img/marker_icon.png'
+            });
+
+        };
 
 
         $scope.readURL = function(input, imageField) {
@@ -494,7 +515,7 @@ coreModule.directive('image', function($q) {
 
         $scope.initiate = function() {
 
-            //console.log('select-box test');
+            console.log('select-box test');
 
             jQuery('.select-box').each(function (index) {
                 var selectBox = jQuery(this),
@@ -524,29 +545,13 @@ coreModule.directive('image', function($q) {
                 });
             });
 
-        }
+            google.maps.event.addDomListener(window, "load", init_map);
+
+        };
+
+        //$scope.initiate();
 
 
-        $scope.map_init = function(){
-
-            var latlng = new google.maps.LatLng(31.55460609999999, 74.35715810000001);
-            var mapOptions = {
-                zoom: 10,
-                center: latlng,
-                styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-40},{"lightness":10}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":10}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":20}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]}]
-            }
-            map = new google.maps.Map(document.getElementById('location-map'), mapOptions);
-
-            property_marker = new google.maps.Marker({
-                position: latlng,
-                map: map,
-                title: 'Pakistan',
-                icon: 'img/marker_icon.png'
-            });
-
-            $scope.initiate();
-
-        }
 
 
 

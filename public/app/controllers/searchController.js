@@ -8,7 +8,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                 center: map_center,
                 styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-40},{"lightness":10}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":10}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":20}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]}]
             }
-            var map = new google.maps.Map(document.getElementById('home_map'), mapOptions);
+            map = new google.maps.Map(document.getElementById('home_map'), mapOptions);
             $scope.listings = "";
             $scope.recent = "";
             $scope.mostview = "";
@@ -132,8 +132,8 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
 
             $scope.resetmarkertest = function(){
 
-                var prop_data = $scope.listings;
-                markerService.getMarker(prop_data, map);
+                //var prop_data = $scope.listings;
+                //markerService.getMarker(prop_data, map);
 
             }
 
@@ -164,6 +164,17 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                 }, function(response) {
                 });
             }
+
+            $scope.clearPropertyMini = function() {
+                $('#overlay').show();
+                searchService.ClearMini();
+                $scope.search = false;
+                        $('#overlay').hide();
+                        markerService.clearOverlays(map);
+                        $scope.listings = "";
+
+
+            };
 
             searchService.getRecent().then(function(response) {
                 $scope.isRecentLoaded = true;

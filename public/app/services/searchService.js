@@ -46,6 +46,17 @@ define(function() {
             $("#search_lat").val($("#search_lat-mini").val());
             $("#search_lng").val($("#search_lng-mini").val());
         };
+        this.ClearMini = function() {
+            console.log("Test")
+            $("#purpose-mini").value = '';
+            $("#bedroom-mini").value = '';
+            $("#bathroom-mini").value = '';
+            $("#search-mini").value = '';
+            $("#search_lat").value = '';
+            $("#search_lng").value = '';
+
+
+        };
         this.getSearchAll = function() {
             var deffered = $q.defer();
             return $http.get('property/all').then(function successCallback(response) {

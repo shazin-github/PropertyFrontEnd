@@ -464,6 +464,7 @@ var teslaThemes = {
 				duration: 800
 			},
 			beforeActivate: function (event, ui) {
+				console.log("Tab Test");
 				var loader = jQuery(this).find('.main-loader');
 					loader.addClass('visible');
 

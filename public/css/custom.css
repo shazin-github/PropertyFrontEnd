@@ -396,6 +396,24 @@ html body .modal-backdrop {
     background: #000 !important;
     opacity: 0.7 !important;
 }
+
+.aftersearch-class {
+    padding: 10px 20px;
+    width: 100%;
+}
+.aftersearch-class .select-box {
+    border: 1px solid #eee;
+    line-height: 20px;
+    margin: 0 5px;
+    padding: 12px 7px;
+}
+.aftersearch-class .search-wd {
+    border: 1px solid #eee;
+    border-radius: 2px !important;
+    float: left;
+    margin: 0 5px !important;
+    padding: 12px 5px;
+}
 @media (max-width: 1640px) {
 	
 

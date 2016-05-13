@@ -36,6 +36,7 @@ define(function() {
 
             //this.markers = [];
             this.clearOverlays();
+            this.mark_count = 0;
             var bounds = new google.maps.LatLngBounds();
             for (i in prop_data) {
 

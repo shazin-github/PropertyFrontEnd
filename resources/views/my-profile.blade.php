@@ -9,7 +9,7 @@
 				<!-- Menu Controlls -->
 				<ul class="heading">
 					<li><a class="profile" href="#profile"><span>My Profile</span></a></li>
-					<li><a class="submit" ng-controller="addPropertyController" ng-click="map_init()"  href="#submit" ><span>Submit new property</span></a></li>
+					<li><a class="submit" href="#submit" ><span>Submit new property</span></a></li>
 					<li><a class="properties" href="#properties"><span>My Properties</span></a></li>
 
 				</ul>

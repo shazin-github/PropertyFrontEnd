@@ -12,7 +12,7 @@
 		<!-- Properties Map Section -->
 		<section class="properties-map" ng-cloak="">
 			<div class="row row-fit"  >
-				<div class="search-class" ng-class="{ 'hide' : !search }" ng-show="isRecentLoaded" >
+				<div class="search-class aftersearch-class" ng-class="{ 'hide' : !search }" ng-show="isRecentLoaded" >
 					<form class="submit-form" name="searchMiniForm" >
 						<div class="select-box wd-80 pull-left" >
 							<input class="filter-box-input js-input no-select drop-wd" type="text" id="purpose-mini" readonly value="" placeholder="Buy" />
@@ -40,6 +40,7 @@
 						</div>
 						<input type="hidden" id="search_lat-mini" /> <input type="hidden" id="search_lng-mini" />
 						<input type="button" class="button theme-button-1 update-properties" value="Search" ng-click="searchPropertyMini()" />
+						<a class="button theme-button-1 update-properties" href="#" ng-click="clearPropertyMini()" >clear search</a>
 					</form>
 				</div>
 				</div>
@@ -65,7 +66,8 @@
 										<li>Sale</li>
 									</ul>
 								</div>
-								<input class="filter-box-input js-input no-select search-wd" id="search" type="text" value="" placeholder="Search..." />
+								<input class="filter-box-input js-input no-select search-wd" id="search" type="text" value="" placeholder="Search..." required />
+
 								<div class="select-box wd-110 pull-left">
 									<input class="filter-box-input js-input no-select drop-wd" type="text" id="bedroom" readonly value="" placeholder="Bedrooms" />
 									<ul>
@@ -83,20 +85,20 @@
 									</ul>
 								</div>
 								<input type="hidden" id="search_lat" /> <input type="hidden" id="search_lng" />
-								<input type="button" class="button theme-button-1 update-properties" value="Search" ng-click="searchProperty()" />
+								<input type="submit" class="button theme-button-1 update-properties" value="Search" ng-click="searchProperty()" />
 							</form>
 						</div>
 					</div>
 
 					<div class="home-list-ht" ng-if="listings.length != 0" ng-class="{ 'hide' : !search }" >
 						<div class="listing-style" ng-repeat="list in listings">
-							<div class="list-property" >
+							<div class="list-property" ng-mouseover="changemarkertest(list)" ng-mouseleave="resetmarkertest()" >
 								<div class="cover list-img">
 									<a href="property/<% list.property_id %>">
 										<img alt="list property cover" src="<% list.image_url %>" >
 									</a>
 								</div>
-								<div class="list-content" ng-mouseover="changemarkertest(list)" ng-mouseleave="resetmarkertest()" >
+								<div class="list-content"  >
 									<div class="property-header">
 										<p class="price">$250 <span class="type"><% list.purpose %></span></p>
 										<h2><a href="property/<% list.property_id %>"><% list.title %></a></h2>

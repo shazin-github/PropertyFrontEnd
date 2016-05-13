@@ -480,11 +480,11 @@ define(['services/propertyService' ,'services/schoolService'], function() {
         //};
 
         $scope.showModal = false;
-        $scope.buttonClicked = "";
-        $scope.toggleModal = function(btnClicked){
+        $scope.imageClick  = "";
+        $scope.toggleModal = function(imageClicked){
            // console.log(btnClicked.index);
-            $scope.currentimage = btnClicked;
-            $scope.buttonClicked = btnClicked;
+            $scope.currentimage = imageClicked;
+            $scope.imageClick = imageClicked;
             $scope.showModal = !$scope.showModal;
         };
         $scope.shownext = function(index) {
