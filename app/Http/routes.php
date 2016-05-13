@@ -32,6 +32,8 @@ Route::group(['middleware'=>['web']], function(){
 	Route::get('addProperty', function () {
 		return view('addProperty');
 	});
+	
+
 
 	Route::get('myProperty', function () {
 		return view('myProperty');

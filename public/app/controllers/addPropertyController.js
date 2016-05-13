@@ -10,9 +10,6 @@ define([
     var coreModule = angular.module('coreModule');
 
 
-
-
-
     coreModule.directive('cityList' , function($compile){
         return {
             restrict : 'EA',
