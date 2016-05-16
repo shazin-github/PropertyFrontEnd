@@ -1,4 +1,14 @@
-<div id="submit" ng-controller="addPropertyController" ng-init="initiate()" >
+<div class="user-account-tabs">
+	<!-- Menu Controlls -->
+	<ul class="heading">
+		{{--<li><a class="profile" href="#profile"><span>My Profile</span></a></li>--}}
+		<li><a class="submit"  ><span>Submit new property</span></a></li>
+		{{--<li><a class="properties" href="#properties"><span>My Properties</span></a></li>--}}
+
+	</ul>
+</div>
+
+	<div id="submit" ng-controller="addPropertyController" ng-init="initiate()" >
 	<form class="submit-form" method="POST" name="propertyForm" ng-submit="addProperty()">
 		<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 		<div class="row">
@@ -60,9 +70,10 @@
 
 					{{--<img ng-attr-src="<%user.image_url%>" ng-show="showProfileImage" alt="user photo" id="propertyImage" onclick="$('#propImages').trigger('click');"/><br />--}}
 
-					<a class="upload-link" href="#" onclick="$('#propImages').trigger('click');">
-						Add Photos
-					</a>
+
+
+
+					<input class="button upload-link" type="button" onclick="$('#propImages').trigger('click');"  value="Add Photos" />
 					<input id="propImages"
 						   type="file"
 						   accept="image/*"

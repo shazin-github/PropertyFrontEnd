@@ -611,35 +611,24 @@ var teslaThemes = {
 			toggle = jQuery('.account-options .main-info');
 
 		toggle.on('click', function () {
+			console.log(" Please open");
 			drowpDown.find('.list').toggleClass('visible');
 			return false;
 		});
 
 		jQuery(document).on('click', function () {
+
+			console.log(" Please close");
+
 			drowpDown.find('.list').removeClass('visible');
 		});
 
 		drowpDown.on('click', function (e) {
+			drowpDown.find('.list').removeClass('visible');
 			e.stopPropagation();
 		});
 
-		jQuery('.profile').on('click', function (e) {
-			e.preventDefault();
 
-			jQuery('.user-account-tabs').tabs({active: 0});
-		});
-
-		jQuery('.submit-new').on('click', function (e) {
-			e.preventDefault();
-
-			jQuery('.user-account-tabs').tabs({active: 1});
-		});
-
-		jQuery('.properties').on('click', function (e) {
-			e.preventDefault();
-
-			jQuery('.user-account-tabs').tabs({active: 2});
-		});
 
 	},
 

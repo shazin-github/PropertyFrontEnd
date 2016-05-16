@@ -1,3 +1,13 @@
+<div class="user-account-tabs">
+	<!-- Menu Controlls -->
+	<ul class="heading">
+		{{--<li><a class="profile" href="#profile"><span>My Profile</span></a></li>--}}
+		{{--<li><a class="submit"  ><span>Submit new property</span></a></li>--}}
+		<li><a class="properties" href="#properties"><span>My Properties</span></a></li>
+
+	</ul>
+</div>
+
 <div id="properties"  ng-controller="myPropertyController" ng-init="initMyProperty()">
 	<div class="row row-fit-10">
 		<div class="col-lg-6 col-md-8 col-sm-12" ng-repeat="p in propertyList">

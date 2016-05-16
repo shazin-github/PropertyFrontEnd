@@ -92,7 +92,7 @@
 
 					<div class="home-list-ht" ng-if="listings.length != 0" ng-class="{ 'hide' : !search }" >
 						<div class="listing-style" ng-repeat="list in listings">
-							<div class="list-property" ng-mouseover="changemarkertest(list)" ng-mouseleave="resetmarkertest()" >
+							<div class="list-property" ng-mouseover="changemarkertest(list)"  >
 								<div class="cover list-img">
 									<a href="property/<% list.property_id %>">
 										<img alt="list property cover" src="<% list.image_url %>" >

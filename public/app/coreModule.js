@@ -6,15 +6,15 @@ define( ['angular-route'], function() {
     );
     coreModule.config(['$routeProvider','$locationProvider',
         function ($routeProvider , $locationProvider) {
-            $routeProvider.when('/my-profile', {
-                templateUrl: 'my-profile',
+            $routeProvider.when('/', {
+                templateUrl: 'profile',
                 controller : 'userController'
-            }).when('/my-profile#submit', {
+            }).when('/submit', {
                 templateUrl: 'addProperty',
                 controller: 'addPropertyController'
-            }).when('/my-profile#properties', {
-                templateUrl: 'properties',
-                controller: 'myPropertController'
+            }).when('/properties', {
+                templateUrl: 'myProperty',
+                controller: 'myPropertyController'
             });
         }]);
     require(['controllers/controllerReference'], function(controllerReference) {

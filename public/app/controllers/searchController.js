@@ -126,7 +126,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                 var prop_data = $scope.listings;
 
                 var u_map = map;
-
+                //console.log(prop_data);
                 markerService.updateMarker(prop_data, map , d_m);
             }
 

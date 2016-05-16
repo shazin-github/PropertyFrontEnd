@@ -1,3 +1,13 @@
+<div class="user-account-tabs">
+	<!-- Menu Controlls -->
+	<ul class="heading">
+		<li><a class="profile" href="#profile"><span>My Profile</span></a></li>
+		{{--<li><a class="submit"  ><span>Submit new property</span></a></li>--}}
+		{{--<li><a class="properties" href="#properties"><span>My Properties</span></a></li>--}}
+
+	</ul>
+</div>
+
 <div id="profile"  ng-controller="userController" ng-init="initProfile()">
 	<form class="update-form" id="profileForm" ng-submit="updateProfile()">
 		<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
