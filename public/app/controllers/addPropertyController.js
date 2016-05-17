@@ -393,30 +393,8 @@ define([
         $scope.result1 = '';
         $scope.imgURL = [];
         $scope.property_data = {};
-
-        init_map = function(){
-
-            console.log("Test");
-            var latlng = new google.maps.LatLng(31.55460609999999, 74.35715810000001);
-
-            console.log(latlng);
-            var mapOptions = {
-                zoom: 10,
-                center: latlng,
-                styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-40},{"lightness":10}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":10}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":20}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]}]
-            };
-
-            console.log(mapOptions);
-            map = new google.maps.Map(document.getElementById('#location-map'), mapOptions);
-
-            property_marker = new google.maps.Marker({
-                position: latlng,
-                map: map,
-                title: 'Pakistan',
-                icon: 'img/marker_icon.png'
-            });
-
-        };
+        $scope.num_beds = 0;
+        $scope.num_of_baths = 0;
 
 
         $scope.readURL = function(input, imageField) {
@@ -542,8 +520,6 @@ define([
                 });
             });
 
-            google.maps.event.addDomListener(window, "load", init_map);
-
         };
 
         //$scope.initiate();
@@ -564,6 +540,18 @@ define([
             selectBox.find('input').addClass('has-value');
 
         }
+
+        $scope.setareatype = function(stateid) {
+
+            var selectBox = jQuery('#selectAreatype');
+            console.log(stateid);
+            selectBox.find('input').attr('value', stateid);
+            selectBox.find('ul').slideToggle(150);
+            selectBox.toggleClass('open');
+            selectBox.find('input').addClass('has-value');
+
+        }
+
         $scope.setCity = function(cityID) {
             var selectBox = jQuery('#citySelectBox');
 
@@ -574,6 +562,24 @@ define([
 
 
         }
+
+        $scope.subClick = function(){
+           $scope.num_beds--;
+            if($scope.num_beds < 0)
+                $scope.num_beds = 0;
+        }
+        $scope.addClick = function(){
+            $scope.num_beds++;
+        }
+        $scope.subbathsClick = function(){
+            $scope.num_of_baths--;
+            if($scope.num_of_baths < 0)
+                $scope.num_of_baths = 0;
+        }
+        $scope.addbathsClick = function(){
+            $scope.num_of_baths++;
+        }
+
 
     }]);
 });

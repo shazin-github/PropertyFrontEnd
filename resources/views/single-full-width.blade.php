@@ -203,7 +203,7 @@
 						</ul>
 					  </div>
 					  <div class="text-description no-gap">
-						<p><span class=""><% days %> Days on </span><span class="">Realtor</span></p>
+						<p><span class=""><% added_at %> Days on </span><span class="">Realtor</span></p>
 						<p><% description %></p>
 					  </div>
 					</div>
@@ -218,7 +218,7 @@
 				</div>
 				</div>
 				<div class="row">
-				  <div class="col-sm-14 col-md-16">
+				  <div class="col-sm-12 col-md-12">
 					<section class="double-gap-bottom ">
 					  <h2 class="double-gap-bottom blue-border-bottom pad-bottom ">Features <span class="fs-18 color-gray1"> for  <% address %></span> </h2>
 					  <p class="gap-bottom fs-18 color-gray1">Information last updated on <% update_date %> </p>
@@ -236,28 +236,7 @@
 						</div>
 					  </div>
 					</section>
-					<section class="double-gap-bottom ">
-					  <h2 class="double-gap-bottom blue-border-bottom pad-bottom ">Nearby Schools</h2>
-					  <div class="row no-gap nearby-div">
-						<div class="table-outer ">
-						  <div class="table-box align-left"><h3 class="fs-20 no-gap">School Rating</h3></div>
-						  <div class="table-box"><h3 class="fs-20 no-gap">Name</h3></div>
-						  <div class="table-box"><h3 class="fs-20 no-gap">Address</h3></div>
-						  <div class="table-box no-border"><h3 class="fs-20 no-gap">Distance</h3></div>
-						</div>
-						<div class="scroll-ht">
-						  <div class="table-outer" ng-repeat="school in schools">
-							<div class="table-box ">
-							  <span class="round-number"><% school.rating %></span>
-							  <p class="align-left no-gap">out of 5</p>
-							</div>
-							<div class="table-box align-left"><p class="no-gap"><% school.name %></p></div>
-							<div class="table-box"><p class="no-gap"><% school.vicinity %></p></div>
-							<div class="table-box no-border"><p class="no-gap"><% school.distance %></p></div>
-						  </div>
-						</div>
-					  </div>
-					</section>					
+
 					<!--<section class="double-gap-bottom ">
 					  <h2 class="double-gap-bottom blue-border-bottom pad-bottom ">Popularity on Realtor</h2>
 					  <div class="row no-gap">
@@ -273,7 +252,7 @@
 					</section> -->
 
 				  </div>
-				  <div class="col-sm-10 col-md-8">
+				  <div class="col-sm-114 col-md-12">
 					<div class="map-info pull-right double-gap-bottom full">
 					  <!-- <iframe width="" height="" frameborder="0" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d54447.26463684356!2d74.34649627986188!3d31.470450441588902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1454961823511" style="border:0" allowfullscreen="" class="pull-right signle-page-map"></iframe> -->
 						<div id="property_map" class="pull-right signle-page-map"></div>
@@ -307,6 +286,48 @@
 					  </div>
 					</div> -->
 				  </div>
+				</div>
+				<div class="row">
+					<div class="col-sm-14 col-md-16">
+
+						<section class="double-gap-bottom ">
+							<h2 class="double-gap-bottom blue-border-bottom pad-bottom ">Nearby Schools</h2>
+							<div class="row no-gap nearby-div">
+								<div class="table-outer ">
+									<div class="table-box align-left"><h3 class="fs-20 no-gap">School Rating</h3></div>
+									<div class="table-box"><h3 class="fs-20 no-gap">Name</h3></div>
+									<div class="table-box"><h3 class="fs-20 no-gap">Address</h3></div>
+									<div class="table-box no-border"><h3 class="fs-20 no-gap">Distance</h3></div>
+								</div>
+								<div class="scroll-ht">
+									<div class="table-outer" ng-repeat="school in schools">
+										<div class="table-box ">
+											<span class="round-number"><% school.rating %></span>
+											<p class="align-left no-gap">out of 5</p>
+										</div>
+										<div class="table-box align-left"><p class="no-gap"><% school.name %></p></div>
+										<div class="table-box"><p class="no-gap"><% school.vicinity %></p></div>
+										<div class="table-box no-border"><p class="no-gap"><% school.distance %></p></div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!--<section class="double-gap-bottom ">
+                          <h2 class="double-gap-bottom blue-border-bottom pad-bottom ">Popularity on Realtor</h2>
+                          <div class="row no-gap">
+                            <div class="seller-metric col-sm-24 col-md-12 pull-left">
+                              <div class="seller-metric-icon">1K</div>
+                              <div class="seller-metric-text"><strong> Views since listing</strong><br> 1,452 all-time</div>
+                            </div>
+                            <div class="seller-metric col-sm-24 col-md-12 pull-left"><div class="seller-metric-icon">32</div>
+                              <div class="seller-metric-text"><strong> Shoppers saved</strong><br> this home to their favorites</div></div></div>
+                          <a class="button theme-button-2 gap-top" href="#"> Contact an agent </a>
+
+
+                        </section> -->
+
+					</div>
+
 				</div>
 			</div>
 		</div>

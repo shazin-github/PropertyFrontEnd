@@ -57,7 +57,25 @@
 						<input type="text" class="js-input nr-only" required placeholder="Price $" ng-model="price"/>
 					</div>
 					<div class="col-sm-12">
-						<input type="text" class="js-input nr-only" required placeholder="Area (sq ft)" ng-model="area"/>
+						<div class="col-sm-12">
+							<input type="text" class="js-input nr-only" required placeholder="Area" ng-model="area"/>
+						</div>
+						<div class="col-sm-12">
+
+							<div class="select-box type-2 select-box-margin" id="selectAreatype">
+								<input type="hidden" ng-value="area_type" />
+								<input class="js-input no-select" type="text" required id="area_type" value="" placeholder="Area Type" ng-model="area_type" ng-readonly="true"/>
+								<ul>
+									<li ng-value="marla" ng-click="setareatype('Marla')" >Marla</li>
+									<li  ng-value="kenal" ng-click="setareatype('Kenal')">Kenal</li>
+									<li  ng-value="sqft"   ng-click="setareatype('Sq ft.')">Sq ft.</li>
+								</ul>
+
+
+
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
@@ -167,18 +185,18 @@
 							<div class="nr-filter">
 								<p class="caption">Baths</p>
 								<div class="block">
-									<span class="action substract">-</span>
-									<input type="text" class="nr-only" required value="0" id="bath"/>
-									<span class="action add">+</span>
+									<span class="action substract" ng-click="subbathsClick()">-</span>
+									<input type="text" class="nr-only" required value="<% num_of_baths %>" id="bath" ng-model="num_of_baths" />
+									<span class="action add" ng-click="addbathsClick()">+</span>
 								</div>
 							</div>
 
 							<div class="nr-filter">
 								<p class="caption">Beds</p>
 								<div class="block">
-									<span class="action substract">-</span>
-									<input type="text" class="nr-only" required value="0" id="bed"/>
-									<span class="action add">+</span>
+									<span class="action substract" ng-click="subClick()">-</span>
+									<input type="text" class="nr-only" required value="<% num_beds %>" id="bed" ng-model="num_beds"/>
+									<span class="action add" ng-click="addClick()">+</span>
 								</div>
 							</div>
 						</div>

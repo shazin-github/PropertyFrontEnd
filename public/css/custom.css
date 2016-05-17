@@ -271,7 +271,7 @@ footer .copyrigts p {
 }
 
 .signle-page-map {
-  height: 219px;
+  height: 285px;
   width: 100%;
 }
 .double-gap-bottom {
@@ -413,6 +413,10 @@ html body .modal-backdrop {
     float: left;
     margin: 0 5px !important;
     padding: 12px 5px;
+}
+.select-box-margin {
+    margin-bottom: 0px !important;
+    margin-top: 14px;
 }
 @media (max-width: 1640px) {
 	

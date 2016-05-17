@@ -558,8 +558,12 @@ define(['services/propertyService' ,'services/schoolService'], function() {
             });
             $scope.schools= "";
             schoolService.getSchools(map, new_center, $scope);
-            $scope.date = new Date();
-            //console.log($scope.date);
+            var oneDay = 24*60*60*1000;
+            var date1 = new Date().getTime();
+            var date2 = new Date(prop_data.created_at).getTime();
+
+            var diffDays = Math.round(Math.abs((date1 - date2)/(oneDay)));
+            $scope.added_at = diffDays-1;
         }, function(response) {
             $("#overlay").hide();
         });

@@ -8,7 +8,7 @@ define(function() {
         this.getMarker = function(prop_data, map) {
             this.clearOverlays();
             var bounds = new google.maps.LatLngBounds();
-
+            //console.log(prop_data);
             for (i in prop_data) {
                 if(prop_data[i].latitude != "" && prop_data[i].longitude != "") {
 
@@ -17,7 +17,7 @@ define(function() {
                     this.markers[this.mark_count] = new google.maps.Marker({
                         position: latlng,
                         map: map,
-                        markerId : prop_data[i].id,
+                        markerId : prop_data[i].property_id,
                         title: prop_data[i].address,
                         //icon:'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
                     });
@@ -38,18 +38,21 @@ define(function() {
             //console.log(this.markers);
             var bounds = new google.maps.LatLngBounds();
 
+            //console.log(this.markers);
+
             if(this.last_up['id']){
-                console.log(this.last_up);
+              //  console.log(this.last_up);
                 for(i in this.markers){
-                    console.log('Test');
+
                     if(this.markers[i].markerId == this.last_up['id']){
 
-
+                        //console.log('Test');
                         var latlng = new google.maps.LatLng(this.last_up['latitude'], this.last_up['longitude']);
                         bounds.extend(latlng);
                         this.markers[i].setMap(null);
                         this.markers[i] = new google.maps.Marker({
                             position: latlng,
+                            markerId : this.last_up['id'],
                             map: map,
                             title: prop_data[i].address,
 
@@ -67,7 +70,7 @@ define(function() {
                 //console.log(this.markers[i].markerId)
 
                 if(this.markers[i].markerId == d_m['id']){
-                    console.log(d_m);
+                    //console.log(d_m);
                     var latlng = new google.maps.LatLng(d_m['latitude'], d_m['longitude']);
                     bounds.extend(latlng);
                     this.markers[i].setMap(null);
@@ -78,6 +81,7 @@ define(function() {
                         position: latlng,
                         map: map,
                         title: prop_data[i].address,
+                        markerId : d_m['id'],
                         animation: google.maps.Animation.BOUNCE,
                         //icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
                         icon: 'img/marker_icon.png'

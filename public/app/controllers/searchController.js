@@ -118,7 +118,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
             $scope.changemarkertest = function(data){
 
                 var d_m = {
-                    'id':data.id,
+                    'id':data.property_id,
                     'latitude':data.latitude,
                     'longitude':data.longitude
                 };

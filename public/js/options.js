@@ -611,14 +611,14 @@ var teslaThemes = {
 			toggle = jQuery('.account-options .main-info');
 
 		toggle.on('click', function () {
-			console.log(" Please open");
+			//console.log(" Please open");
 			drowpDown.find('.list').toggleClass('visible');
 			return false;
 		});
 
 		jQuery(document).on('click', function () {
 
-			console.log(" Please close");
+			//console.log(" Please close");
 
 			drowpDown.find('.list').removeClass('visible');
 		});
