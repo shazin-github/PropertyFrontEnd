@@ -8,19 +8,20 @@
 			<div class="user-account-tabs">
 				<!-- Menu Controlls -->
 				<ul class="heading">
-					{{--<li><a class="profile" href="#profile"><span>My Profile</span></a></li>--}}
-					{{--<li><a class="submit" href="#submit" ><span>Submit new property</span></a></li>--}}
-					{{--<li><a class="properties" href="#properties"><span>My Properties</span></a></li>--}}
+					{{--<li><a class="profile" href="{{ URL::to('my-profile/') }}"><span>My Profile</span></a></li>--}}
+					{{--<li><a class="submit "  href="{{ URL::to('#/submit') }}"  ><span>Submit new property</span></a></li>--}}
+					{{--<li><a class="properties" href="{{ URL::to('#/properties')}}"><span>My Properties</span></a></li>--}}
 
 				</ul>
 
 				<!-- Body -->
 				<div class="tabs-body" >
 
-
 					<div ng-view></div>
 
+
 				</div>
+
 			</div>
 		</div>
 	</section>

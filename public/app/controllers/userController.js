@@ -1,6 +1,8 @@
 define(['services/userService'], function() {
     var coreModule = angular.module('coreModule');
+
     coreModule.controller('userController', ['$scope', 'userService', function($scope, userService) {
+
         $scope.user = {};
         
         $scope.login = function(){
@@ -29,6 +31,7 @@ define(['services/userService'], function() {
         }
 
         $scope.userReg = {};
+
         $scope.register = function(){
         	//alert($scope.user+' has password'+$scope.password);
         	$('#overlay').show();

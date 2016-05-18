@@ -9,6 +9,9 @@ define(function() {
         'controllers/listingController',
         'controllers/myPropertyController',
         'controllers/agentsController',
+        'directive/addPropertyDirective',
+        'directive/propertyDetailDirective',
+
 
     ];
 });

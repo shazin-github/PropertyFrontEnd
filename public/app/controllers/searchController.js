@@ -1,5 +1,6 @@
 define(['services/searchService', 'services/geolocatorService', 'services/searchAutoService', 'services/markerService'], function() {
     var coreModule = angular.module('coreModule');
+
     coreModule.controller('searchController', ['$scope', 'searchService', 'geolocatorService', 'searchAutoService', 'markerService',
         function($scope, searchService, geolocatorService, searchAutoService, markerService) {
             var map_center = new google.maps.LatLng(31.55460609999999, 74.35715810000001);
@@ -16,6 +17,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
             $scope.search = false;
             $scope.isListingsLoaded = false;
             $scope.isRecentLoaded = false;
+            $scope.Response_msg = '';
 
 
             $scope.initiate = function() {
@@ -104,12 +106,16 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
 
                     markerService.getMarker(prop_data, map);
 
+                    $scope.Response_msg = '';
+
 
 
                 } else {
                     $('#overlay').hide();
+                    $scope.search = true;
                     markerService.clearOverlays(map);
                     $scope.listings = "";
+                    $scope.Response_msg = "No Result Found";
                 }
             }, function(response) {
             });
@@ -155,11 +161,13 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                         $scope.listings = $scope.data2;
                         //searchService.setMini();
                         markerService.getMarker(prop_data, map);
+                        $scope.Response_msg = " ";
 
                     } else {
                         $('#overlay').hide();
                         markerService.clearOverlays(map);
                         $scope.listings = "";
+                        $scope.Response_msg = "No Result Found";
                     }
                 }, function(response) {
                 });

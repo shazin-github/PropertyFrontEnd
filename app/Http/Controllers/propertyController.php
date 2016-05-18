@@ -294,4 +294,9 @@ class propertyController extends Controller {
         //dd('there');
         return view('directive/addresstemplate');
     }
+    public function modeltemplate(){
+
+        return view('directive/modeltemp');
+
+    }
 }

@@ -1,7 +1,7 @@
 <div class="user-account-tabs">
 	<!-- Menu Controlls -->
 	<ul class="heading">
-		<li><a class="profile" href="#profile"><span>My Profile</span></a></li>
+		<li><a class="profile" href="my-profile#/"><span>My Profile</span></a></li>
 		{{--<li><a class="submit"  ><span>Submit new property</span></a></li>--}}
 		{{--<li><a class="properties" href="#properties"><span>My Properties</span></a></li>--}}
 

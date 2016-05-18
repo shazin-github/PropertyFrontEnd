@@ -64,7 +64,7 @@
 
 							<div class="select-box type-2 select-box-margin" id="selectAreatype">
 								<input type="hidden" ng-value="area_type" />
-								<input class="js-input no-select" type="text" required id="area_type" value="" placeholder="Area Type" ng-model="area_type" ng-readonly="true"/>
+								<input class="js-input no-select" type="text" required id="area_type" value="<%%>" placeholder="Area Type" ng-model="area_type" ng-readonly="true"/>
 								<ul>
 									<li ng-value="marla" ng-click="setareatype('Marla')" >Marla</li>
 									<li  ng-value="kenal" ng-click="setareatype('Kenal')">Kenal</li>
@@ -179,6 +179,14 @@
 									<span>Events</span>
 								</label>
 							</div>
+
+							<div class="select-filter">
+								<label>
+									<input type="radio" name="category-select" value="other" required id="category-select" ng-model="category"/>
+									<span>Other</span>
+								</label>
+							</div>
+
 						</div>
 
 						<div class="col-sm-6">

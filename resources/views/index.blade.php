@@ -128,6 +128,11 @@
 						</div>
 
 					</div>
+					<div class="home-list-ht" ng-if="listings.length == 0" ng-class="{ 'hide' : !search }" >
+
+						<div class="alert-info" > <%Response_msg%> </div>
+
+					</div>
 				</div>
 				<input type="hidden" id="search_lat" /> <input type="hidden" id="search_lng" />
 			</div>

@@ -88,6 +88,8 @@ Route::group(['middleware'=>['web']], function(){
 
 	Route::get('property/addresstemplate' , 'propertyController@addresstemplate');
 
+	Route::get('property/modeltemplate' ,'propertyController@modeltemplate');
+
 	Route::get('property/{id}', function ($id) {
 		return view('single-full-width')->with('id', $id);
 	});

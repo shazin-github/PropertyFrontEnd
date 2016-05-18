@@ -1,11 +1,12 @@
 define(function() {
     var coreModule = angular.module('coreModule');
     coreModule.service('propertyService', ['$http', '$q', function($http, $q) {
-        this.getProperty = function(title, price, area, description, purpose, type, category, image_url) {
+        this.getProperty = function(title, price, area,area_type ,description, purpose, type, category, image_url) {
             return {
                 title: title,
                 price: price,
                 area: area,
+                area_type: area_type,
                 description: description,
                 purpose: purpose,
                 type: type,

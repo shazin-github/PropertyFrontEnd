@@ -2677,7 +2677,7 @@ footer .copyrigts p a:hover {
   display: inline-block;
   position: relative;
   height: 85px;
-  padding: 0 45px 0 45px;
+  padding: 0 50px 0 80px;
   width: 100%;
   color: #086fb5;
 }
@@ -2702,7 +2702,7 @@ footer .copyrigts p a:hover {
   color: inherit;
   font-size: 36px;
   font-weight: 300;
-  left: 0px;
+  left: 30px;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);

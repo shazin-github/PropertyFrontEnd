@@ -8,18 +8,9 @@
 		<div class="col-md-8 col-lg-8 no-pad">
 
 			<div class="imgdiv" id="sliding" >
-				<div id="loading" >
-
-					<img src="{{URL::to('img/rolling.svg')}}" width="80px" height="80px"/><p>Loading</p>
-
-				</div>
 
 				<img ng-attr-src="{{ url('<% currentimage.img %>') }}" >
-				{{--<flex-slider slide="img in image_url" animation="slide" >--}}
-					{{--<li>--}}
-						{{--<img ng-attr-src="{{ url('<% img %>') }}" >--}}
-					{{--</li>--}}
-				{{--</flex-slider>--}}
+
 			</div>
 
 		</div>
@@ -199,7 +190,7 @@
 						<ul class="align-left">
 						  <li class="bathrooms"><p>Bathrooms: <span><% bathroom %></span></p></li>
 						  <li class="bedrooms"><p>Bedrooms: <span><% bedroom %></span></p></li>
-						  <li class="area"><p>Area: <span><% area %></span></p></li>
+						  <li class="area"><p>Area: <span><% area  %> </span> <span style="text-transform: uppercase;"> <% area_type %></span> </p></li>
 						</ul>
 					  </div>
 					  <div class="text-description no-gap">
