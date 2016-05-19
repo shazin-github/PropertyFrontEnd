@@ -63,6 +63,10 @@ img#profilePicImage:hover{
   width: 100% !important;
    border-radius: 0 !important;
 }
+.search-gap-no-result {
+    margin-top: 80px;
+    margin-left: 100px;
+}
 .search-wd {
   border-radius: 0 !important;
   float: left;

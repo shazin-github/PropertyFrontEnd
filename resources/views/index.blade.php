@@ -130,7 +130,13 @@
 					</div>
 					<div class="home-list-ht" ng-if="listings.length == 0" ng-class="{ 'hide' : !search }" >
 
-						<div class="alert-info" > <%Response_msg%> </div>
+						<div class="search-gap-no-result">
+							<div class="box-caption">
+								<h4>Search</h4>
+								<div class="alert-info" > <%Response_msg%> </div>
+							</div>
+						</div>
+
 
 					</div>
 				</div>

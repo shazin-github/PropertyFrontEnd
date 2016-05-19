@@ -39,14 +39,15 @@
 
 				</div>
 
-				<div class="select-box type-2" id="citySelectBox">
+				<div class="select-box city type-2 " id="citySelectBox" >
 					<input type="hidden" ng-value="city" />
-					<input class="js-input no-select" type="text" required id="city" value="" placeholder="City" ng-model="city" ng-readonly="true"/>
-					<city-list  city="citylist" on-click="setCity(cityName)" ></city-list>
+					<input class="js-input no-select" type="text" required id="city" value="" placeholder="City" ng-model="city" ng-readonly="true" ng-click="addOclass()" />
+					<city-list  city="citylist" on-click="setCity(cityName)"  ></city-list>
 
 
 
 				</div>
+
 
 				{{--<input type="text" class="js-input" required placeholder="Address (street/ house/ ap.)" ng-init="addNewLocation()" id="address" ng-model="address"/>--}}
 

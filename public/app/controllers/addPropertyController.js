@@ -11,6 +11,32 @@ define([
 
     coreModule.controller('addPropertyController', ['$rootScope','$scope', 'locationService' ,'featureService', 'propertyService',  'addPropertyService','cityService','stateService', '$q' , function($rootScope,$scope, locationService, featureService, propertyService, addPropertyService ,cityService ,stateService,$q) {
 
+
+        //angular.element(document).ready(function () {
+        //    addEventListener('load', load, false);
+        //});
+        //
+        //function load(){
+        //
+        //    console.log("TEst");
+        //    var selectbox = angular.element('.select-box city');
+        //    selectbox.find('input').on('click',function(){
+        //        console.log("Test");
+        //    });
+        //
+        //}
+        $scope.addOclass = function(){
+
+            var selectbox = angular.element( document.querySelector( '.city' ) );
+            console.log(selectbox);
+            selectbox.find('ul').slideToggle(150);
+            //    selectBox.toggleClass('open');
+            selectbox.toggleClass('open');
+
+        }
+        /*
+         *
+         * */
         $scope.country = "Pakistan";
         $scope.citylist = {};
         $scope.statelist = {};
@@ -22,8 +48,11 @@ define([
         $scope.num_beds = 0;
         $scope.num_of_baths = 0;
         $scope.area_type = 'Marla'
+        $scope.alpha = false;
 
-
+        /*
+         *
+         * */
         $scope.readURL = function(input, imageField) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -34,7 +63,9 @@ define([
                 reader.readAsDataURL(input.files[0]);
             }
         }
-
+        /*
+         *
+         * */
         $scope.fileToDataURL = function (file) {
 
             var deferred = $q.defer();
@@ -45,19 +76,24 @@ define([
             reader.readAsDataURL(file);
             return deferred.promise;
         };
-
+        /*
+         *
+         * */
         cityService.getcity().then(function(res){
 
             $scope.citylist = res.data.data;
             //console.log($scope.citylist);
         })
-
+        /*
+         *
+         * */
         stateService.getstate().then(function(res){
             $scope.statelist = res.data.data;
             //console.log($scope.statelist);
         })
-
-
+        /*
+         *
+         * */
         $scope.addProperty = function() {
 
 
@@ -113,16 +149,17 @@ define([
             });
             });
         };
-
-
+        /*
+         *
+         * */
         $scope.initiate = function() {
 
-            console.log('select-box test');
+           // console.log('select-box test');
 
             jQuery('.select-box').each(function (index) {
                 var selectBox = jQuery(this),
                     current = index;
-
+                console.log(selectBox);
 
                 selectBox.find('input').on('click', function () {
                     selectBox.find('ul').slideToggle(150);
@@ -148,16 +185,12 @@ define([
             });
 
         };
-
-        //$scope.initiate();
-
-
-
-
-
-
-
+        /*
+         *
+         * */
         $scope.setstate = function(stateid) {
+
+            console.log("TEst");
 
             var selectBox = jQuery('#stateSelectBox');
 
@@ -167,7 +200,9 @@ define([
             selectBox.find('input').addClass('has-value');
 
         }
-
+        /*
+         *
+         * */
         $scope.setareatype = function(type) {
 
             var selectBox = jQuery('#selectAreatype');
@@ -179,7 +214,16 @@ define([
 
 
         }
+        /*
+         *
+         * */
+        $scope.doStuff = function (item) {
+            console.log(item.currentTarget);
 
+        };
+        /*
+        *
+        * */
         $scope.setCity = function(cityID) {
             var selectBox = jQuery('#citySelectBox');
 
@@ -190,20 +234,31 @@ define([
 
 
         }
-
+        /*
+        *
+        * */
         $scope.subClick = function(){
            $scope.num_beds--;
             if($scope.num_beds < 0)
                 $scope.num_beds = 0;
         }
+        /*
+         *
+         * */
         $scope.addClick = function(){
             $scope.num_beds++;
         }
+        /*
+         *
+         * */
         $scope.subbathsClick = function(){
             $scope.num_of_baths--;
             if($scope.num_of_baths < 0)
                 $scope.num_of_baths = 0;
         }
+        /*
+         *
+         * */
         $scope.addbathsClick = function(){
             $scope.num_of_baths++;
         }
