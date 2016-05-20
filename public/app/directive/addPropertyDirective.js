@@ -193,19 +193,18 @@ define(function(){
         };
     }); //
 
-    coreModule.directive('cityList' , function($compile){
+    coreModule.directive('cityList' , function(){
         return {
             restrict : 'EA',
             scope   :{
                 cities: '=city',
                 onClick:'&',
-                start: '@',
-                current: '@'
+
 
             },
             templateUrl: 'property/citytemplate',
             link: function(scope, element, attrs) {
-                $compile(element.contents())(scope.$new());
+              //  $compile(element.contents())(scope.$new());
             }
             //controller:function($scope){
             //

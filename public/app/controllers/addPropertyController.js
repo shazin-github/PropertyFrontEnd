@@ -12,9 +12,10 @@ define([
     coreModule.controller('addPropertyController', ['$rootScope','$scope', 'locationService' ,'featureService', 'propertyService',  'addPropertyService','cityService','stateService', '$q' , function($rootScope,$scope, locationService, featureService, propertyService, addPropertyService ,cityService ,stateService,$q) {
 
 
-        //angular.element(document).ready(function () {
-        //    addEventListener('load', load, false);
-        //});
+        angular.element(document).ready(function () {
+
+
+        });
         //
         //function load(){
         //
@@ -25,15 +26,35 @@ define([
         //    });
         //
         //}
-        $scope.addOclass = function(){
-
-            var selectbox = angular.element( document.querySelector( '.city' ) );
-            console.log(selectbox);
-            selectbox.find('ul').slideToggle(150);
-            //    selectBox.toggleClass('open');
-            selectbox.toggleClass('open');
-
-        }
+        //function load(){
+        //
+        //    //var selectbox = angular.element( document.querySelector( '.city' ) );
+        //    //console.log(selectbox);
+        //    //selectbox.on()
+        //    //selectbox.find('ul').slideToggle(150);
+        //    ////    selectBox.toggleClass('open');
+        //    //selectbox.toggleClass('open');
+        //    angular.element('.select-box').each(function(index){
+        //
+        //            var selectbox =  angular.element('.select-box');
+        //            current = index;
+        //
+        //            selectbox.find('input').on('click' , function(){
+        //            console.log("Testing");
+        //            selectbox.find('ul').slideToggle(150);
+        //            selectbox.toggleClass('open');
+        //            angular.element('.select-box').each(function(index){
+        //
+        //                if(current != index){
+        //                    angular.element('.select-box').find('ul').slideUp(150);
+        //                    angular.element('.select-box').removeClass('open');
+        //                }
+        //            });
+        //        })
+        //    });
+        //
+        //
+        //}
         /*
          *
          * */
@@ -156,32 +177,57 @@ define([
 
            // console.log('select-box test');
 
-            jQuery('.select-box').each(function (index) {
-                var selectBox = jQuery(this),
-                    current = index;
-                console.log(selectBox);
+            //jQuery('.select-box').each(function (index) {
+                //var selectBox = jQuery(this),
+                //    current = index;
+                //console.log(selectBox);
+                //
+                //selectBox.find('input').on('click', function () {
+                //    selectBox.find('ul').slideToggle(150);
+                //    selectBox.toggleClass('open');
+                //
+                //    jQuery('.select-box').each(function (index) {
+                //        if (index != current) {
+                //            jQuery(this).find('ul').slideUp(150);
+                //            jQuery(this).removeClass('open');
+                //        }
+                //    });
+                //});
 
-                selectBox.find('input').on('click', function () {
-                    selectBox.find('ul').slideToggle(150);
-                    selectBox.toggleClass('open');
 
-                    jQuery('.select-box').each(function (index) {
-                        if (index != current) {
-                            jQuery(this).find('ul').slideUp(150);
-                            jQuery(this).removeClass('open');
+                //jQuery(document).on('click', function () {
+                //    selectBox.removeClass('open');
+                //    selectBox.find('ul').slideUp(150);
+                //});
+                //
+                //selectBox.on('click', function (e) {
+                //    e.stopPropagation();
+                //});
+            //});
+            angular.element('.select-box').each(function(index){
+
+                var selectbox =  angular.element(this),
+                                current = index;
+
+                //console.log(current);
+
+                selectbox.find('input').on('click' , function(){
+                    selectbox.find('ul').slideToggle(150);
+                    selectbox.toggleClass('open');
+
+                    angular.element('.select-box').each(function(index){
+
+                        if(current !== index){
+                            angular.element(this).find('ul').slideUp(150);
+                            angular.element(this).removeClass('open');
                         }
                     });
                 });
 
-
-                jQuery(document).on('click', function () {
-                    selectBox.removeClass('open');
-                    selectBox.find('ul').slideUp(150);
-                });
-
-                selectBox.on('click', function (e) {
+                selectbox.on('click', function (e) {
                     e.stopPropagation();
                 });
+
             });
 
         };
@@ -190,7 +236,6 @@ define([
          * */
         $scope.setstate = function(stateid) {
 
-            console.log("TEst");
 
             var selectBox = jQuery('#stateSelectBox');
 

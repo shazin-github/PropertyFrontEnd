@@ -41,7 +41,7 @@
 
 				<div class="select-box city type-2 " id="citySelectBox" >
 					<input type="hidden" ng-value="city" />
-					<input class="js-input no-select" type="text" required id="city" value="" placeholder="City" ng-model="city" ng-readonly="true" ng-click="addOclass()" />
+					<input class="js-input no-select" type="text" required id="city" value="" placeholder="City" ng-model="city" ng-readonly="true"  />
 					<city-list  city="citylist" on-click="setCity(cityName)"  ></city-list>
 
 
