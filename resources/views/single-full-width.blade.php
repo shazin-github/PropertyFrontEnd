@@ -280,43 +280,9 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-14 col-md-16">
-
 						<section class="double-gap-bottom ">
-							<h2 class="double-gap-bottom blue-border-bottom pad-bottom ">Nearby Schools</h2>
-							<div class="row no-gap nearby-div">
-								<div class="table-outer ">
-									<div class="table-box align-left"><h3 class="fs-20 no-gap">School Rating</h3></div>
-									<div class="table-box"><h3 class="fs-20 no-gap">Name</h3></div>
-									<div class="table-box"><h3 class="fs-20 no-gap">Address</h3></div>
-									<div class="table-box no-border"><h3 class="fs-20 no-gap">Distance</h3></div>
-								</div>
-								<div class="scroll-ht">
-									<div class="table-outer" ng-repeat="school in schools">
-										<div class="table-box ">
-											<span class="round-number"><% school.rating %></span>
-											<p class="align-left no-gap">out of 5</p>
-										</div>
-										<div class="table-box align-left"><p class="no-gap"><% school.name %></p></div>
-										<div class="table-box"><p class="no-gap"><% school.vicinity %></p></div>
-										<div class="table-box no-border"><p class="no-gap"><% school.distance %></p></div>
-									</div>
-								</div>
-							</div>
+							<cd-school-list schoollist="schools" />
 						</section>
-						<!--<section class="double-gap-bottom ">
-                          <h2 class="double-gap-bottom blue-border-bottom pad-bottom ">Popularity on Realtor</h2>
-                          <div class="row no-gap">
-                            <div class="seller-metric col-sm-24 col-md-12 pull-left">
-                              <div class="seller-metric-icon">1K</div>
-                              <div class="seller-metric-text"><strong> Views since listing</strong><br> 1,452 all-time</div>
-                            </div>
-                            <div class="seller-metric col-sm-24 col-md-12 pull-left"><div class="seller-metric-icon">32</div>
-                              <div class="seller-metric-text"><strong> Shoppers saved</strong><br> this home to their favorites</div></div></div>
-                          <a class="button theme-button-2 gap-top" href="#"> Contact an agent </a>
-
-
-                        </section> -->
-
 					</div>
 
 				</div>

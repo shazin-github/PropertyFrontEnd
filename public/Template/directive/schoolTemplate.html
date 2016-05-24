@@ -1,0 +1,21 @@
+<h2 class="double-gap-bottom blue-border-bottom pad-bottom ">Nearby Schools</h2>
+<div class="row no-gap nearby-div">
+    <div class="table-outer ">
+        <div class="table-box align-left"><h3 class="fs-20 no-gap">School Rating</h3></div>
+        <div class="table-box"><h3 class="fs-20 no-gap">Name</h3></div>
+        <div class="table-box"><h3 class="fs-20 no-gap">Address</h3></div>
+        <div class="table-box no-border"><h3 class="fs-20 no-gap">Distance</h3></div>
+    </div>
+    <div class="scroll-ht">
+        <div class="table-outer" ng-repeat="school in schoollist">
+            <div class="table-box ">
+                <span class="round-number"><% school.rating %></span>
+                <p class="align-left no-gap">out of 5</p>
+            </div>
+            <div class="table-box align-left"><p class="no-gap"><% school.name %></p></div>
+            <div class="table-box"><p class="no-gap"><% school.vicinity %></p></div>
+            <div class="table-box no-border"><p class="no-gap"><% school.distance %></p></div>
+        </div>
+    </div>
+</div>
+

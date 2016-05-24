@@ -70,6 +70,12 @@ define([
         $scope.num_of_baths = 0;
         $scope.area_type = 'Marla'
         $scope.alpha = false;
+        $scope.city = '';
+        $scope.arealist = [
+            'Marla',
+            'Kenal',
+            'Sq ft'
+        ];
 
         /*
          *

@@ -299,4 +299,16 @@ class propertyController extends Controller {
         return view('directive/modeltemp');
 
     }
+
+    public function addSubtractTemplate(){
+        return view('directive/addSubtractTemplate');
+    }
+
+    public function dropdrownTemplate(){
+        return view('directive/dropdrownTemplate');
+    }
+
+    public function schooltemplate(){
+        return view('directive/schooltemplate');
+     }
 }
