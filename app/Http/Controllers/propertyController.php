@@ -277,38 +277,11 @@ class propertyController extends Controller {
         $city_List = city::all();
         return Response::json(['success'=>true, 'data'=> $city_List]);
     }
-    public function cityTemplate(){
-        return view('directive/citytemplate');
-    }
-
-    public function stateTemplate(){
-        return view('directive/statetemplate');
-    }
 
     public function getstate(){
         $state_List = states::all();
         return Response::json(['success'=>true, 'data'=> $state_List]);
     }
 
-    public function addresstemplate(){
-        //dd('there');
-        return view('directive/addresstemplate');
-    }
-    public function modeltemplate(){
 
-        return view('directive/modeltemp');
-
-    }
-
-    public function addSubtractTemplate(){
-        return view('directive/addSubtractTemplate');
-    }
-
-    public function dropdrownTemplate(){
-        return view('directive/dropdrownTemplate');
-    }
-
-    public function schooltemplate(){
-        return view('directive/schooltemplate');
-     }
 }

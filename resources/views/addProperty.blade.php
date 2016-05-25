@@ -40,7 +40,7 @@
 
 				{{--<input type="text" class="js-input" required placeholder="Address (street/ house/ ap.)" ng-init="addNewLocation()" id="address" ng-model="address"/>--}}
 
-				<input type="text" class="js-input" id="addresss" placeholder="Address (street/ house/ ap.)"  ng-autocomplete ng-model="result1" />
+				<input type="text" class="js-input" id="addresss" placeholder="Address (street/ house/ ap.)"  ng-autocomplete ng-model="address" />
 
 				<div class="row row-fit-10">
 					<div class="col-sm-12">
@@ -75,22 +75,22 @@
 						   type="file"
 						   accept="image/*"
 						   multiple
-						   image="images4"
+						   image="prop_images"
 						   resize-max-height="100"
 						   resize-max-width="100"
 						   style="display: none"
 						   resize-quality="0.9"
-						   ng-model="prop_images"
+						   ng-model="inputFiles"
 					/>
 					</br>
 
 				</div><br>
 
-				<img ng-repeat="img in images4"  ng-attr-src="<% img.resized.dataURL %>" type="<% img.file.type %>"/>
+				<img ng-repeat="img in prop_images"  ng-attr-src="<% img.resized.dataURL %>" type="<% img.file.type %>"/>
 				<div class="location-on-map">
 					<div class="map-canvas" id="location-map"></div>
-					<input type="hidden" id="latitude" ng-model="latitude" />
-					<input type="hidden" id="longitude" ng-model="longitude" />
+					<input type="hidden" ng-value="<% latitude %>" ng-model="latitude" />
+					<input type="hidden" ng-value="<%longitude%>" ng-model="longitude" />
 				</div>
 			</div>
 		</div>

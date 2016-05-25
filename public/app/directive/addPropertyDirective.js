@@ -114,8 +114,8 @@ define(function(){
                                 scope.property_marker.title = element.val();
                                 scope.map.setCenter(result.geometry.location);
                                 scope.map.setZoom(15);
-                                $("#latitude").val(result.geometry.location.lat());
-                                $("#longitude").val(result.geometry.location.lng());
+                                $scope.latitude = result.geometry.location.lat();
+                                $scope.longitude = result.geometry.location.lng();
 
 
                                 controller.$setViewValue(element.val());
@@ -308,6 +308,7 @@ define(function(){
                         scope.image = [];
 
                     var files = evt.target.files;
+                    console.log($scope.inputFiles)
                     for (var i = 0; i < files.length; i++) {
                         //create a result object for each file in files
                         var fsize = files[i].size; //get file size
@@ -407,6 +408,7 @@ define(function(){
         }
         function link(scope, element, attrs ,ctrl){
             var selectbox = element.find('.select-box');
+
             angular.element(document).on('click',function(){
 
                 selectbox.find('ul').slideUp(150);

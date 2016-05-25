@@ -2,16 +2,21 @@
 
 define(function(){
 
-    var coreModule = angular.module('coreModule');
+    angular
+        .module('coreModule')
+        .directive('modal',model);
 
-    coreModule.directive('modal', function () {
-        return {
-            restrict: 'EA',
-            transclude: true,
-            replace:true,
-            scope:true,
-            templateUrl: 'modeltemplate',
-            link: function postLink(scope, element, attrs) {
+    function model() {
+            return {
+                restrict: 'EA',
+                transclude: true,
+                replace: true,
+                scope: true,
+                templateUrl: '/Template/directive/modelTemplate.html',
+                link: postLink,
+
+            }
+            function postLink(scope, element, attrs) {
                 scope.$watch(attrs.visible, function(value){
                     if(value == true) {
                         //console.log('inner directive show');
@@ -45,9 +50,10 @@ define(function(){
                     });
                 });
 
-            },
-        };
-    });
+            }
+        }
+
+
 
     angular
         .module('coreModule')
@@ -63,5 +69,6 @@ define(function(){
             templateUrl:'/Template/directive/schoolTemplate.html'
         }
     }
+
 
 });
