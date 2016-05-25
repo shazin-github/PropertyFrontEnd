@@ -308,6 +308,7 @@ define(function(){
                         scope.image = [];
 
                     var files = evt.target.files;
+                    $scope.inputFiles = evt.target.files;
                     console.log($scope.inputFiles)
                     for (var i = 0; i < files.length; i++) {
                         //create a result object for each file in files

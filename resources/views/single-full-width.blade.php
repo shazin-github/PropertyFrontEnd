@@ -2,14 +2,14 @@
 @section('content-wrapper')
 
 	<!-- Single Property Container -->
-	<section class="single-property-container" ng-controller="propertyDetailController">
+	<section class="single-property-container" ng-controller="propertyDetailController" ng-init="init_id({!! $id !!})">
 	<div class="row no-gap">
-		<input type="hidden" name="property_id" id="property_id" value="{!! $id !!}" />
+		<input type="hidden" name="property_id" id="property_id" value="{!! $id !!}"  />
 		<div class="col-md-8 col-lg-8 no-pad">
 
 			<div class="imgdiv" id="sliding" >
 
-				<img ng-attr-src="{{ url('<% currentimage.img %>') }}" >
+				<img ng-attr-src="{{ url('<% currentimage.img %>') }}" ng-click="toggleModal(currentimage)" >
 
 			</div>
 
@@ -18,7 +18,7 @@
 		<div id="thumbWrapper" class="force-overflow scrollbar style-4"  >
 			<ul id="thumbList" >
 				<li ng-repeat="image in images_array" ng-click="toggleModal(image)">
-					<img ng-src="{{url('<% image.thumb %>')}}"  alt="Test">
+					<img ng-src="{{url('<% image.thumb %>')}}"  alt="Property Images">
 
 				</li>
 			</ul>
@@ -40,9 +40,6 @@
 							<a href class="next" title="Next" ng-click="shownext(currentimage.ind)" >»</a>
               				<a href class="close" title="Close">×</a>
            				 </span>
-
-
-
 					</div>
 				</div>
 			</modal>
