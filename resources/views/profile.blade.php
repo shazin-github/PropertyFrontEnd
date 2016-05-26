@@ -31,12 +31,12 @@
 			
 			<div class="col-md-10 col-md-offset-1">
 				<div class="photo-upload">
-					<a href="#" class="upload-btn" onclick="$('#profilePic').trigger('click');">
+					<a href="" class="upload-btn"  onclick="$('#profilePic').trigger('click');">
 						<i class="icon icon-folder4"></i>
 					</a>
-					<img ng-attr-src="<%user.image_url%>" ng-show="showProfileImage" alt="user photo" id="profilePicImage" onclick="$('#profilePic').trigger('click');"/><br />
 
-					<a class="upload-link" href="#" onclick="$('#profilePic').trigger('click');">
+					<img ng-attr-src="<%user.image_url%>" ng-show="showProfileImage" id="profilePicImage" alt="user photo"  onclick="$('#profilePic').trigger('click');"/><br />
+					<a class="upload-link" href="" onclick="$('#profilePic').trigger('click');">
 						Add your photo
 					</a>
 

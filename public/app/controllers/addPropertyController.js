@@ -30,6 +30,7 @@ define([
             'Kenal',
             'Sq ft'
         ];
+        $scope.indexSearchPage = false;
 
         cityService.getcity().then(function(res){
             $scope.citylist = res.data.data;

@@ -11,6 +11,8 @@ define(function() {
         'controllers/agentsController',
         'directive/addPropertyDirective',
         'directive/propertyDetailDirective',
+        'directive/commonDirective',
+        'directive/searchpageDirective',
 
 
     ];

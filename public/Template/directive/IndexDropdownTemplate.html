@@ -1,0 +1,8 @@
+
+    <div class=" select-box <% addclass %>">
+        <input type="hidden" ng-value="<%type%>" />
+        <input class="filter-box-input js-input no-select drop-wd" type="text" id="<% type %>"  value="<% type %>" placeholder="<% title %>" ng-model="type" ng-readonly="true" />
+        <ul>
+            <li ng-repeat="value in option" id="<%value%>" value="<%value%>" ng-click="Indselectedvalue(value)"><% value %></li>
+        </ul>
+    </div>

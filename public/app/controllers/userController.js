@@ -4,6 +4,8 @@ define(['services/userService'], function() {
     coreModule.controller('userController', ['$scope', 'userService', function($scope, userService) {
 
         $scope.user = {};
+        $scope.showProfileImage = false;
+
         
         $scope.login = function(){
         	$('#overlay').show();
@@ -54,69 +56,62 @@ define(['services/userService'], function() {
         	userService.getProfile().then(function(resp){
         		$('#overlay').hide();
         		$scope.user = resp.data.msg;
-                if($scope.user.image_url != ''){
 
-                    $scope.showProfileImage = true;
-                    $('#profilePicImage').show();
+                if($scope.user.image_url != ''){
+                    $scope.showProfileImage = !$scope.showProfileImage;
+                    $('#profilePicImage').show(); // todo
                 }
         		$scope.user.confirmPassword = resp.data.msg.password;
         	});
 
-            $("#profilePic").change(function() {
-                fsize = this.files[0].size; //get file size
-                ftype = $('#profilePic')[0].files[0].type; // get file type
-                file_size_limit = 60 * 1024 * 1024;
-
-                if (fsize > file_size_limit) {
-                    alert('Maximum allowed size is 60 MB');
-                } else if(! (ftype == 'image/jpeg' || ftype == 'image/jpg' || ftype == 'image/gif') ) {
-                    alert('Allowed file types are jpeg, jpg and gif');
-                } else {
-                    $scope.readURL(this, 'profilePicImage');
-
-                }
-            });
         }
 
-        $scope.readURL = function(input, imageField) {
-            if(input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#'+imageField).attr('src', e.target.result);
-                    $('#'+imageField).show();
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
 
         $scope.updateProfile = function() {
         	//alert($scope.user+' has password'+$scope.password);
-            form_data= new FormData();
-            file_data = $("#profilePic").prop("files")[0];
-            form_data.append("profilePic", file_data);
             $('#overlay').show();
 
-            userService.updateProfilePic(form_data).then(function(image_resp){
-                if(image_resp.data.success){
-                    $scope.user.image_url = image_resp.data.image_url;
+            form_data= new FormData();
 
+            if($scope.image2 !== undefined) {
 
+                file_data = $scope.image2.file;
 
-                }
+                form_data.append("profilePic", file_data);
 
-                userService.updateProfile($scope.user).then(function(profile_resp){
-                    console.log('RESO', profile_resp);
-                    $('#overlay').hide();
-                    if(profile_resp.data.success){
-                        echoSuccess('profileForm', profile_resp.data.msg);
+                userService.updateProfilePic(form_data).then(function(image_resp){
+
+                    if(image_resp.data.success){
+
+                        $scope.user.image_url = image_resp.data.image_url;
                     }
-                    else{
-                        console.log('error', profile_resp.data.msg);
-                        $scope.profileErrors = profile_resp.data.msg;
-                        echoErrors('profileForm', profile_resp.data.msg);
-                    }
+
+                    $scope.updateprofilefields();
+
                 });
-            });            
+
+            }else{
+
+                $scope.updateprofilefields();
+
+            }
+
         }//$scope.updateProfile
+
+        $scope.updateprofilefields = function(){
+            //console.log($scope.user);
+            userService.updateProfile($scope.user).then(function(profile_resp){
+                console.log('RESO', profile_resp);
+                $('#overlay').hide();
+                if(profile_resp.data.success){
+                    echoSuccess('profileForm', profile_resp.data.msg);
+                }
+                else{
+                    console.log('error', profile_resp.data.msg);
+                    $scope.profileErrors = profile_resp.data.msg;
+                    echoErrors('profileForm', profile_resp.data.msg);
+                }
+            });
+        }
     }]);
 });
