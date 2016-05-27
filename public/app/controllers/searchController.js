@@ -1,7 +1,6 @@
-define(['services/searchService', 'services/geolocatorService', 'services/markerService'], function() {
+define(['services/searchService', 'services/geolocatorService', 'services/searchAutoService', 'services/markerService'], function() {
     var coreModule = angular.module('coreModule');
-
-    coreModule.controller('searchController', ['$scope', 'searchService', 'geolocatorService', 'markerService',
+    coreModule.controller('searchController', ['$scope', 'searchService', 'geolocatorService', 'searchAutoService', 'markerService',
         function($scope, searchService, geolocatorService, searchAutoService, markerService) {
 
             $scope.map_init = map_init;
@@ -41,6 +40,8 @@ define(['services/searchService', 'services/geolocatorService', 'services/marker
                         $scope.listings = $scope.data2;
                         $scope.search = true;
                         $scope.isListingsLoaded = true;
+                        console.log(prop_data);
+                        console.log(markerService);
                         markerService.getMarker(prop_data, map);
                         $scope.Response_msg = '';
 
@@ -130,7 +131,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/marker
                     center: map_center,
                     styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-40},{"lightness":10}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":10}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":20}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]}]
                 }
-                map = new google.maps.Map(document.getElementById('home_map'), mapOptions); // need some changings
+                map = new google.maps.Map(document.getElementById('home-map'), mapOptions); // need some changings
             }
 
             $scope.map_init();

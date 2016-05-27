@@ -6,6 +6,7 @@ define(function() {
         this.last_up = [];
         var infowindow = new google.maps.InfoWindow();
         this.getMarker = function(prop_data, map) {
+            console.log("Map Issue");
             this.clearOverlays();
             var bounds = new google.maps.LatLngBounds();
             //console.log(prop_data);

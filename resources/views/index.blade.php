@@ -35,7 +35,7 @@
 			<div class="row row-fit" >
 			<div class="col-md-15 col-lg-14" >
 
-				<div id="home_map" class="mapClass"></div>
+				<div id="home-map" class="mapClass"></div>
 				</div>
 				<div class="col-md-9 col-lg-10">
 					<div class="map-filter-box" ng-class="{ 'hide' : search }">
