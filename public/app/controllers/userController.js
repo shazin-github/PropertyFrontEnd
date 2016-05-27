@@ -4,9 +4,9 @@ define(['services/userService'], function() {
     coreModule.controller('userController', ['$scope', 'userService', function($scope, userService) {
 
         $scope.user = {};
+
         $scope.showProfileImage = false;
 
-        
         $scope.login = function(){
         	$('#overlay').show();
 	        userService.login($scope.user).then(function(resp){
@@ -99,7 +99,7 @@ define(['services/userService'], function() {
         }//$scope.updateProfile
 
         $scope.updateprofilefields = function(){
-            //console.log($scope.user);
+
             userService.updateProfile($scope.user).then(function(profile_resp){
                 console.log('RESO', profile_resp);
                 $('#overlay').hide();
@@ -107,11 +107,13 @@ define(['services/userService'], function() {
                     echoSuccess('profileForm', profile_resp.data.msg);
                 }
                 else{
+                    $('#overlay').hide();
                     console.log('error', profile_resp.data.msg);
                     $scope.profileErrors = profile_resp.data.msg;
                     echoErrors('profileForm', profile_resp.data.msg);
                 }
             });
         }
+
     }]);
 });

@@ -24,7 +24,6 @@ define(function(){
             $scope.Indselectedvalue = Indselectedvalue;
 
             function Indselectedvalue(selectedval){
-                console.log(selectedval)
                 $scope.type = selectedval;
             }
 
@@ -55,6 +54,46 @@ define(function(){
             });
 
 
+        }
+    }
+
+
+    angular
+        .module('coreModule')
+        .directive('cdAutoSearchComplete' , AutoSearchComplete);
+
+
+    function AutoSearchComplete(){
+        var directve = {
+            restrict:'A',
+            require: 'ngModel',
+            scope: {
+                ngModel: '=',
+            },
+            link:link,
+        }
+        return directve;
+
+        function link(scope, element, attrs){
+            var adr_options = {
+                types: ['geocode'],
+                componentRestrictions: {country: 'pk'}
+            };
+
+            var autocomplete_adr = new google.maps.places.Autocomplete(element[0], adr_options);
+
+            autocomplete_adr.addListener('place_changed', function() {
+
+                var place = autocomplete_adr.getPlace();
+                if (!place.geometry) {
+                   scope.$parent.search_value = '';
+                    return;
+                }
+                scope.$parent.search_value = element.val();
+                scope.$parent.lat = place.geometry.location.lat();
+                scope.$parent.lng = place.geometry.location.lng();
+
+            });
         }
     }
 });

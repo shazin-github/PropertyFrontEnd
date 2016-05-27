@@ -25,23 +25,21 @@ define([
         $scope.city = '';
         $scope.latitude = '';
         $scope.longitude = '';
-        $scope.arealist = [
-            'Marla',
-            'Kenal',
-            'Sq ft'
-        ];
+        $scope.arealist = ['Marla', 'Kenal', 'Sq ft'];
         $scope.indexSearchPage = false;
+
+
 
         cityService.getcity().then(function(res){
             $scope.citylist = res.data.data;
-        })
+        });
         /*
          *
          * */
         stateService.getstate().then(function(res){
             $scope.statelist = res.data.data;
             //console.log($scope.statelist);
-        })
+        });
         /*
          *
          * */

@@ -15,9 +15,13 @@ define(function() {
             autocomplete_adr.addListener('place_changed', function() {
 
                 var place = autocomplete_adr.getPlace();
+                console.log(place.address_components);
                 if (!place.geometry) {
                     $("#search").val("");
                     return;
+                }
+                else{
+
                 }
                 $("#search_lat").val(place.geometry.location.lat());
                 $("#search_lng").val(place.geometry.location.lng());

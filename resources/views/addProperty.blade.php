@@ -61,14 +61,6 @@
 
 			<div class="col-md-13 col-lg-offset-1 col-lg-12">
 				<div class="photo-upload">
-					{{--<a href="#" class="upload-btn" onclick="$('#propImages').trigger('click');">--}}
-						{{--<i class="icon icon-folder4"></i>--}}
-					{{--</a>--}}
-
-					{{--<img ng-attr-src="<%user.image_url%>" ng-show="showProfileImage" alt="user photo" id="propertyImage" onclick="$('#propImages').trigger('click');"/><br />--}}
-
-
-
 
 					<input class="button upload-link" type="button" onclick="$('#propImages').trigger('click');"  value="Add Photos" />
 					<input id="propImages"
@@ -88,7 +80,7 @@
 
 				<img ng-repeat="img in prop_images"  ng-attr-src="<% img.resized.dataURL %>" type="<% img.file.type %>"/>
 				<div class="location-on-map">
-					<div class="map-canvas" id="location-map"></div>
+					<div class="map-canvas" id="location_map"></div>
 					<input type="hidden" ng-value="<% latitude %>" ng-model="latitude" />
 					<input type="hidden" ng-value="<%longitude%>" ng-model="longitude" />
 				</div>
@@ -169,9 +161,9 @@
 						</div>
 
 						<div class="col-sm-6">
-							<div class="nr-filter " cd-add-subtract title="Baths" option="num_of_baths"/>
+							<div class="nr-filter " cd-add-subtract title="Baths" option="num_of_baths"></div>
 
-							<div class="nr-filter " cd-add-subtract  option="num_beds" title="Beds" />
+							<div class="nr-filter " cd-add-subtract  option="num_beds" title="Beds" ></div>
 
 						</div>
 					</div>
@@ -181,7 +173,7 @@
 			<div class="col-md-12">
 				<div class="check-option">
 					<label>
-						<input type="checkbox" value="false" name="parking" ng-model="park"/>
+						<input type="checkbox" value="false" name="parking" ng-model="park" />
 						<span>Parking</span>
 					</label>
 				</div>

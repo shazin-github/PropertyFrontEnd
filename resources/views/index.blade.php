@@ -13,37 +13,25 @@
 		<section class="properties-map" ng-cloak="">
 			<div class="row row-fit"  >
 				<div class="search-class aftersearch-class" ng-class="{ 'hide' : !search }" ng-show="isRecentLoaded" >
+
 					<form class="submit-form" name="searchMiniForm" >
-						<div class="select-box wd-80 pull-left" >
-							<input class="filter-box-input js-input no-select drop-wd" type="text" id="purpose-mini" readonly value="" placeholder="Buy" />
-							<ul>
-								<li >Rent</li>
-								<li >Sale</li>
-							</ul>
-						</div>
-						<input class="filter-box-input js-input no-select search-wd" id="search-mini" type="text" value="" placeholder="Search..." required />
-						<div class="select-box wd-110 pull-left">
-							<input class="filter-box-input js-input no-select drop-wd" type="text" id="bedroom-mini" readonly value="" placeholder="Bedrooms" />
-							<ul>
-								<li >1</li>
-								<li >2</li>
-								<li >3</li>
-							</ul>
-						</div>
-						<div class="select-box wd-80 pull-left" >
-							<input class="filter-box-input js-input no-select drop-wd" type="text" id="bathroom-mini" readonly value="" placeholder="Baths" />
-							<ul>
-								<li >1</li>
-								<li >2</li>
-								<li >3</li>
-							</ul>
-						</div>
-						<input type="hidden" id="search_lat-mini" /> <input type="hidden" id="search_lng-mini" />
-						<input type="submit" class="button theme-button-1 update-properties" value="Search" ng-click="searchPropertyMini()" />
+
+						<cd-index-dropdown option="buytype_list" title="Buy" ng-model="selected_purpose" addclass="wd-80 pull-left" ></cd-index-dropdown>
+
+						<input class="filter-box-input js-input no-select search-wd" cd-auto-search-complete ng-model="search_value" id="search_mini" type="text" value="" placeholder="Search..." required />
+
+						<cd-index-dropdown option="num_of_beds_list" title="Bedrooms" ng-model="selected_bedroom" addclass="wd-110 pull-left" ></cd-index-dropdown>
+
+						<cd-index-dropdown option="num_of_baths_list" title="Baths" ng-model="selected_bathroom" addclass="wd-80 pull-left" ></cd-index-dropdown>
+
+						<input type="hidden"  ng-model="lat" /> <input type="hidden"  ng-model="lng" />
+
+						<input type="submit" class="button theme-button-1 update-properties" value="Search" ng-click="searchProperty()" />
+
 						<a class="button theme-button-1 update-properties" href="#" ng-click="clearPropertyMini()" >clear search</a>
 					</form>
 				</div>
-				</div>
+			</div>
 			<div class="row row-fit" >
 			<div class="col-md-15 col-lg-14" >
 
@@ -59,37 +47,15 @@
 						</div>
 						<div class="search-class" ng-class="{ 'hide' : search }" ng-show="isRecentLoaded" >
 							<form class="submit-form" name="searchForm">
-								{{--<div class=" select-box  wd-80 pull-left">--}}
-									{{--<input class="filter-box-input js-input no-select drop-wd" type="text" id="purpose" readonly value="" placeholder="Buy" />--}}
-									{{--<ul>--}}
-										{{--<li>Rent</li>--}}
-										{{--<li>Sale</li>--}}
-									{{--</ul>--}}
-								{{--</div>--}}
 
-								<cd-index-dropdown option="buytype_list" title="Buy" ng-model="purpose" addclass="wd-80 pull-left" ></cd-index-dropdown>
+								<cd-index-dropdown option="buytype_list" title="Buy" ng-model="selected_purpose" addclass="wd-80 pull-left" ></cd-index-dropdown>
 
-								<input class="filter-box-input js-input no-select search-wd" id="search" type="text" value="" placeholder="Search..." required />
+								<input class="filter-box-input js-input no-select search-wd" cd-auto-search-complete ng-model="search_value" id="search" type="text" value="" placeholder="Search..." required />
 
-								{{--<div class="select-box wd-110 pull-left">--}}
-									{{--<input class="filter-box-input js-input no-select drop-wd" type="text" id="bedroom" readonly value="" placeholder="Bedrooms" />--}}
-									{{--<ul>--}}
-										{{--<li>1</li>--}}
-										{{--<li>2</li>--}}
-										{{--<li>3</li>--}}
-									{{--</ul>--}}
-								{{--</div>--}}
-								<cd-index-dropdown option="num_of_beds_list" title="Bedrooms" ng-model="bedroom" addclass="wd-110 pull-left" ></cd-index-dropdown>
-								{{--<div class="select-box wd-80 pull-left">--}}
-									{{--<input class="filter-box-input js-input no-select drop-wd" type="text" id="bathroom" readonly value="" placeholder="Baths" />--}}
-									{{--<ul>--}}
-										{{--<li>1</li>--}}
-										{{--<li>2</li>--}}
-										{{--<li>3</li>--}}
-									{{--</ul>--}}
-								{{--</div>--}}
-								<cd-index-dropdown option="num_of_baths_list" title="Baths" ng-model="bathroom" addclass="wd-80 pull-left" ></cd-index-dropdown>
-								<input type="hidden" id="search_lat" /> <input type="hidden" id="search_lng" />
+								<cd-index-dropdown option="num_of_beds_list" title="Bedrooms" ng-model="selected_bedroom" addclass="wd-110 pull-left" ></cd-index-dropdown>
+
+								<cd-index-dropdown option="num_of_baths_list" title="Baths" ng-model="selected_bathroom" addclass="wd-80 pull-left" ></cd-index-dropdown>
+
 								<input type="submit" class="button theme-button-1 update-properties" value="Search" ng-click="searchProperty()" />
 							</form>
 						</div>

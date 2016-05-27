@@ -63,7 +63,7 @@ define(function(){
                         center: latlng,
                         styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-40},{"lightness":10}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":10}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":20}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]}]
                     }
-                    scope.map = new google.maps.Map(document.getElementById('location-map'), mapOptions);
+                    scope.map = new google.maps.Map(document.getElementById('location_map'), mapOptions);
 
                     scope.property_marker = new google.maps.Marker({
                         position: latlng,
@@ -95,14 +95,6 @@ define(function(){
 
                                 scope.details = result;
 
-                                var latlng = new google.maps.LatLng(31.55460609999999, 74.35715810000001);
-                                var mapOptions = {
-                                    zoom: 10,
-                                    center: latlng,
-                                    styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-40},{"lightness":10}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":10}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":20}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]}]
-                                }
-                                scope.map = new google.maps.Map(document.getElementById('location-map'), mapOptions);
-
                                 scope.property_marker = new google.maps.Marker({
                                     position: latlng,
                                     map: scope.map,
@@ -114,9 +106,8 @@ define(function(){
                                 scope.property_marker.title = element.val();
                                 scope.map.setCenter(result.geometry.location);
                                 scope.map.setZoom(15);
-                                $scope.latitude = result.geometry.location.lat();
-                                $scope.longitude = result.geometry.location.lng();
-
+                                scope.$parent.latitude = result.geometry.location.lat();
+                                scope.$parent.longitude = result.geometry.location.lng();
 
                                 controller.$setViewValue(element.val());
                             });
