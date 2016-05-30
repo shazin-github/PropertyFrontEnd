@@ -181,19 +181,18 @@ class propertyController extends Controller {
 
             $img = Image::make($photo->getRealPath())
                 ->resize(257, 290);
-            $img->save(storage_path($resizepath));
+            $img->save($resizepath);
 
             $file = file_get_contents($photo->getRealPath());
 
             Image::make($photo->getRealPath())
                 ->fit(200)
-                ->save(storage_path($thumb_path));
+                ->save($thumb_path);
+            Image::make($photo->getRealPath())
+                ->save($path);
 
-            $mkfile = file_put_contents(storage_path($path), $file);
-            if($mkfile){
                 $photo_array[] = $path;
-            }
-        }
+       }
         if($photo_array){
             $p_url = implode("|", $photo_array);
             return Response::json(['success'=>true, 'msg'=>'Picture uploaded succcessfully',
@@ -255,24 +254,6 @@ class propertyController extends Controller {
         }
     }
 
-    public function getPropertyPic($id) {
-        $dr = DIRECTORY_SEPARATOR;
-        $path = 'images'.$dr.'propertyImages'.$dr.$id;
-            $file = file_get_contents(storage_path($path));
-            return response($file, 200)->header('Content-Type', 'image/jpeg');
-    }
-    public function getPropertythumPic($id) {
-        $dr = DIRECTORY_SEPARATOR;
-        $path = 'thumbnail'.$dr.'images'.$dr.'propertyImages'.$dr.$id;
-        $file = file_get_contents(storage_path($path));
-        return response($file, 200)->header('Content-Type', 'image/jpeg');
-    }
-    public function getPropertyResizePic($id) {
-        $dr = DIRECTORY_SEPARATOR;
-        $path = 'propertyimage'.$dr.'images'.$dr.'propertyImages'.$dr.$id;
-        $file = file_get_contents(storage_path($path));
-        return response($file, 200)->header('Content-Type', 'image/jpeg');
-    }
     public function getCity(){
         $city_List = city::all();
         return Response::json(['success'=>true, 'data'=> $city_List]);

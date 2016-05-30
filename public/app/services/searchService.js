@@ -38,6 +38,7 @@ define(function() {
         this.getRecent = function() {
             var deffered = $q.defer();
             return $http.get('property/recent').then(function successCallback(response) {
+                console.log(response);
                 deffered.resolve(response);
                 return deffered.promise;
 

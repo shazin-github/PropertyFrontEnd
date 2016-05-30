@@ -6,7 +6,7 @@
 			<!-- Navigation -->
 			<nav>
 				<ul>
-					<li class="home current-menu-item"><a href="{{ URL::to('my-profile/') }}">My Profile</a></li>
+					<li class="home current-menu-item"><a href="{{ URL::to('my-profile#/') }}">My Profile</a></li>
 					<!--<li class="listing menu-item-has-children">
 						<a href="listing">Listing</a>
 
@@ -28,7 +28,7 @@
 					</div>
 
 					<ul class="list">
-						<li><a class="icon-profile2" href="{{ URL::to('my-profile') }}">My profile</a></li>
+						<li><a class="icon-profile2" href="{{ URL::to('my-profile#/') }}">My profile</a></li>
 
 						<li><a class="icon-folder-add" href="{{ URL::to('my-profile#/submit') }}">Submit new property</a></li>
 						<li><a class="icon-folder4" href="{{ URL::to('my-profile#/properties') }}">My properties</a></li>

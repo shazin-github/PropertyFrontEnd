@@ -2677,7 +2677,7 @@ footer .copyrigts p a:hover {
   display: inline-block;
   position: relative;
   height: 85px;
-  padding: 0 50px 0 80px;
+  padding: 0 45px 0 45px;
   width: 100%;
   color: #086fb5;
 }
@@ -2702,7 +2702,7 @@ footer .copyrigts p a:hover {
   color: inherit;
   font-size: 36px;
   font-weight: 300;
-  left: 30px;
+  left: 0px;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
@@ -3766,10 +3766,12 @@ span.angular-lightbox-inner {
   display: inline-block;
   background-color: white;
   min-width: 35em;
-  min-height: 8em;
+  min-height: 25em;
 }
 span.angular-lightbox-inner > img {
   vertical-align: bottom;
+  min-width: 35em;
+  max-height: 25em;
 }
 span.angular-lightbox-inner > a {
   font-family: sans-serif;

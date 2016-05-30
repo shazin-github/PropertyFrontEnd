@@ -223,7 +223,7 @@ class userController extends Controller{
 			$path = 'images'.$dr.'profileImages'.$dr.'User_'.time().'_'.session('user_id').'.'.$type;
 			
 			$file = file_get_contents($f->getRealPath());
-			$mkfile = file_put_contents(storage_path($path), $file);
+			$mkfile = file_put_contents($path, $file);
 			
 			if($mkfile)
 				return Response::json(['success'=>true, 'msg'=>'Picture uploaded succcessfully', 

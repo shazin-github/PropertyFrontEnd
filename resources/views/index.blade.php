@@ -145,7 +145,7 @@
 								<div class="cover" >
 									<p ><% property.description %></p>
 
-									<a href="property/<% property.id %>" >
+									<a href="property/<% property.property_id %>" >
 										<i class="icon" ></i>
 									</a>
 								</div>

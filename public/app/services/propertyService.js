@@ -8,9 +8,9 @@ define(function() {
                 area: area,
                 area_type: area_type,
                 description: description,
-                purpose: purpose,
-                type: type,
-                category: category,
+                prop_purpose_id: purpose,
+                prop_type_id: type,
+                prop_category_id: category,
                 image_url : image_url,
                 status: 1
             };

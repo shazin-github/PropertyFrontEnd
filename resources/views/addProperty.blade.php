@@ -94,14 +94,14 @@
 						<div class="col-sm-6">
 							<div class="select-filter">
 								<label>
-									<input type="radio" name="purpose-select" value="rent" required id="purpose-select" ng-model="purpose" />
+									<input type="radio" name="purpose-select" value="1" required id="purpose-select" ng-model="purpose" />
 									<span>For rent</span>
 								</label>
 							</div>
 
 							<div class="select-filter">
 								<label>
-									<input type="radio" name="purpose-select" value="sale" required id="purpose-select" ng-model="purpose" />
+									<input type="radio" name="purpose-select" value="2" required id="purpose-select" ng-model="purpose" />
 									<span>For Sale</span>
 								</label>
 							</div>
@@ -110,21 +110,21 @@
 						<div class="col-sm-6">
 							<div class="select-filter">
 								<label>
-									<input type="radio" name="type-select" value="home" required id="type-select" ng-model="type" />
+									<input type="radio" name="type-select" value="1" required id="type-select" ng-model="type" />
 									<span>Home</span>
 								</label>
 							</div>
 
 							<div class="select-filter">
 								<label>
-									<input type="radio" name="type-select" value="plot" required id="type-select" ng-model="type" />
+									<input type="radio" name="type-select" value="2" required id="type-select" ng-model="type" />
 									<span>Plot</span>
 								</label>
 							</div>
 
 							<div class="select-filter">
 								<label>
-									<input type="radio" name="type-select" value="commercial" required id="type-select" ng-model="type" />
+									<input type="radio" name="type-select" value="3" required id="type-select" ng-model="type" />
 									<span>Commercial</span>
 								</label>
 							</div>
@@ -132,28 +132,28 @@
 						<div class="col-sm-6">
 							<div class="select-filter">
 								<label>
-									<input type="radio" name="category-select" value="single" required id="category-select" ng-model="category" />
+									<input type="radio" name="category-select" value="1" required id="category-select" ng-model="category" />
 									<span>Single Person</span>
 								</label>
 							</div>
 
 							<div class="select-filter">
 								<label>
-									<input type="radio" name="category-select" value="family" required id="category-select" ng-model="category"/>
+									<input type="radio" name="category-select" value="2" required id="category-select" ng-model="category"/>
 									<span>Family</span>
 								</label>
 							</div>
 
 							<div class="select-filter">
 								<label>
-									<input type="radio" name="category-select" value="event" required id="category-select" ng-model="category"/>
+									<input type="radio" name="category-select" value="3" required id="category-select" ng-model="category"/>
 									<span>Events</span>
 								</label>
 							</div>
 
 							<div class="select-filter">
 								<label>
-									<input type="radio" name="category-select" value="other" required id="category-select" ng-model="category"/>
+									<input type="radio" name="category-select" value="4" required id="category-select" ng-model="category"/>
 									<span>Other</span>
 								</label>
 							</div>

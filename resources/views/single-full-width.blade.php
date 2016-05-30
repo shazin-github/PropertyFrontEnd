@@ -33,14 +33,14 @@
 			<modal visible="showModal">
 				<div class="col-md-24 col-lg-24 no-pad margin-top"  >
 
-					<div class="imgdiv" >
+
 						<span class="angular-lightbox-inner">
               				<a href class="previous" title="Previous" ng-click="showpre(currentimage.ind)">«</a>
              				 <img ng-attr-src="{{ url('<% currentimage.img %>') }}"  >
 							<a href class="next" title="Next" ng-click="shownext(currentimage.ind)" >»</a>
               				<a href class="close" title="Close">×</a>
            				 </span>
-					</div>
+
 				</div>
 			</modal>
 
