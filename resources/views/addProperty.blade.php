@@ -92,19 +92,14 @@
 				<div class="row">
 					<div class="filters">
 						<div class="col-sm-6">
-							<div class="select-filter">
-								<label>
-									<input type="radio" name="purpose-select" value="1" required id="purpose-select" ng-model="purpose" />
-									<span>For rent</span>
-								</label>
-							</div>
+							
+								<div class="select-filter"  ng-repeat="p in purpose_list" >
+									<label>
+										<input type="radio" name="purpose-select" value="<% p.id %>" required id="purpose-select" ng-model="purpose" ng-click="checkStuff(p.id)" />
+										<span>For <% p.name %></span>
+									</label>
+								</div>
 
-							<div class="select-filter">
-								<label>
-									<input type="radio" name="purpose-select" value="2" required id="purpose-select" ng-model="purpose" />
-									<span>For Sale</span>
-								</label>
-							</div>
 						</div>
 
 						<div class="col-sm-6">

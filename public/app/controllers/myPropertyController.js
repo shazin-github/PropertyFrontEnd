@@ -8,7 +8,7 @@ define(['services/propertyService'], function() {
         		$('#overlay').hide();
 
                 var prop_data = resp.data.msg;
-
+                console.log(prop_data);
                 $scope.data2 = [];
 
                 angular.forEach(prop_data, function (value, key) {

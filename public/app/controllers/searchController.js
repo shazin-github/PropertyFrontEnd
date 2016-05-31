@@ -13,11 +13,21 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
             $scope.isListingsLoaded = false;
             $scope.isRecentLoaded = false;
             $scope.Response_msg = '';
-            $scope.buytype_list = ['Rent', 'Sale'];
+            $scope.buytype_list = [];
             $scope.num_of_beds_list = ['1', '2', '3'];
             $scope.num_of_baths_list = ['1', '2', '3'];
             $scope.data2 = [];
             $scope.parse_image_URL = parse_image_URL;
+
+
+            searchService.TestService().then(function(response) {
+                var d = response.data.data;
+                angular.forEach(d , function(value,key){
+                    $scope.buytype_list.push(value.name);
+                });
+                console.log($scope.buytype_list);
+            }, function(response) {
+            });
 
             $scope.searchProperty = function() {
                 $('#overlay').show();
@@ -151,11 +161,14 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                 angular.forEach(res_data, function (value, key) {
 
                     var obj = value;
-                    var update_p = obj.image_url.split("|");;
+                    var update_p = obj.image_url.split("|");
                     obj.image_url = update_p[0];
                     $scope.data2.push(obj);
                 });
             }
+
+
+
 
 
     }]);

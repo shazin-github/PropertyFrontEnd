@@ -90,6 +90,8 @@ Route::group(['middleware'=>['web']], function(){
 
 	Route::get('property/modeltemplate' ,'propertyController@modeltemplate');
 
+	Route::get('property/purposeList' , 'propertyController@purposeList');
+
 	Route::get('property/{id}', function ($id) {
 		return view('single-full-width')->with('id', $id);
 	});
@@ -97,6 +99,8 @@ Route::group(['middleware'=>['web']], function(){
 	Route::controller('user', 'userController');
 
 
+
+	//Route::get('property/GetPurrposeName' , 'propertyControler@GetPurrposeName');
 });
 
 

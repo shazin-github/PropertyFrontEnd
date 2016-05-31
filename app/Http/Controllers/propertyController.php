@@ -264,5 +264,27 @@ class propertyController extends Controller {
         return Response::json(['success'=>true, 'data'=> $state_List]);
     }
 
+    public function purposeList(){
+        $resp = false;
+        try {
+            $resp  = $this->guzzle->request('GET', $this->apiUrl.'property/getPurposeList');
+            $result = json_decode($resp->getBody());
+
+            //echo $resp->getBody();
+        } catch (guzzleException $e) {
+            // var_dump($e);
+            if ($e->hasResponse()) {
+                $result =  $e->getResponse();
+            }
+        }
+        if($resp && $resp->getStatusCode() == 200 && $result->success == true){
+            return Response::json(['success'=>true, 'data'=> $result->data]);
+        } else {
+            return Response::json(['success'=>false, 'msg'=>'Not Found']);
+        }
+
+
+    }
+
 
 }

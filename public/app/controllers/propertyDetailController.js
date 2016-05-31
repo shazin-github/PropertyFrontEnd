@@ -92,7 +92,7 @@ define(['services/propertyService' ,'services/schoolService'], function() {
                 $scope.bathroom = prop_data.bathrooms;
                 $scope.area = prop_data.area;
                 $scope.area_type = prop_data.area_type;
-                $scope.purpose = prop_data.purpose;
+                $scope.purpose = prop_data.prop_purpose_id;
                 $scope.price = prop_data.price;
                 $scope.utilities = JSON.parse(prop_data.utilities);
                 $scope.park = $scope.utilities.parking;

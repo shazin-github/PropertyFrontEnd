@@ -198,7 +198,7 @@
 
 					<div class="col-sm-10">
 					  <div class="price">
-						<p class="pull-right"><% price %> <span>for <% purpose %></span></p>
+						<p class="pull-right">$<% price %> <span>for <% purpose %></span></p>
 					  </div>
 					 </div>
 				  </div>

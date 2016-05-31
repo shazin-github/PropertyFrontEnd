@@ -29,7 +29,7 @@
 						<ul>
 							<li class="bathrooms">Bathrooms: <span><% p.bathrooms %></span></li>
 							<li class="bedrooms">Bedrooms: <span><% p.bedrooms %></span></li>
-							<li class="area">Area: <span><% p.area %></span></li>
+							<li class="area">Area: <span><% p.area %> <span style="text-transform: uppercase;"> <% p.area_type %></span> </span></li>
 						</ul>
 					</div>
 
@@ -42,7 +42,7 @@
 						</div>
 
 						<div class="price">
-							<p><% p.price %><span>For sale</span></p>
+							<p>$<% p.price %><span>for <% p.prop_purpose_id %></span></p>
 						</div>
 					</div>
 				</div>

@@ -20,5 +20,18 @@ define(function() {
                 return deffered.promise;
             });
         };
+
+        this.TestService = function() {
+            var deffered = $q.defer();
+            return $http.get('property/purposeList').then(function successCallback(response) {
+                //console.log(response);
+                deffered.resolve(response);
+                return deffered.promise;
+
+            }, function errorCallback(response) {
+                deffered.reject(response);
+                return deffered.promise;
+            });
+        };
     }]);
 });

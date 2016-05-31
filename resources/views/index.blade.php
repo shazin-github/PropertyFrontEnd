@@ -71,7 +71,7 @@
 								</div>
 								<div class="list-content"  ng-mouseover="changemarkertest(list)" >
 									<div class="property-header">
-										<p class="price">$250 <span class="type"><% list.purpose %></span></p>
+										<p class="price">$<% list.price %> <span class="type" style="text-transform: uppercase;">For <% list.prop_purpose_id %></span></p>
 										<h2><a href="property/<% list.property_id %>"><% list.title %></a></h2>
 										<p class="address"><% list.address  %></p>
 									</div>
@@ -173,7 +173,7 @@
 									</div>
 
 									<div class="price" >
-										<p ><% property.price %> <span>For <% property.purpose %></span></p>
+										<p ><% property.price %> <span style="text-transform: uppercase;">For <% property.prop_purpose_id %></span></p>
 									</div>
 								</div>
 							</div>
@@ -226,7 +226,7 @@
 										</div>
 
 										<div class="price" >
-											<p ><% property.price %> <span>For <% property.purpose %></span></p>
+											<p ><% property.price %> <span style="text-transform: uppercase;">For <% property.prop_purpose_id %></span></p>
 										</div>
 									</div>
 								</div>

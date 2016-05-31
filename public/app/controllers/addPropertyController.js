@@ -27,6 +27,7 @@ define([
         $scope.longitude = '';
         $scope.arealist = ['Marla', 'Kenal', 'Sq ft'];
         $scope.indexSearchPage = false;
+        $scope.purpose = '';
 
 
 
@@ -66,6 +67,8 @@ define([
             $scope.property = propertyService.getProperty($scope.title, $scope.price, $scope.area,$scope.area_type, $scope.description, $scope.purpose,
                 $scope.type, $scope.category, $scope.image_url);
 
+                console.log($scope.property);
+
             $scope.feature = featureService.getFeature($scope.num_beds, $scope.num_of_baths, $scope.park, $scope.ac,
                 $scope.swim, $scope.balcony);
 
@@ -87,7 +90,23 @@ define([
             });
         };
 
+        $scope.fun_purpose = function() {
 
+            $('#overlay').show();
+            addPropertyService.TestService().then(function (response) {
+                $('#overlay').hide();
+                $scope.purpose_list = response.data.data;
+                console.log($scope.purpose_list);
+            }, function (response) {
+                $('#overlay').hide();
+            });
+        }
+
+        $scope.fun_purpose();
+
+        $scope.checkStuff = function(value) {
+            $scope.purpose = value;
+        };
 
 
     }]);
