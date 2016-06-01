@@ -33,5 +33,31 @@ define(function() {
                 return deffered.promise;
             });
         };
+
+        this.gettypesService = function() {
+            var deffered = $q.defer();
+            return $http.get('property/typeList').then(function successCallback(response) {
+                //console.log(response);
+                deffered.resolve(response);
+                return deffered.promise;
+
+            }, function errorCallback(response) {
+                deffered.reject(response);
+                return deffered.promise;
+            });
+        };
+
+        this.getcategoryService = function() {
+            var deffered = $q.defer();
+            return $http.get('property/categoryList').then(function successCallback(response) {
+                //console.log(response);
+                deffered.resolve(response);
+                return deffered.promise;
+
+            }, function errorCallback(response) {
+                deffered.reject(response);
+                return deffered.promise;
+            });
+        };
     }]);
 });

@@ -27,23 +27,55 @@ define([
         $scope.longitude = '';
         $scope.arealist = ['Marla', 'Kenal', 'Sq ft'];
         $scope.indexSearchPage = false;
-        $scope.purpose = '';
 
+        $scope.prop_Getpurpose = function() {
 
+            $('#overlay').show();
+            addPropertyService.TestService().then(function (response) {
+                //$('#overlay').hide();
+                $scope.purpose_list = response.data.data;
+                //console.log("Purpose =>"+$scope.purpose_list);
+
+            }, function (response) {
+                $('#overlay').hide();
+            });
+
+        }
+
+        $scope.prop_Gettypes = function(){
+            //$('#overlay').show();
+            addPropertyService.gettypesService().then(function (response) {
+                //$('#overlay').hide();
+                $scope.types_list = response.data.data;
+                //console.log("Type =>"+$scope.types_list);
+            },function (response){
+                $('#overlay').hide();
+            });
+        };
+
+        $scope.prop_Getcatetory = function(){
+            //$('#overlay').show();
+            addPropertyService.getcategoryService().then(function (response) {
+                $('#overlay').hide();
+                $scope.category_list = response.data.data;
+                //console.log("Category =>"+$scope.category_list);
+            },function (response){
+                $('#overlay').hide();
+            });
+        };
+        $scope.prop_Getpurpose();
+        $scope.prop_Gettypes();
+        $scope.prop_Getcatetory();
 
         cityService.getcity().then(function(res){
             $scope.citylist = res.data.data;
         });
-        /*
-         *
-         * */
+
         stateService.getstate().then(function(res){
             $scope.statelist = res.data.data;
             //console.log($scope.statelist);
         });
-        /*
-         *
-         * */
+
         $scope.addProperty = function() {
 
 
@@ -90,23 +122,9 @@ define([
             });
         };
 
-        $scope.fun_purpose = function() {
 
-            $('#overlay').show();
-            addPropertyService.TestService().then(function (response) {
-                $('#overlay').hide();
-                $scope.purpose_list = response.data.data;
-                console.log($scope.purpose_list);
-            }, function (response) {
-                $('#overlay').hide();
-            });
-        }
 
-        $scope.fun_purpose();
 
-        $scope.checkStuff = function(value) {
-            $scope.purpose = value;
-        };
 
 
     }]);

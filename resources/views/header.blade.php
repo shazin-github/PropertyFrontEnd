@@ -12,7 +12,7 @@
 
 					</li> -->
 
-					<li ng-controller="addPropertyController"  class="icon-folder-add "><a  href="{{ URL::to('my-profile#/submit') }}" >Submit new property</a></li>
+					<li class="icon-folder-add "><a  href="{{ URL::to('my-profile#/submit') }}" >Submit new property</a></li>
 
 					<li class="icon-folder4 "><a  href="{{ URL::to('my-profile#/properties') }}">My properties</a></li>
 					<!-- <li class="agents"><a href="agents">Agents</a></li> -->

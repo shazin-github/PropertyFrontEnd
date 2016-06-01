@@ -286,5 +286,48 @@ class propertyController extends Controller {
 
     }
 
+    public function typeList(){
+        $resp = false;
+        try {
+            $resp  = $this->guzzle->request('GET', $this->apiUrl.'property/getTypeList');
+            $result = json_decode($resp->getBody());
+
+            //echo $resp->getBody();
+        } catch (guzzleException $e) {
+            // var_dump($e);
+            if ($e->hasResponse()) {
+                $result =  $e->getResponse();
+            }
+        }
+        if($resp && $resp->getStatusCode() == 200 && $result->success == true){
+            return Response::json(['success'=>true, 'data'=> $result->data]);
+        } else {
+            return Response::json(['success'=>false, 'msg'=>'Not Found']);
+        }
+
+
+    }
+
+    public function categoryList(){
+        $resp = false;
+        try {
+            $resp  = $this->guzzle->request('GET', $this->apiUrl.'property/getCategoryList');
+            $result = json_decode($resp->getBody());
+
+        } catch (guzzleException $e) {
+            // var_dump($e);
+            if ($e->hasResponse()) {
+                $result =  $e->getResponse();
+            }
+        }
+        if($resp && $resp->getStatusCode() == 200 && $result->success == true){
+            return Response::json(['success'=>true, 'data'=> $result->data]);
+        } else {
+            return Response::json(['success'=>false, 'msg'=>'Not Found']);
+        }
+
+
+    }
+
 
 }

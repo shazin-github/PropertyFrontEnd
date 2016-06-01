@@ -92,6 +92,10 @@ Route::group(['middleware'=>['web']], function(){
 
 	Route::get('property/purposeList' , 'propertyController@purposeList');
 
+	Route::get('property/typeList' , 'propertyController@typeList');
+
+	Route::get('property/categoryList' , 'propertyController@categoryList');
+
 	Route::get('property/{id}', function ($id) {
 		return view('single-full-width')->with('id', $id);
 	});

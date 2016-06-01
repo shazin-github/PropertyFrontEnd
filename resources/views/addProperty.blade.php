@@ -91,69 +91,10 @@
 			<div class="col-md-12">
 				<div class="row">
 					<div class="filters">
-						<div class="col-sm-6">
-							
-								<div class="select-filter"  ng-repeat="p in purpose_list" >
-									<label>
-										<input type="radio" name="purpose-select" value="<% p.id %>" required id="purpose-select" ng-model="purpose" ng-click="checkStuff(p.id)" />
-										<span>For <% p.name %></span>
-									</label>
-								</div>
 
-						</div>
-
-						<div class="col-sm-6">
-							<div class="select-filter">
-								<label>
-									<input type="radio" name="type-select" value="1" required id="type-select" ng-model="type" />
-									<span>Home</span>
-								</label>
-							</div>
-
-							<div class="select-filter">
-								<label>
-									<input type="radio" name="type-select" value="2" required id="type-select" ng-model="type" />
-									<span>Plot</span>
-								</label>
-							</div>
-
-							<div class="select-filter">
-								<label>
-									<input type="radio" name="type-select" value="3" required id="type-select" ng-model="type" />
-									<span>Commercial</span>
-								</label>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="select-filter">
-								<label>
-									<input type="radio" name="category-select" value="1" required id="category-select" ng-model="category" />
-									<span>Single Person</span>
-								</label>
-							</div>
-
-							<div class="select-filter">
-								<label>
-									<input type="radio" name="category-select" value="2" required id="category-select" ng-model="category"/>
-									<span>Family</span>
-								</label>
-							</div>
-
-							<div class="select-filter">
-								<label>
-									<input type="radio" name="category-select" value="3" required id="category-select" ng-model="category"/>
-									<span>Events</span>
-								</label>
-							</div>
-
-							<div class="select-filter">
-								<label>
-									<input type="radio" name="category-select" value="4" required id="category-select" ng-model="category"/>
-									<span>Other</span>
-								</label>
-							</div>
-
-						</div>
+						<cd-radio-button option="purpose_list" title="purpose" ng-model="purpose" ></cd-radio-button>
+						<cd-radio-button option="types_list" title="type" ng-model="type"></cd-radio-button>
+						<cd-radio-button option="category_list" title="category" ng-model="category"></cd-radio-button>
 
 						<div class="col-sm-6">
 							<div class="nr-filter " cd-add-subtract title="Baths" option="num_of_baths"></div>

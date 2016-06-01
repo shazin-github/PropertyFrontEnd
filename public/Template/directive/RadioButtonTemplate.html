@@ -1,0 +1,8 @@
+<div class="col-sm-6">
+        <div class="select-filter"  ng-repeat="p in option" >
+            <label>
+                <input type="radio" name="<% title %>-select" value="<% p.id %>" required id="<% title %>-select" ng-model="modeltype" ng-click="checkStuff(p.id)" />
+                <span> <% p.name %></span>
+            </label>
+        </div>
+    </div>
