@@ -84,11 +84,11 @@
 												<span class="tool-tip"></span>
 												<span class="nr"><% list.area  %></span>
 											</li>
-											<li class="bedrooms">
+											<li ng-if="list.bedrooms > 0" class="bedrooms">
 												<span class="tool-tip"></span>
 												<span class="nr"><% list.bedrooms  %></span>
 											</li>
-											<li class="bathrooms">
+											<li ng-if="list.bathrooms > 0" class="bathrooms">
 												<span class="tool-tip"></span>
 												<span class="nr"><% list.bathrooms  %></span>
 											</li>

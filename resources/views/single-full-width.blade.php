@@ -185,8 +185,8 @@
 
 					  <div class="services gap-top">
 						<ul class="align-left">
-						  <li class="bathrooms"><p>Bathrooms: <span><% bathroom %></span></p></li>
-						  <li class="bedrooms"><p>Bedrooms: <span><% bedroom %></span></p></li>
+						  <li  ng-if="bathroom > 0" class="bathrooms"><p>Bathrooms: <span><% bathroom %></span></p></li>
+						  <li  ng-if="bedroom > 0" class="bedrooms"><p>Bedrooms: <span><% bedroom %></span></p></li>
 						  <li class="area"><p>Area: <span><% area  %> </span> <span style="text-transform: uppercase;"> <% area_type %></span> </p></li>
 						</ul>
 					  </div>
@@ -198,7 +198,7 @@
 
 					<div class="col-sm-10">
 					  <div class="price">
-						<p class="pull-right">$<% price %> <span>for <% purpose %></span></p>
+						<p class="pull-right"><% price %> <span>for <% purpose %></span></p>
 					  </div>
 					 </div>
 				  </div>
@@ -208,14 +208,14 @@
 				<div class="row">
 				  <div class="col-sm-12 col-md-12">
 					<section class="double-gap-bottom ">
-					  <h2 class="double-gap-bottom blue-border-bottom pad-bottom ">Features <span class="fs-18 color-gray1"> for  <% address %></span> </h2>
-					  <p class="gap-bottom fs-18 color-gray1">Information last updated on <% update_date %> </p>
+					  <h2 class="double-gap-bottom blue-border-bottom pad-bottom ">Features <span class="fs-18 color-gray1"> for  <% title %></span> </h2>
+					  <p class="gap-bottom fs-18 color-gray1">Information last updated on: <% update_date %> </p>
 					  <div class="row no-gap feature-class">
 						<div class="col-lg-8 fs-18">
 						  <ul>
-							<li>Price: <% price %></li>
-							<li><% bedroom %> Bedroom</li>
-							<li><% bathroom %> Bathroom</li>
+							{{--<li>Price: <% price %></li>--}}
+							<li ng-if="bedroom > 0" ><% bedroom %> Bedroom</li>
+							<li ng-if="bathroom > 0"><% bathroom %> Bathroom</li>
 							<li ng-class="park!=0 ? ' ' : 'feature-util-hide'">Parking</li>
 							<li ng-class="ac!=0 ? ' ' : 'feature-util-hide'">Air Condition</li>
 							<li ng-class="swim!=0 ? ' ' : 'feature-util-hide'">Swimming Pool</li>

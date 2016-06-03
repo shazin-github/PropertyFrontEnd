@@ -27,8 +27,8 @@
 					<div class="block services">
 						<p class="caption">Services</p>
 						<ul>
-							<li class="bathrooms">Bathrooms: <span><% p.bathrooms %></span></li>
-							<li class="bedrooms">Bedrooms: <span><% p.bedrooms %></span></li>
+							<li ng-if=" p.bathrooms > 0" class="bathrooms">Bathrooms: <span><% p.bathrooms %></span></li>
+							<li ng-if="p.bedrooms > 0" class="bedrooms">Bedrooms: <span><% p.bedrooms %></span></li>
 							<li class="area">Area: <span><% p.area %> <span style="text-transform: uppercase;"> <% p.area_type %></span> </span></li>
 						</ul>
 					</div>

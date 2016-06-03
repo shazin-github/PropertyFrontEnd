@@ -78,10 +78,10 @@ define(['services/propertyService' ,'services/schoolService'], function() {
 
         function getPropertyDetails(id) {
              return propertyService.getPropertyDetail(id).then(function (response) {
-                 console.log(response);
+
                 var prop_data = response.data.data[0];
 
-                //console.log(prop_data);
+                console.log(prop_data);
                 var update_p = prop_data.image_url.split("|");
                 $scope.image_thumbnail_url(update_p);
                 $scope.currentimage = _.first($scope.images_array)
@@ -102,6 +102,9 @@ define(['services/propertyService' ,'services/schoolService'], function() {
                 $scope.update_date = prop_data.updated_at;
                 $scope.addMarker(prop_data ,  $scope);
                 $scope.cal_create_date(prop_data.created_at);
+                var date = new Date(prop_data.updated_at);
+                $scope.update_date = date.toDateString();
+                 //console.log(n);
             }, function (response) {
                 $("#overlay").hide();
             });
@@ -139,22 +142,26 @@ define(['services/propertyService' ,'services/schoolService'], function() {
         function cal_create_date(date){
             var oneDay = 24 * 60 * 60 * 1000;
             var date1 = new Date().getTime();
-            console.log(date1);
+            //console.log(date1);
             var date2 = new Date(date).getTime();
 
             var diffDays = Math.round(Math.abs((date1 - date2) / (oneDay)));
-            $scope.added_at = diffDays - 1;
+            console.log(diffDays);
+            $scope.added_at = diffDays;
         }
+
         function cal_update_date(){
             var oneDay = 24 * 60 * 60 * 1000;
             var date1 = new Date().getTime();
-            var date2 = new Date(prop_data.created_at).getTime();
+            var date2 = new Date(prop_data.updated_at).getTime();
+            var date = new Date('2016-06-03');
+            var n = date.toDateString();
+
+            console.log(n);
 
             var diffDays = Math.round(Math.abs((date1 - date2) / (oneDay)));
-            $scope.update_date = diffDays - 1;
+            //$scope.update_date = diffDays - 1;
         }
-
-
 
 
     }]);
