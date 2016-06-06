@@ -22,7 +22,7 @@ define(['services/propertyService' ,'services/schoolService'], function() {
         $scope.cal_update_date=cal_update_date;
 
         function map_initialize(){
-            var map_center = new google.maps.LatLng(-34.397, 150.644);
+            var map_center = new google.maps.LatLng(31.55460609999999, 74.35715810000001);
 
             var mapOptions = {
                 zoom: 15,
@@ -30,6 +30,8 @@ define(['services/propertyService' ,'services/schoolService'], function() {
                 styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-40},{"lightness":10}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":10}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":20}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]}]
             }
             map = new google.maps.Map(document.getElementById('property_map'), mapOptions);
+
+            console.log(map);
         }
 
         $scope.map_initailize();
@@ -126,7 +128,9 @@ define(['services/propertyService' ,'services/schoolService'], function() {
         }
 
         function addMarker(data , $scope){
+
             var new_center = new google.maps.LatLng(data.latitude, data.longitude);
+
             map.setCenter(new_center);
             var marker = new google.maps.Marker({
                 position: new_center,

@@ -87,11 +87,11 @@ define(function(){
                 resizeType: '@?',
 
             },
-            link: function postLink(scope, element, attrs, ctrl) {
+            link: function postLink($scope, element, attrs, ctrl) {
 
                 var doResizing = function(imageResult, callback) {
                     createImage(imageResult.url, function(image) {
-                        var dataURL = resizeImage(image, scope);
+                        var dataURL = resizeImage(image, $scope);
                         imageResult.resized = {
                             dataURL: dataURL,
                             type: dataURL.match(/:(.+\/.+);/)[1],
@@ -101,12 +101,12 @@ define(function(){
                 };
 
                 var applyScope = function(imageResult) {
-                    scope.$apply(function() {
+                    $scope.$apply(function() {
                         //console.log(imageResult);
                         if(attrs.multiple)
-                            scope.image.push(imageResult);
+                            $scope.image.push(imageResult);
                         else
-                            scope.image = imageResult;
+                            $scope.image = imageResult;
                     });
                 };
 
@@ -114,12 +114,12 @@ define(function(){
                 element.bind('change', function (evt) {
                     //when multiple always return an array of images
                     if (attrs.multiple)
-                        scope.image = [];
+                        $scope.image = [];
 
                     var files = evt.target.files;
-                    if(typeof scope.$parent.inputFiles !== undefined ){
-                        scope.$parent.inputFiles = evt.target.files;
-                        console.log(scope.$parent.inputFiles);
+                    if(typeof $scope.inputFiles !== undefined ){
+                        $scope.inputFiles = evt.target.files;
+                        console.log("Imges"+$scope.inputFiles);
                     }
 
                     for (var i = 0; i < files.length; i++) {
@@ -141,7 +141,7 @@ define(function(){
                                 imageResult.dataURL = dataURL;
                             });
 
-                            if (scope.resizeMaxHeight || scope.resizeMaxWidth) { //resize image
+                            if ($scope.resizeMaxHeight || $scope.resizeMaxWidth) { //resize image
                                 doResizing(imageResult, function (imageResult) {
                                     applyScope(imageResult);
                                 });
@@ -151,9 +151,9 @@ define(function(){
                             }
                         }
                     }
-                    scope.$watch('image', function(){
-                        if(scope.image.length == undefined) {
-                            scope.$parent.user.image_url = scope.image.resized.dataURL;
+                    $scope.$watch('image', function(){
+                        if($scope.image.length == undefined) {
+                            $scope.$parent.user.image_url = $scope.image.resized.dataURL;
                         }
                     });
                 });

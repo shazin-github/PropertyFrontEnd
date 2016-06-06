@@ -8,15 +8,15 @@
 	</ul>
 </div>
 
-	<div id="submit" ng-controller="addPropertyController" ng-init="initiate()" >
+	<div id="submit" ng-controller="addPropertyController as vm " >
 
-	<form class="submit-form" method="POST" name="propertyForm" ng-submit="addProperty()">
+	<form class="submit-form" method="POST" name="propertyForm" ng-submit="vm.addProperty()">
 		<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 		<div class="row">
 			<div class="col-md-11">
-				<div ng-class="status ? 'alert-success' : 'alert-danger'" id="resultDiv"><% msg %></div>
-				<input type="text" class="js-input" placeholder="Title"  required name="title" ng-model="title"/>
-				<textarea class="js-input" placeholder="Description" required ng-model="description"></textarea>
+				<div ng-class="vm.status ? 'alert-success' : 'alert-danger'" id="resultDiv"><% vm.msg %></div>
+				<input type="text" class="js-input" placeholder="Title"  required name="title" ng-model="vm.title"/>
+				<textarea class="js-input" placeholder="Description" required ng-model="vm.description"></textarea>
 
 				<!-- <div class="coutry-select select-box type-2">
                     <input class="js-input no-select" type="text" readonly value="" placeholder="All countries" />
@@ -31,27 +31,27 @@
                         <li>Moldova</li>
                     </ul>
                 </div> -->
-				<input type="text" class="js-input" placeholder="Country" id="country" disabled="true" ng-model="country"/>
+				<input type="text" class="js-input" placeholder="Country" id="country" disabled="true" ng-model="vm.country"/>
 
-				<div cd-dropdown option ="statelist" title="State" ng-model="state"></div>
+				<div cd-dropdown option ="vm.statelist" title="State" ng-model="vm.state"></div>
 
-				<div cd-dropdown option ="citylist" title="City" ng-model="city"></div>
+				<div cd-dropdown option ="vm.citylist" title="City" ng-model="vm.city"></div>
 
 
 				{{--<input type="text" class="js-input" required placeholder="Address (street/ house/ ap.)" ng-init="addNewLocation()" id="address" ng-model="address"/>--}}
 
-				<input type="text" class="js-input" id="addresss" placeholder="Address (street/ house/ ap.)"  ng-autocomplete ng-model="address" />
+				<input type="text" class="js-input" id="addresss" placeholder="Address (street/ house/ ap.)"  ng-autocomplete  ng-model="vm.address" latitude="vm.latitude" longitude="vm.longitude"  />
 
 				<div class="row row-fit-10">
 					<div class="col-sm-12">
-						<input type="text" class="js-input nr-only" required placeholder="Price $" ng-model="price"/>
+						<input type="text" class="js-input nr-only" required placeholder="Price $" ng-model="vm.price"/>
 					</div>
 					<div class="col-sm-12">
 						<div class="col-sm-12">
-							<input type="text" class="js-input nr-only" required placeholder="Area" ng-model="area"/>
+							<input type="text" class="js-input nr-only" required placeholder="Area" ng-model="vm.area"/>
 						</div>
 						<div class="col-sm-12">
-							<div class="select-box-margin" cd-dropdown option ="arealist" title="Area Type" ng-model="area_type"></div>
+							<div class="select-box-margin" cd-dropdown option ="vm.arealist" title="Area Type" ng-model="vm.area_type"></div>
 
 						</div>
 
@@ -67,22 +67,22 @@
 						   type="file"
 						   accept="image/*"
 						   multiple
-						   image="prop_images"
+						   image="vm.prop_images"
 						   resize-max-height="100"
 						   resize-max-width="100"
 						   style="display: none"
 						   resize-quality="0.9"
-						   ng-model="inputFiles"
+						   ng-model="vm.inputFiles"
 					/>
 					</br>
 
 				</div><br>
 
-				<img ng-repeat="img in prop_images"  ng-attr-src="<% img.resized.dataURL %>" type="<% img.file.type %>"/>
+				<img ng-repeat="img in vm.prop_images"  ng-attr-src="<% img.resized.dataURL %>" type="<% img.file.type %>"/>
 				<div class="location-on-map">
 					<div class="map-canvas" id="location_map"></div>
-					<input type="hidden" ng-value="<% latitude %>" ng-model="latitude" />
-					<input type="hidden" ng-value="<%longitude%>" ng-model="longitude" />
+					<input type="hidden" ng-value="<% vm.latitude %>" ng-model="vm.latitude" />
+					<input type="hidden" ng-value="<%vm.longitude%>" ng-model="vm.longitude" />
 				</div>
 			</div>
 		</div>
@@ -92,14 +92,14 @@
 				<div class="row">
 					<div class="filters">
 
-						<cd-radio-button option="purpose_list" title="purpose" ng-model="purpose" ></cd-radio-button>
-						<cd-radio-button option="types_list" title="type" ng-model="type"></cd-radio-button>
-						<cd-radio-button option="category_list" title="category" ng-model="category"></cd-radio-button>
+						<cd-radio-button option="vm.purpose_list" title="purpose" ng-model="vm.purpose" ></cd-radio-button>
+						<cd-radio-button option="vm.types_list" title="type" ng-model="vm.type"></cd-radio-button>
+						<cd-radio-button option="vm.category_list" title="category" ng-model="vm.category"></cd-radio-button>
 
 						<div class="col-sm-6">
-							<div class="nr-filter " cd-add-subtract title="Baths" option="num_of_baths"></div>
+							<div class="nr-filter " cd-add-subtract title="Baths" option="vm.num_of_baths"></div>
 
-							<div class="nr-filter " cd-add-subtract  option="num_beds" title="Beds" ></div>
+							<div class="nr-filter " cd-add-subtract  option="vm.num_beds" title="Beds" ></div>
 
 						</div>
 					</div>
@@ -109,21 +109,21 @@
 			<div class="col-md-12">
 				<div class="check-option">
 					<label>
-						<input type="checkbox" value="false" name="parking" ng-model="park" />
+						<input type="checkbox" value="false" name="parking" ng-model="vm.park" />
 						<span>Parking</span>
 					</label>
 				</div>
 
 				<div class="check-option">
 					<label>
-						<input type="checkbox" value="false" name="air-conditioning" ng-model="ac"/>
+						<input type="checkbox" value="false" name="air-conditioning" ng-model="vm.ac"/>
 						<span>Air conditioning</span>
 					</label>
 				</div>
 
 				<div class="check-option">
 					<label>
-						<input type="checkbox" value="false" name="swimming-pool" ng-model="swim"/>
+						<input type="checkbox" value="false" name="swimming-pool" ng-model="vm.swim"/>
 						<span>Swimming pool</span>
 					</label>
 				</div>
@@ -137,7 +137,7 @@
 
 				<div class="check-option">
 					<label>
-						<input type="checkbox" value="false" name="balcony" ng-model="balcony"/>
+						<input type="checkbox" value="false" name="balcony" ng-model="vm.balcony"/>
 						<span>Balcony</span>
 					</label>
 				</div>

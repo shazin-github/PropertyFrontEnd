@@ -8,8 +8,12 @@ define(function(){
             scope: {
                 ngModel: '=',
                 options: '=?',
-                details: '=?'
+                details: '=?',
+                longitude:'=',
+                latitude:'=',
+
             },
+            controllerAs: 'vm',
 
             link: function(scope, element, attrs, controller) {
                 var opts;
@@ -92,6 +96,8 @@ define(function(){
 
                                 scope.details = result;
 
+                                scope.property_marker.setMap(null);
+
                                 scope.property_marker = new google.maps.Marker({
                                     position: latlng,
                                     map: scope.map,
@@ -103,8 +109,11 @@ define(function(){
                                 scope.property_marker.title = element.val();
                                 scope.map.setCenter(result.geometry.location);
                                 scope.map.setZoom(15);
-                                scope.$parent.latitude = result.geometry.location.lat();
-                                scope.$parent.longitude = result.geometry.location.lng();
+
+                                scope.latitude = result.geometry.location.lat();
+                                scope.longitude = result.geometry.location.lng();
+
+
 
                                 controller.$setViewValue(element.val());
                             });
@@ -177,7 +186,6 @@ define(function(){
                 }, true);
 
             },
-            controller : 'addPropertyController'
         };
     }); //
 
