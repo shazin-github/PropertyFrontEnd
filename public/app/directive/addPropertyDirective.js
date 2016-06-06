@@ -12,9 +12,6 @@ define(function(){
             },
 
             link: function(scope, element, attrs, controller) {
-
-
-
                 var opts;
                 var watchEnter = false;
                 //convert options provided to opts

@@ -1,63 +1,100 @@
-define(function() {
-    var coreModule = angular.module('coreModule');
-    coreModule.service('addPropertyService', ['$http', '$q', function($http, $q) {
-        this.addProperty = function(location, property, feature, seller) {
+define(function(){
+   angular
+       .module('coreModule')
+       .service('addPropertyService' , addPropertyService);
+
+    addPropertyService.$inject = ['$http', '$q']; // injecting dependencies
+
+
+    function addPropertyService($http, $q){
+        return{
+            addProperty:addProperty,
+            TestService:TestService,
+            gettypesService:gettypesService,
+            getcategoryService:getcategoryService,
+        };
+
+        function addProperty(location, property, feature, seller){
             var deffered = $q.defer();
+
             var data = {
                 location: location,
                 property: property,
                 feature: feature,
                 seller: seller
             };
-            return $http.post('property/add', data).then(function successCallback(response) {
-                //console.log(response);
+
+            return $http.post('property/add', data)
+                .then(successCallback)
+                .catch(errorCallback);
+
+            function successCallback(response){
                 deffered.resolve(response);
                 return deffered.promise;
+            }
 
-            }, function errorCallback(response) {
-                //console.log(response);
+            function errorCallback(response){
                 deffered.reject(response);
                 return deffered.promise;
-            });
-        };
+            }
 
-        this.TestService = function() {
+        }
+
+        function TestService(){
+
             var deffered = $q.defer();
-            return $http.get('property/purposeList').then(function successCallback(response) {
-                //console.log(response);
+
+            return $http.get('property/purposeList')
+                .then(successCallback)
+                .catch(errorCallback);
+
+            function successCallback(response){
                 deffered.resolve(response);
                 return deffered.promise;
+            }
 
-            }, function errorCallback(response) {
+            function errorCallback(response){
                 deffered.reject(response);
                 return deffered.promise;
-            });
-        };
+            }
+        }
 
-        this.gettypesService = function() {
+        function gettypesService(){
+
             var deffered = $q.defer();
-            return $http.get('property/typeList').then(function successCallback(response) {
-                //console.log(response);
+
+            return $http.get('property/typeList')
+                .then(successCallback)
+                .catch(errorCallback);
+
+            function successCallback(response){
                 deffered.resolve(response);
                 return deffered.promise;
+            }
 
-            }, function errorCallback(response) {
+            function errorCallback(response){
                 deffered.reject(response);
                 return deffered.promise;
-            });
-        };
+            }
+        }
 
-        this.getcategoryService = function() {
+        function getcategoryService(){
+
             var deffered = $q.defer();
-            return $http.get('property/categoryList').then(function successCallback(response) {
-                //console.log(response);
+
+            return $http.get('property/categoryList')
+                .then(successCallback)
+                .catch(errorCallback);
+
+            function successCallback(response){
                 deffered.resolve(response);
                 return deffered.promise;
+            }
 
-            }, function errorCallback(response) {
+            function errorCallback(response){
                 deffered.reject(response);
                 return deffered.promise;
-            });
-        };
-    }]);
+            }
+        }
+    }
 });

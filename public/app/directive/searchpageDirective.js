@@ -87,7 +87,9 @@ define(function(){
                 var place = autocomplete_adr.getPlace();
                 if (!place.geometry) {
                    scope.$parent.search_value = '';
-                    return;
+                   scope.$parent.lat = '';
+                   scope.$parent.lng = '';
+                   return;
                 }
                 scope.$parent.search_value = element.val();
                 scope.$parent.lat = place.geometry.location.lat();
@@ -95,5 +97,6 @@ define(function(){
 
             });
         }
+
     }
 });

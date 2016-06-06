@@ -111,6 +111,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                 } else {
                 }
             }, function(response) {
+
             });
 
             searchService.mostView().then(function(response) {
@@ -150,7 +151,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                 $scope.selected_bedroom = '';
                 $scope.selected_bathroom = '';
                 $scope.search_value = '';
-                $scope.lat = '';;
+                $scope.lat = '';
                 $scope.lng = '';
                 $scope.listings = "";
                 $scope.search = false;
@@ -166,10 +167,6 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                     $scope.data2.push(obj);
                 });
             }
-
-
-
-
 
     }]);
 });

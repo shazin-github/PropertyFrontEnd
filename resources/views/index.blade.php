@@ -18,7 +18,7 @@
 
 						<cd-index-dropdown option="buytype_list" title="Buy" ng-model="selected_purpose" addclass="wd-80 pull-left" ></cd-index-dropdown>
 
-						<input class="filter-box-input js-input no-select search-wd" cd-auto-search-complete ng-model="search_value" id="search_mini" type="text" value="" placeholder="Search..." required />
+						<input class="filter-box-input js-input no-select search-wd" cd-auto-search-complete ng-model="search_value" name="search_mini" id="search_mini" type="text" value="" placeholder="Search..." required />
 
 						<cd-index-dropdown option="num_of_beds_list" title="Bedrooms" ng-model="selected_bedroom" addclass="wd-110 pull-left" ></cd-index-dropdown>
 
@@ -82,7 +82,7 @@
 										<ul class="post-meta">
 											<li class="area">
 												<span class="tool-tip"></span>
-												<span class="nr"><% list.area  %></span>
+												<span class="nr"><% list.area  %></span><span style="text-transform: uppercase;"> <% list.area_type %></span>
 											</li>
 											<li ng-if="list.bedrooms > 0" class="bedrooms">
 												<span class="tool-tip"></span>
@@ -158,7 +158,7 @@
 									<ul>
 										<li class="bathrooms" >Bathrooms: <span><% property.bathrooms %></span></li>
 										<li class="bedrooms" >Bedrooms: <span><% property.bedrooms %></span></li>
-										<li class="area" >Area: <span><% property.area %></span></li>
+										<li class="area" >Area: <span><% property.area %></span><span style="text-transform: uppercase;"> <% property.area_type %></span></li>
 									</ul>
 								</div>
 
@@ -213,7 +213,7 @@
 										<ul>
 											<li class="bathrooms" >Bathrooms: <span><% property.bathrooms %></span></li>
 											<li class="bedrooms" >Bedrooms: <span><% property.bedrooms %></span></li>
-											<li class="area" >Area: <span><% property.area %></span></li>
+											<li class="area" >Area: <span><% property.area %></span><span style="text-transform: uppercase;"> <% property.area_type %></span></li>
 										</ul>
 									</div>
 

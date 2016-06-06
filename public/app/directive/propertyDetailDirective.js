@@ -53,8 +53,6 @@ define(function(){
             }
         }
 
-
-
     angular
         .module('coreModule')
         .directive('cdSchoolList' , SchoolList);
