@@ -181,6 +181,7 @@ define(function(){
 
                     return scope.options
                 };
+
                 scope.$watch(scope.watchOptions, function () {
                     initOpts()
                 }, true);

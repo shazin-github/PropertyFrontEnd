@@ -9,9 +9,9 @@ define(function(){
     function addPropertyService($http, $q){
         return{
             addProperty:addProperty,
-            TestService:TestService,
-            gettypesService:gettypesService,
-            getcategoryService:getcategoryService,
+            getPurposeList:getPurposeList,
+            getTypeList:getTypeList,
+            getCategoryList:getCategoryList
         };
 
         function addProperty(location, property, feature, seller){
@@ -40,7 +40,7 @@ define(function(){
 
         }
 
-        function TestService(){
+        function getPurposeList(){
 
             var deffered = $q.defer();
 
@@ -59,7 +59,7 @@ define(function(){
             }
         }
 
-        function gettypesService(){
+        function getTypeList(){
 
             var deffered = $q.defer();
 
@@ -78,7 +78,7 @@ define(function(){
             }
         }
 
-        function getcategoryService(){
+        function getCategoryList(){
 
             var deffered = $q.defer();
 

@@ -33,9 +33,9 @@
                 </div> -->
 				<input type="text" class="js-input" placeholder="Country" id="country" disabled="true" ng-model="vm.country"/>
 
-				<div cd-dropdown option ="vm.statelist" title="State" ng-model="vm.state"></div>
+				<div cd-dropdown option ="vm.stateList" title="State" ng-model="vm.state"></div>
 
-				<div cd-dropdown option ="vm.citylist" title="City" ng-model="vm.city"></div>
+				<div cd-dropdown option ="vm.cityList" title="City" ng-model="vm.city"></div>
 
 
 				{{--<input type="text" class="js-input" required placeholder="Address (street/ house/ ap.)" ng-init="addNewLocation()" id="address" ng-model="address"/>--}}
@@ -51,7 +51,7 @@
 							<input type="text" class="js-input nr-only" required placeholder="Area" ng-model="vm.area"/>
 						</div>
 						<div class="col-sm-12">
-							<div class="select-box-margin" cd-dropdown option ="vm.arealist" title="Area Type" ng-model="vm.area_type"></div>
+							<div class="select-box-margin" cd-dropdown option ="vm.areaList" title="Area Type" ng-model="vm.areaType"></div>
 
 						</div>
 
@@ -67,7 +67,7 @@
 						   type="file"
 						   accept="image/*"
 						   multiple
-						   image="vm.prop_images"
+						   image="vm.propertyImages"
 						   resize-max-height="100"
 						   resize-max-width="100"
 						   style="display: none"
@@ -78,7 +78,7 @@
 
 				</div><br>
 
-				<img ng-repeat="img in vm.prop_images"  ng-attr-src="<% img.resized.dataURL %>" type="<% img.file.type %>"/>
+				<img ng-repeat="img in vm.propertyImages"  ng-attr-src="<% img.resized.dataURL %>" type="<% img.file.type %>"/>
 				<div class="location-on-map">
 					<div class="map-canvas" id="location_map"></div>
 					<input type="hidden" ng-value="<% vm.latitude %>" ng-model="vm.latitude" />
@@ -92,14 +92,14 @@
 				<div class="row">
 					<div class="filters">
 
-						<cd-radio-button option="vm.purpose_list" title="purpose" ng-model="vm.purpose" ></cd-radio-button>
-						<cd-radio-button option="vm.types_list" title="type" ng-model="vm.type"></cd-radio-button>
-						<cd-radio-button option="vm.category_list" title="category" ng-model="vm.category"></cd-radio-button>
+						<cd-radio-button option="vm.purposeList" title="purpose" ng-model="vm.purpose" ></cd-radio-button>
+						<cd-radio-button option="vm.typeList" title="type" ng-model="vm.type"></cd-radio-button>
+						<cd-radio-button option="vm.categoryList" title="category" ng-model="vm.category"></cd-radio-button>
 
 						<div class="col-sm-6">
-							<div class="nr-filter " cd-add-subtract title="Baths" option="vm.num_of_baths"></div>
+							<div class="nr-filter " cd-add-subtract title="Baths" option="vm.numberOfBaths"></div>
 
-							<div class="nr-filter " cd-add-subtract  option="vm.num_beds" title="Beds" ></div>
+							<div class="nr-filter " cd-add-subtract  option="vm.numberOfBeds" title="Beds" ></div>
 
 						</div>
 					</div>
