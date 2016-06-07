@@ -8,9 +8,9 @@
 	</ul>
 </div>
 
-<div id="properties"  ng-controller="myPropertyController" ng-init="initMyProperty()">
+<div id="properties"  ng-controller="myPropertyController as vm" ng-init="vm.initMyProperty()">
 	<div class="row row-fit-10">
-		<div class="col-lg-6 col-md-8 col-sm-12" ng-repeat="p in propertyList">
+		<div class="col-lg-6 col-md-8 col-sm-12" ng-repeat="p in vm.propertyList">
 			<div class="listing-item">
 				<div class="item-cover type-1">
 					<div class="cover">

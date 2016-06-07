@@ -1,41 +1,41 @@
 define(function() {
-    var coreModule = angular.module('coreModule');
-    coreModule.service('userService', function($http, $q) {
-        
-      //   this.login = function(data){
-      //   	$http.post("login")
-		    // .then(function(response) {
-		    // 	console.log('Resp:', response);
-		    // 	return response;
-		    // });
-      //   }
+    angular
+        .module('coreModule')
+        .service('userService', userService);
 
-      	this.login = function(data){
-        	return $http.post("/user/login", data);
-        }
+    userService.$inject = ['$http', '$q'];
 
-        this.logout = function(){
-        	return $http.get("/user/logout");
-        }
+    function userService($http, $q) {
 
-        this.register = function(data){
-        	return $http.post("/user/register", data);
-        }
+        return {
+            login:login,
+            logout:logout,
+            register:register,
+            getProfile:getProfile,
+            updateProfilePic:updateProfilePic,
+            updateProfile:updateProfile
+        };
 
-        this.getProfile = function(){
-        	return $http.get("user/profile");
+        function login(data){
+            return $http.post("/user/login", data);
         }
-
-        this.updateProfilePic = function(form_data){
-        	return $http.post('user/profile-pic', form_data, {
-            	transformRequest: angular.identity,
-            	headers: {'Content-Type': undefined}
-        	});
+        function logout(){
+            return $http.get("/user/logout");
         }
-
-        this.updateProfile = function(data){
-        	return $http.post("user/profile", data);
-        	// return $q.all([profilePromise, imagePromise]);
+        function register(data){
+            return $http.post("/user/register", data);
         }
-    });
+        function getProfile(){
+            return $http.get("user/profile");
+        }
+        function updateProfilePic(form_data){
+            return $http.post('user/profile-pic', form_data, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            });
+        }
+        function updateProfile(){
+            return $http.post("user/profile", data);
+        }
+    }
 });

@@ -1,7 +1,16 @@
 define(function() {
-    var coreModule = angular.module('coreModule');
-    coreModule.service('schoolService', function() {
-        this.getSchools = function(map, location, $rootScope) {
+    angular
+        .module('coreModule')
+        .service('schoolService',schoolService);
+
+    function schoolService(){
+
+        return {
+            getSchools:getSchools
+        };
+
+        function getSchools(map, location, $rootScope){
+
             var request = {
                 location: location,
                 radius: 10000,
@@ -14,9 +23,9 @@ define(function() {
             function callback(results, status) {
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
                     for(i in results) {
-                        var school_lat = results[i].geometry.location.lat();
-                        var school_lng = results[i].geometry.location.lng();
-                        results[i].distance = distance(location.lat(), location.lng(), school_lat, school_lng, 'K');
+                        var schoolLat = results[i].geometry.location.lat();
+                        var schoolLng = results[i].geometry.location.lng();
+                        results[i].distance = distance(location.lat(), location.lng(), schoolLat, schoolLng, 'K');
                         if(results[i].rating == undefined) results[i].rating = parseFloat(Math.random() * (5 - 3) + 3).toFixed(1);
                     }
                     $rootScope.$apply(function() {
@@ -30,11 +39,11 @@ define(function() {
             }
 
             function distance(lat1, lon1, lat2, lon2, unit) {
-                var radlat1 = Math.PI * lat1/180
-                var radlat2 = Math.PI * lat2/180
+                var radLat1 = Math.PI * lat1/180
+                var radLat2 = Math.PI * lat2/180
                 var theta = lon1-lon2
                 var radtheta = Math.PI * theta/180
-                var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+                var dist = Math.sin(radLat1) * Math.sin(radLat2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.cos(radtheta);
                 dist = Math.acos(dist)
                 dist = dist * 180/Math.PI
                 dist = dist * 60 * 1.1515
@@ -42,6 +51,7 @@ define(function() {
                 if (unit=="N") { dist = dist * 0.8684 }
                 return parseFloat(dist).toFixed(2)+" km";
             }
-        };
-    });
+        }
+
+    }
 });

@@ -1,7 +1,15 @@
 define(function() {
-    var coreModule = angular.module('coreModule');
-    coreModule.service('featureService', function() {
-        this.getFeature = function(bedroom, bathroom, park, ac, swim, balcony) {
+    angular
+        .module('coreModule')
+        .service('featureService',featureService);
+
+    function featureService(){
+
+        return {
+            getFeature:getFeature
+        };
+
+        function getFeature(bedroom, bathroom, park, ac, swim, balcony){
             return {
                 bedrooms: bedroom,
                 bathrooms: bathroom,
@@ -12,6 +20,7 @@ define(function() {
                     balcony: (balcony == undefined) ? false : balcony
                 }
             };
-        };
-    });
+        }
+
+    }
 });

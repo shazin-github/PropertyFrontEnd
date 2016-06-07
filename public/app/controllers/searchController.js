@@ -20,7 +20,7 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
             $scope.parse_image_URL = parse_image_URL;
 
 
-            searchService.TestService().then(function(response) {
+            searchService.getPurposeList().then(function(response) {
                 var d = response.data.data;
                 angular.forEach(d , function(value,key){
                     $scope.buytype_list.push(value.name);
@@ -38,10 +38,9 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                     lat:$scope.lat,
                     lng:$scope.lng
                  };
-
+                console.log($scope.fmdata);
                 searchService.getSearch($scope.fmdata).then(function(response) {
-
-
+                    $('#overlay').hide();
                     if(response.data.success) {
                         var prop_data = response.data.data;
                         $scope.data2 = [];
@@ -53,8 +52,6 @@ define(['services/searchService', 'services/geolocatorService', 'services/search
                         console.log(markerService);
                         markerService.getMarker(prop_data, map);
                         $scope.Response_msg = '';
-
-
 
                     } else {
                         $('#overlay').hide();

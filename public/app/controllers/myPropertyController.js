@@ -1,27 +1,42 @@
-define(['services/propertyService'], function() {
-    var coreModule = angular.module('coreModule');
-    coreModule.controller('myPropertyController', ['$scope', 'propertyService', function($scope, propertyService) {
+define([
+    'services/propertyService'
+    ],
+    function() {
+        angular
+            .module('coreModule')
+            .controller('myPropertyController',myPropertyController);
 
-        $scope.initMyProperty = function(){
-        	$('#overlay').show();
-        	propertyService.getUserProperty().then(function(resp){
-        		$('#overlay').hide();
+        myPropertyController.$inject = ['$scope', 'propertyService'];
 
-                var prop_data = resp.data.msg;
-                console.log(prop_data);
-                $scope.data2 = [];
+        function myPropertyController($scope, propertyService){
 
-                angular.forEach(prop_data, function (value, key) {
+            var vm = this;
+
+            vm.initMyProperty = initMyProperty;
+            vm.parseImageUrl = parseImageUrl;
+            vm.propertyData = [];
+
+            function initMyProperty(){
+                $('#overlay').show();
+                propertyService.getUserProperty().then(function(response){
+                    $('#overlay').hide();
+                    var data = response.data.msg;
+                    vm.parseImageUrl(data);
+                },function(response){
+
+                });
+            }
+
+            function parseImageUrl(data){
+
+                angular.forEach(data, function (value, key) {
                     var obj = value;
-                    var update_p = obj.image_url.split("|");
-                    //console.log(update_p);
-                    obj.image_url = 'propertyimage/'+update_p[0];
-                    $scope.data2.push(obj);
+                    var imageUrl = obj.image_url.split("|");
+                    obj.image_url = 'propertyimage/'+imageUrl[0]; // image_url variable from Database
+                    vm.propertyData.push(obj);
                 });
 
-        		$scope.propertyList = $scope.data2;
-                
-        	});
-        };
-    }]);
+                vm.propertyList = vm.propertyData;
+            }
+        }
 });

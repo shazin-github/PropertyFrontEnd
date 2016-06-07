@@ -1,15 +1,32 @@
 define(function() {
-    var coreModule = angular.module('coreModule');
-    coreModule.service('stateService', function($http, $q) {
-        this.getAllStates = function(){
-            var deferred = $q.defer();
-            $http.get("property/getstate").then(function(res){
-                deferred.resolve(res);
-            },function(error){
-                deferred.reject(error);
-            });
+    angular
+        .module('coreModule')
+        .service('stateService',stateService);
 
-            return deferred.promise;
+    stateService.$inject =  ['$http', '$q'];
+
+    function stateService($http, $q){
+
+        return {
+            getAllStates:getAllStates
+        };
+
+        function getAllStates(){
+            var deferred = $q.defer();
+            return $http.get("property/getstate")
+                .then(successCallback)
+                .catch(errorCallback);
+
+            function successCallback(response){
+                deferred.resolve(response);
+                return deferred.promise;
+            }
+
+            function errorCallback(response){
+                deferred.reject(response);
+                return deferred.promise;
+            }
         }
-    });
+
+    }
 });
