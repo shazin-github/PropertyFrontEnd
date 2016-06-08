@@ -2,14 +2,14 @@
 @section('content-wrapper')
 
 	<!-- Single Property Container -->
-	<section class="single-property-container" ng-controller="propertyDetailController" ng-init="init_id({!! $id !!})">
+	<section class="single-property-container" ng-controller="propertyDetailController as vm" ng-init="vm.initId({!! $id !!})">
 	<div class="row no-gap">
 		<input type="hidden" name="property_id" id="property_id" value="{!! $id !!}"  />
 		<div class="col-md-8 col-lg-8 no-pad">
 
 			<div class="imgdiv" id="sliding" >
 
-				<img ng-attr-src="{{ url('<% currentimage.img %>') }}" ng-click="toggleModal(currentimage)" >
+				<img ng-attr-src="{{ url('<% vm.currentImage.img %>') }}" ng-click="vm.toggleModal(vm.currentImage)" >
 
 			</div>
 
@@ -17,7 +17,7 @@
 		<div class="col-md-16 col-lg-16  "  >
 		<div id="thumbWrapper" class="force-overflow scrollbar style-4"  >
 			<ul id="thumbList" >
-				<li ng-repeat="image in images_array" ng-click="toggleModal(image)">
+				<li ng-repeat="image in vm.imageArray" ng-click="vm.toggleModal(image)">
 					<img ng-src="{{url('<% image.thumb %>')}}"  alt="Property Images">
 
 				</li>
@@ -30,15 +30,15 @@
 
 
 
-			<modal visible="showModal">
+			<modal visible="vm.showModal">
 				<div class="col-md-24 col-lg-24 no-pad margin-top"  >
 
 
 						<span class="angular-lightbox-inner">
-              				<a href class="previous" title="Previous" ng-click="showpre(currentimage.ind)">«</a>
-             				 <img ng-attr-src="{{ url('<% currentimage.img %>') }}"  >
-							<a href class="next" title="Next" ng-click="shownext(currentimage.ind)" >»</a>
-              				<a href class="close" title="Close">×</a>
+              				<a href class="previous" title="Previous" ng-click="vm.showPrevious(vm.currentImage.ind)">«</a>
+             				 <img ng-attr-src="{{ url('<% vm.currentImage.img %>') }}"  >
+							<a href class="next" title="Next" ng-click="vm.showNext(vm.currentImage.ind)" >»</a>
+              				<a href class="close" title="Close" ng-click="vm.closeModal()">×</a>
            				 </span>
 
 				</div>
@@ -180,25 +180,25 @@
 						  <i class="fa fa-star"></i>
 						  <i class="fa fa-star"></i>
 						</div>
-						<h4><% title %></h4>
-					  <p class="address"><% address %></p>
+						<h4><% vm.title %></h4>
+					  <p class="address"><% vm.address %></p>
 
 					  <div class="services gap-top">
 						<ul class="align-left">
-						  <li  ng-if="bathroom > 0" class="bathrooms"><p>Bathrooms: <span><% bathroom %></span></p></li>
-						  <li  ng-if="bedroom > 0" class="bedrooms"><p>Bedrooms: <span><% bedroom %></span></p></li>
-						  <li class="area"><p>Area: <span><% area  %> </span> <span style="text-transform: uppercase;"> <% area_type %></span> </p></li>
+						  <li  ng-if="vm.bathroom > 0" class="bathrooms"><p>Bathrooms: <span><% vm.bathroom %></span></p></li>
+						  <li  ng-if="vm.bedroom > 0" class="bedrooms"><p>Bedrooms: <span><% vm.bedroom %></span></p></li>
+						  <li class="area"><p>Area: <span><% vm.area  %> </span> <span style="text-transform: uppercase;"> <% vm.areaType %></span> </p></li>
 						</ul>
 					  </div>
 					  <div class="text-description no-gap">
-						<p><span class=""><% added_at %> Days on </span><span class="">Realtor</span></p>
-						<p><% description %></p>
+						<p><span class=""><% vm.addedDate %> Days on </span><span class="">Realtor</span></p>
+						<p><% vm.description %></p>
 					  </div>
 					</div>
 
 					<div class="col-sm-10">
 					  <div class="price">
-						<p class="pull-right"><% price %> <span>for <% purpose %></span></p>
+						<p class="pull-right"><% vm.price %> <span>for <% vm.purpose %></span></p>
 					  </div>
 					 </div>
 				  </div>
@@ -208,18 +208,18 @@
 				<div class="row">
 				  <div class="col-sm-12 col-md-12">
 					<section class="double-gap-bottom ">
-					  <h2 class="double-gap-bottom blue-border-bottom pad-bottom ">Features <span class="fs-18 color-gray1"> for  <% title %></span> </h2>
-					  <p class="gap-bottom fs-18 color-gray1">Information last updated on: <% update_date %> </p>
+					  <h2 class="double-gap-bottom blue-border-bottom pad-bottom ">Features <span class="fs-18 color-gray1"> for  <% vm.title %></span> </h2>
+					  <p class="gap-bottom fs-18 color-gray1">Information last updated on: <% vm.lastUpdatedDate %> </p>
 					  <div class="row no-gap feature-class">
 						<div class="col-lg-8 fs-18">
 						  <ul>
 							{{--<li>Price: <% price %></li>--}}
-							<li ng-if="bedroom > 0" ><% bedroom %> Bedroom</li>
-							<li ng-if="bathroom > 0"><% bathroom %> Bathroom</li>
-							<li ng-class="park!=0 ? ' ' : 'feature-util-hide'">Parking</li>
-							<li ng-class="ac!=0 ? ' ' : 'feature-util-hide'">Air Condition</li>
-							<li ng-class="swim!=0 ? ' ' : 'feature-util-hide'">Swimming Pool</li>
-							<li ng-class="balcony!=0 ? ' ' : 'feature-util-hide'">Balcony</li>
+							<li ng-if="vm.bedroom > 0" ><% vm.bedroom %> Bedroom</li>
+							<li ng-if="vm.bathroom > 0"><% vm.bathroom %> Bathroom</li>
+							<li ng-class="vm.park!=0 ? ' ' : 'feature-util-hide'">Parking</li>
+							<li ng-class="vm.ac!=0 ? ' ' : 'feature-util-hide'">Air Condition</li>
+							<li ng-class="vm.swim!=0 ? ' ' : 'feature-util-hide'">Swimming Pool</li>
+							<li ng-class="vm.balcony!=0 ? ' ' : 'feature-util-hide'">Balcony</li>
 						  </ul>
 						</div>
 					  </div>

@@ -1,172 +1,215 @@
-define(['services/propertyService' ,'services/schoolService'], function() {
+define([
+    'services/propertyService' ,
+    'services/schoolService'],
 
+    function() {
+        angular
+            .module('coreModule')
+            .controller('propertyDetailController' , propertyDetailController);
 
-    var coreModule = angular.module('coreModule');
+        propertyDetailController.$inject =  ['$scope', '$http', '$q', 'propertyService', 'schoolService', '$timeout'];
 
-    coreModule.controller('propertyDetailController', ['$scope', '$http', '$q', 'propertyService', 'schoolService', '$timeout', function($scope, $http, $q, propertyService, schoolService, $timeout) {
-        $("#overlay").show();
+        function propertyDetailController($scope, $http, $q, propertyService, schoolService, $timeout) {
 
-        $scope.id = '';
-        $scope.images_array = [];
-        $scope.image_thumbnail_url = image_thumbnail_url;
-        $scope.map_initailize = map_initialize;
-        $scope.init_id = init_id;
-        $scope.showModal = false;
-        $scope.imageClick  = "";
-        $scope.toggleModal = toggleModal;
-        $scope.showpre = showpre;
-        $scope.shownext = shownext;
-        $scope.addMarker = addMarker;
-        $scope.schools = "";
-        $scope.cal_create_date = cal_create_date;
-        $scope.cal_update_date=cal_update_date;
+            $("#overlay").show();
 
-        function map_initialize(){
-            var map_center = new google.maps.LatLng(31.55460609999999, 74.35715810000001);
+            var vm = this;
 
-            var mapOptions = {
-                zoom: 15,
-                center: map_center,
-                styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-40},{"lightness":10}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":10}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":20}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]}]
-            }
-            map = new google.maps.Map(document.getElementById('property_map'), mapOptions);
+            vm.id = '';
+            vm.imageArray = [];
+            vm.imageThumbnailUrl = imageThumbnailUrl;
+            vm.mapInitailize = mapInitailize;
+            vm.initId = initId;
+            vm.showModal = false;
+            vm.imageClick = "";
+            vm.toggleModal = toggleModal;
+            vm.showPrevious = showPrevious;
+            vm.showNext = showNext;
+            vm.addMarker = addMarker;
+            vm.schools = "";
+            vm.calculateCreatedDate = calculateCreatedDate;
+            //vm.calUpdatedDate = calUpdatedDate;
+            vm.closeModal = closeModal;
 
-            console.log(map);
-        }
-
-        $scope.map_initailize();
-
-        function init_id(val){
-            $scope.id = val;
-        }
-
-        function toggleModal(imageClicked){
-           // console.log(btnClicked.index);
-            $scope.currentimage = imageClicked;
-            $scope.imageClick = imageClicked;
-            $scope.showModal = !$scope.showModal;
-        }
-
-        function shownext(index) {
-            var index = index+1;
-
-            if(index<$scope.images_array.length){
-                $scope.currentimage = $scope.images_array[index];
-            }
-            else{
-                index = 0;
-                $scope.currentimage = $scope.images_array[index];
+            function closeModal(){
+                vm.showModal = !vm.showModal;
             }
 
-        };
+            function mapInitailize() {
 
-        function showpre(index) {
-            var index = index-1;
+                var mapCenter = new google.maps.LatLng(31.55460609999999, 74.35715810000001);
 
-            if(index>=0){
-                $scope.currentimage = $scope.images_array[index];
-            }else{
-                index =  $scope.images_array.length - 1;
-                $scope.currentimage = $scope.images_array[index];
-            }
-
-        };
-
-        $timeout(function() {
-            console.log($scope.id);
-            $scope.getProperty = getPropertyDetails($scope.id);
-            propertyService.addView($scope.id);
-        });
-
-        function getPropertyDetails(id) {
-             return propertyService.getPropertyDetail(id).then(function (response) {
-
-                var prop_data = response.data.data[0];
-
-                console.log(prop_data);
-                var update_p = prop_data.image_url.split("|");
-                $scope.image_thumbnail_url(update_p);
-                $scope.currentimage = _.first($scope.images_array)
-                $scope.image_url = update_p;
-                $scope.title = prop_data.title;
-                $scope.address = prop_data.address;
-                $scope.bedroom = prop_data.bedrooms;
-                $scope.bathroom = prop_data.bathrooms;
-                $scope.area = prop_data.area;
-                $scope.area_type = prop_data.area_type;
-                $scope.purpose = prop_data.prop_purpose_id;
-                $scope.price = prop_data.price;
-                $scope.utilities = JSON.parse(prop_data.utilities);
-                $scope.park = $scope.utilities.parking;
-                $scope.ac = $scope.utilities.ac;
-                $scope.swim = $scope.utilities.swim;
-                $scope.balcony = $scope.utilities.balcony;
-                $scope.update_date = prop_data.updated_at;
-                $scope.addMarker(prop_data ,  $scope);
-                $scope.cal_create_date(prop_data.created_at);
-                var date = new Date(prop_data.updated_at);
-                $scope.update_date = date.toDateString();
-                 //console.log(n);
-            }, function (response) {
-                $("#overlay").hide();
-            });
-        }
-
-        function image_thumbnail_url(image_arr){
-            angular.forEach(image_arr, function (value, key) {
-                var dr = '/';
-                var imge = {
-
-                    thumb: 'thumbnail' + dr + value,
-                    img: value,
-                    description: '',
-                    ind: key
+                var mapOptions = {
+                    zoom: 15,
+                    center: mapCenter,
+                    styles: [{
+                        "featureType": "administrative",
+                        "elementType": "all",
+                        "stylers": [{"visibility": "on"}, {"saturation": -150}, {"lightness": 10}]
+                    }, {
+                        "featureType": "road",
+                        "elementType": "all",
+                        "stylers": [{"visibility": "on"}, {"saturation": -150}, {"lightness": 10}]
+                    }, {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [{"visibility": "on"}, {"saturation": -40}, {"lightness": 10}]
+                    }, {
+                        "featureType": "landscape.man_made",
+                        "elementType": "all",
+                        "stylers": [{"visibility": "simplified"}, {"saturation": -100}, {"lightness": 10}]
+                    }, {
+                        "featureType": "landscape.natural",
+                        "elementType": "all",
+                        "stylers": [{"visibility": "simplified"}, {"saturation": -100}, {"lightness": 20}]
+                    }, {
+                        "featureType": "poi",
+                        "elementType": "all",
+                        "stylers": [{"visibility": "off"}, {"saturation": -150}, {"lightness": 20}]
+                    }, {
+                        "featureType": "transit",
+                        "elementType": "all",
+                        "stylers": [{"visibility": "off"}, {"saturation": -150}, {"lightness": 20}]
+                    }]
                 }
 
-                $scope.images_array.push(imge);
+                map = new google.maps.Map(document.getElementById('property_map'), mapOptions);
+
+            }
+
+            function initId(val) {
+                vm.id = val;
+                console.log(vm.id);
+            }
+
+            vm.mapInitailize();
+
+            function toggleModal(imageClicked) {
+                // console.log(btnClicked.index);
+                vm.currentImage = imageClicked;
+                vm.imageClick = imageClicked;
+                vm.showModal = !vm.showModal;
+            }
+
+            function showNext(index) {
+                var index = index + 1;
+
+                if (index < vm.imageArray.length) {
+                    vm.currentImage = vm.imageArray[index];
+                }
+                else {
+                    index = 0;
+                    vm.currentImage = vm.imageArray[index];
+                }
+
+            }
+
+            function showPrevious(index) {
+                var index = index - 1;
+
+                if (index >= 0) {
+                    vm.currentImage = vm.imageArray[index];
+                } else {
+                    index = vm.imageArray.length - 1;
+                    vm.currentImage = vm.imageArray[index];
+                }
+
+            }
+
+            $timeout(function () {
+                console.log(vm.id);
+                vm.getProperty = getPropertyDetails(vm.id);
+                propertyService.addView(vm.id);
             });
+
+            function getPropertyDetails(id) {
+                return propertyService.getPropertyDetail(id).then(function (response) {
+
+                    var propertyData = response.data.data[0];
+
+                    console.log(propertyData);
+                    var propertyImage = propertyData.image_url.split("|");
+                    vm.imageThumbnailUrl(propertyImage);
+                    vm.currentImage = _.first(vm.imageArray)
+                    vm.imagesUrl = propertyImage;
+                    vm.title = propertyData.title;
+                    vm.address = propertyData.address;
+                    vm.bedroom = propertyData.bedrooms;
+                    vm.bathroom = propertyData.bathrooms;
+                    vm.area = propertyData.area;
+                    vm.areaType = propertyData.area_type;
+                    vm.purpose = propertyData.prop_purpose_id;
+                    vm.price = propertyData.price;
+                    vm.utilities = JSON.parse(propertyData.utilities);
+                    vm.park = vm.utilities.parking;
+                    vm.ac = vm.utilities.ac;
+                    vm.swim = vm.utilities.swim;
+                    vm.balcony = vm.utilities.balcony;
+                    vm.addMarker(propertyData, vm);
+                    vm.calculateCreatedDate(propertyData.created_at);
+                    var date = new Date(propertyData.updated_at);
+                    vm.lastUpdatedDate = date.toDateString();
+                    //console.log(n);
+                }, function (response) {
+                    $("#overlay").hide();
+                });
+            }
+
+            function imageThumbnailUrl(propertyImage) {
+                angular.forEach(propertyImage, function (value, key) {
+                    var dr = '/';
+                    var img = {
+
+                        thumb: 'thumbnail' + dr + value,
+                        img: value,
+                        description: '',
+                        ind: key
+                    }
+
+                    vm.imageArray.push(img);
+                });
+            }
+
+            function addMarker(data, vm) {
+
+                var newCenter = new google.maps.LatLng(data.latitude, data.longitude);
+
+                map.setCenter(newCenter);
+                var marker = new google.maps.Marker({
+                    position: newCenter,
+                    map: map,
+                    title: data.address,
+                    animation: google.maps.Animation.BOUNCE
+
+                });
+                schoolService.getSchools(map, newCenter, $scope);
+            }
+
+            function calculateCreatedDate(date) {
+                var oneDay = 24 * 60 * 60 * 1000;
+
+                var date1 = new Date().getTime();
+
+                var date2 = new Date(date).getTime();
+
+                var diffDays = Math.round(Math.abs((date1 - date2) / (oneDay)));
+
+                vm.addedDate = diffDays;
+            }
+
+            //function calUpdatedDate(){
+            //    var oneDay = 24 * 60 * 60 * 1000;
+            //    var date1 = new Date().getTime();
+            //    var date2 = new Date(prop_data.updated_at).getTime();
+            //    var date = new Date('2016-06-03');
+            //    var n = date.toDateString();
+            //
+            //    console.log(n);
+            //
+            //    var diffDays = Math.round(Math.abs((date1 - date2) / (oneDay)));
+            //    //vm.update_date = diffDays - 1;
+            //}
+
+
         }
-
-        function addMarker(data , $scope){
-
-            var new_center = new google.maps.LatLng(data.latitude, data.longitude);
-
-            map.setCenter(new_center);
-            var marker = new google.maps.Marker({
-                position: new_center,
-                map: map,
-                title: data.address,
-                animation: google.maps.Animation.BOUNCE,
-                //icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
-
-            });
-            schoolService.getSchools(map, new_center, $scope);
-        }
-
-        function cal_create_date(date){
-            var oneDay = 24 * 60 * 60 * 1000;
-            var date1 = new Date().getTime();
-            //console.log(date1);
-            var date2 = new Date(date).getTime();
-
-            var diffDays = Math.round(Math.abs((date1 - date2) / (oneDay)));
-            console.log(diffDays);
-            $scope.added_at = diffDays;
-        }
-
-        function cal_update_date(){
-            var oneDay = 24 * 60 * 60 * 1000;
-            var date1 = new Date().getTime();
-            var date2 = new Date(prop_data.updated_at).getTime();
-            var date = new Date('2016-06-03');
-            var n = date.toDateString();
-
-            console.log(n);
-
-            var diffDays = Math.round(Math.abs((date1 - date2) / (oneDay)));
-            //$scope.update_date = diffDays - 1;
-        }
-
-
-    }]);
 });

@@ -31,6 +31,7 @@ define(function() {
                 status: 1
             };
         }
+
         function addImage(formData){
             var deffered = $q.defer();
             return $http.post('property/M_image', formData ,{
@@ -50,6 +51,7 @@ define(function() {
                 return deffered.promise;
             }
         }
+
         function addMImage(formData){
             var deffered = $q.defer();
             return $http.post('property/M_image', formData ,{
@@ -69,6 +71,7 @@ define(function() {
                 return deffered.promise;
             }
         }
+
         function getUserProperty(){
             var deffered = $q.defer();
             return $http.get("property/userProperty")
@@ -85,6 +88,7 @@ define(function() {
                 return deffered.promise;
             }
         }
+
         function getPropertyDetail(id){
             var deffered = $q.defer();
             return $http.get('detail/' + id)
@@ -100,6 +104,7 @@ define(function() {
                 return deffered.promise;
             }
         }
+
         function addView(id){
             var deffered = $q.defer();
             return $http.get('view/' + id)

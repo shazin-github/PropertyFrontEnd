@@ -4,7 +4,7 @@ define(function(){
         .directive('image',imagedir);
 
     function imagedir($q) {
-        'use strict'
+        'use strict';
 
         var URL = window.URL || window.webkitURL;
 
@@ -21,7 +21,7 @@ define(function(){
             }
 
             return resizeArea;
-        }
+        };
 
         var resizeImage = function (origImage, options) {
             var maxHeight = options.resizeMaxHeight || 300;
@@ -85,6 +85,7 @@ define(function(){
                 resizeMaxWidth: '@?',
                 resizeQuality: '@?',
                 resizeType: '@?',
+                imag :'=?'
 
             },
             link: function postLink($scope, element, attrs, ctrl) {
@@ -107,6 +108,7 @@ define(function(){
                             $scope.image.push(imageResult);
                         else
                             $scope.image = imageResult;
+
                     });
                 };
 
@@ -152,8 +154,9 @@ define(function(){
                         }
                     }
                     $scope.$watch('image', function(){
-                        if($scope.image.length == undefined) {
-                            $scope.$parent.user.image_url = $scope.image.resized.dataURL;
+
+                        if(angular.isArray($scope.image) == false) {
+                            $scope.imag = $scope.image.dataURL;
                         }
                     });
                 });

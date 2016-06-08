@@ -17,25 +17,109 @@ define(function() {
         };
 
         function login(data){
-            return $http.post("/user/login", data);
+
+            var deferred = $q.defer();
+            return $http.post("/user/login", data)
+                .then(successCallback)
+                .catch(errorCallback);
+
+            function successCallback(response){
+                deferred.resolve(response);
+                return deferred.promise;
+            }
+
+            function errorCallback(response){
+                deferred.reject(response);
+                return deferred.promise;
+            }
         }
         function logout(){
-            return $http.get("/user/logout");
+
+            var deferred = $q.defer();
+            return $http.get("/user/logout")
+                .then(successCallback)
+                .catch(errorCallback);
+
+            function successCallback(response){
+                deferred.resolve(response);
+                return deferred.promise;
+            }
+
+            function errorCallback(response){
+                deferred.reject(response);
+                return deferred.promise;
+            }
         }
         function register(data){
-            return $http.post("/user/register", data);
+
+            var deferred = $q.defer();
+            return $http.post("/user/register", data)
+                .then(successCallback)
+                .catch(errorCallback);
+
+            function successCallback(response){
+                deferred.resolve(response);
+                return deferred.promise;
+            }
+
+            function errorCallback(response){
+                deferred.reject(response);
+                return deferred.promise;
+            }
         }
         function getProfile(){
-            return $http.get("user/profile");
+
+            var deferred = $q.defer();
+            return $http.get("user/profile")
+                .then(successCallback)
+                .catch(errorCallback);
+
+            function successCallback(response){
+                deferred.resolve(response);
+                return deferred.promise;
+            }
+
+            function errorCallback(response){
+                deferred.reject(response);
+                return deferred.promise;
+            }
         }
         function updateProfilePic(form_data){
+
+            var deferred = $q.defer();
             return $http.post('user/profile-pic', form_data, {
-                transformRequest: angular.identity,
-                headers: {'Content-Type': undefined}
-            });
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined}
+                })
+                .then(successCallback)
+                .catch(errorCallback);
+
+            function successCallback(response){
+                deferred.resolve(response);
+                return deferred.promise;
+            }
+
+            function errorCallback(response){
+                deferred.reject(response);
+                return deferred.promise;
+            }
         }
-        function updateProfile(){
-            return $http.post("user/profile", data);
+        function updateProfile(data){
+
+            var deferred = $q.defer();
+            return $http.post("user/profile", data)
+                .then(successCallback)
+                .catch(errorCallback);
+
+            function successCallback(response){
+                deferred.resolve(response);
+                return deferred.promise;
+            }
+
+            function errorCallback(response){
+                deferred.reject(response);
+                return deferred.promise;
+            }
         }
     }
 });

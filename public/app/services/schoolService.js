@@ -11,6 +11,8 @@ define(function() {
 
         function getSchools(map, location, $rootScope){
 
+            console.log($rootScope);
+
             var request = {
                 location: location,
                 radius: 10000,
@@ -18,6 +20,7 @@ define(function() {
             };
 
             var service = new google.maps.places.PlacesService(map);
+
             service.nearbySearch(request, callback);
 
             function callback(results, status) {
@@ -28,6 +31,7 @@ define(function() {
                         results[i].distance = distance(location.lat(), location.lng(), schoolLat, schoolLng, 'K');
                         if(results[i].rating == undefined) results[i].rating = parseFloat(Math.random() * (5 - 3) + 3).toFixed(1);
                     }
+
                     $rootScope.$apply(function() {
                         $rootScope.schools = results;
                     });

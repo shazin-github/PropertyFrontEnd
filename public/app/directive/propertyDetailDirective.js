@@ -42,13 +42,15 @@ define(function(){
                     });
                 });
 
-                $(element).on('click' ,'a.close' , function(){
-                    //console.log('inner directive hidden');
-                    scope.$apply(function(){
-                        scope.$parent[attrs.visible] = false;
-                        $("#sliding").css("display","");
-                    });
-                });
+                //$(element).on('click' ,'a.close' , function(){
+                //    console.log('inner directive hidden');
+                //    scope.$apply(function(){
+                //
+                //        scope.$parent.showModal = false;
+                //        console.log(scope)
+                //        $("#sliding").css("display","");
+                //    });
+                //});
 
             }
         }

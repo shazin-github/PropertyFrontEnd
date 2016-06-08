@@ -12,7 +12,7 @@ define(function() {
         'directive/addPropertyDirective',
         'directive/propertyDetailDirective',
         'directive/commonDirective',
-        'directive/searchpageDirective',
+        'directive/searchpageDirective'
 
 
     ];

@@ -5,17 +5,20 @@ define(function(){
 
     function markerService(){
 
-        var infoWindow = new google.maps.InfoWindow();
+
+
         return {
             getMarker:getMarker,
             updateMarker:updateMarker,
             clearOverlays:clearOverlays,
             markers : [],
             markerCount : 0,
-            lastUp : []
+            lastUp : [],
+
         };
 
         function getMarker(propertyData, map){
+            var infowindow = new google.maps.InfoWindow();
             console.log(propertyData);
             this.clearOverlays();
             var bounds = new google.maps.LatLngBounds();
@@ -29,14 +32,14 @@ define(function(){
                         position: latlng,
                         map: map,
                         markerId : propertyData[i].property_id,
-                        title: propertyData[i].address,
+                        title: propertyData[i].title,
                         //icon:'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
                     });
                     this.markers[this.markerCount].addListener('click', function() {
                         infowindow.setContent(this.title);
                         infowindow.setPosition(this.getPosition());
                         infowindow.open(map);
-                        map.setCenter(this.getPosition());
+                        //map.setCenter(this.getPosition());
                     });
 
                     this.markerCount++;
@@ -45,7 +48,9 @@ define(function(){
             map.fitBounds(bounds);
             $('#overlay').hide();
         }
+
         function updateMarker(propertyData , map , changeobj){
+            var infowindow = new google.maps.InfoWindow();
             var bounds = new google.maps.LatLngBounds();
             if(this.lastUp['id']){
                 //  console.log(this.last_up);
@@ -68,7 +73,7 @@ define(function(){
                             infowindow.setContent(this.title);
                             infowindow.setPosition(this.getPosition());
                             infowindow.open(map);
-                            map.setCenter(this.getPosition());
+                            //map.setCenter(this.getPosition());
                         });
                     }
                 }
@@ -97,11 +102,12 @@ define(function(){
                         infowindow.setContent(this.title);
                         infowindow.setPosition(this.getPosition());
                         infowindow.open(map);
-                        map.setCenter(this.getPosition());
+                        //map.setCenter(this.getPosition());
                     });
                 }
             }
         }
+
         function clearOverlays(){
             var prev_markers = this.markers;
             for(i in prev_markers) {

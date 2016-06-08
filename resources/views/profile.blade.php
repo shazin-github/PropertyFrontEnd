@@ -8,23 +8,23 @@
 	</ul>
 </div>
 
-<div id="profile"  ng-controller="userController" ng-init="initProfile()">
-	<form class="update-form" id="profileForm" ng-submit="updateProfile()">
+<div id="profile"  ng-controller="userController as vm" ng-init="vm.initProfile()">
+	<form class="update-form" id="profileForm" ng-submit="vm.updateProfile()">
 		<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 		<div class="row">
 			<div class="col-md-11">
 				<div id="alerts_" class="alert alert-danger" role="alert"><% user.profileErrors %></div>
 				<div id="success_alert" class="alert alert-success" role="alert"></div>
-				<input type="text" class="js-input" placeholder="Enter your First Name" required ng-model="user.firstname" />
-				<input type="text" class="js-input" placeholder="Enter your Last Name" ng-model="user.lastname" />
-				<input type="text" class="js-input" placeholder="Enter your Email" ng-model="user.email" />
+				<input type="text" class="js-input" placeholder="Enter your First Name" required ng-model="vm.user.firstname" />
+				<input type="text" class="js-input" placeholder="Enter your Last Name" ng-model="vm.user.lastname" />
+				<input type="text" class="js-input" placeholder="Enter your Email" ng-model="vm.user.email" />
 
 				<div class="row row-fit-10">
 					<div class="col-sm-12">
-						<input type="text" class="js-input" placeholder="Password" ng-model="user.password"/>
+						<input type="password" class="js-input" placeholder="Password" ng-model="vm.user.password"/>
 					</div>
 					<div class="col-sm-12">
-						<input type="text" class="js-input" placeholder="Repeat the password" ng-model="user.confirmPassword"/>
+						<input type="password" class="js-input" placeholder="Repeat the password" ng-model="vm.user.confirmPassword"/>
 					</div>
 				</div>
 			</div>
@@ -35,7 +35,7 @@
 						<i class="icon icon-folder4"></i>
 					</a>
 
-					<img ng-attr-src="<%user.image_url%>" ng-show="showProfileImage" id="profilePicImage" alt="user photo"  onclick="$('#profilePic').trigger('click');"/><br />
+					<img ng-attr-src="<%vm.user.image_url%>" ng-show="vm.showProfileImage" id="profilePicImage" alt="user photo"  onclick="$('#profilePic').trigger('click');"/><br />
 					<a class="upload-link" href="" onclick="$('#profilePic').trigger('click');">
 						Add your photo
 					</a>
@@ -44,10 +44,11 @@
 					<input id="profilePic"
 						   type="file"
 						   accept="image/*"
-						   image="image2"
+						   image="vm.image2"
 						   resize-max-height="300"
 						   resize-max-width="250"
 						   resize-quality="0.7"
+						   imag="vm.user.image_url"
 						   style="display: none"
 					/>
 
@@ -61,18 +62,18 @@
 				<div class="row row-fit-10">
 					<div class="col-sm-12">
 						<div class="social-input phone">
-							<input type="text" class="js-input" placeholder="Phone" ng-model="user.phone"/>
+							<input type="text" class="js-input" placeholder="Phone" ng-model="vm.user.phone"/>
 						</div>
 						<div class="social-input facebook">
-							<input type="text" class="js-input social facebook" placeholder="Facebook" ng-model="user.facebook"/>
+							<input type="text" class="js-input social facebook" placeholder="Facebook" ng-model="vm.user.facebook"/>
 						</div>
 					</div>
 					<div class="col-sm-12">
 						<div class="social-input skype">
-							<input type="text" class="js-input" placeholder="Skype" ng-model="user.skype"/>
+							<input type="text" class="js-input" placeholder="Skype" ng-model="vm.user.skype"/>
 						</div>
 						<div class="social-input twitter">
-							<input type="text" class="js-input" placeholder="Twitter" ng-model="user.twitter"/>
+							<input type="text" class="js-input" placeholder="Twitter" ng-model="vm.user.twitter"/>
 						</div>
 					</div>
 

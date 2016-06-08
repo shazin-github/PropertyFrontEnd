@@ -1,119 +1,109 @@
-define(['services/userService'], function() {
-    var coreModule = angular.module('coreModule');
+define([
+    'services/userService'
+],function(){
+    angular
+        .module('coreModule')
+        .controller('userController',userController);
 
-    coreModule.controller('userController', ['$scope', 'userService', function($scope, userService) {
+    userController.$inject = ['$scope', 'userService'];
+    function userController($scope, userService) {
+        var vm = this;
 
-        $scope.user = {};
+        vm.showProfileImage = false;
+        vm.user = {};
+        vm.login = login;
+        vm.logout = logout;
+        vm.userReg = {};
+        vm.register = register;
+        vm.initProfile = initProfile;
+        vm.updateProfile = updateProfile;
+        vm.updateProfileFields = updateProfileFields;
 
-        $scope.showProfileImage = false;
 
-        $scope.login = function(){
-        	$('#overlay').show();
-	        userService.login($scope.user).then(function(resp){
-	        	$('#overlay').hide();
+        function login(){
+            $('#overlay').show();
+            userService.login(vm.user).then(function(resp){
+                $('#overlay').hide();
                 console.log('response', resp);
-	        	if(resp.data.success){
+                if(resp.data.success){
                     echoSuccess('login-form', 'Login Successful');
-	        		location.reload();
-	        	} else{
-	        		$scope.user.loginErrors = resp.data.msg;
-	        		$('.alert-danger').show();
-	        	}
-	        });
+                    location.reload();
+                } else{
+                    vm.user.loginErrors = resp.data.msg;
+                    $('.alert-danger').show();
+                }
+            });
         }
-
-        $scope.logout = function(){
-        	$('#overlay').show();
-        	userService.logout().then(function(resp){
-        		$('#overlay').hide();
-	        	if(resp.data.success){
-	        		location.href = '/';
-	        	} 
-	        });	
+        function logout(){
+            $('#overlay').show();
+            userService.logout().then(function(resp){
+                $('#overlay').hide();
+                if(resp.data.success){
+                    location.href = '/';
+                }
+            });
         }
-
-        $scope.userReg = {};
-
-        $scope.register = function(){
-        	//alert($scope.user+' has password'+$scope.password);
-        	$('#overlay').show();
-        	userService.register($scope.userReg).then(function(resp){
-        		$('#overlay').hide();
-	        	if(resp.data.success){
-	        		echoSuccess('register-form', resp.data.msg);
-	        		location.href= '/verification';
-	        	}
-	        	else{
-	        		$scope.registerErrors = resp.data.msg;
-	        		echoErrors('register-form', resp.data.msg);
-	        	}
-	        });
+        function register(){
+            $('#overlay').show();
+            userService.register(vm.userReg).then(function(resp){
+                $('#overlay').hide();
+                if(resp.data.success){
+                    echoSuccess('register-form', resp.data.msg);
+                    location.href= '/verification';
+                }
+                else{
+                    vm.registerErrors = resp.data.msg;
+                    echoErrors('register-form', resp.data.msg);
+                }
+            });
         }
+        function initProfile(){
+            vm.user.image_url = "img/profile-avatar.jpg";
+            $('#overlay').show();
+            userService.getProfile().then(function(resp){
+                $('#overlay').hide();
+                vm.user = resp.data.msg;
 
-        $scope.initProfile = function(){
-            $scope.user.image_url = "img/profile-avatar.jpg";
-        	$('#overlay').show();
-        	userService.getProfile().then(function(resp){
-        		$('#overlay').hide();
-        		$scope.user = resp.data.msg;
-
-                if($scope.user.image_url != ''){
-                    $scope.showProfileImage = !$scope.showProfileImage;
+                if(vm.user.image_url != ''){
+                    vm.showProfileImage = !vm.showProfileImage;
                     $('#profilePicImage').show(); // todo
                 }
-        		$scope.user.confirmPassword = resp.data.msg.password;
-        	});
-
+                vm.user.confirmPassword = resp.data.msg.password;
+            });
         }
-
-
-        $scope.updateProfile = function() {
-        	//alert($scope.user+' has password'+$scope.password);
+        function updateProfile(){
+            //alert(vm.user+' has password'+vm.password);
             $('#overlay').show();
-
-            form_data= new FormData();
-
-            if($scope.image2 !== undefined) {
-
-                file_data = $scope.image2.file;
-
-                form_data.append("profilePic", file_data);
-
-                userService.updateProfilePic(form_data).then(function(image_resp){
-
-                    if(image_resp.data.success){
-
-                        $scope.user.image_url = image_resp.data.image_url;
+            formData = new FormData();
+            if(vm.image2 !== undefined) {
+                fileData = vm.image2.file;
+                formData.append("profilePic", fileData);
+                userService.updateProfilePic(formData).then(function(imageResponse){
+                    if(imageResponse.data.success){
+                        vm.user.image_url = imageResponse.data.image_url; //
                     }
-
-                    $scope.updateprofilefields();
-
+                    vm.updateProfileFields();
                 });
-
             }else{
-
-                $scope.updateprofilefields();
-
+                vm.updateProfileFields();
             }
-
-        }//$scope.updateProfile
-
-        $scope.updateprofilefields = function(){
-
-            userService.updateProfile($scope.user).then(function(profile_resp){
-                console.log('RESO', profile_resp);
+        }
+        function updateProfileFields(){
+            userService.updateProfile(vm.user).then(function(response){
+                console.log('RESO', response);
                 $('#overlay').hide();
-                if(profile_resp.data.success){
-                    echoSuccess('profileForm', profile_resp.data.msg);
+                if(response.data.success){
+                    echoSuccess('profileForm', response.data.msg);
                 }
                 else{
                     $('#overlay').hide();
-                    console.log('error', profile_resp.data.msg);
-                    $scope.profileErrors = profile_resp.data.msg;
-                    echoErrors('profileForm', profile_resp.data.msg);
+                    console.log('error', response.data.msg);
+                    vm.profileErrors = response.data.msg;
+                    echoErrors('profileForm', response.data.msg);
                 }
             });
         }
 
-    }]);
+    }
+
 });
