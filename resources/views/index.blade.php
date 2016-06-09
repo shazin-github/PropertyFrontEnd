@@ -8,27 +8,27 @@
 
 
 		{{--@endif--}}
-		<div  ng-controller="searchController" ng-init="initiate()">
+		<div  ng-controller="searchController as vm ">
 		<!-- Properties Map Section -->
 		<section class="properties-map" ng-cloak="">
 			<div class="row row-fit"  >
-				<div class="search-class aftersearch-class" ng-class="{ 'hide' : !search }" ng-show="isRecentLoaded" >
+				<div class="search-class aftersearch-class" ng-class="{ 'hide' : !vm.search }" ng-show="vm.isRecentLoaded" >
 
 					<form class="submit-form" name="searchMiniForm" >
 
-						<cd-index-dropdown option="buytype_list" title="Buy" ng-model="selected_purpose" addclass="wd-80 pull-left" ></cd-index-dropdown>
+						<cd-index-dropdown option="vm.propertyPurposeArray" title="Buy" ng-model="vm.purposeSelected" addclass="wd-80 pull-left" ></cd-index-dropdown>
 
-						<input class="filter-box-input js-input no-select search-wd" cd-auto-search-complete ng-model="search_value" name="search_mini" id="search_mini" type="text" value="" placeholder="Search..." required />
+						<input class="filter-box-input js-input no-select search-wd" cd-auto-search-complete ng-model="vm.searchValue" searchValue="vm.searchValue" lat="vm.lat" lng="vm.lng" name="search_mini" id="search_mini" type="text" value="" placeholder="Search..." required />
 
-						<cd-index-dropdown option="num_of_beds_list" title="Bedrooms" ng-model="selected_bedroom" addclass="wd-110 pull-left" ></cd-index-dropdown>
+						<cd-index-dropdown option=" vm.selectBeds" title="Bedrooms" ng-model="vm.numberOfBathSelected" addclass="wd-110 pull-left" ></cd-index-dropdown>
 
-						<cd-index-dropdown option="num_of_baths_list" title="Baths" ng-model="selected_bathroom" addclass="wd-80 pull-left" ></cd-index-dropdown>
+						<cd-index-dropdown option="vm.selectBaths" title="Baths" ng-model="vm.numberOfBedSelected" addclass="wd-80 pull-left" ></cd-index-dropdown>
 
 						<input type="hidden"  ng-model="lat" /> <input type="hidden"  ng-model="lng" />
 
-						<input type="submit" class="button theme-button-1 update-properties" value="Search" ng-click="searchProperty()" />
+						<input type="submit" class="button theme-button-1 update-properties" value="Search" ng-click="vm.searchProperty()" />
 
-						<a class="button theme-button-1 update-properties" href="#" ng-click="clearPropertyMini()" >clear search</a>
+						<a class="button theme-button-1 update-properties" href="#" ng-click="vm.clearSearchListing()" >clear search</a>
 					</form>
 				</div>
 			</div>
@@ -38,38 +38,38 @@
 				<div id="home-map" class="mapClass"></div>
 				</div>
 				<div class="col-md-9 col-lg-10">
-					<div class="map-filter-box" ng-class="{ 'hide' : search }">
+					<div class="map-filter-box" ng-class="{ 'hide' : vm.search }">
 					<div class="search-gap">
 						<div class="box-caption">
 							<h4>Search</h4>
 							<p>Where are you looking?</p>
 						</div>
 						</div>
-						<div class="search-class" ng-class="{ 'hide' : search }" ng-show="isRecentLoaded" >
+						<div class="search-class" ng-class="{ 'hide' : vm.search }" ng-show="vm.isRecentLoaded" >
 							<form class="submit-form" name="searchForm">
 
-								<cd-index-dropdown option="buytype_list" title="Buy" ng-model="selected_purpose" addclass="wd-80 pull-left" ></cd-index-dropdown>
+								<cd-index-dropdown option="vm.propertyPurposeArray" title="Buy" ng-model="vm.purposeSelected" addclass="wd-80 pull-left" ></cd-index-dropdown>
 
-								<input class="filter-box-input js-input no-select search-wd" cd-auto-search-complete ng-model="search_value" id="search" type="text" value="" placeholder="Search..." required />
+								<input class="filter-box-input js-input no-select search-wd" cd-auto-search-complete ng-model="vm.searchValue" searchValue="vm.searchValue" lat="vm.lat" lng="vm.lng" id="search" type="text" value="" placeholder="Search..." required />
 
-								<cd-index-dropdown option="num_of_beds_list" title="Bedrooms" ng-model="selected_bedroom" addclass="wd-110 pull-left" ></cd-index-dropdown>
+								<cd-index-dropdown option=" vm.selectBeds" title="Bedrooms" ng-model="vm.numberOfBathSelected" addclass="wd-110 pull-left" ></cd-index-dropdown>
 
-								<cd-index-dropdown option="num_of_baths_list" title="Baths" ng-model="selected_bathroom" addclass="wd-80 pull-left" ></cd-index-dropdown>
+								<cd-index-dropdown option="vm.selectBaths" title="Baths" ng-model="vm.numberOfBedSelected" addclass="wd-80 pull-left" ></cd-index-dropdown>
 
-								<input type="submit" class="button theme-button-1 update-properties" value="Search" ng-click="searchProperty()" />
+								<input type="submit" class="button theme-button-1 update-properties" value="Search" ng-click="vm.searchProperty()" />
 							</form>
 						</div>
 					</div>
 
-					<div class="home-list-ht" ng-if="listings.length != 0" ng-class="{ 'hide' : !search }" >
-						<div class="listing-style" ng-repeat="list in listings">
+					<div class="home-list-ht" ng-if="vm.listings.length != 0" ng-class="{ 'hide' : !vm.search }" >
+						<div class="listing-style" ng-repeat="list in vm.listings">
 							<div class="list-property"   >
 								<div class="cover list-img">
 									<a href="property/<% list.property_id %>">
 										<img alt="list property cover" src="<% list.image_url %>" >
 									</a>
 								</div>
-								<div class="list-content"  ng-mouseover="changemarkertest(list)" >
+								<div class="list-content"  ng-mouseover="vm.changeMakerAnimation(list)" >
 									<div class="property-header">
 										<p class="price">$<% list.price %> <span class="type" style="text-transform: uppercase;">For <% list.prop_purpose_id %></span></p>
 										<h2><a href="property/<% list.property_id %>"><% list.title %></a></h2>
@@ -99,7 +99,7 @@
 						</div>
 
 					</div>
-					<div class="home-list-ht" ng-if="listings.length == 0" ng-class="{ 'hide' : !search }" >
+					<div class="home-list-ht" ng-if="vm.listings.length == 0" ng-class="{ 'hide' : !vm.search }" >
 						No Result Found // todo
 
 					</div>
@@ -109,7 +109,7 @@
 		</section>
 
 		<!-- Hot Offer Section -->
-		<section class="hot-offer" ng-show="isRecentLoaded" >
+		<section class="hot-offer"   >
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
@@ -130,7 +130,7 @@
 		</section>
 
 		<!-- Listing Section -->
-		<section class="listing-section" ng-if="recent.length != 0" ng-cloak="">
+		<section class="listing-section"   ng-if="vm.recent.length != 0" ng-cloak="">
 			<div class="container "  >
 				<div class="section-header" >
 					<h1 >Recent Listed</h1>
@@ -139,7 +139,7 @@
 
 			<div  class="listing-items ">
 				<div class="row" >
-					<div class="col-xs-12 col-md-8 col-lg-6" ng-repeat="property in recent" >
+					<div class="col-xs-12 col-md-8 col-lg-6" ng-repeat="property in vm.recent" >
 						<div class="listing-item" >
 							<div class="item-cover type-1" >
 								<div class="cover" >
@@ -185,7 +185,7 @@
 		</section>
 
 		<!-- Most viewed Section -->
-		<section class="most-viewed-section double-pad-left double-pad-right" ng-if="mostview.length != 0"  ng-cloak="" >
+		<section class="most-viewed-section double-pad-left double-pad-right" ng-if="vm.mostview.length != 0"    ng-cloak="" >
 			<div class="container " >
 				<div class="section-header" >
 					<h1>Most viewed</h1>
@@ -194,7 +194,7 @@
 
 				<div class="listing-items "  >
 					<div class="row" >
-						<div class="col-xs-12 col-md-8 col-lg-6" ng-repeat="property in mostview" >
+						<div class="col-xs-12 col-md-8 col-lg-6" ng-repeat="property in vm.mostView" >
 							<div class="listing-item" >
 								<div class="item-cover type-1" >
 									<div class="cover">

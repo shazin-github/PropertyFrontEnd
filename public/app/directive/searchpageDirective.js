@@ -69,12 +69,15 @@ define(function(){
             require: 'ngModel',
             scope: {
                 ngModel: '=',
+                searchValue:'=?',
+                lat:'=?',
+                lng:'=?'
             },
             link:link,
         }
         return directve;
 
-        function link(scope, element, attrs){
+        function link(scope, element, attrs ,controller){
             var adr_options = {
                 types: ['geocode'],
                 componentRestrictions: {country: 'pk'}
@@ -85,15 +88,22 @@ define(function(){
             autocomplete_adr.addListener('place_changed', function() {
 
                 var place = autocomplete_adr.getPlace();
-                if (!place.geometry) {
-                   scope.$parent.search_value = '';
-                   scope.$parent.lat = '';
-                   scope.$parent.lng = '';
-                   return;
-                }
-                scope.$parent.search_value = element.val();
-                scope.$parent.lat = place.geometry.location.lat();
-                scope.$parent.lng = place.geometry.location.lng();
+                scope.$apply(function(){
+                    if (!place.geometry) {
+                        scope.searchValue = '';
+                        scope.lat = '';
+                        scope.lng = '';
+                        return;
+                    }
+                    console.log(element.val());
+                    scope.searchValue = element.val();
+                    scope.lat = place.geometry.location.lat();
+                    scope.lng = place.geometry.location.lng();
+                    controller.$setViewValue(element.val());
+                });
+
+
+
 
             });
         }

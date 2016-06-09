@@ -6,11 +6,11 @@
 						<img src="/img/brand.png" alt="login brand" />
 					</div>
 
-					<form id="login-form"  ng-controller="userController" ng-submit="login()">
-						<div class="alert alert-danger" role="alert"><% user.loginErrors %></div>
+					<form id="login-form"  ng-controller="userController as vm" ng-submit="vm.login()">
+						<div class="alert alert-danger" role="alert"><% vm.user.loginErrors %></div>
 						<div id="success_alert" class="alert alert-success" role="alert"></div>
-						<input class="js-input" type="text" placeholder="Email" ng-model="user.email"/>
-						<input class="js-input" type="password" placeholder="Password" ng-model="user.password" />
+						<input class="js-input" type="text" placeholder="Email" ng-model="vm.user.email"/>
+						<input class="js-input" type="password" placeholder="Password" ng-model="vm.user.password" />
 						<input type="submit" value="Login" class="submit-button"/>
 
 						<div class="options">
@@ -22,13 +22,13 @@
 						</div>
 					</form>
 
-					<form id="register-form" ng-controller="userController" ng-submit="register()">
+					<form id="register-form" ng-controller="userController" ng-submit="vm.register()">
 						<div id="alerts_" class="alert alert-danger" role="alert"><% registerErrors %></div>
-						<input class="js-input" type="text" placeholder="First Name" ng-model="userReg.firstname" />
-						<input class="js-input" type="text" placeholder="Last Name" ng-model="userReg.lastname" />
-						<input class="js-input" type="text" placeholder="Email" ng-model="userReg.email" />
-						<input class="js-input" type="password" placeholder="Password" ng-model="userReg.password"/>
-						<input class="js-input" type="password" placeholder="Confirm password" ng-model="userReg.confirmPassword"/>
+						<input class="js-input" type="text" placeholder="First Name" ng-model="vm.userReg.firstname" />
+						<input class="js-input" type="text" placeholder="Last Name" ng-model="vm.userReg.lastname" />
+						<input class="js-input" type="text" placeholder="Email" ng-model="vm.userReg.email" />
+						<input class="js-input" type="password" placeholder="Password" ng-model="vm.userReg.password"/>
+						<input class="js-input" type="password" placeholder="Confirm password" ng-model="vm.userReg.confirmPassword"/>
 						<input type="submit" value="Register" class="submit-button" />
 					</form>
 

@@ -14,7 +14,10 @@
 .feature-util-show {
     display: block;
 }
-
+.span-area{
+    text-transform: uppercase;
+    font-size: 90% !important;
+}
 #profilePicImage{
   width: 145px;
   height: 145px;

@@ -32,7 +32,7 @@
 
 						<li><a class="icon-folder-add" href="{{ URL::to('my-profile#/submit') }}">Submit new property</a></li>
 						<li><a class="icon-folder4" href="{{ URL::to('my-profile#/properties') }}">My properties</a></li>
-						<li  ng-controller="userController"><a class="exit" href="#" ng-click="logout()">Logout</a></li>
+						<li  ng-controller="userController as vm"><a class="exit" href="#" ng-click="vm.logout()">Logout</a></li>
 					</ul>
 				</div>
 				

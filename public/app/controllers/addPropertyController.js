@@ -12,10 +12,10 @@ define([
             .controller('addPropertyController' , addPropertyController);
 
 
-        addPropertyController.$inject = ['$rootScope','$scope', 'locationService' ,'featureService', 'propertyService',  'addPropertyService','cityService','stateService', '$q'];
+        addPropertyController.$inject = ['$rootScope','$scope', 'locationService' ,'featureService', 'propertyService',  'addPropertyService','cityService','stateService', '$q','$filter'];
 
 
-        function addPropertyController($rootScope,$scope, locationService, featureService, propertyService, addPropertyService ,cityService ,stateService,$q){
+        function addPropertyController($rootScope,$scope, locationService, featureService, propertyService, addPropertyService ,cityService ,stateService,$q ,$filter){
 
             var vm = this;
 
@@ -43,13 +43,12 @@ define([
 
 
             var activate = function(){
-
+                vm.getCity();
+                vm.getState();
                 vm.propertyPurposeList();
                 vm.propertyTypeList();
                 vm.propertyCategoryList();
-                vm.getCity();
-                vm.getState();
-            }
+            };
 
             activate();
 
@@ -57,31 +56,34 @@ define([
 
                 $('#overlay').show();
                 addPropertyService.getPurposeList().then(function (response) {
+                    console.log("Purpose:"+ $filter('date')(new Date(), 'hh:mm:ss a') );
                     //$('#overlay').hide();
                     vm.purposeList = response.data.data;
 
                 }, function (response) {
-                    $('#overlay').hide();
+
                 });
 
             }
 
             function propertyTypeList(){
 
-                //$('#overlay').show();
+                $('#overlay').show();
                 addPropertyService.getTypeList().then(function (response) {
+                    console.log("Type:"+ $filter('date')(new Date(), 'hh:mm:ss a') );
                     //$('#overlay').hide();
                     vm.typeList = response.data.data;
 
                 },function (response){
-                    $('#overlay').hide();
+
                 });
             }
 
             function propertyCategoryList(){
 
-                //$('#overlay').show();
+                $('#overlay').show();
                 addPropertyService.getCategoryList().then(function (response) {
+                    console.log("Category:"+ $filter('date')(new Date(), 'hh:mm:ss a') );
                     $('#overlay').hide();
                     vm.categoryList = response.data.data;
 
@@ -91,8 +93,10 @@ define([
             }
 
             function getCity(){
-
+                $('#overlay').show();
                 cityService.getAllCities().then(function(res){
+                    //$('#overlay').hide();
+                    console.log("city:"+ $filter('date')(new Date(), 'hh:mm:ss a') );
                     vm.cityList = res.data.data;
                 },function (response){
                     //$('#overlay').hide();
@@ -100,8 +104,10 @@ define([
             }
 
             function getState(){
-
+                $('#overlay').show();
                 stateService.getAllStates().then(function(res){
+                    //$('#overlay').hide();
+                    console.log("state:"+ $filter('date')(new Date(), 'hh:mm:ss a') );
                     vm.stateList = res.data.data;
                     //console.log(vm.statelist);
                 },function (response){

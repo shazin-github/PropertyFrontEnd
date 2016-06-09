@@ -29,20 +29,20 @@
 						<ul>
 							<li ng-if=" p.bathrooms > 0" class="bathrooms">Bathrooms: <span><% p.bathrooms %></span></li>
 							<li ng-if="p.bedrooms > 0" class="bedrooms">Bedrooms: <span><% p.bedrooms %></span></li>
-							<li class="area">Area: <span><% p.area %> <span style="text-transform: uppercase;"> <% p.area_type %></span> </span></li>
+							<li class="area">Area: <span class="span-area"><% p.area %> <% p.area_type %> </span></li>
 						</ul>
 					</div>
 
 					<div class="block location-info">
 						<div class="location">
 							<h3>
-								<a href="property/<% p.property_id %>"><% p.address %></a>
+								<a  href="property/<% p.property_id %>"><p class="elip tile-wd" title="<% p.address %>"><% p.address %></p></a>
 							</h3>
 							<p><% p.city %></p>
 						</div>
 
 						<div class="price">
-							<p>$<% p.price %><span>for <% p.prop_purpose_id %></span></p>
+							<p><% p.price %><span>for <% p.prop_purpose_id %></span></p>
 						</div>
 					</div>
 				</div>
