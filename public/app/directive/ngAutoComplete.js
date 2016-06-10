@@ -1,8 +1,9 @@
 define(function(){
+    angular
+        .module('coreModule')
+        .directive('ngAutocomplete' , ngAutocomplete);
 
-    var coreModule = angular.module('coreModule');
-
-    coreModule.directive('ngAutocomplete', function() {
+    function ngAutocomplete(){
         return {
             require: 'ngModel',
             scope: {
@@ -10,12 +11,13 @@ define(function(){
                 options: '=?',
                 details: '=?',
                 longitude:'=',
-                latitude:'=',
+                latitude:'='
 
             },
-            controllerAs: 'vm',
+            link:link
+        };
 
-            link: function(scope, element, attrs, controller) {
+        function link(scope, element, attrs, controller) {
                 var opts;
                 var watchEnter = false;
                 //convert options provided to opts
@@ -71,17 +73,12 @@ define(function(){
                         map: scope.map,
                         icon: 'img/marker_icon.png'
                     });
-                    var adr_options = {
+                    var adrOptions = {
                         types: ['geocode'],
                         componentRestrictions: {country: 'pk'}
                     };
 
-
-
-                    scope.gPlace = new google.maps.places.Autocomplete(element[0], adr_options);
-
-                    //console.log(scope.gPlace);
-
+                    scope.gPlace = new google.maps.places.Autocomplete(element[0], adrOptions);
 
                 }
                 scope.gPlace.addListener( 'place_changed', function() {
@@ -186,129 +183,7 @@ define(function(){
                     initOpts()
                 }, true);
 
-            },
-        };
-    }); //
-
-
-    angular
-        .module('coreModule')
-        .directive('cdAddSubtract' , AddSubtract);
-
-    function AddSubtract(){
-        var directive = {
-            controller: controller,
-            templateUrl: '/Template/directive/addSubtractTemplate.html',
-            restrict: 'A',
-            scope:{
-                'option':'=',
-                'title' : '@title'
             }
-        };
-        return directive;
 
-        function controller($scope) {
-
-            $scope.addfunction = function(){
-                $scope.option++;
-            }
-            $scope.subtractfunction = function(){
-
-                var newvlaue = $scope.option--;
-                if(newvlaue <= 0){
-                    $scope.option= 0;
-                }
-            }
-        }
     }
-
-
-    angular
-        .module('coreModule')
-        .directive('cdDropdown',funDropdown);
-
-    function funDropdown(){
-        return {
-            restrict : 'A',
-            require: 'ngModel',
-            templateUrl: '/Template/directive/dropdownTemplate.html',
-            scope : {
-                'option':'=option',
-                'type':' =ngModel',
-                'title' : '@title'
-
-            },
-            link:link,
-            controller:controller,
-        }
-        function controller($scope){ // following johnpapa
-            $scope.isopenclass = false;
-            $scope.classopen = classopen;
-            $scope.selectedvalue = selectedvalue;
-
-            function selectedvalue(selectedval){
-                $scope.type = selectedval;
-            }
-            function classopen(){
-                $scope.isopenclass = !$scope.isopenclass;
-            }
-
-        }
-        function link(scope, element, attrs ,ctrl){
-            var selectbox = element.find('.select-box');
-
-            angular.element(document).on('click',function(){
-
-                selectbox.find('ul').slideUp(150);
-                selectbox.removeClass('open');
-            });
-
-            selectbox.on('click' , function(){
-                selectbox.find('ul').slideToggle(150);
-                selectbox.toggleClass('open');
-            });
-
-            selectbox.find('ul li').on('click' , function(){
-                selectbox.find('ul').slideToggle(150);
-                selectbox.toggleClass('open');
-                selectbox.find('input').addClass('has-value');
-            });
-
-            selectbox.on('click', function (e) {
-                    e.stopPropagation();
-            });
-
-
-        }
-    }
-
-    angular
-        .module('coreModule')
-        .directive('cdRadioButton',funRadioButton);
-
-    function funRadioButton(){
-        return {
-            restrict : 'EA',
-            require: 'ngModel',
-            templateUrl: '/Template/directive/RadioButtonTemplate.html',
-            scope : {
-                'option':'=option',
-                'modeltype':' =ngModel',
-                'title' : '@title'
-
-
-            },
-            controller:controller,
-        }
-        function controller($scope){
-            $scope.checkStuff = checkStuff;
-
-            function checkStuff(value) {
-                $scope.modeltype = value;
-            };
-        }
-    }
-
-
-
 });

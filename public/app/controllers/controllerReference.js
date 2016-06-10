@@ -1,19 +1,19 @@
 define(function() {
     return [
-        'controllers/mainController',
-        'controllers/homeController',
         'controllers/addPropertyController',
         'controllers/propertyDetailController',
         'controllers/userController',
         'controllers/searchController',
-        'controllers/listingController',
         'controllers/myPropertyController',
-        'controllers/agentsController',
-        'directive/addPropertyDirective',
-        'directive/propertyDetailDirective',
-        'directive/commonDirective',
-        'directive/searchpageDirective'
-
+        'directive/cdAddSubtract',
+        'directive/cdAutoSearchComplete',
+        'directive/cdDropdown',
+        'directive/cdIndexDropdown',
+        'directive/cdRadioButton',
+        'directive/cdSchoolList',
+        'directive/image',
+        'directive/modal',
+        'directive/ngAutoComplete'
 
     ];
 });
