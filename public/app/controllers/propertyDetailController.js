@@ -23,8 +23,6 @@ define([
             vm.showModal = false;
             vm.imageClick = "";
             vm.toggleModal = toggleModal;
-            vm.showPrevious = showPrevious;
-            vm.showNext = showNext;
             vm.addMarker = addMarker;
             vm.schools = "";
             vm.calculateCreatedDate = calculateCreatedDate;
@@ -89,31 +87,6 @@ define([
                 vm.currentImage = imageClicked;
                 vm.imageClick = imageClicked;
                 vm.showModal = !vm.showModal;
-            }
-
-            function showNext(index) {
-                var index = index + 1;
-
-                if (index < vm.imageArray.length) {
-                    vm.currentImage = vm.imageArray[index];
-                }
-                else {
-                    index = 0;
-                    vm.currentImage = vm.imageArray[index];
-                }
-
-            }
-
-            function showPrevious(index) {
-                var index = index - 1;
-
-                if (index >= 0) {
-                    vm.currentImage = vm.imageArray[index];
-                } else {
-                    index = vm.imageArray.length - 1;
-                    vm.currentImage = vm.imageArray[index];
-                }
-
             }
 
             $timeout(function () {
@@ -196,20 +169,6 @@ define([
 
                 vm.addedDate = diffDays;
             }
-
-            //function calUpdatedDate(){
-            //    var oneDay = 24 * 60 * 60 * 1000;
-            //    var date1 = new Date().getTime();
-            //    var date2 = new Date(prop_data.updated_at).getTime();
-            //    var date = new Date('2016-06-03');
-            //    var n = date.toDateString();
-            //
-            //    console.log(n);
-            //
-            //    var diffDays = Math.round(Math.abs((date1 - date2) / (oneDay)));
-            //    //vm.update_date = diffDays - 1;
-            //}
-
 
         }
 });

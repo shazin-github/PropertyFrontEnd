@@ -30,18 +30,8 @@
 
 
 
-			<modal visible="vm.showModal">
-				<div class="col-md-24 col-lg-24 no-pad margin-top"  >
+			<modal visible="vm.showModal" imageArray="vm.imageArray" currentImage="vm.currentImage">
 
-
-						<span class="angular-lightbox-inner">
-              				<a href class="previous" title="Previous" ng-click="vm.showPrevious(vm.currentImage.ind)">«</a>
-             				 <img ng-attr-src="{{ url('<% vm.currentImage.img %>') }}"  >
-							<a href class="next" title="Next" ng-click="vm.showNext(vm.currentImage.ind)" >»</a>
-              				<a href class="close" title="Close" ng-click="vm.closeModal()">×</a>
-           				 </span>
-
-				</div>
 			</modal>
 
 

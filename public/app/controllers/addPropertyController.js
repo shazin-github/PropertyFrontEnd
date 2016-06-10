@@ -28,7 +28,7 @@ define([
             vm.propertyData = {};
             vm.numberOfBeds = 0;
             vm.numberOfBaths = 0;
-            vm.areaType = ''
+            vm.areaType = '';
             vm.city = '';
             vm.latitude = '';
             vm.longitude = '';
