@@ -6,8 +6,9 @@ define(function(){
 
     function funDropdown(){
         return {
-            restrict : 'A',
+            restrict : 'EA',
             require: 'ngModel',
+            replace : false,
             templateUrl: '/Template/directive/dropdownTemplate.html',
             scope : {
                 'option':'=option',

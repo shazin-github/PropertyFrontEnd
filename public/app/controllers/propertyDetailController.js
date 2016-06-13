@@ -39,6 +39,9 @@ define([
 
                 var mapOptions = {
                     zoom: 15,
+                    disableDefaultUI: false,
+                    scaleControl: false,
+                    scrollwheel: false,
                     center: mapCenter,
                     styles: [{
                         "featureType": "administrative",
@@ -144,14 +147,14 @@ define([
             }
 
             function addMarker(data, vm) {
-
+                console.log(data);
                 var newCenter = new google.maps.LatLng(data.latitude, data.longitude);
 
                 map.setCenter(newCenter);
                 var marker = new google.maps.Marker({
                     position: newCenter,
                     map: map,
-                    title: data.address,
+                    title: data.title,
                     animation: google.maps.Animation.BOUNCE
 
                 });

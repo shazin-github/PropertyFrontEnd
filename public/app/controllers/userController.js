@@ -85,12 +85,13 @@ define([
                     vm.updateProfileFields();
                 });
             }else{
+                //console.log("Images not updated");
                 vm.updateProfileFields();
             }
         }
         function updateProfileFields(){
             userService.updateProfile(vm.user).then(function(response){
-                console.log('RESO', response);
+                //console.log('RESO', response);
                 $('#overlay').hide();
                 if(response.data.success){
                     echoSuccess('profileForm', response.data.msg);

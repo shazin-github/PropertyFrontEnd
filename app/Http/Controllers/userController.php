@@ -225,9 +225,11 @@ class userController extends Controller{
 			$file = file_get_contents($f->getRealPath());
 			$mkfile = file_put_contents($path, $file);
 			
-			if($mkfile)
-				return Response::json(['success'=>true, 'msg'=>'Picture uploaded succcessfully', 
-					'image_url'=>$path]);
+			if($mkfile) {
+				session(['image' => $path]);
+				return Response::json(['success' => true, 'msg' => 'Picture uploaded succcessfully',
+					'image_url' => $path]);
+			}
 		}
 
 		return Response::json(['success'=>false, 'error'=>'Picture not found']);

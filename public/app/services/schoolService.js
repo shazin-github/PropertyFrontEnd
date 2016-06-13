@@ -43,16 +43,16 @@ define(function() {
             }
 
             function distance(lat1, lon1, lat2, lon2, unit) {
-                var radLat1 = Math.PI * lat1/180
-                var radLat2 = Math.PI * lat2/180
-                var theta = lon1-lon2
-                var radtheta = Math.PI * theta/180
+                var radLat1 = Math.PI * lat1/180;
+                var radLat2 = Math.PI * lat2/180;
+                var theta = lon1-lon2;
+                var radtheta = Math.PI * theta/180;
                 var dist = Math.sin(radLat1) * Math.sin(radLat2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.cos(radtheta);
-                dist = Math.acos(dist)
-                dist = dist * 180/Math.PI
-                dist = dist * 60 * 1.1515
-                if (unit=="K") { dist = dist * 1.609344 }
-                if (unit=="N") { dist = dist * 0.8684 }
+                dist = Math.acos(dist);
+                dist = dist * 180/Math.PI;
+                dist = dist * 60 * 1.1515;
+                if (unit=="K") { dist = dist * 1.609344; }
+                if (unit=="N") { dist = dist * 0.8684; }
                 return parseFloat(dist).toFixed(2)+" km";
             }
         }

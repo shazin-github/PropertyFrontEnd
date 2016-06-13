@@ -48,13 +48,13 @@
 						<div class="search-class" ng-class="{ 'hide' : vm.search }" ng-show="vm.isRecentLoaded" >
 							<form class="submit-form" name="searchForm">
 
-								<cd-index-dropdown option="vm.propertyPurposeArray" title="Buy" ng-model="vm.purposeSelected" addclass="wd-80 pull-left" ></cd-index-dropdown>
+								<cd-index-dropdown option="vm.propertyPurposeArray" title="Buy" ng-model="vm.purposeSelected" addclass="wd-80 pull-left" inputclass="filter-box-input js-input no-select drop-wd" ></cd-index-dropdown>
 
 								<input class="filter-box-input js-input no-select search-wd" cd-auto-search-complete ng-model="vm.searchValue" searchValue="vm.searchValue" lat="vm.lat" lng="vm.lng" id="search" type="text" value="" placeholder="Search..." required />
 
-								<cd-index-dropdown option=" vm.selectBeds" title="Bedrooms" ng-model="vm.numberOfBathSelected" addclass="wd-110 pull-left" ></cd-index-dropdown>
+								<cd-index-dropdown option=" vm.selectBeds" title="Bedrooms" ng-model="vm.numberOfBathSelected" addclass="wd-110 pull-left" inputclass="filter-box-input js-input no-select drop-wd" ></cd-index-dropdown>
 
-								<cd-index-dropdown option="vm.selectBaths" title="Baths" ng-model="vm.numberOfBedSelected" addclass="wd-80 pull-left" ></cd-index-dropdown>
+								<cd-index-dropdown option="vm.selectBaths" title="Baths" ng-model="vm.numberOfBedSelected" addclass="wd-80 pull-left" inputclass="filter-box-input js-input no-select drop-wd" ></cd-index-dropdown>
 
 								<input type="submit" class="button theme-button-1 update-properties" value="Search" ng-click="vm.searchProperty()" />
 							</form>

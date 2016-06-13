@@ -64,10 +64,12 @@ define(function(){
                     var mapOptions = {
                         zoom: 10,
                         center: latlng,
+                        disableDefaultUI: false,
+                        scaleControl: false,
+                        scrollwheel: false,
                         styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-150},{"lightness":10}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"saturation":-40},{"lightness":10}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":10}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":-100},{"lightness":20}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"},{"saturation":-150},{"lightness":20}]}]
                     }
                     scope.map = new google.maps.Map(document.getElementById('location_map'), mapOptions);
-
                     scope.property_marker = new google.maps.Marker({
                         position: latlng,
                         map: scope.map,

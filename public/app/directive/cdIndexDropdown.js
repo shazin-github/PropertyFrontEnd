@@ -13,11 +13,12 @@ define(function(){
                 'type':' =ngModel',
                 'title' : '@title',
                 'addclass':'@?',
+                'inputclass':'@?'
 
 
             },
             link:link,
-            controller:controller,
+            controller:controller
         }
         function controller($scope){ // following johnpapa
 

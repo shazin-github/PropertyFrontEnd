@@ -7,13 +7,11 @@ define(function() {
         'controllers/myPropertyController',
         'directive/cdAddSubtract',
         'directive/cdAutoSearchComplete',
-        'directive/cdDropdown',
         'directive/cdIndexDropdown',
         'directive/cdRadioButton',
         'directive/cdSchoolList',
         'directive/image',
         'directive/modal',
         'directive/ngAutoComplete'
-
     ];
 });

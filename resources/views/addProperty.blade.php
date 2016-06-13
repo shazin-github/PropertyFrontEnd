@@ -33,9 +33,9 @@
                 </div> -->
 				<input type="text" class="js-input" placeholder="Country" id="country" disabled="true" ng-model="vm.country"/>
 
-				<div cd-dropdown option ="vm.stateList" title="State" ng-model="vm.state"></div>
+				<div cd-index-dropdown option ="vm.stateList" title="State" ng-model="vm.state" addclass="type-2" inputclass="js-input no-select" ></div>
 
-				<div cd-dropdown option ="vm.cityList" title="City" ng-model="vm.city"></div>
+				<div cd-index-dropdown option ="vm.cityList" title="City" ng-model="vm.city"  addclass="type-2" inputclass="js-input no-select"></div>
 
 
 				{{--<input type="text" class="js-input" required placeholder="Address (street/ house/ ap.)" ng-init="addNewLocation()" id="address" ng-model="address"/>--}}
@@ -51,7 +51,7 @@
 							<input type="text" class="js-input nr-only" required placeholder="Area" ng-model="vm.area"/>
 						</div>
 						<div class="col-sm-12">
-							<div class="select-box-margin" cd-dropdown option ="vm.areaList" title="Area Type" ng-model="vm.areaType"></div>
+							<div class="select-box-margin" cd-index-dropdown option ="vm.areaList" title="Area Type" ng-model="vm.areaType"  addclass="type-2" inputclass="js-input no-select"></div>
 
 						</div>
 

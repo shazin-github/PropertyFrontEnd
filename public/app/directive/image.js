@@ -76,7 +76,6 @@ define(function(){
             return deferred.promise;
         };
 
-
         return {
             restrict: 'A',
             scope: {
@@ -90,6 +89,7 @@ define(function(){
             },
             link: postLink
         };
+
         function postLink($scope, element, attrs, ctrl) {
 
             var doResizing = function(imageResult, callback) {

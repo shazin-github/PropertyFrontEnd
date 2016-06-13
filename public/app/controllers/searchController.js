@@ -144,6 +144,9 @@ define([
             var map_center = new google.maps.LatLng(31.55460609999999, 74.35715810000001);
             var mapOptions = {
                 zoom: 10,
+                disableDefaultUI: false,
+                scaleControl: false,
+                scrollwheel: false,
                 center: map_center,
                 styles: [{
                     "featureType": "administrative",
