@@ -4098,7 +4098,6 @@ span.angular-lightbox-inner > a.close {
   left: 0;
 }
 .agent .image:before {
-  position: absolute;
   content: "";
   top: 0;
   left: 0;

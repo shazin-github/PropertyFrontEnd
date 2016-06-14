@@ -1,15 +1,16 @@
 define([
-    'services/propertyService' ,
-    'services/schoolService'],
+    'services/propertyService',
+    'services/schoolService',
+    'services/userService'],
 
     function() {
         angular
             .module('coreModule')
             .controller('propertyDetailController' , propertyDetailController);
 
-        propertyDetailController.$inject =  ['$scope', '$http', '$q', 'propertyService', 'schoolService', '$timeout'];
+        propertyDetailController.$inject =  ['$scope', '$http', '$q', 'propertyService', 'schoolService', '$timeout' , 'userService'];
 
-        function propertyDetailController($scope, $http, $q, propertyService, schoolService, $timeout) {
+        function propertyDetailController($scope, $http, $q, propertyService, schoolService, $timeout , userService) {
 
             $("#overlay").show();
 
@@ -28,6 +29,20 @@ define([
             vm.calculateCreatedDate = calculateCreatedDate;
             //vm.calUpdatedDate = calUpdatedDate;
             vm.closeModal = closeModal;
+
+            vm.userDetail = userDetail;
+
+            function userDetail(){
+
+                userService.getProfile().then(function(resp){
+                    vm.agent = resp.data.msg;
+                    console.log(vm.agent);
+
+                    vm.agentName = vm.agent.firstname+' '+vm.agent.lastname;
+                    vm.agentImages = vm.agent.image_url;
+
+                });
+            }
 
             function closeModal(){
                 vm.showModal = !vm.showModal;
@@ -81,9 +96,11 @@ define([
             function initId(val) {
                 vm.id = val;
                 console.log(vm.id);
+                vm.userDetail();
             }
 
             vm.mapInitailize();
+
 
             function toggleModal(imageClicked) {
                 // console.log(btnClicked.index);

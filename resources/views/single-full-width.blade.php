@@ -235,41 +235,44 @@
 					  <!-- <iframe width="" height="" frameborder="0" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d54447.26463684356!2d74.34649627986188!3d31.470450441588902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1454961823511" style="border:0" allowfullscreen="" class="pull-right signle-page-map"></iframe> -->
 						<div id="property_map" class="pull-right signle-page-map"></div>
 					</div>
-					<!-- <div class="property-agent no-gap">
-					  <div class="agent">
-						<h2 class="caption">Contact the agent</h2>
-						<p class="position">agent</p>
-
-						<div class="image">
-						  <a href="agent.html">
-							<img alt="agent photo" src="img/agent-2.jpg">
-						  </a>
-						</div>
-
-						<h3><a href="agent.html">Elias Doe</a></h3>
-
-						<ul class="social-block">
-						  <li><a href="single-full-width.html#"><i class="fa fa-facebook"></i></a></li>
-						  <li><a href="single-full-width.html#"><i class="fa fa-twitter"></i></a></li>
-						  <li><a href="single-full-width.html#"><i class="fa fa-linkedin-square"></i></a></li>
-						</ul>
-
-						<form class="simple-form">
-						  <input type="text" placeholder="Full name" class="js-input">
-						  <input type="text" placeholder="Email" class="js-input">
-						  <input type="text" placeholder="Subject" class="js-input">
-						  <textarea placeholder="Message" class="js-input"></textarea>
-						  <button class="submit-btn">Write</button>
-						</form>
-					  </div>
-					</div> -->
 				  </div>
 				</div>
 				<div class="row">
-					<div class="col-sm-14 col-md-16">
+					<div class="col-sm-20 col-md-16">
 						<section class="double-gap-bottom ">
 							<cd-school-list schoollist="schools" />
 						</section>
+					</div>
+
+					<div class="col-sm-57 col-md-8" >
+						<div class="property-agent no-gap">
+							<div class="agent">
+								<h2 class="caption position">Contact the agent</h2>
+
+
+								<div class="image">
+									<a href="#">
+										<img alt="agent photo" src="/<% vm.agentImages %>">
+									</a>
+								</div>
+
+								<h3><a href="agent.html"><% vm.agentName %></a></h3>
+
+								<ul class="social-block">
+									<li><a href="single-full-width.html#"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="single-full-width.html#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="single-full-width.html#"><i class="fa fa-linkedin-square"></i></a></li>
+								</ul>
+
+								<form class="simple-form">
+									<input type="text" placeholder="Full name" class="js-input">
+									<input type="text" placeholder="Email" class="js-input">
+									<input type="text" placeholder="Subject" class="js-input">
+									<textarea placeholder="Message" class="js-input"></textarea>
+									<button class="submit-btn">Send</button>
+								</form>
+							</div>
+						</div>
 					</div>
 
 				</div>

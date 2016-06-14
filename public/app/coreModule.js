@@ -1,4 +1,4 @@
-define( ['angular-route'], function() {
+ define( ['angular-route'], function() {
     var coreModule = angular.module('coreModule', ['ngRoute'], function($interpolateProvider) {
             $interpolateProvider.startSymbol('<%');
             $interpolateProvider.endSymbol('%>');

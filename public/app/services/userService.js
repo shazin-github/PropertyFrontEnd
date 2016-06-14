@@ -70,7 +70,7 @@ define(function() {
         function getProfile(){
 
             var deferred = $q.defer();
-            return $http.get("user/profile")
+            return $http.get("/user/profile")
                 .then(successCallback)
                 .catch(errorCallback);
 
