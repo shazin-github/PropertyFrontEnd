@@ -264,11 +264,12 @@
 									<li><a href="single-full-width.html#"><i class="fa fa-linkedin-square"></i></a></li>
 								</ul>
 
-								<form class="simple-form">
-									<input type="text" placeholder="Full name" class="js-input">
-									<input type="text" placeholder="Email" class="js-input">
-									<input type="text" placeholder="Subject" class="js-input">
-									<textarea placeholder="Message" class="js-input"></textarea>
+								<form class="simple-form agent-contact-form" id="agent-contact-form" name="agent-contact-form" ng-submit="vm.contactAgent()">
+									<div ng-class="alert-success" id="alert-success"><% vm.msg %></div>
+									<input type="text" placeholder="Full name" class="js-input" ng-model="vm.visitor.visitorName">
+									<input type="text" placeholder="Email" class="js-input" ng-model="vm.visitor.visitorEmail">
+									<input type="text" placeholder="Subject" class="js-input" ng-model="vm.visitor.visitorSubject">
+									<textarea placeholder="Message" class="js-input" ng-model="vm.visitor.visitorMessage" ></textarea>
 									<button class="submit-btn">Send</button>
 								</form>
 							</div>

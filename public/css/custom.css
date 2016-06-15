@@ -14,6 +14,10 @@
 .feature-util-show {
     display: block;
 }
+.plan-info{
+    margin-top: 25px;
+    font-size: 20px;
+}
 .span-area{
     text-transform: uppercase;
     font-size: 90% !important;

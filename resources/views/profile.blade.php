@@ -85,6 +85,35 @@
 			</div>
 		</div>
 
-		<input class="update-btn" type="submit" value="Update your profile" />
+		<input class="button theme-button-2" type="submit" value="Update your profile" />
 	</form>
+
+	<div>
+		<p  class="plan-info" >Your Plan Information</p>
+
+		<div class="row row-fit-10">
+			<div class="col-sm-11">
+				<div class="row row-fit-10">
+					<div class="col-sm-12">
+						<div class="social-input phone">
+							<p>Plan Name</p>
+						</div>
+					</div>
+					<div class="col-sm-12">
+						<div class="social-input skype">
+							<i class="fa fa-pencil" />
+							<a class="profile" href="/user/user-app-plan"><span>Change Plan</span></a>
+						</div>
+					</div>
+
+				</div>
+				<div class="row row-fit-10">
+					<div class="col-sm-11">
+						<p>Plan Detail</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </div>

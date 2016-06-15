@@ -15,7 +15,7 @@ use \Storage;
 use App\http\utilities\city;
 use App\http\utilities\states;
 use Image;
-
+use Mail;
 class propertyController extends Controller {
     protected $request;
     protected $guzzle;
@@ -327,6 +327,17 @@ class propertyController extends Controller {
         }
 
 
+    }
+
+    function contactAgent(Mail $mailer){
+        $data = $this->request->all();
+        $mailer::send('contactAgent' , ['Message'=> $data['visitorMessage']] , function($message ) use ($data){
+            $message->from($data['visitorEmail'] , $data['visitorName'])
+                ->to($data['contactMail'])
+                ->subject($data['visitorSubject']);
+        });
+
+        return Response::json(['success'=>true, 'msg'=>'Message Send Successfully']);
     }
 
 

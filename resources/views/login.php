@@ -22,7 +22,7 @@
 						</div>
 					</form>
 
-					<form id="register-form" ng-controller="userController" ng-submit="vm.register()">
+					<form id="register-form" ng-controller="userController as vm" ng-submit="vm.register()">
 						<div id="alerts_" class="alert alert-danger" role="alert"><% registerErrors %></div>
 						<input class="js-input" type="text" placeholder="First Name" ng-model="vm.userReg.firstname" />
 						<input class="js-input" type="text" placeholder="Last Name" ng-model="vm.userReg.lastname" />

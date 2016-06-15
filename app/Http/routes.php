@@ -41,6 +41,11 @@ Route::group(['middleware'=>['web']], function(){
 	Route::get('confirm' , function(){
 		return view('confirm');
 	});
+
+	Route::get('contactAgent' , function(){
+		return view('contactAgent');
+	});
+
 	Route::get('confirm/{confirmCode}/{user_id}' , 'userController@confirmUser');
 	Route::get('verification' , function(){
 
@@ -95,6 +100,8 @@ Route::group(['middleware'=>['web']], function(){
 	Route::get('property/typeList' , 'propertyController@typeList');
 
 	Route::get('property/categoryList' , 'propertyController@categoryList');
+
+	Route::post('property/contactAgent' , 'propertyController@contactAgent');
 
 	Route::get('property/{id}', function ($id) {
 		return view('single-full-width')->with('id', $id);

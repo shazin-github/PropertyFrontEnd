@@ -13,9 +13,27 @@ define(function() {
             addMImage:addMImage,
             getUserProperty:getUserProperty,
             getPropertyDetail:getPropertyDetail,
-            addView:addView
+            addView:addView,
+            contactAgent:contactAgent
 
         };
+
+        function contactAgent(formData){
+            var deffered = $q.defer();
+            return $http.post('/property/contactAgent', formData)
+                .then(successCallback)
+                .catch(errorCallback);
+
+            function successCallback(response){
+                deffered.resolve(response);
+                return deffered.promise;
+            }
+
+            function errorCallback(response){
+                deffered.reject(response);
+                return deffered.promise;
+            }
+        }
 
         function getProperty(title, price, area,areaType ,description, purpose, type, category, imageUrl){
             return {

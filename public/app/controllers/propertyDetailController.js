@@ -29,19 +29,29 @@ define([
             vm.calculateCreatedDate = calculateCreatedDate;
             //vm.calUpdatedDate = calUpdatedDate;
             vm.closeModal = closeModal;
-
+            vm.contactAgent = contactAgent;
             vm.userDetail = userDetail;
+            vm.visitor = {};
+
+            function contactAgent(){
+                $('#overlay').show();
+                vm.visitor.contactName = vm.agentName;
+                vm.visitor.contactMail = vm.agent.email;
+                propertyService.contactAgent(vm.visitor).then(function (resp){
+                    $('#overlay').hide();
+                    if(resp.data.success) {
+                        //vm.msg = resp.data.msg
+                        echoSuccess('agent-contact-form', resp.data.msg , 'alert-success');
+                    }
+                });
+
+            }
 
             function userDetail(){
-
-                userService.getProfile().then(function(resp){
-                    vm.agent = resp.data.msg;
                     console.log(vm.agent);
 
                     vm.agentName = vm.agent.firstname+' '+vm.agent.lastname;
                     vm.agentImages = vm.agent.image_url;
-
-                });
             }
 
             function closeModal(){
@@ -96,7 +106,6 @@ define([
             function initId(val) {
                 vm.id = val;
                 console.log(vm.id);
-                vm.userDetail();
             }
 
             vm.mapInitailize();
@@ -118,12 +127,13 @@ define([
             function getPropertyDetails(id) {
                 return propertyService.getPropertyDetail(id).then(function (response) {
 
-                    var propertyData = response.data.data[0];
-
-                    console.log(propertyData);
+                    var propertyData = response.data.data.property[0];
+                    vm.agent = response.data.data.sellerDetail[0];
+                    console.log(vm.agent);
+                    vm.userDetail();
                     var propertyImage = propertyData.image_url.split("|");
                     vm.imageThumbnailUrl(propertyImage);
-                    vm.currentImage = _.first(vm.imageArray)
+                    vm.currentImage = _.first(vm.imageArray);
                     vm.imagesUrl = propertyImage;
                     vm.title = propertyData.title;
                     vm.address = propertyData.address;
