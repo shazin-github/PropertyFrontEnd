@@ -14,6 +14,63 @@
 .feature-util-show {
     display: block;
 }
+
+
+.plan-outter-div {
+    min-height: 676px;
+    text-align: center;
+}
+.plan {
+    background: #eee none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 10px 1%;
+    width: 31%;
+}
+.profile-plan{
+    width: 75% !important;
+}
+.plan .title {
+    font-size: 30px;
+    line-height: 35px;
+    margin: 15px 0;
+}
+.plan-price {
+    background: #086fb5 none repeat scroll 0 0;
+    color: #fff;
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 45px;
+    padding: 20px;
+}
+.plan-text {
+    font-size: 16px;
+    line-height: 25px;
+    margin: 20px 0;
+    padding: 10px 0;
+}
+.plan-btn {
+    background: #086fb5 none repeat scroll 0 0;
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 25px;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+}
+.padded {
+    padding: 10px;
+}
+.plan-btn:hover {
+    color: #fff;
+    opacity: 0.7;
+}
+
+
 .plan-info{
     margin-top: 25px;
     font-size: 20px;

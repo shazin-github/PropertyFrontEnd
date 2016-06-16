@@ -32,7 +32,9 @@ Route::group(['middleware'=>['web']], function(){
 	Route::get('addProperty', function () {
 		return view('addProperty');
 	});
-
+	Route::get('plan-widget', function () {
+		return view('plan-widget');
+	});
 
 
 	Route::get('myProperty', function () {
@@ -107,7 +109,15 @@ Route::group(['middleware'=>['web']], function(){
 		return view('single-full-width')->with('id', $id);
 	});
 
+	Route::post('user/isAgent' , "userController@isAgent");
+
+	Route::get('user/getPlanDetail/{id}' , "userController@getPlanDetail");
+
+	Route::get('user/getPlanList' , "userController@getPlanList");
+
 	Route::controller('user', 'userController');
+
+
 
 
 

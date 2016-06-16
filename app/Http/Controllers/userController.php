@@ -280,4 +280,46 @@ class userController extends Controller{
 		return array($error);
 	}
 
+	public function isAgent(){
+		$postData = $this->request->all();
+
+		$data = ['user_id' => $postData[0]];
+
+		$resp = null;
+
+		try{
+			$resp  = $this->guzzle->request('GET', $this->apiUrl.'user/isAgent', ['query'=>$data]);
+
+		} catch(\Exception $e){
+			//return Response::json(['success'=>false, 'msg'=>$this->makeError("Can't send request")]);
+			$response = $e->getResponse();
+
+			$responseBodyAsString = $response->getBody()->getContents();
+
+			$result = json_decode($responseBodyAsString);
+
+			if($result->status_code == 404){
+
+				return Response::json(['success' => false, 'msg' => $this->makeError("User Not Agent")]);
+
+			}else{
+				return Response::json(['success' => false, 'msg' => $this->makeError("Can't send request")]);
+			}
+		}
+		$result = json_decode($resp->getBody());
+
+		if($resp->getStatusCode() == 200){
+
+			return Response::json(['success'=>true, 'msg'=>$result->data[0]]);
+		} else {
+			return Response::json(['success'=>false, 'msg'=>$this->makeError('User Not Agent')]);
+		}
+	}
+
+	public function getPlanList(){}
+
+	public function getPlanDetail($id){
+
+	}
+
 }

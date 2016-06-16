@@ -14,6 +14,7 @@ define([
         vm.login = login;
         vm.logout = logout;
         vm.userReg = {};
+        vm.userReg.isAgent = false;
         vm.register = register;
         vm.initProfile = initProfile;
         vm.updateProfile = updateProfile;
@@ -45,6 +46,8 @@ define([
         }
         function register(){
             $('#overlay').show();
+
+            console.log(vm.userReg);
             userService.register(vm.userReg).then(function(resp){
                 $('#overlay').hide();
                 if(resp.data.success){
@@ -68,7 +71,17 @@ define([
                     vm.showProfileImage = !vm.showProfileImage;
                     $('#profilePicImage').show(); // todo
                 }
+                vm.user.isAgent  = false;
                 vm.user.confirmPassword = resp.data.msg.password;
+                userService.isAgent(vm.user.id).then(function(response){
+                    if(response.data.success){
+                        vm.planData = response.data.data;
+
+                        vm.user.isAgent  = true;
+                    }else{
+                        vm.user.isAgent  = false;
+                    }
+                });
             });
         }
         function updateProfile(){

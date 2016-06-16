@@ -13,8 +13,26 @@ define(function() {
             register:register,
             getProfile:getProfile,
             updateProfilePic:updateProfilePic,
-            updateProfile:updateProfile
+            updateProfile:updateProfile,
+            isAgent:isAgent
         };
+
+        function isAgent(id){
+            var deferred = $q.defer();
+            return $http.post("/user/isAgent" , id)
+                .then(successCallback)
+                .catch(errorCallback);
+
+            function successCallback(response){
+                deferred.resolve(response);
+                return deferred.promise;
+            }
+
+            function errorCallback(response){
+                deferred.reject(response);
+                return deferred.promise;
+            }
+        }
 
         function login(data){
 
