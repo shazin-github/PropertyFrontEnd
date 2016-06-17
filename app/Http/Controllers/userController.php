@@ -316,10 +316,57 @@ class userController extends Controller{
 		}
 	}
 
-	public function getPlanList(){}
+	public function getPlanList(){
+
+		$resp  = $this->guzzle->request('GET', $this->apiUrl.'user/getPlanList');
+
+		$result = json_decode($resp->getBody());
+
+		if($resp->getStatusCode() == 200){
+
+			return Response::json(['success'=>true, 'msg'=>$result->data]);
+
+		} else {
+
+				return Response::json(['success'=>false, 'msg'=>$this->makeError('User not found')]);
+
+		}
+	}
 
 	public function getPlanDetail($id){
 
+		$data = ['planId' => $id];
+
+		$resp  = $this->guzzle->request('GET', $this->apiUrl.'user/getPlanDetail', ['query'=>$data]);
+
+		$result = json_decode($resp->getBody());
+
+		if($resp->getStatusCode() == 200){
+
+			return Response::json(['success'=>true, 'msg'=>$result->data[0]]);
+
+		} else {
+
+				return Response::json(['success'=>false, 'msg'=>$this->makeError('User not found')]);
+		}
+	}
+
+	public  function switchToAgent(){
+
+		$data = $this->request->all();
+
+		$resp  = $this->guzzle->request('PUT', $this->apiUrl.'user', ['form_params'=>$data]);
+
+		$result = json_decode($resp->getBody());
+
+		if($resp->getStatusCode() == 200){
+
+			return Response::json(['success'=>true, 'msg'=>$result->data[0]]);
+
+		} else {
+
+			return Response::json(['success'=>false, 'msg'=>$this->makeError('User not found')]);
+		}
 	}
 
 }

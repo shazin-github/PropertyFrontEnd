@@ -1,16 +1,18 @@
 define([
-    'services/userService'
+    'services/userService',
+    'services/planService'
 ],function(){
     angular
         .module('coreModule')
         .controller('userController',userController);
 
-    userController.$inject = ['$scope', 'userService'];
-    function userController($scope, userService) {
+    userController.$inject = ['$scope', 'userService' , 'planService'];
+    function userController($scope, userService , planService) {
         var vm = this;
 
         vm.showProfileImage = false;
         vm.user = {};
+        vm.updateUserType = {};
         vm.login = login;
         vm.logout = logout;
         vm.userReg = {};
@@ -19,7 +21,49 @@ define([
         vm.initProfile = initProfile;
         vm.updateProfile = updateProfile;
         vm.updateProfileFields = updateProfileFields;
+        vm.getUserPlan  =  getUserPlan;
+        //vm.selectedUser = selectedUser;
+        //vm.selectedPlan = selectedPlan;
+        vm.userType = 'seller';
+        vm.userPlan = 0;
+        vm.isAgent = false;
+        vm.user.planWidget = false;
+        vm.changeUserType = changeUserType;
 
+
+        function changeUserType(){
+            $('#overlay').show();
+
+            vm.updateUserType.id = vm.user.id;
+            vm.updateUserType.is_agent = 1;
+            userService.switchtoAgent(vm.updateUserType).then(function(response){
+                vm.user.is_agent = 1;
+                $('#overlay').hide();
+
+                console.log(response);
+            });
+        }
+
+        $scope.$watch("vm.userType",function(value , oldvalue){
+            if(value == 'agent'){
+                vm.isAgent = true;
+            }else{
+                vm.isAgent = false;
+            }
+        });
+
+        function getUserPlan(){
+            $('#overlay').show();
+            planService.getPlanList().then(function(response){
+                console.log(response);
+                $('#overlay').hide();
+                if(response.data.success){
+                    vm.planList = response.data.msg;
+                }
+            });
+        }
+
+        vm.getUserPlan();
 
         function login(){
             $('#overlay').show();
@@ -47,6 +91,22 @@ define([
         function register(){
             $('#overlay').show();
 
+            vm.userReg.package_id = vm.userPlan;
+            if(vm.userType == 'agent'){
+                vm.userReg.is_agent = 1;
+                vm.userReg.is_seller = 0;
+                vm.userReg.is_buyer = 0;
+            }
+            if(vm.userType == 'seller'){
+                vm.userReg.is_agent = 0;
+                vm.userReg.is_seller = 1;
+                vm.userReg.is_buyer = 0;
+            }
+            if(vm.userType == 'buyer'){
+                vm.userReg.is_agent = 0;
+                vm.userReg.is_seller = 0;
+                vm.userReg.is_buyer = 1;
+            }
             console.log(vm.userReg);
             userService.register(vm.userReg).then(function(resp){
                 $('#overlay').hide();
@@ -60,11 +120,12 @@ define([
                 }
             });
         }
+
         function initProfile(){
             vm.user.image_url = "img/profile-avatar.jpg";
             $('#overlay').show();
             userService.getProfile().then(function(resp){
-                $('#overlay').hide();
+
                 vm.user = resp.data.msg;
 
                 if(vm.user.image_url != ''){
@@ -73,14 +134,14 @@ define([
                 }
                 vm.user.isAgent  = false;
                 vm.user.confirmPassword = resp.data.msg.password;
-                userService.isAgent(vm.user.id).then(function(response){
+                planService.getPlanDetail(vm.user.package_id).then(function(response){
+                    $('#overlay').hide();
                     if(response.data.success){
-                        vm.planData = response.data.data;
-
-                        vm.user.isAgent  = true;
-                    }else{
-                        vm.user.isAgent  = false;
+                        vm.user.planWidget = true;
+                        vm.user.planDetail = response.data.msg;
                     }
+                },function(response){
+                    $('#overlay').hide();
                 });
             });
         }

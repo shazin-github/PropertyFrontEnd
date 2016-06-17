@@ -11,7 +11,7 @@ define(function(){
             getPlanDetail:getPlanDetail
         };
 
-        function getplanList(){
+        function getPlanList(){
             var deferred = $q.defer();
             return $http.get("user/getPlanList")
                 .then(successCallback)
@@ -30,7 +30,7 @@ define(function(){
 
         function getPlanDetail(data){
             var deferred = $q.defer();
-            return $http.get("user/getPlanDetail"+data)
+            return $http.get("user/getPlanDetail/"+data)
                 .then(successCallback)
                 .catch(errorCallback);
 

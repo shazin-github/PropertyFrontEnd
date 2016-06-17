@@ -13,39 +13,17 @@
                 </ul>
 
                 <!-- Body -->
-                <div class="tabs-body plan-outter-div">
+                <div ng-controller="userController as vm" class="tabs-body plan-outter-div">
                     <h1 class="padded">Select Plan</h1>
-                    <div class="plan">
-                        <h1 class="title">Title</h1>
+                    <div ng-if="vm.planList" class="plan" ng-repeat="plan in vm.planList">
+                        <h1 class="title"><% plan.name %></h1>
                         <div class="plan-price">
-                            <p class="no-gap">$200</p></div>
+                            <p class="no-gap"><% plan.price %></p></div>
 
                         <div class="row no-gap padded">
-                            <p class="plan-text">dummy text here dummy text here dummy text here dummy text here dummy text heredummy text here dummy text here dummy text here dummy text here dummy text here</p>
-                            <a href="javascript:;" class="plan-btn">Select Plan</a>
+                            <p class="plan-text"><% plan.summery %> <a href="javascript:;" class="plan-btn">Select Plan</a>
                         </div>
                     </div>
-                    <div class="plan">
-                        <h1 class="title">Title</h1>
-                        <div class="plan-price">
-                            <p class="no-gap">$200</p></div>
-
-                        <div class="row no-gap padded">
-                            <p class="plan-text">dummy text here dummy text here dummy text here dummy text here dummy text heredummy text here dummy text here dummy text here dummy text here dummy text here</p>
-                            <a href="javascript:;" class="plan-btn">Select Plan</a>
-                        </div>
-                    </div>
-                    <div class="plan">
-                        <h1 class="title">Title</h1>
-                        <div class="plan-price">
-                            <p class="no-gap">$200</p></div>
-
-                        <div class="row no-gap padded">
-                            <p class="plan-text">dummy text here dummy text here dummy text here dummy text here dummy text heredummy text here dummy text here dummy text here dummy text here dummy text here</p>
-                            <a href="javascript:;" class="plan-btn">Select Plan</a>
-                        </div>
-                    </div>
-
 
                 </div>
 

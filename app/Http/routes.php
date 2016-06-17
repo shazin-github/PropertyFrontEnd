@@ -115,6 +115,8 @@ Route::group(['middleware'=>['web']], function(){
 
 	Route::get('user/getPlanList' , "userController@getPlanList");
 
+	Route::post('user/switchToAgent' , 'userController@switchToAgent');
+
 	Route::controller('user', 'userController');
 
 

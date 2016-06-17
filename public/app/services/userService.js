@@ -14,8 +14,26 @@ define(function() {
             getProfile:getProfile,
             updateProfilePic:updateProfilePic,
             updateProfile:updateProfile,
-            isAgent:isAgent
+            isAgent:isAgent,
+            switchtoAgent:switchtoAgent
         };
+
+        function switchtoAgent(data){
+            var deferred = $q.defer();
+            return $http.post("user/switchToAgent" , data)
+                .then(successCallback)
+                .catch(errorCallback);
+
+            function successCallback(response){
+                deferred.resolve(response);
+                return deferred.promise;
+            }
+
+            function errorCallback(response){
+                deferred.reject(response);
+                return deferred.promise;
+            }
+        }
 
         function isAgent(id){
             var deferred = $q.defer();
@@ -123,7 +141,7 @@ define(function() {
             }
         }
         function updateProfile(data){
-
+            console.log(data);
             var deferred = $q.defer();
             return $http.post("user/profile", data)
                 .then(successCallback)

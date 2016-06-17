@@ -87,36 +87,7 @@
 
 		<input class="button theme-button-2" type="submit" value="Update your profile" />
 	</form>
-
-	<div ng-if="vm.user.isAgent">
-
-		<p  class="plan-info" >Your Plan Information</p>
-		<div class="row row-fit-10">
-			<div class="col-sm-11">
-				<div class="row row-fit-10">
-					<div class="col-sm-12">
-						<div class="social-input phone">
-							<p>Plan Name</p>
-						</div>
-					</div>
-					<div class="col-sm-12">
-						<div class="social-input skype">
-							<i class="fa fa-pencil" />
-							<a class="profile" href="/user/user-app-plan"><span>Change Plan</span></a>
-						</div>
-					</div>
-
-				</div>
-				<div class="row row-fit-10">
-					<div class="col-sm-11">
-						<p>Plan Detail</p>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-	<div ng-if="!vm.user.isAgent">
+	<div ng-if="vm.user.planWidget">
 
 		<p  class="plan-info" >Your Plan Information</p>
 		<div class="row row-fit-10">
@@ -125,12 +96,12 @@
 					<div class="tabs-body plan-outter-div">
 
 					<div class="plan profile-plan" >
-						<h1 class="title">Trial</h1>
+						<h1 class="title"><% vm.user.planDetail.name %></h1>
 						<div class="plan-price">
-							<p class="no-gap">Free</p></div>
+							<p class="no-gap"><%vm.user.planDetail.price %></p></div>
 
 						<div class="row no-gap padded">
-							<p class="plan-text">dummy text here dummy text here dummy text here dummy text here dummy text heredummy text here dummy text here dummy text here dummy text here dummy text here</p>
+							<p class="plan-text"><% vm.user.planDetail.summery %></p>
 							<a href="/plan-widget" class="plan-btn">Change Your Plan</a>
 						</div>
 					</div>
@@ -138,10 +109,14 @@
 				</div>
 
 			</div>
-			<div class="col-sm-14" style="margin-top: 130px !important;" >
+			<div class="col-sm-11" style="margin-top: 130px !important;" >
 				<h3>Plan Description</h3>
-				<p>If you're developing an application, you'll want to make sure you're testing it under conditions that closely simulate a production environment. In production, you'll have an army of users banging away at your app and filling your database with data, which puts stress on your code. If you're hand-entering data into a test environment one record at a time using the UI, you're never going to build up the volume and variety of data that your app will accumulate in a few days in production. Worse, the data you enter will be biased towards your own usage patterns and won't match real-world usage, leaving important bugs undiscovered.</p>
-
+				<p><% vm.user.planDetail.description %></p>
+			</div>
+			<div class="col-sm-4" style="margin-top: 130px !important;" >
+				<div ng-if="!vm.user.is_agent" class="row no-gap padded">
+					<a href="javascript:;" class="plan-btn" ng-click="vm.changeUserType()">Switch To Agent</a>
+				</div>
 			</div>
 		</div>
 	</div>

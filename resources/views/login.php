@@ -29,11 +29,38 @@
 						<input class="js-input" type="text" placeholder="Email" ng-model="vm.userReg.email" />
 						<input class="js-input" type="password" placeholder="Password" ng-model="vm.userReg.password"/>
 						<input class="js-input" type="password" placeholder="Confirm password" ng-model="vm.userReg.confirmPassword"/>
-						<div class="options">
-							<label>
-								<input type="checkbox" ng-model="vm.userReg.isAgent" />
-								<span>Register As Agent</span>
+						<div style="margin-top: 15px;">
+							<h5>Select User </h5>
+							<div class="select-filter" >
+								<label style="margin-right: 10px;">
+									<input type="radio" name="userType-select" value="agent" required id="userType-select" ng-model="vm.userType" ng-click="selectedUser('agent')" />
+									<span> Agent</span>
+								</label>
+								<label style="margin-right: 10px;">
+									<input type="radio" name="userType-select" value="seller" required id="userType-select" ng-model="vm.userType" ng-click="selectedUser('seller')" />
+									<span> Seller</span>
+								</label>
+								<label style="margin-right: 10px;">
+									<input type="radio" name="userType-select" value="buyer" required id="userType-select" ng-model="vm.userType" ng-click="selectedUser('buyer')" />
+									<span> Buyer</span>
+								</label>
+							</div>
+						</div>
+						<div ng-if="!vm.isAgent" style="margin-top: 15px;">
+							<h5>User Plan </h5>
+							<label style="margin-right: 10px;">
+								<input type="radio" name="userPlan-select" value="0" required id="userPlan-select" ng-model="vm.userPlan" ng-click="selectedPlan(0)" />
+								<span>Trail:Free </span>
 							</label>
+						</div>
+						<div ng-if="vm.isAgent" style="margin-top: 15px;">
+							<h5>User Plan </h5>
+							<div class="select-filter" ng-repeat="p in vm.planList" >
+								<label >
+									<input type="radio" name="userPlan-select" value="<% p.id %>" required id="userPlan-select" ng-model="vm.userPlan" ng-click="selectedPlan(p.id)" />
+									<span><% p.name %>: <% p.price %> </span>
+								</label>
+							</div>
 						</div>
 						<input type="submit" value="Register" class="submit-button" />
 
