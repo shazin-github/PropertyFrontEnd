@@ -19,6 +19,7 @@ define([
         vm.planData = {};
         vm.userReg.isAgent = false;
         vm.paymentGateway=false;
+        vm.userpackage = {};
         vm.register = register;
         vm.initProfile = initProfile;
         vm.updateProfile = updateProfile;
@@ -161,13 +162,12 @@ define([
                     vm.showProfileImage = !vm.showProfileImage;
                     $('#profilePicImage').show(); // todo
                 }
-                vm.user.isAgent  = false;
                 vm.user.confirmPassword = resp.data.msg.password;
                 planService.getPlanDetail(vm.user.package_id).then(function(response){
                     $('#overlay').hide();
                     if(response.data.success){
-                        vm.user.planWidget = true;
-                        vm.user.planDetail = response.data.msg;
+                        vm.userpackage.planWidget = true;
+                        vm.userpackage.planDetail = response.data.msg;
                     }
                 },function(response){
                     $('#overlay').hide();
@@ -195,7 +195,9 @@ define([
             }
         }
         function updateProfileFields(){
+
             userService.updateProfile(vm.user).then(function(response){
+
                 //console.log('RESO', response);
                 $('#overlay').hide();
                 if(response.data.success){

@@ -156,16 +156,18 @@ class userController extends Controller{
 		
 		unset($data['confirmPassword']);
 		$data['id'] = session('user_id');
+
 		$resp = null;
 		try{
        		$resp  = $this->guzzle->request('PUT', $this->apiUrl.'user', ['form_params'=>$data]);
        	} catch(\Exception $e){
-//			$response = $e->getResponse();
-//
-//			$responseBodyAsString = $response->getBody()->getContents();
-//
-//			$result = json_decode($responseBodyAsString);
+			$response = $e->getResponse();
 
+			$responseBodyAsString = $response->getBody()->getContents();
+
+			$result = json_decode($responseBodyAsString);
+
+			dd($result);
 
        		return Response::json(['success'=>false, 'msg'=>$this->makeError('Update failed')]);
        	}

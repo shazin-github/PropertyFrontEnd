@@ -87,7 +87,7 @@
 
 		<input class="button theme-button-2" type="submit" value="Update your profile" />
 	</form>
-	<div ng-if="vm.user.planWidget">
+	<div ng-if="vm.userpackage.planWidget">
 
 		<p  class="plan-info" >Your Plan Information</p>
 		<div class="row row-fit-10">
@@ -96,12 +96,12 @@
 					<div class="tabs-body plan-outter-div">
 
 					<div class="plan profile-plan" >
-						<h1 class="title"><% vm.user.planDetail.name %></h1>
+						<h1 class="title"><% vm.userpackage.planDetail.name %></h1>
 						<div class="plan-price">
-							<p class="no-gap"><%vm.user.planDetail.price %></p></div>
+							<p class="no-gap"><%vm.userpackage.planDetail.price %></p></div>
 
 						<div class="row no-gap padded">
-							<p class="plan-text"><% vm.user.planDetail.summery %></p>
+							<p class="plan-text"><% vm.userpackage.planDetail.summery %></p>
 							<a href="/plan-widget" class="plan-btn">Change Your Plan</a>
 						</div>
 					</div>
@@ -111,7 +111,7 @@
 			</div>
 			<div class="col-sm-11" style="margin-top: 130px !important;" >
 				<h3>Plan Description</h3>
-				<p><% vm.user.planDetail.description %></p>
+				<p><% vm.userpackage.planDetail.description %></p>
 			</div>
 			<div class="col-sm-4" style="margin-top: 130px !important;" >
 				<div ng-if="!vm.user.is_agent" class="row no-gap padded">
