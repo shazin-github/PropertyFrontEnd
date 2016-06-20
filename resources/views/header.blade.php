@@ -20,29 +20,55 @@
 			</nav>
 
 			<!-- Social Block & Login -->
-			<div class="right-block">
-				<div class="account-options">
-					<div class="main-info">
-						<img src="{{ URL::to(session('image')) }}" alt="User Image" />
-						<span class="username">{{ session('firstname') }}</span>
-					</div>
+		<div class="right-block">
 
-					<ul class="list">
-						<li><a class="icon-profile2" href="{{ URL::to('my-profile#/') }}">My profile</a></li>
+			<p><a class="" href="/">Home</a> </p>
+			<p><a class="" href="/about-us">About Us</a> </p>
+			<p><a class="" href="/contact-us">Contact Us</a> </p>
 
-						<li><a class="icon-folder-add" href="{{ URL::to('my-profile#/submit') }}">Submit new property</a></li>
-						<li><a class="icon-folder4" href="{{ URL::to('my-profile#/properties') }}">My properties</a></li>
-						<li  ng-controller="userController as vm"><a class="exit" href="#" ng-click="vm.logout()">Logout</a></li>
-					</ul>
+			<div class="account-options">
+				<div class="main-info" style="margin-left: 30px">
+					<img src="{{ URL::to(session('image')) }}" alt="User Image" />
+					<span class="username">{{ session('firstname') }}</span>
 				</div>
-				
-				<ul class="social-block">
-					<li><a href="my-profile.html#"><i class="fa fa-facebook"></i></a></li>
-					<li><a href="my-profile.html#"><i class="fa fa-twitter"></i></a></li>
-					<li><a href="my-profile.html#"><i class="fa fa-instagram"></i></a></li>
-					<li><a href="my-profile.html#"><i class="fa fa-pinterest"></i></a></li>
+
+				<ul class="list">
+					<li><a class="icon-profile2" href="{{ URL::to('my-profile#/') }}">My profile</a></li>
+
+					<li><a class="icon-folder-add" href="{{ URL::to('my-profile#/submit') }}">Submit new property</a></li>
+					<li><a class="icon-folder4" href="{{ URL::to('my-profile#/properties') }}">My properties</a></li>
+					<li  ng-controller="userController as vm"><a class="exit" href="#" ng-click="vm.logout()">Logout</a></li>
 				</ul>
 			</div>
+		</div>
+
+
+		{{--<div class="right-block">--}}
+
+				{{--<div class="account-options">--}}
+					{{--<div class="main-info">--}}
+						{{--<img src="{{ URL::to(session('image')) }}" alt="User Image" />--}}
+						{{--<span class="username">{{ session('firstname') }}</span>--}}
+					{{--</div>--}}
+
+					{{--<ul class="list">--}}
+						{{--<li><a class="icon-profile2" href="{{ URL::to('my-profile#/') }}">My profile</a></li>--}}
+
+						{{--<li><a class="icon-folder-add" href="{{ URL::to('my-profile#/submit') }}">Submit new property</a></li>--}}
+						{{--<li><a class="icon-folder4" href="{{ URL::to('my-profile#/properties') }}">My properties</a></li>--}}
+						{{--<li  ng-controller="userController as vm"><a class="exit" href="#" ng-click="vm.logout()">Logout</a></li>--}}
+					{{--</ul>--}}
+				{{--</div>--}}
+
+
+
+				{{--<ul class="social-block">--}}
+					{{--<li><a href="my-profile.html#"><i class="fa fa-facebook"></i></a></li>--}}
+					{{--<li><a href="my-profile.html#"><i class="fa fa-twitter"></i></a></li>--}}
+					{{--<li><a href="my-profile.html#"><i class="fa fa-instagram"></i></a></li>--}}
+					{{--<li><a href="my-profile.html#"><i class="fa fa-pinterest"></i></a></li>--}}
+				{{--</ul>--}}
+			{{--</div>--}}
 
 			<!-- Menu Toggle -->
 			<span class="menu-toggle cmn-toggle-switch cmn-toggle-switch__htx">
@@ -70,13 +96,23 @@
 		<!-- Social Block & Login -->
 		<div class="right-block">
 			<ul class="social-block">
-				<li><a href="index.html#"><i class="fa fa-facebook"></i></a></li>
-				<li><a href="index.html#"><i class="fa fa-twitter"></i></a></li>
-				<li><a href="index.html#"><i class="fa fa-instagram"></i></a></li>
-				<li><a href="index.html#"><i class="fa fa-pinterest"></i></a></li>
+				{{--<li><a href="index.html#"><i class="fa fa-facebook"></i></a></li>--}}
+				{{--<li><a href="index.html#"><i class="fa fa-twitter"></i></a></li>--}}
+				{{--<li><a href="index.html#"><i class="fa fa-instagram"></i></a></li>--}}
+				{{--<li><a href="index.html#"><i class="fa fa-pinterest"></i></a></li>--}}
 			</ul>
 
 			<p><a class="login" href="index.html#">Login</a> / <a href="index.html#" class="register">Register</a></p>
+		</div>
+
+		<div class="right-block">
+			<ul class="social-block">
+
+			</ul>
+
+			<p><a class="" href="/">Home</a> </p>
+			<p><a class="" href="/about-us">About Us</a> </p>
+			<p><a class="" href="/contact-us">Contact Us</a> </p>
 		</div>
 
 		<!-- Menu Toggle -->

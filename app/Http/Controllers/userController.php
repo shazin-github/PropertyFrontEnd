@@ -369,4 +369,26 @@ class userController extends Controller{
 		}
 	}
 
+	public function updatePlan(){
+		$postData = $this->request->all();
+
+		$data = [
+			'id' => session('user_id'),
+			'package_id' => $postData['planId']
+		];
+
+		$resp  = $this->guzzle->request('PUT', $this->apiUrl.'user', ['form_params'=>$data]);
+
+		$result = json_decode($resp->getBody());
+
+		if($resp->getStatusCode() == 200){
+
+			return Response::json(['success'=>true, 'msg'=>$result->data]);
+
+		} else {
+
+			return Response::json(['success'=>false, 'msg'=>$this->makeError('User not found')]);
+		}
+	}
+
 }

@@ -69,7 +69,11 @@
     color: #fff;
     opacity: 0.7;
 }
-
+.info-text {
+    font-size: 20px;
+    text-align: left;
+    margin: 75px;
+}
 
 .plan-info{
     margin-top: 25px;
@@ -486,6 +490,22 @@ html body .modal-backdrop {
     margin-bottom: 0px !important;
     margin-top: 14px;
 }
+/**form style**/
+
+.lable-style {
+    float: left;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-align: left;
+    width: 100%;
+}
+.form-outter {
+    margin: 30px auto;
+    max-width: 650px;
+}
+
+
 @media (max-width: 1640px) {
 	
 

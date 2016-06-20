@@ -16,19 +16,48 @@ define([
         vm.login = login;
         vm.logout = logout;
         vm.userReg = {};
+        vm.planData = {};
         vm.userReg.isAgent = false;
+        vm.paymentGateway=false;
         vm.register = register;
         vm.initProfile = initProfile;
         vm.updateProfile = updateProfile;
         vm.updateProfileFields = updateProfileFields;
         vm.getUserPlan  =  getUserPlan;
-        //vm.selectedUser = selectedUser;
-        //vm.selectedPlan = selectedPlan;
         vm.userType = 'seller';
+        vm.paymentStatus = false;
         vm.userPlan = 0;
         vm.isAgent = false;
         vm.user.planWidget = false;
         vm.changeUserType = changeUserType;
+        vm.changePlan = changePlan;
+        vm.paymentMethod = paymentMethod;
+
+        function paymentMethod(){
+            $('#overlay').show();
+            userService.updatePlan(vm.planData).then(function(response){
+                $('#overlay').hide();
+                 if(response.data.success){
+                     vm.paymentStatus = true;
+                     vm.msg = "Successfully";
+                     echoSuccess('paymentForm', 'Successfully');
+                 }
+            });
+        }
+
+        function changePlan(planId){
+            //$('#overlay').show();
+            vm.planData = {
+                planId : planId
+            };
+            vm.paymentGateway = !vm.paymentGateway;
+           //userService.updatePlan(data).then(function(response){
+           //    $('#overlay').hide();
+           //     if(response.data.success){
+           //         vm.paymentGateway = !vm.paymentGateway;
+           //     }
+           //});
+        }
 
 
         function changeUserType(){
@@ -145,6 +174,8 @@ define([
                 });
             });
         }
+
+
         function updateProfile(){
             //alert(vm.user+' has password'+vm.password);
             $('#overlay').show();

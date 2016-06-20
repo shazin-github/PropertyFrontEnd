@@ -40,6 +40,12 @@ Route::group(['middleware'=>['web']], function(){
 	Route::get('myProperty', function () {
 		return view('myProperty');
 	});
+	Route::get('about-us', function () {
+		return view('about-us');
+	});
+	Route::get('contact-us', function () {
+		return view('contact-us');
+	});
 	Route::get('confirm' , function(){
 		return view('confirm');
 	});
@@ -116,6 +122,8 @@ Route::group(['middleware'=>['web']], function(){
 	Route::get('user/getPlanList' , "userController@getPlanList");
 
 	Route::post('user/switchToAgent' , 'userController@switchToAgent');
+
+	Route::post('user/updatePlan' , "userController@updatePlan");
 
 	Route::controller('user', 'userController');
 

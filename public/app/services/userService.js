@@ -15,8 +15,26 @@ define(function() {
             updateProfilePic:updateProfilePic,
             updateProfile:updateProfile,
             isAgent:isAgent,
-            switchtoAgent:switchtoAgent
+            switchtoAgent:switchtoAgent,
+            updatePlan:updatePlan
         };
+
+        function updatePlan(data){
+            var deferred = $q.defer();
+            return $http.post("user/updatePlan" , data)
+                .then(successCallback)
+                .catch(errorCallback);
+
+            function successCallback(response){
+                deferred.resolve(response);
+                return deferred.promise;
+            }
+
+            function errorCallback(response){
+                deferred.reject(response);
+                return deferred.promise;
+            }
+        }
 
         function switchtoAgent(data){
             var deferred = $q.defer();
